@@ -3,7 +3,7 @@
 
 ##Summary
 
-Unity project for generated sound responsive visuals comprised of floral patterns and 3D terrain.
+Unity project for generating sound responsive visuals comprised of floral patterns and 3D terrain.
 
 
 ##Local Development
