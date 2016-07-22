@@ -81,6 +81,7 @@ public class TerrainToMesh : MonoBehaviour
 			}
 		}
 
+		// Generate a new mesh and set the vertices, UVs and triangles
 		Mesh mesh = new Mesh();
 		mesh.vertices = tVertices;
 		mesh.uv = tUV;

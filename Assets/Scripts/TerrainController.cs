@@ -2,7 +2,7 @@
 using System.Collections;
 
 /// <summary>
-/// Terrain controller.
+/// Manages terrain mesh and animation
 /// </summary>
 public class TerrainController : MonoBehaviour
 {
@@ -47,7 +47,8 @@ public class TerrainController : MonoBehaviour
 		}
 	}
 	
-	// Update is called once per frame
+	// --------------------------------------------------------------------------------------------------------
+	//
 	void Update()
 	{
 		Mesh mesh = meshFilter.mesh;

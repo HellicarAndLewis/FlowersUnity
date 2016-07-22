@@ -702,7 +702,7 @@ MonoBehaviour:
   isCapturing: 0
   width: 1280
   height: 720
-  isGuiEnabled: 1
+  isGuiEnabled: 0
   guiTextColour: {r: 0, g: 0.003921569, b: 1, a: 1}
   captureCamera: {fileID: 0}
   realtimeElapsed: 0

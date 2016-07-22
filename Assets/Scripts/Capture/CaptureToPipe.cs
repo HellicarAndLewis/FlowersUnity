@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/***
- *
- * Captures textures from the specified camera and pipes them to an externall FFMPEG process
- * Requires there to be a copy of ffmpeg.exe in ".Capture/bin/ffmpeg.exe" relative to the data path
- * Requires a ".Capture/Videos/" directory to exist relative to the data path
- *
- **/
+/// <summary>
+/// Captures textures from the specified camera and pipes them to an externall FFMPEG process
+/// Requires there to be a copy of ffmpeg.exe in ".Capture/bin/ffmpeg.exe" relative to the data path
+/// Requires a ".Capture/Videos/" directory to exist relative to the data path
+/// </summary>
 public class CaptureToPipe : Capture
 {
     // --------------------------------------------------------------------------------------------------------
-    // Capture & Encoding
+	//
+    
+	// Capture framerate
     public int frameRate = 25;
+
     // Constant Rate Factor
     // From https://trac.ffmpeg.org/wiki/Encode/H.264
     // The range of the quantizer scale is 0-51: where 0 is lossless, 23 is default, and 51 is worst possible.
@@ -21,13 +22,15 @@ public class CaptureToPipe : Capture
     // Consider 18 to be visually lossless or nearly so: it should look the same or nearly the same as the input but it isn't technically lossless.
     [Range(0, 51)]
     public int crf = 15;
+
     // Duration in seconds
     public float duration = 6;
-    // Controls
+
+    // show the process window for debugging only
     public bool showProcessWindow = false;
 
     // --------------------------------------------------------------------------------------------------------
-    // private
+    //
     System.Diagnostics.Process process;
 
 
