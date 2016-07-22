@@ -677,6 +677,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sunLight: {fileID: 0}
+  transitionTime: 8
+  progress: 1
+  transitionElapsed: 0
 --- !u!4 &1903944106
 Transform:
   m_ObjectHideFlags: 0
