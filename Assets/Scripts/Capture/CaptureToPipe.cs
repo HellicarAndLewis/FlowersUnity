@@ -79,7 +79,8 @@ public class CaptureToPipe : Capture
     public virtual void OnGUI()
     {
         if (isGuiEnabled)
-        {
+		{
+			GUI.contentColor = guiTextColour;
             float padding = 10;
             int uiWidth = 256;
             int componentHeight = 20;
@@ -156,12 +157,16 @@ public class CaptureToPipe : Capture
     public void Init()
     {
         // Set FFMPEG application path, media output path
-        var ffmpegPath = string.Format("{0}/.Capture/bin/ffmpeg.exe", Application.dataPath);
+		// default is for PC / Windows
+		var ffmpegPath = string.Format("{0}/.Capture/bin/ffmpeg.exe", Application.dataPath);
+		var outputPath = string.Format("\"{0}\"/.Capture/Videos/{1}.mp4", Application.dataPath, System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
+
+		// change the paths if this is OSX
         if (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.OSXPlayer)
         {
-            ffmpegPath = string.Format("{0}/.Capture/bin/ffmpeg", Application.dataPath);
+			ffmpegPath = string.Format("{0}/.Capture/bin/ffmpeg", Application.dataPath);
+			outputPath = string.Format("{0}/.Capture/Videos/{1}.mp4", Application.dataPath, System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
         }
-        var outputPath = string.Format("\"{0}\"/.Capture/Videos/{1}.mp4", Application.dataPath, System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
 
         // new Process to launch FFMPEG
         process = new System.Diagnostics.Process();
@@ -177,7 +182,6 @@ public class CaptureToPipe : Capture
             crf,
             outputPath);
         process.StartInfo.Arguments = args;
-
         process.StartInfo.UseShellExecute = false;
         process.StartInfo.CreateNoWindow = !showProcessWindow;
         process.StartInfo.RedirectStandardInput = true;

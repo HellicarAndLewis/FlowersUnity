@@ -21,6 +21,7 @@ public class TerrainController : MonoBehaviour
 	private Mesh mesh;
 	private Vector3[] baseVertices;
 	private Vector3[] baseNormals;
+	private float[] noiseSeeds;
 
 
 	// --------------------------------------------------------------------------------------------------------
@@ -37,6 +38,13 @@ public class TerrainController : MonoBehaviour
 		baseNormals = mesh.normals;
 		meshFilter = GetComponent<MeshFilter>();
 		meshFilter.mesh = mesh;
+
+		noiseSeeds = new float[baseVertices.Length];
+		for(int i = 0; i < baseVertices.Length; i++) {
+			Vector3 noiseIn = baseVertices[i] * noiseInScale;
+			float noise = Mathf.PerlinNoise(noiseIn.x, noiseIn.z) * 10;
+			noiseSeeds[i] = noise;
+		}
 	}
 	
 	// Update is called once per frame
@@ -45,10 +53,12 @@ public class TerrainController : MonoBehaviour
 		Mesh mesh = meshFilter.mesh;
 		Vector3[] vertices = mesh.vertices;
 		int i = 0;
+		float scaledTime = CaptureTime.Elapsed * timeScale;
 		while(i < vertices.Length) {
 			Vector3 noiseIn = baseVertices[i] * noiseInScale;
 			float noise = Mathf.PerlinNoise(noiseIn.x, noiseIn.z) * 10;
-			noise = Mathf.PerlinNoise(noise, Time.time * timeScale) - 0.5f;
+			//float noise = noiseSeeds[i];
+			noise = Mathf.PerlinNoise(noise, scaledTime) - 0.5f;
 			vertices[i] = baseVertices[i] + (baseNormals[i] * (noise * noiseOutScale));
 			i++;
 		}

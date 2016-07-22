@@ -10,6 +10,7 @@ public class Capture : MonoBehaviour
     public int height = 720;
     // Controls
     public bool isGuiEnabled = false;
+	public Color guiTextColour = Color.black;
     public Camera captureCamera;
     [HideInInspector]
     public float realtimeElapsed = 0;
