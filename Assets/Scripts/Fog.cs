@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Configurable fog
+/// </summary>
 public class Fog : MonoBehaviour
 {
 
@@ -12,11 +15,15 @@ public class Fog : MonoBehaviour
     public float endDistance = 200;
     public float startDistance = 0;
     
+	// --------------------------------------------------------------------------------------------------------
+	//
     void Start ()
     {
         Refresh();
     }
 
+	// --------------------------------------------------------------------------------------------------------
+	//
     void Update()
     {
         if (forceUpdate)
@@ -26,7 +33,8 @@ public class Fog : MonoBehaviour
         }
     }
 
-
+	// --------------------------------------------------------------------------------------------------------
+	//
     void Refresh()
     {
         RenderSettings.fogColor = colour;
