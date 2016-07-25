@@ -1,0 +1,71 @@
+﻿
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+
+#include "Particle.cginc"
+#include "Noise.cginc"
+
+// this corresponds to groupsize in ParticleController
+// The number of particles needs to be divisible by this
+#define BLOCKSIZE	128
+
+// particle data buffer
+// corresponds to a ComputeBuffer in ParticleController
+RWStructuredBuffer<ParticleData> particles;
+
+float speed = 0.1;
+float time = 0;
+
+// ----------------------------------------------------------------------------------
+//
+float2 GetNoise(float2 position, float2 velocity, float seed, float time)
+{
+	return snoise(float2(seed * 0.1, time * 0.1));
+}
+
+// ----------------------------------------------------------------------------------
+//
+[numthreads(128,1,1)]
+void CSMain(uint3 id : SV_DispatchThreadID)
+{
+	// Get the index of the current particle
+	// numthreads is setup to only use the x component
+	// so x == particle index
+	uint i = id.x;
+
+	// ----------------------------------------------------------------------------------
+	// read particle data in from the buffer
+	float3 position = particles[i].position;
+	float3 velocity = particles[i].velocity;
+	float enabled = particles[i].enabled;
+
+	if (enabled < 1)
+	{
+		return;
+	}
+
+	// ----------------------------------------------------------------------------------
+	// temp/local variables
+	float seed = (float)i / 10.0;
+	uint count, stride;
+	particles.GetDimensions(count, stride);
+
+	// ----------------------------------------------------------------------------------
+	// update forces
+	float3 force = float3(0,0,0);
+	float2 noise = GetNoise(float2(position.x, position.z), float2(velocity.x, velocity.z), seed, time);
+	force += float3(0, noise.y, 0) * 40;
+
+	// ----------------------------------------------------------------------------------
+	// update position and velocity
+	float3 nextPosition = position;
+	nextPosition.y = force.y;
+	velocity = nextPosition - position;
+	position = nextPosition;
+
+	// ----------------------------------------------------------------------------------
+	// write the updated values back to the buffer
+	particles[i].position = position;
+	particles[i].velocity = velocity;
+	particles[i].enabled = enabled;
+}
