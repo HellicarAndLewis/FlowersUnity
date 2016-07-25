@@ -26,7 +26,7 @@ public class ComputeParticleController : MonoBehaviour
     
     
     // ----------------------------------------------------------------------------------
-    public void Awake()
+    public void Start()
     {
         if (!SystemInfo.supportsComputeShaders)
         {
@@ -118,10 +118,12 @@ public class ComputeParticleController : MonoBehaviour
         }
         if (particleMaterial)
         {
+            /*
             particleMaterial.SetBuffer("particles", particleBuffer);
             particleMaterial.SetBuffer("quadPoints", quadBuffer);
             particleMaterial.SetPass(0);
             Graphics.DrawProcedural(MeshTopology.Triangles, 6, numParticles);
+            */
         }
             
     }
