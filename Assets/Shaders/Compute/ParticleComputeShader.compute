@@ -13,14 +13,18 @@
 // corresponds to a ComputeBuffer in ParticleController
 RWStructuredBuffer<ParticleData> particles;
 
-float speed = 0.1;
+float noisePositionScale = 0.01;
+float noisePositionMult = 10;
+float noiseTimeScale = 0.1;
 float time = 0;
+float alpha = 1;
 
 // ----------------------------------------------------------------------------------
 //
-float2 GetNoise(float2 position, float2 velocity, float seed, float time)
+float GetNoise(float2 position, float2 velocity, float seed, float time)
 {
-	return snoise(float2(seed * 0.1, time * 0.1));
+	float location = snoise(position * noisePositionScale) * noisePositionMult;
+	return (snoise(float2(location, time * noiseTimeScale)) + 1 ) * 0.5;
 }
 
 // ----------------------------------------------------------------------------------
@@ -39,29 +43,27 @@ void CSMain(uint3 id : SV_DispatchThreadID)
 	float3 velocity = particles[i].velocity;
 	float enabled = particles[i].enabled;
 
-	if (enabled < 1)
-	{
-		return;
-	}
-
 	// ----------------------------------------------------------------------------------
 	// temp/local variables
 	float seed = (float)i / 10.0;
 	uint count, stride;
 	particles.GetDimensions(count, stride);
 
+	enabled = GetNoise(float2(position.x, position.z), float2(velocity.x, velocity.z), seed, time) * alpha;
+
 	// ----------------------------------------------------------------------------------
 	// update forces
+	/*
 	float3 force = float3(0,0,0);
 	float2 noise = GetNoise(float2(position.x, position.z), float2(velocity.x, velocity.z), seed, time);
 	force += float3(0, noise.y, 0) * 40;
-
 	// ----------------------------------------------------------------------------------
 	// update position and velocity
 	float3 nextPosition = position;
 	nextPosition.y = force.y;
 	velocity = nextPosition - position;
 	position = nextPosition;
+	*/
 
 	// ----------------------------------------------------------------------------------
 	// write the updated values back to the buffer

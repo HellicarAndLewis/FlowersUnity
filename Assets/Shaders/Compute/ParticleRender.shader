@@ -13,7 +13,7 @@ Shader "Custom/ParticleRender" {
 		Pass 
 		{
 			Tags { "RenderType"="Transparent"}
-			ZTest Off
+			ZTest On
 			ZWrite Off
 			Cull Off
 			Blend SrcAlpha OneMinusSrcAlpha
@@ -67,8 +67,8 @@ Shader "Custom/ParticleRender" {
 				{
 					float4 texCol = tex2Dbias (_MainTex, float4(i.uv, 0.0f, -1.0f));
 					float4 particleCol = i.color;
-
-					return float4 (1.0f - (1.0f - texCol.rgb) * (1.0f - particleCol.rgb), texCol.a * particleCol.a );
+					return float4(texCol.rgb, texCol.a * particleCol.a);
+					//return float4 (1.0f - (1.0f - texCol.rgb) * (1.0f - particleCol.rgb), texCol.a * particleCol.a );
 				}
 
 			ENDCG

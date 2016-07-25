@@ -19,6 +19,15 @@ public class TerrainController : MonoBehaviour
     [Range(0, 30)]
     public float noiseOutScale = 2f;
 
+    [Range(0.01f, 0.001f)]
+    public float flowerNoisePositionScale = 0.01f;
+    [Range(1, 10)]
+    public float flowerNoisePositionMult = 1f;
+    [Range(0, 1)]
+    public float flowerNoiseTimeScale = 0.1f;
+    [Range(0, 1)]
+    public float flowerAlpha = 1f;
+
     // Compute particles
     public ComputeShader particleComputeShader;
     private ComputeBuffer particleBuffer;
@@ -116,11 +125,11 @@ public class TerrainController : MonoBehaviour
         {
             var particle = particles[i];
             particle.enabled = (i < numParticlesDesired) ? 1 : 0;
-            particle.size = 4;
+            particle.size = Random.Range(3, 6);
             if (i < baseVertices.Length)
-                particle.position = baseVertices[i];
+                particle.position = transform.position + baseVertices[i] + (baseNormals[i] * Random.Range(2, 6)) + new Vector3(Random.Range(0,2),Random.Range(0, 2),0);
             else
-                particle.position = new Vector3(0, 0, 0);
+                particle.position = new Vector3(-999, 0, 0);
             particle.velocity = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
             particles[i] = particle;
         }
@@ -147,7 +156,8 @@ public class TerrainController : MonoBehaviour
 	//
 	void Update()
 	{
-        //UpdateParticles();
+        UpdateParticles();
+
         Mesh mesh = meshFilter.mesh;
 		Vector3[] vertices = mesh.vertices;
 		int i = 0;
@@ -177,10 +187,13 @@ public class TerrainController : MonoBehaviour
         particleComputeShader.SetBuffer(particleUpdateKernel, "particles", particleBuffer);
 
         // set params
-        particleComputeShader.SetFloat("speed", 1.0f);
-        particleComputeShader.SetFloat("time", Time.fixedTime);
+        particleComputeShader.SetFloat("time", CaptureTime.Elapsed);
+        particleComputeShader.SetFloat("noisePositionScale", flowerNoisePositionScale);
+        particleComputeShader.SetFloat("noisePositionMult", flowerNoisePositionMult);
+        particleComputeShader.SetFloat("noiseTimeScale", flowerNoiseTimeScale);
+        particleComputeShader.SetFloat("alpha", flowerAlpha);
 
-        // dispatch, launch threads on GPU
+        // dispatch, launch threads on GPUs
         // numParticles need to be divisible by group size, which corresponds to [numthreads] in the shader
         var numberOfGroups = Mathf.CeilToInt((float)numParticles / GroupSize);
         particleComputeShader.Dispatch(particleUpdateKernel, numberOfGroups, 1, 1);
