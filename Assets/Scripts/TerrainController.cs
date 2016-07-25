@@ -11,9 +11,13 @@ public class TerrainController : MonoBehaviour
 	//
 	public Terrain terrain;
     public MeshFilter baseMesh;
-	public float timeScale = 1;
+    public Material meshMaterial;
+    [Range(0.1f, 2)]
+    public float timeScale = 1;
+    [Range(0.001f, 0.006f)]
 	public float noiseInScale = 0.001f;
-	public float noiseOutScale = 2f;
+    [Range(0, 30)]
+    public float noiseOutScale = 2f;
 
     // Compute particles
     public ComputeShader particleComputeShader;
@@ -159,7 +163,7 @@ public class TerrainController : MonoBehaviour
 		}
 		mesh.vertices = vertices;
 		mesh.RecalculateNormals();
-
+        
     }
 
     // ----------------------------------------------------------------------------------
