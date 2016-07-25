@@ -1,84 +1,55 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// [RequireComponent(typeof(AudioSource))]
-
-public enum Frequency
-{
-    Speech = 8000,
-    LowQuality = 11025,
-    Wideband = 16000,
-    Record = 22050,
-    DAT = 32000,
-    CD = 44100,
-    Pro = 48000,
-    DVD = 96000
-
-}
+[RequireComponent(typeof(AudioSource))]
 
 public class fftAnalyzer : MonoBehaviour
 {
-
-    public Frequency samplingRate = Frequency.Speech;
-    public float Loudness;
-    private string device;
-    AudioClip clipRecord = new AudioClip();
-    int sampleWindow = 128;
-    public int lengthSeconds = 1;
-    public GameObject cube;
-
-    void InitMic()
-    {
-        if (device == null) device = Microphone.devices[0];
-        clipRecord = Microphone.Start(device, true, 1, (int)samplingRate);
-    }
-
-    void StopMicrophone()
-    {
-        Microphone.End(device);
-    }
-
-    float LevelMax()
-    {
-        float levelMax = 0;
-        float[] waveData = new float[sampleWindow];
-        int micPosition = Microphone.GetPosition(null) - (sampleWindow + 1); // null means the first microphone
-        if (micPosition < 0) return 0;
-        clipRecord.GetData(waveData, micPosition);
-        // Getting a peak on the last 128 samples
-        for (int i = 0; i < sampleWindow; i++)
-        {
-            float wavePeak = waveData[i] * waveData[i];
-            if (levelMax < wavePeak)
-            {
-                levelMax = wavePeak;
-            }
-        }
-        return levelMax;
-    }
+    public AudioSource audio;
+    public float sensitivity = 100;
+    public float loudness = 0;
+    public int bins;
+    float Resolution;
+    public static float[] spectrum;
 
     void Start()
     {
-        InitMic();
+        if(!audio) audio = GetComponent<AudioSource>();
+        audio.clip = Microphone.Start(null, true, 10, 44100);
+        audio.loop = true;
+        //audio.mute = true;
+        spectrum = new float[1024];
+        string AudioInputDevice = null;
+        while (!(Microphone.GetPosition(AudioInputDevice) > 0)) { }
+        audio.Play();
+    }
+
+    float GetAveragedVolume()
+    {
+        float[] data = new float[1024];
+        audio.GetOutputData(data, 0);
+        float a = 0;
+        foreach(float s in data)
+        {
+            a += Mathf.Abs(s);
+        }
+        return a / 256;
+    }
+
+    void FillSpectrum()
+    {
+        audio.GetSpectrumData(spectrum, 0, FFTWindow.BlackmanHarris);
     }
 
     void Update()
     {
-        Loudness = LevelMax() * 10f;
-        Vector3 Scale;
-        Scale = new Vector3();
-        Scale.Set(1.0f + Loudness, 1.0f + Loudness, 1.0f + Loudness);
-        cube.transform.localScale = Scale;
-    }
+        loudness = GetAveragedVolume() * sensitivity;
+        FillSpectrum();
+        for(int i = 0; i < spectrum.Length; i++)
+        {
+            float x = i / 10.0f;
+            Debug.DrawLine(new Vector3(x, 0, 0), new Vector3(x, spectrum[i] * 100, 0));
+        }
 
-    //stop mic when loading a new level or quit application
-    void OnDisable()
-    {
-        StopMicrophone();
-    }
-
-    void OnDestroy()
-    {
-        StopMicrophone();
     }
 }
