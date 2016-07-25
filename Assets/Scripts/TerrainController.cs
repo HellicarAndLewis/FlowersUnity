@@ -10,6 +10,7 @@ public class TerrainController : MonoBehaviour
 	// --------------------------------------------------------------------------------------------------------
 	//
 	public Terrain terrain;
+    public MeshFilter baseMesh;
 	public float timeScale = 1;
 	public float noiseInScale = 0.001f;
 	public float noiseOutScale = 2f;
@@ -42,13 +43,21 @@ public class TerrainController : MonoBehaviour
 	//
 	void Start()
 	{
-        if (!terrain) {
-			Debug.LogError("You need to set terrain in TerrainController");
+        if (!terrain && !baseMesh) {
+			Debug.LogError("You need to set a terrain or mesh filter");
 		}
-		terrainData = terrain.terrainData;
-		mesh = TerrainToMesh.Generate(terrainData, terrain.GetPosition());
-        
-		terrain.enabled = false;
+        if (terrain)
+        {
+            terrainData = terrain.terrainData;
+            mesh = TerrainToMesh.Generate(terrainData, terrain.GetPosition());
+            terrain.enabled = false;
+        }
+        else if (baseMesh)
+        {
+            mesh = baseMesh.mesh;
+            baseMesh.gameObject.SetActive(false);
+        }
+		
 		baseVertices = mesh.vertices;
 		baseNormals = mesh.normals;
 		meshFilter = GetComponent<MeshFilter>();
