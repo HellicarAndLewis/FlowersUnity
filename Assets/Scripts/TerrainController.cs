@@ -14,6 +14,8 @@ public class TerrainController : MonoBehaviour
 	public float noiseInScale = 0.001f;
 	public float noiseOutScale = 2f;
 
+
+
 	// --------------------------------------------------------------------------------------------------------
 	//
 	private TerrainData terrainData;
@@ -58,7 +60,6 @@ public class TerrainController : MonoBehaviour
 		while(i < vertices.Length) {
 			Vector3 noiseIn = baseVertices[i] * noiseInScale;
 			float noise = Mathf.PerlinNoise(noiseIn.x, noiseIn.z) * 10;
-			//float noise = noiseSeeds[i];
 			noise = Mathf.PerlinNoise(noise, scaledTime) - 0.5f;
 			vertices[i] = baseVertices[i] + (baseNormals[i] * (noise * noiseOutScale));
 			i++;
