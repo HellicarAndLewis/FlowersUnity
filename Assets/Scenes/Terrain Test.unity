@@ -163,7 +163,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 90246057}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16, y: -14, z: 60}
+  m_LocalPosition: {x: 42.7, y: 26.3, z: 201}
   m_LocalScale: {x: 4, y: 18.1, z: 4}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -262,7 +262,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 427270494}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e83ce22a1aa26594ab08c58393f68961, type: 3}
   m_Name: 
@@ -347,6 +347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrain: {fileID: 0}
   baseMesh: {fileID: 1436150571}
+  meshMaterial: {fileID: 0}
   timeScale: 0.5
   noiseInScale: 0.002
   noiseOutScale: 6
@@ -477,8 +478,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1404699598}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 21.39}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalPosition: {x: 0, y: 27.4, z: 222.09}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 438541961}
@@ -500,7 +501,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a0aaae8b16b099140892e01f0f15fbe8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -409
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a0aaae8b16b099140892e01f0f15fbe8, type: 3}
       propertyPath: m_LocalRotation.x
@@ -538,6 +539,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: a0aaae8b16b099140892e01f0f15fbe8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c577adb09c83d41a09081b20e860e958, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0aaae8b16b099140892e01f0f15fbe8, type: 3}
   m_IsPrefabParent: 0
@@ -623,8 +628,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1807461956}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21, y: -16, z: 40}
-  m_LocalScale: {x: 4, y: 18.1, z: 4}
+  m_LocalPosition: {x: -60.1, y: 26, z: 209.6}
+  m_LocalScale: {x: 10, y: 50, z: 10}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 438541961}
@@ -643,6 +648,9 @@ GameObject:
   - 81: {fileID: 1827569484}
   - 114: {fileID: 1827569489}
   - 114: {fileID: 1827569490}
+  - 114: {fileID: 1827569491}
+  - 114: {fileID: 1827569492}
+  - 114: {fileID: 1827569493}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -696,11 +704,11 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 0
+  m_HDR: 1
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -748,7 +756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualizeFocus: 0
-  focalLength: 47.4
+  focalLength: 180
   focalSize: 0.55
   aperture: 0.59
   focalTransform: {fileID: 0}
@@ -765,6 +773,91 @@ MonoBehaviour:
   dx11BokehTexture: {fileID: 2800000, guid: a4cdca73d61814d33ac1587f6c163bca, type: 3}
   dx11BokehScale: 1.2
   dx11BokehIntensity: 2.5
+--- !u!114 &1827569491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1827569483}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e318a6043c1cb4a8ce1c8805bab930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resolution: 2
+  screenBlendMode: 0
+  sunTransform: {fileID: 1855786428}
+  radialBlurIterations: 2
+  sunColor: {r: 0.977282, g: 1, b: 0.7647059, a: 1}
+  sunThreshold: {r: 0.33823532, g: 0.33823532, b: 0.33823532, a: 1}
+  sunShaftBlurRadius: 2.5
+  sunShaftIntensity: 1.15
+  maxRadius: 0.63
+  useDepthTexture: 1
+  sunShaftsShader: {fileID: 4800000, guid: d3b1c8c1036784176946f5cfbfb7fe4c, type: 3}
+  simpleClearShader: {fileID: 4800000, guid: f688f89ed5eb847c5b19c934a0f1e772, type: 3}
+--- !u!114 &1827569492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1827569483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3309686a9fbbe6e42a182d5e0257704c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensity: 0.5
+  threshold: 0
+  blurSpread: 1
+  separableBlurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
+  contrastCompositeShader: {fileID: 4800000, guid: 273404942eede4ea1883ca1fb2942507,
+    type: 3}
+--- !u!114 &1827569493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1827569483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4975a6e437fc3b149a8cd508ce5bdd69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  threshold: 0.32
+  intensity: 1.27
+  blurSize: 5.5
+  blurIterations: 1
+  blurType: 0
+  fastBloomShader: {fileID: 4800000, guid: 68a00c837b82e4c6d92e7da765dc5f1d, type: 3}
+--- !u!1 &1855786427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1855786428}
+  m_Layer: 0
+  m_Name: Shaft Caster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1855786428
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1855786427}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 50, y: 130, z: 90}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
 --- !u!1 &1903944104
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,7 +886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sunLight: {fileID: 0}
-  transitionTime: 3
+  transitionTime: 5
   progress: 1
   transitionElapsed: 0
 --- !u!4 &1903944106
@@ -861,15 +954,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCapturing: 0
-  width: 1280
-  height: 720
-  isGuiEnabled: 0
-  guiTextColour: {r: 0, g: 0.003921569, b: 1, a: 1}
+  width: 1920
+  height: 1080
+  isGuiEnabled: 1
+  guiTextColour: {r: 1, g: 0.9985801, b: 0.9485294, a: 1}
   captureCamera: {fileID: 0}
   realtimeElapsed: 0
   frameRate: 25
   crf: 15
-  duration: 30
+  duration: 60
   showProcessWindow: 0
 --- !u!4 &1968199945
 Transform:

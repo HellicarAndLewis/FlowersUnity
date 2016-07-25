@@ -37,12 +37,15 @@ public class LightController : MonoBehaviour
 			presets[0] = new LightPreset(){colour= Color.cyan, eulerAngle = new Vector3(20, 80, 0)};
 		// Daylight
 		if(presets[1] == null)
-			presets[1] = new LightPreset(){colour= Color.yellow, eulerAngle= new Vector3(74, 12, 0)};
+			presets[1] = new LightPreset(){colour= new Color(0.98f, 1, 0.32f), eulerAngle= new Vector3(123, 26, 0)};
 		// Dusk
 		if(presets[2] == null)
 			presets[2] = new LightPreset(){colour= Color.red, eulerAngle= new Vector3(170, 80, 0)};
-		
-		previous = presets[0];
+        // Night
+        if (presets[3] == null)
+            presets[3] = new LightPreset() { colour = Color.black, eulerAngle = new Vector3(0, 80, 0) };
+
+        previous = presets[0];
 		target = presets[0];
 		Preset(ShowMode.Daytime);
 	}
@@ -54,8 +57,9 @@ public class LightController : MonoBehaviour
 		if(Input.GetKeyDown("1")) Preset(ShowMode.Dawn);
 		if(Input.GetKeyDown("2")) Preset(ShowMode.Daytime);
 		if(Input.GetKeyDown("3")) Preset(ShowMode.Dusk);
-			
-		if(sunLight) {
+        if (Input.GetKeyDown("4")) Preset(ShowMode.Night);
+
+        if (sunLight) {
 			if(transitionElapsed < transitionTime) {
 				transitionElapsed += Time.deltaTime;
 				progress = transitionElapsed / transitionTime;
