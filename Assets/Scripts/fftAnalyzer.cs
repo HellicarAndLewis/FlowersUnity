@@ -24,7 +24,7 @@ public class fftAnalyzer : MonoBehaviour
         audio.clip = Microphone.Start(null, true, 10, 44100);
         audio.loop = true;
         //audio.mute = true;
-        spectrum = new float[64];
+        spectrum = new float[1024];
         string AudioInputDevice = null;
         while (!(Microphone.GetPosition(AudioInputDevice) > 0)) { }
         audio.Play();
