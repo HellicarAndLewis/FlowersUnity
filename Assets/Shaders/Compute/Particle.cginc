@@ -8,6 +8,8 @@ struct ParticleData
 	float3 position; 
 	float3 velocity;
 
+	float2 texOffset;
+
 	float enabled;
 	float size;
 	float mass;

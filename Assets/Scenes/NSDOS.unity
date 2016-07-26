@@ -183,13 +183,15 @@ MonoBehaviour:
   particleComputeShader: {fileID: 7200000, guid: bf2d8244da10a1847824204e8c7d381d,
     type: 3}
   numParticles: 10000
-  bounds: {x: 80, y: 80, z: 80}
+  bounds: {x: 120, y: 80, z: 80}
   speed: {x: 0, y: -0.2, z: 0}
-  flowerNoisePositionScale: 0.01
-  flowerNoisePositionMult: 0.6
+  flowerNoisePositionScale: 0.02
+  flowerNoisePositionMult: 0.1
   flowerNoiseTimeScale: 0.2
   flowerAlpha: 1
-  particleMaterial: {fileID: 2100000, guid: 1de4d81220e8f71469176adc327f08f4, type: 2}
+  particleMaterial: {fileID: 2100000, guid: ce20ff2dbfa039b469c77e3187972d4e, type: 2}
+  texRows: 3
+  texCols: 3
 --- !u!4 &1639254574
 Transform:
   m_ObjectHideFlags: 0

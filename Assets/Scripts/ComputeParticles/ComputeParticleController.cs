@@ -19,6 +19,8 @@ public class ComputeParticleController : MonoBehaviour
 
     // Render
     public Material particleMaterial;
+    public int texRows = 3;
+    public int texCols = 3;
     private ComputeBuffer quadBuffer;
     private const int QuadStride = 12;
     
@@ -65,12 +67,14 @@ public class ComputeParticleController : MonoBehaviour
         {
             var particle = particles[i];
             particle.enabled = (i < numParticlesDesired) ? 1 : 0;
-            particle.size = Random.Range(1, 3);
+            particle.size = Random.Range(4, 4);
             particle.position = new Vector3(Random.Range(bounds.x * -0.5f, bounds.x * 0.5f),
                                          Random.Range(bounds.y * -0.5f, bounds.y * 0.5f),
                                          Random.Range(bounds.z * -0.5f, bounds.z * 0.5f));
             particle.velocity = Vector3.zero;
-            particle.colour = Color.white;
+            particle.colour = new Color(Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), Random.Range(0.5f, 1f));
+            // get a random offset based on the spritesheet number of rows and columns
+            particle.texOffset = new Vector2( Random.Range(0,texCols) / (float)texCols, Random.Range(0, texRows) / (float)texRows);
             particles[i] = particle;
         }
 
@@ -136,6 +140,7 @@ public class ComputeParticleController : MonoBehaviour
         {
             particleMaterial.SetBuffer("particles", particleBuffer);
             particleMaterial.SetBuffer("quadPoints", quadBuffer);
+            particleMaterial.SetVector("texBounds", new Vector4(1 / (float)texCols, 1 / (float)texRows, 0, 0));
             particleMaterial.SetPass(0);
             Graphics.DrawProcedural(MeshTopology.Triangles, 6, numParticles);
         }
@@ -176,7 +181,7 @@ public class ComputeParticleController : MonoBehaviour
     {
         if (particles != null)
         {
-            GUI.Label(new Rect(10, 10, 100, 50), string.Format("{0} people\n{1} particles\n{2} fps", numParticlesDesired, particles.Length, 1 / Time.deltaTime));
+            GUI.Label(new Rect(10, 10, 100, 50), string.Format("{0} desired\n{1} particles\n{2} fps", numParticlesDesired, particles.Length, 1 / Time.deltaTime));
         }
     }
 

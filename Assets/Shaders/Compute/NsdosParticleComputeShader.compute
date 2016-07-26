@@ -52,19 +52,23 @@ void CSMain(uint3 id : SV_DispatchThreadID)
 	uint count, stride;
 	particles.GetDimensions(count, stride);
 
-	enabled = GetNoise(position, seed, time) * alpha;
+	enabled = 1;//GetNoise(position, seed, time) * alpha;
 
 	// ----------------------------------------------------------------------------------
 	// update forces
 	float3 force = float3(0, 0, 0);
-	force.y = snoise(float2(position.z, time * noiseTimeScale) * noisePositionScale) * noisePositionMult;
-	force.x = snoise(float2(position.y, time * noiseTimeScale) * noisePositionScale) * noisePositionMult;
-	force.z = snoise(float2(position.x, time * noiseTimeScale) * noisePositionScale) * noisePositionMult;
+	//force.y = snoise(float2(position.z, time * noiseTimeScale) * noisePositionScale) * noisePositionMult;
+	//force.x = snoise(float2(position.y, time * noiseTimeScale) * noisePositionScale) * noisePositionMult;
+	//force.z = snoise(float2(position.x, time * noiseTimeScale) * noisePositionScale) * noisePositionMult;
+	force.y = snoise(float2(position.z, position.x) * noisePositionScale) * noisePositionMult;
+	force.x = snoise(float2(position.y, position.z) * noisePositionScale) * noisePositionMult;
+	force.z = snoise(float2(position.x, position.y) * noisePositionScale) * noisePositionMult;
 
 	force = speed + force;
 
 	// ----------------------------------------------------------------------------------
 	// update position and velocity
+	float birthScale = 0.8;
 	float3 nextPosition = position + force;
 	if (nextPosition.y < boundsMin.y) {
 		position.y = nextPosition.y = boundsMax.y;
@@ -73,16 +77,20 @@ void CSMain(uint3 id : SV_DispatchThreadID)
 		position.y = nextPosition.y = boundsMin.y;
 	}
 	if (nextPosition.x < boundsMin.x) {
-		position.x = nextPosition.x = boundsMax.x;
+		position.x = nextPosition.x = boundsMax.x * birthScale;
+		position.y = nextPosition.y = boundsMin.y;
 	}
 	if (nextPosition.x > boundsMax.x) {
-		position.x = nextPosition.x = boundsMin.x;
+		position.x = nextPosition.x = boundsMin.x * birthScale;
+		position.y = nextPosition.y = boundsMin.y;
 	}
 	if (nextPosition.z < boundsMin.z) {
-		position.z = nextPosition.z = boundsMax.z;
+		position.z = nextPosition.z = boundsMax.z * birthScale;
+		position.y = nextPosition.y = boundsMin.y;
 	}
 	if (nextPosition.z > boundsMax.z) {
-		position.z = nextPosition.z = boundsMin.z;
+		position.z = nextPosition.z = boundsMin.z * birthScale;
+		position.y = nextPosition.y = boundsMin.y;
 	}
 	velocity = nextPosition - position;
 	position = nextPosition;

@@ -13,7 +13,8 @@ Shader "Custom/ParticleRender" {
 		Pass 
 		{
 			Tags { "RenderType"="Transparent"}
-			ZTest On
+			//Less | Greater | LEqual | GEqual | Equal | NotEqual | Always
+			ZTest LEqual
 			ZWrite Off
 			Cull Off
 			Blend SrcAlpha OneMinusSrcAlpha
@@ -33,6 +34,7 @@ Shader "Custom/ParticleRender" {
 				StructuredBuffer<float3> quadPoints;
 
 				sampler2D _MainTex;
+				float4 texBounds;
 
 				float4 _Color;
 
@@ -80,11 +82,12 @@ Shader "Custom/ParticleRender" {
 					float cosX = cos(particles[inst].enabled * 3);
 					float2x2 rotationMatrix = float2x2(cosX, -sinX, sinX, cosX);
 					float2 uvPoint = mul(quadPoints[id], rotationMatrix);
-					o.uv = uvPoint + 0.5f;
-					o.uv = quadPoints[id] + 0.5f;
+					//o.uv = uvPoint + 0.5f;
 
-					o.color = float4 (particles[inst].colour.rgb, particles[inst].enabled);
-					//o.color = float4 (1, 1, 1, 1);
+					o.uv = particles[inst].texOffset + ( (quadPoints[id] + 0.5f) * float2(texBounds.xy));
+
+					//o.color = float4 (particles[inst].colour.rgb, particles[inst].enabled);
+					o.color = float4 (1, 1, 1, particles[inst].enabled);
 
 					return o;
 				}
