@@ -262,7 +262,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 427270494}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e83ce22a1aa26594ab08c58393f68961, type: 3}
   m_Name: 
@@ -351,9 +351,13 @@ MonoBehaviour:
   timeScale: 0.5
   noiseInScale: 0.002
   noiseOutScale: 6
+  flowerNoisePositionScale: 0.01
+  flowerNoisePositionMult: 1
+  flowerNoiseTimeScale: 0.2
+  flowerAlpha: 1
   particleComputeShader: {fileID: 7200000, guid: 5d55532549fa7ee4d934bd3fa936fbdf,
     type: 3}
-  particleMaterial: {fileID: 0}
+  particleMaterial: {fileID: 2100000, guid: 1de4d81220e8f71469176adc327f08f4, type: 2}
 --- !u!4 &666276422
 Transform:
   m_ObjectHideFlags: 0
