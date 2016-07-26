@@ -91,10 +91,13 @@ public class ComputeParticleController : MonoBehaviour
         
         // set the particles compute buffer
         particleComputeShader.SetBuffer(particleUpdateKernel, "particles", particleBuffer);
-        
+
         // set params
-        particleComputeShader.SetFloat("speed", 1.0f);
-        particleComputeShader.SetFloat("time", Time.fixedTime);
+        particleComputeShader.SetFloat("time", CaptureTime.Elapsed);
+        particleComputeShader.SetFloat("noisePositionScale", 0.01f);
+        particleComputeShader.SetFloat("noisePositionMult", 1f);
+        particleComputeShader.SetFloat("noiseTimeScale", 0.5f);
+        particleComputeShader.SetFloat("alpha", 1);
 
         // dispatch, launch threads on GPU
         // numParticles need to be divisible by group size, which corresponds to [numthreads] in the shader

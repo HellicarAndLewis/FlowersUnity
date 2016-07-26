@@ -47,17 +47,17 @@ public class LightController : MonoBehaviour
 
         previous = presets[0];
 		target = presets[0];
-		Preset(ShowMode.Daytime);
+		Preset(TerrainMode.Daytime);
 	}
 
 	// --------------------------------------------------------------------------------------------------------
 	//
 	void Update()
 	{
-		if(Input.GetKeyDown("1")) Preset(ShowMode.Dawn);
-		if(Input.GetKeyDown("2")) Preset(ShowMode.Daytime);
-		if(Input.GetKeyDown("3")) Preset(ShowMode.Dusk);
-        if (Input.GetKeyDown("4")) Preset(ShowMode.Night);
+		if(Input.GetKeyDown("1")) Preset(TerrainMode.Dawn);
+		if(Input.GetKeyDown("2")) Preset(TerrainMode.Daytime);
+		if(Input.GetKeyDown("3")) Preset(TerrainMode.Dusk);
+        if (Input.GetKeyDown("4")) Preset(TerrainMode.Night);
 
         if (sunLight) {
 			if(transitionElapsed < transitionTime) {
@@ -79,7 +79,7 @@ public class LightController : MonoBehaviour
 
 	// --------------------------------------------------------------------------------------------------------
 	//
-	public void Preset(ShowMode mode, float duration = -1)
+	public void Preset(TerrainMode mode, float duration = -1)
 	{
 		var index = (int)mode;
 		previous = new LightPreset(){colour = current.colour, eulerAngle = current.eulerAngle };
