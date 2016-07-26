@@ -17,8 +17,8 @@ public class boxController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        box.transform.localScale = new Vector3(1.0f, onset.onsetConfidence,1.0f);
-        onsetConfidence = onset.onsetConfidence;
+        box.transform.localScale = new Vector3(1.0f, onset.onsetTotal,1.0f);
+        onsetConfidence = onset.onsetTotal;
 
     }
 }
