@@ -656,6 +656,7 @@ GameObject:
   - 114: {fileID: 1827569492}
   - 114: {fileID: 1827569493}
   - 114: {fileID: 1827569494}
+  - 114: {fileID: 1827569495}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -713,7 +714,7 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 1
+  m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -854,6 +855,21 @@ MonoBehaviour:
   heightDensity: 0.001
   startDistance: 0
   fogShader: {fileID: 4800000, guid: 70d8568987ac0499f952b54c7c13e265, type: 3}
+--- !u!114 &1827569495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1827569483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb48f27753f2884cad560cf4ee33ae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 1827569487}
+  topColor: {r: 0.654902, g: 0.5411765, b: 0.94509804, a: 1}
+  bottomColor: {r: 0.37254903, g: 0.03529412, b: 0.8666667, a: 1}
+  gradientLayer: 7
 --- !u!1 &1855786427
 GameObject:
   m_ObjectHideFlags: 0
