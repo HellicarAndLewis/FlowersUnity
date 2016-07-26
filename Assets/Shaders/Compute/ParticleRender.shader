@@ -44,20 +44,47 @@ Shader "Custom/ParticleRender" {
 					float4 color: COLOR;
 				};
 
+				float4x4 rotate(float3 r, float4 d) // r=rotations axes
+				{
+					float cx, cy, cz, sx, sy, sz;
+					sincos(r.x, sx, cx);
+					sincos(r.y, sy, cy);
+					sincos(r.z, sz, cz);
+					return float4x4(cy*cz, -sz, sy, d.x,
+						sz, cx*cz, -sx, d.y,
+						-sy, sx, cx*cy, d.z,
+						0, 0, 0, d.w);
+				}
+
 				// ----------------------------------------------------------
 				// vertex shader with no inputs
 				// uses the system values SV_VertexID and SV_InstanceID to read from compute buffers
 				v2f star_vertex(uint id : SV_VertexID, uint inst : SV_InstanceID)
 				{
 					v2f o;
-
 					float3 worldPosition = particles[inst].position;
 					float size = particles[inst].size;
 					float3 quadPoint = quadPoints[id] * size;
 
-					o.pos = mul (UNITY_MATRIX_P, mul (UNITY_MATRIX_V, float4(worldPosition, 1.0f)) + float4(quadPoint, 0.0f));
+
+					float4x4 rot_mat = rotate(float3(0, particles[inst].enabled * 1, 0), float4(0, 0, 0, 1));
+					float4 viewPos = mul(UNITY_MATRIX_V, float4(worldPosition, 1.0f));
+					float4 quadRot = mul(rot_mat, quadPoint);
+					o.pos = mul(UNITY_MATRIX_P, viewPos + quadRot);
+
+
+					o.pos = mul(UNITY_MATRIX_P, mul(UNITY_MATRIX_V, float4(worldPosition, 1.0f)) + float4(quadPoint, 0.0f));
+
+					// Rotate the texture coordinates around the z axis?
+					float sinX = sin(particles[inst].enabled * 3);
+					float cosX = cos(particles[inst].enabled * 3);
+					float2x2 rotationMatrix = float2x2(cosX, -sinX, sinX, cosX);
+					float2 uvPoint = mul(quadPoints[id], rotationMatrix);
+					o.uv = uvPoint + 0.5f;
 					o.uv = quadPoints[id] + 0.5f;
-					o.color = float4 (1, 1, 1, particles[inst].enabled);
+
+					o.color = float4 (particles[inst].colour.rgb, particles[inst].enabled);
+					//o.color = float4 (1, 1, 1, 1);
 
 					return o;
 				}
@@ -67,7 +94,7 @@ Shader "Custom/ParticleRender" {
 				{
 					float4 texCol = tex2Dbias (_MainTex, float4(i.uv, 0.0f, -1.0f));
 					float4 particleCol = i.color;
-					return float4(texCol.rgb, texCol.a * particleCol.a);
+					return float4(texCol.rgb * particleCol.rgb, texCol.a * particleCol.a);
 					//return float4 (1.0f - (1.0f - texCol.rgb) * (1.0f - particleCol.rgb), texCol.a * particleCol.a );
 				}
 

@@ -1,0 +1,96 @@
+﻿
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+
+#include "Particle.cginc"
+#include "Noise.cginc"
+
+// this corresponds to groupsize in ParticleController
+// The number of particles needs to be divisible by this
+#define BLOCKSIZE	128
+
+// particle data buffer
+// corresponds to a ComputeBuffer in ParticleController
+RWStructuredBuffer<ParticleData> particles;
+
+float3 boundsMin = float3(-40, -20, -40);
+float3 boundsMax = float3(40, 20, 40);
+float3 speed = float3(0, 0, 0);
+float noisePositionScale = 0.01;
+float noisePositionMult = 1;
+float noiseTimeScale = 0.1;
+float time = 0;
+float alpha = 1;
+
+// ----------------------------------------------------------------------------------
+//
+float GetNoise(float3 position, float seed, float time)
+{
+	float location = snoise(position * noisePositionScale) * noisePositionMult;
+	return (snoise(float2(location, time * noiseTimeScale)) + 1 ) * 0.5;
+}
+
+// ----------------------------------------------------------------------------------
+//
+[numthreads(128,1,1)]
+void CSMain(uint3 id : SV_DispatchThreadID)
+{
+	// Get the index of the current particle
+	// numthreads is setup to only use the x component
+	// so x == particle index
+	uint i = id.x;
+
+	// ----------------------------------------------------------------------------------
+	// read particle data in from the buffer
+	float3 position = particles[i].position;
+	float3 velocity = particles[i].velocity;
+	float enabled = particles[i].enabled;
+
+	// ----------------------------------------------------------------------------------
+	// temp/local variables
+	float seed = (float)i / 10.0;
+	uint count, stride;
+	particles.GetDimensions(count, stride);
+
+	enabled = GetNoise(position, seed, time) * alpha;
+
+	// ----------------------------------------------------------------------------------
+	// update forces
+	float3 force = float3(0, 0, 0);
+	force.y = snoise(float2(position.z, time * noiseTimeScale) * noisePositionScale) * noisePositionMult;
+	force.x = snoise(float2(position.y, time * noiseTimeScale) * noisePositionScale) * noisePositionMult;
+	force.z = snoise(float2(position.x, time * noiseTimeScale) * noisePositionScale) * noisePositionMult;
+
+	force = speed + force;
+
+	// ----------------------------------------------------------------------------------
+	// update position and velocity
+	float3 nextPosition = position + force;
+	if (nextPosition.y < boundsMin.y) {
+		position.y = nextPosition.y = boundsMax.y;
+	}
+	if (nextPosition.y > boundsMax.y) {
+		position.y = nextPosition.y = boundsMin.y;
+	}
+	if (nextPosition.x < boundsMin.x) {
+		position.x = nextPosition.x = boundsMax.x;
+	}
+	if (nextPosition.x > boundsMax.x) {
+		position.x = nextPosition.x = boundsMin.x;
+	}
+	if (nextPosition.z < boundsMin.z) {
+		position.z = nextPosition.z = boundsMax.z;
+	}
+	if (nextPosition.z > boundsMax.z) {
+		position.z = nextPosition.z = boundsMin.z;
+	}
+	velocity = nextPosition - position;
+	position = nextPosition;
+
+
+	// ----------------------------------------------------------------------------------
+	// write the updated values back to the buffer
+	particles[i].position = position;
+	particles[i].velocity = velocity;
+	particles[i].enabled = enabled;
+}

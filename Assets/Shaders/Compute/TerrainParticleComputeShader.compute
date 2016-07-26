@@ -21,7 +21,7 @@ float alpha = 1;
 
 // ----------------------------------------------------------------------------------
 //
-float GetNoise(float2 position, float2 velocity, float seed, float time)
+float GetNoise(float2 position, float time)
 {
 	float location = snoise(position * noisePositionScale) * noisePositionMult;
 	return (snoise(float2(location, time * noiseTimeScale)) + 1 ) * 0.5;
@@ -40,34 +40,14 @@ void CSMain(uint3 id : SV_DispatchThreadID)
 	// ----------------------------------------------------------------------------------
 	// read particle data in from the buffer
 	float3 position = particles[i].position;
-	float3 velocity = particles[i].velocity;
 	float enabled = particles[i].enabled;
 
 	// ----------------------------------------------------------------------------------
-	// temp/local variables
-	float seed = (float)i / 10.0;
-	uint count, stride;
-	particles.GetDimensions(count, stride);
-
-	enabled = GetNoise(float2(position.x, position.z), float2(velocity.x, velocity.z), seed, time) * alpha;
-
-	// ----------------------------------------------------------------------------------
-	// update forces
-	/*
-	float3 force = float3(0,0,0);
-	float2 noise = GetNoise(float2(position.x, position.z), float2(velocity.x, velocity.z), seed, time);
-	force += float3(0, noise.y, 0) * 40;
-	// ----------------------------------------------------------------------------------
-	// update position and velocity
-	float3 nextPosition = position;
-	nextPosition.y = force.y;
-	velocity = nextPosition - position;
-	position = nextPosition;
-	*/
+	// set the enabled/alpha to the noise value
+	enabled = GetNoise(float2(position.x, position.z), time) * alpha;
 
 	// ----------------------------------------------------------------------------------
 	// write the updated values back to the buffer
 	particles[i].position = position;
-	particles[i].velocity = velocity;
 	particles[i].enabled = enabled;
 }

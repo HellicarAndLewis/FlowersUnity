@@ -10,6 +10,12 @@ public class ComputeParticleController : MonoBehaviour
     // Public
     public ComputeShader particleComputeShader;
     public int numParticles = 1000;
+    public Vector3 bounds = new Vector3(80f, 30f, 80f);
+    public Vector3 speed = new Vector3(0.1f, -0.2f, 0.1f);
+    public float flowerNoisePositionScale = 0.01f;
+    public float flowerNoisePositionMult = 1f;
+    public float flowerNoiseTimeScale = 0.1f;
+    public float flowerAlpha = 1f;
 
     // Render
     public Material particleMaterial;
@@ -59,10 +65,12 @@ public class ComputeParticleController : MonoBehaviour
         {
             var particle = particles[i];
             particle.enabled = (i < numParticlesDesired) ? 1 : 0;
-            particle.size = 4;
-            var bounds = 160;
-            particle.position = new Vector3(Random.Range(bounds * -0.5f, bounds * 0.5f), 0, 100 + Random.Range(bounds * -0.5f, bounds * 0.5f));
-            particle.velocity = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
+            particle.size = Random.Range(1, 3);
+            particle.position = new Vector3(Random.Range(bounds.x * -0.5f, bounds.x * 0.5f),
+                                         Random.Range(bounds.y * -0.5f, bounds.y * 0.5f),
+                                         Random.Range(bounds.z * -0.5f, bounds.z * 0.5f));
+            particle.velocity = Vector3.zero;
+            particle.colour = Color.white;
             particles[i] = particle;
         }
 
@@ -93,11 +101,16 @@ public class ComputeParticleController : MonoBehaviour
         particleComputeShader.SetBuffer(particleUpdateKernel, "particles", particleBuffer);
 
         // set params
+        Vector3 boundsMin = gameObject.transform.position + (bounds * -0.5f);
+        Vector3 boundsMax = gameObject.transform.position + (bounds * 0.5f);
+        particleComputeShader.SetVector("boundsMin", boundsMin);
+        particleComputeShader.SetVector("boundsMax", boundsMax);
+        particleComputeShader.SetVector("speed", speed);
         particleComputeShader.SetFloat("time", CaptureTime.Elapsed);
-        particleComputeShader.SetFloat("noisePositionScale", 0.01f);
-        particleComputeShader.SetFloat("noisePositionMult", 1f);
-        particleComputeShader.SetFloat("noiseTimeScale", 0.5f);
-        particleComputeShader.SetFloat("alpha", 1);
+        particleComputeShader.SetFloat("noisePositionScale", flowerNoisePositionScale);
+        particleComputeShader.SetFloat("noisePositionMult", flowerNoisePositionMult);
+        particleComputeShader.SetFloat("noiseTimeScale", flowerNoiseTimeScale);
+        particleComputeShader.SetFloat("alpha", flowerAlpha);
 
         // dispatch, launch threads on GPU
         // numParticles need to be divisible by group size, which corresponds to [numthreads] in the shader
@@ -142,15 +155,16 @@ public class ComputeParticleController : MonoBehaviour
 
     // ----------------------------------------------------------------------------------
     //
-    void OnDrawGizmosSelected()
+    void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(gameObject.transform.position, bounds);
         if (particles != null)
         {
             foreach (var particle in particles)
             {
-                if (particle.enabled > 0)
-                    DrawArrow.ForGizmo(particle.position, particle.velocity.normalized, Color.yellow, 0.5f);
+                //if (particle.enabled > 0)
+                    //DrawArrow.ForGizmo(particle.position, particle.velocity.normalized, Color.yellow, 0.5f);
             }
         }
         

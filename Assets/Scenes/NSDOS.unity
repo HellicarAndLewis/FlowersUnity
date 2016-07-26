@@ -180,9 +180,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e83ce22a1aa26594ab08c58393f68961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleComputeShader: {fileID: 7200000, guid: 5d55532549fa7ee4d934bd3fa936fbdf,
+  particleComputeShader: {fileID: 7200000, guid: bf2d8244da10a1847824204e8c7d381d,
     type: 3}
-  numParticles: 1000
+  numParticles: 10000
+  bounds: {x: 80, y: 80, z: 80}
+  speed: {x: 0, y: -0.2, z: 0}
+  flowerNoisePositionScale: 0.01
+  flowerNoisePositionMult: 0.6
+  flowerNoiseTimeScale: 0.2
+  flowerAlpha: 1
   particleMaterial: {fileID: 2100000, guid: 1de4d81220e8f71469176adc327f08f4, type: 2}
 --- !u!4 &1639254574
 Transform:
@@ -277,10 +283,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1803361730}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 100, z: 100}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -60}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
