@@ -126,6 +126,7 @@ public class TerrainController : MonoBehaviour
             var particle = particles[i];
             particle.enabled = (i < numParticlesDesired) ? 1 : 0;
             particle.size = 15;// Random.Range(6, 6);
+            particle.seed = 0;
             if (i < baseVertices.Length)
                 particle.position = transform.position + baseVertices[i] + (baseNormals[i] * Random.Range(2, 6)) + new Vector3(Random.Range(0,2),Random.Range(0, 2),0);
             else
