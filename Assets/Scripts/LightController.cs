@@ -25,12 +25,17 @@ public class LightController : MonoBehaviour
 	private LightPreset previous;
 	private LightPreset target;
 
+    public onsetDetector onset;
+
 	// --------------------------------------------------------------------------------------------------------
 	//
 	void Start()
 	{
 		if(!sunLight)
 			sunLight = FindObjectOfType<Light>();
+
+        if (!onset)
+            onset = FindObjectOfType<onsetDetector>();
 
 		// Dawn
 		if(presets[0] == null)
@@ -66,6 +71,8 @@ public class LightController : MonoBehaviour
 			} else {
 				progress = 1;
 			}
+
+            sunLight.intensity = onset.onsetTotal * 8.0f;
 			
 			current.colour = Color.Lerp(previous.colour, target.colour, progress);
 			current.eulerAngle = Vector3.Lerp(previous.eulerAngle, target.eulerAngle, progress);
