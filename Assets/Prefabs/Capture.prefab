@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1000012677776470}
+  m_IsPrefabParent: 1
+--- !u!1 &1000012677776470
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000010350095430}
+  - 114: {fileID: 114000010676835072}
+  - 114: {fileID: 114000011974415640}
+  m_Layer: 0
+  m_Name: Capture
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4000010350095430
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012677776470}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 130.34726, y: -36.73906, z: 144.63751}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &114000010676835072
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012677776470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5df2b1526d784bf47a89bda95fd57683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCapturing: 0
+  width: 1920
+  height: 1080
+  isGuiEnabled: 1
+  guiTextColour: {r: 1, g: 0.9985801, b: 0.9485294, a: 1}
+  captureCamera: {fileID: 0}
+  realtimeElapsed: 0
+  frameRate: 25
+  crf: 15
+  duration: 60
+  showProcessWindow: 0
+--- !u!114 &114000011974415640
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012677776470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ce75c5f591a83249b85577ec25655fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCapturing: 0
+  width: 3840
+  height: 2160
+  isGuiEnabled: 0
+  guiTextColour: {r: 0, g: 0, b: 0, a: 1}
+  captureCamera: {fileID: 0}
+  realtimeElapsed: 0
+  directory: 
+  path: 
+  filename: 
+  hasCaptured: 0

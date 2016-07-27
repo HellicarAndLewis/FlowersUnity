@@ -70,35 +70,42 @@ Shader "Custom/ParticleRender" {
 
 					// Quad deform for blossom effect (WIP)
 					// deform all for uniform shrink/grow
-					// deform 1 & 4 for opposite corners
+					//quadPoint *= (1 - particles[inst].enabled);
+					// 14  : TR & BL
 					//if (id == 1 || id == 4)
-					//{
-						quadPoint.x *= particles[inst].enabled;
-						quadPoint.y *= particles[inst].enabled;
-						quadPoint.z = (1 - particles[inst].enabled) * -0.5;
-					//}
+					// 123 : RIGHT
+					if (id == 1 || id == 2 || id == 3)
+					// 015 : TOP
+					//if (id == 0 || id == 1 || id == 5)
+					// 054 : LEFT
+					//if (id == 0 || id == 4 || id == 5)
+					// 432 : BOTTOM
+					//if (id == 4 || id == 3 || id == 2)
+					{
+						//quadPoint.z = (1 - particles[inst].enabled) * -0.5;
+						float sinX = sin((1 - particles[inst].enabled) * 3);
+						float cosX = cos((1 - particles[inst].enabled) * 3);
+						float2x2 rotationMatrix = float2x2(cosX, -sinX, sinX, cosX);
+						quadPoint.xy = mul(quadPoint.xy, rotationMatrix);
+					}
 					quadPoint *= size;
 
-					float4x4 rot_mat = rotate(float3(0, particles[inst].enabled * 1, 0), float4(0, 0, 0, 1));
-					float4 viewPos = mul(UNITY_MATRIX_V, float4(worldPosition, 1.0f));
-					float4 quadRot = mul(rot_mat, quadPoint);
-					o.pos = mul(UNITY_MATRIX_P, viewPos + quadRot);
-
-
+					// set vertex position using projection and view matrices and the quad point
 					o.pos = mul(UNITY_MATRIX_P, mul(UNITY_MATRIX_V, float4(worldPosition, 1.0f)) + float4(quadPoint, 0.0f));
 
-					// Rotate the texture coordinates around the z axis?
-					float sinX = sin(particles[inst].enabled * 3);
-					float cosX = cos(particles[inst].enabled * 3);
+					// Rotate the texture coordinates around the z axis
+					//float2 uvPoint = quadPoints[id];
+					float sinX = sin(particles[inst].seed * 3);
+					float cosX = cos(particles[inst].seed * 3);
 					float2x2 rotationMatrix = float2x2(cosX, -sinX, sinX, cosX);
 					float2 uvPoint = mul(quadPoints[id], rotationMatrix);
-					//o.uv = uvPoint + 0.5f;
 
-					o.uv = particles[inst].texOffset + ( (quadPoints[id] + 0.5f) * float2(texBounds.xy));
+					// texture coord based on spritesheet logic (offset and size)
+					o.uv = particles[inst].texOffset + ( (uvPoint + 0.5f) * float2(texBounds.xy));
 
 					//o.color = float4 (particles[inst].colour.rgb, particles[inst].enabled);
 					//o.color = float4 (1, 1, 1, particles[inst].enabled);
-					o.color = float4 (particles[inst].colour.rgb, 1);
+					//o.color = float4 (particles[inst].colour.rgb, 1);
 					o.color = float4 (1, 1, 1, 1);
 
 					return o;

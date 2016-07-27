@@ -153,6 +153,58 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!1001 &959800106
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000010350095430, guid: becd0b9c4aabead48be377be7dddd3a5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 130.34726
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010350095430, guid: becd0b9c4aabead48be377be7dddd3a5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -36.73906
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010350095430, guid: becd0b9c4aabead48be377be7dddd3a5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 144.63751
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010350095430, guid: becd0b9c4aabead48be377be7dddd3a5, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010350095430, guid: becd0b9c4aabead48be377be7dddd3a5, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010350095430, guid: becd0b9c4aabead48be377be7dddd3a5, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010350095430, guid: becd0b9c4aabead48be377be7dddd3a5, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010350095430, guid: becd0b9c4aabead48be377be7dddd3a5, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010676835072, guid: becd0b9c4aabead48be377be7dddd3a5,
+        type: 2}
+      propertyPath: isGuiEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010676835072, guid: becd0b9c4aabead48be377be7dddd3a5,
+        type: 2}
+      propertyPath: crf
+      value: 23
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: becd0b9c4aabead48be377be7dddd3a5, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1639254572
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,10 +235,10 @@ MonoBehaviour:
   particleComputeShader: {fileID: 7200000, guid: bf2d8244da10a1847824204e8c7d381d,
     type: 3}
   numParticles: 10000
-  bounds: {x: 120, y: 80, z: 80}
-  speed: {x: 0, y: -0.2, z: 0}
+  bounds: {x: 120, y: 100, z: 80}
+  speed: {x: 0, y: -0.15, z: 0}
   flowerNoisePositionScale: 0.02
-  flowerNoisePositionMult: 0.1
+  flowerNoisePositionMult: 0.15
   flowerNoiseTimeScale: 0.2
   flowerAlpha: 1
   particleMaterial: {fileID: 2100000, guid: ce20ff2dbfa039b469c77e3187972d4e, type: 2}
