@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 /// <summary>
 /// Compute shader based particle system controller
@@ -10,9 +11,21 @@ public class ComputeParticleController : MonoBehaviour
     // Public
     public ComputeShader particleComputeShader;
     public int numParticles = 1000;
+    public Vector3 bounds = new Vector3(80f, 30f, 80f);
+    public Vector3 speed = new Vector3(0.1f, -0.2f, 0.1f);
+    [Range(0, 0.1f)]
+    public float flowerNoisePositionScale = 0.01f;
+    [Range(0, 0.5f)]
+    public float flowerNoisePositionMult = 1f;
+    [Range(0, 1f)]
+    public float flowerNoiseTimeScale = 0.1f;
+    [Range(0, 1f)]
+    public float flowerAlpha = 1f;
 
     // Render
     public Material particleMaterial;
+    public int texRows = 3;
+    public int texCols = 3;
     private ComputeBuffer quadBuffer;
     private const int QuadStride = 12;
     
@@ -59,10 +72,14 @@ public class ComputeParticleController : MonoBehaviour
         {
             var particle = particles[i];
             particle.enabled = (i < numParticlesDesired) ? 1 : 0;
-            particle.size = 4;
-            var bounds = 160;
-            particle.position = new Vector3(Random.Range(bounds * -0.5f, bounds * 0.5f), 0, 100 + Random.Range(bounds * -0.5f, bounds * 0.5f));
-            particle.velocity = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
+            particle.size = Random.Range(4, 4);
+            particle.position = new Vector3(Random.Range(bounds.x * -0.5f, bounds.x * 0.5f),
+                                         Random.Range(bounds.y * -0.5f, bounds.y * 0.5f),
+                                         Random.Range(bounds.z * -0.5f, bounds.z * 0.5f));
+            particle.velocity = Vector3.zero;
+            particle.colour = new Color(Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), Random.Range(0.5f, 1f));
+            // get a random offset based on the spritesheet number of rows and columns
+            particle.texOffset = new Vector2( Random.Range(0,texCols) / (float)texCols, Random.Range(0, texRows) / (float)texRows);
             particles[i] = particle;
         }
 
@@ -71,6 +88,7 @@ public class ComputeParticleController : MonoBehaviour
 
         // Initialise the quad compute buffer: 6 positions for rendering a quad made of two triangles
         quadBuffer = new ComputeBuffer(6, QuadStride);
+        // TL, TR, BR, BR, BL, TL
         quadBuffer.SetData(new[]
         {
             new Vector3(-0.5f, 0.5f),
@@ -88,13 +106,23 @@ public class ComputeParticleController : MonoBehaviour
     {
         if (!SystemInfo.supportsComputeShaders || particles == null)
             return;
-        
+
+        //particles.OrderByDescending(particle => particle.position.z);
+
         // set the particles compute buffer
         particleComputeShader.SetBuffer(particleUpdateKernel, "particles", particleBuffer);
-        
+
         // set params
-        particleComputeShader.SetFloat("speed", 1.0f);
-        particleComputeShader.SetFloat("time", Time.fixedTime);
+        Vector3 boundsMin = gameObject.transform.position + (bounds * -0.5f);
+        Vector3 boundsMax = gameObject.transform.position + (bounds * 0.5f);
+        particleComputeShader.SetVector("boundsMin", boundsMin);
+        particleComputeShader.SetVector("boundsMax", boundsMax);
+        particleComputeShader.SetVector("speed", speed);
+        particleComputeShader.SetFloat("time", CaptureTime.Elapsed);
+        particleComputeShader.SetFloat("noisePositionScale", flowerNoisePositionScale);
+        particleComputeShader.SetFloat("noisePositionMult", flowerNoisePositionMult);
+        particleComputeShader.SetFloat("noiseTimeScale", flowerNoiseTimeScale);
+        particleComputeShader.SetFloat("alpha", flowerAlpha);
 
         // dispatch, launch threads on GPU
         // numParticles need to be divisible by group size, which corresponds to [numthreads] in the shader
@@ -120,6 +148,7 @@ public class ComputeParticleController : MonoBehaviour
         {
             particleMaterial.SetBuffer("particles", particleBuffer);
             particleMaterial.SetBuffer("quadPoints", quadBuffer);
+            particleMaterial.SetVector("texBounds", new Vector4(1 / (float)texCols, 1 / (float)texRows, 0, 0));
             particleMaterial.SetPass(0);
             Graphics.DrawProcedural(MeshTopology.Triangles, 6, numParticles);
         }
@@ -139,15 +168,16 @@ public class ComputeParticleController : MonoBehaviour
 
     // ----------------------------------------------------------------------------------
     //
-    void OnDrawGizmosSelected()
+    void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(gameObject.transform.position, bounds);
         if (particles != null)
         {
             foreach (var particle in particles)
             {
-                if (particle.enabled > 0)
-                    DrawArrow.ForGizmo(particle.position, particle.velocity.normalized, Color.yellow, 0.5f);
+                //if (particle.enabled > 0)
+                    //DrawArrow.ForGizmo(particle.position, particle.velocity.normalized, Color.yellow, 0.5f);
             }
         }
         
@@ -159,7 +189,7 @@ public class ComputeParticleController : MonoBehaviour
     {
         if (particles != null)
         {
-            GUI.Label(new Rect(10, 10, 100, 50), string.Format("{0} people\n{1} particles\n{2} fps", numParticlesDesired, particles.Length, 1 / Time.deltaTime));
+            GUI.Label(new Rect(10, 10, 100, 50), string.Format("{0} desired\n{1} particles\n{2} fps", numParticlesDesired, particles.Length, 1 / Time.deltaTime));
         }
     }
 

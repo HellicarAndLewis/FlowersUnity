@@ -7,10 +7,18 @@
 /// </remarks>
 public struct ComputeParticleData
 {
+    public Vector4 colour;
+
     public Vector3 position;
     public Vector3 velocity;
-    public float size;
+
+    public Vector2 texOffset;
+
     public float enabled;
+    public float size;
+    public float mass;
+    public float seed;
+
 };
 
 /// <summary>
@@ -19,7 +27,8 @@ public struct ComputeParticleData
 internal static class ComputeParticleConstants
 {
     public const int SizeofFloat = 4;
+    public const int SizeofVector2 = 2 * SizeofFloat;
     public const int SizeofVector3 = 3 * SizeofFloat;
     public const int SizeofVector4 = 4 * SizeofFloat;
-    public const int ParticleDataStride = (2 * SizeofVector3) + (0 * SizeofVector4) + (2 * SizeofFloat);
+    public const int ParticleDataStride = (1 * SizeofVector4) + (2 * SizeofVector3) + (1 * SizeofVector2) + (4 * SizeofFloat);
 }

@@ -125,12 +125,14 @@ public class TerrainController : MonoBehaviour
         {
             var particle = particles[i];
             particle.enabled = (i < numParticlesDesired) ? 1 : 0;
-            particle.size = Random.Range(3, 6);
+            particle.size = Random.Range(6, 6);
             if (i < baseVertices.Length)
                 particle.position = transform.position + baseVertices[i] + (baseNormals[i] * Random.Range(2, 6)) + new Vector3(Random.Range(0,2),Random.Range(0, 2),0);
             else
                 particle.position = new Vector3(-999, 0, 0);
             particle.velocity = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
+            particle.colour = Color.white;
+            particle.texOffset = new Vector2(0, 0);
             particles[i] = particle;
         }
 
@@ -217,6 +219,7 @@ public class TerrainController : MonoBehaviour
         {
             particleMaterial.SetBuffer("particles", particleBuffer);
             particleMaterial.SetBuffer("quadPoints", quadBuffer);
+            particleMaterial.SetVector("texBounds", new Vector4(1, 1, 0, 0));
             particleMaterial.SetPass(0);
             Graphics.DrawProcedural(MeshTopology.Triangles, 6, numParticles);
         }
