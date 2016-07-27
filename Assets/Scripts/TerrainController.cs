@@ -9,7 +9,6 @@ public class TerrainController : MonoBehaviour
 
 	// --------------------------------------------------------------------------------------------------------
 	//
-	public Terrain terrain;
     public MeshFilter baseMesh;
     public Material meshMaterial;
     [Range(0, 1)]
@@ -47,7 +46,6 @@ public class TerrainController : MonoBehaviour
 
     // --------------------------------------------------------------------------------------------------------
     //
-    private TerrainData terrainData;
 	private MeshFilter meshFilter;
 	private Mesh mesh;
 	private Vector3[] baseVertices;
@@ -59,26 +57,22 @@ public class TerrainController : MonoBehaviour
 	//
 	void Start()
 	{
-        if (!terrain && !baseMesh) {
-			Debug.LogError("You need to set a terrain or mesh filter");
+        if (!baseMesh) {
+			Debug.LogError("You need to set a mesh filter");
+            return;
 		}
-        if (terrain)
-        {
-            terrainData = terrain.terrainData;
-            mesh = TerrainToMesh.Generate(terrainData, terrain.GetPosition());
-            terrain.enabled = false;
-        }
-        else if (baseMesh)
-        {
-            mesh = baseMesh.mesh;
-            baseMesh.gameObject.SetActive(false);
-        }
-		
+        mesh = baseMesh.mesh;
+        baseMesh.gameObject.SetActive(false);
+        
 		baseVertices = mesh.vertices;
 		baseNormals = mesh.normals;
 		meshFilter = GetComponent<MeshFilter>();
-		meshFilter.mesh = mesh;
+        if (!meshFilter) meshFilter = gameObject.AddComponent<MeshFilter>();
+        if (!GetComponent<MeshRenderer>()) gameObject.AddComponent<MeshRenderer>();
+
+        meshFilter.mesh = mesh;
         
+
         /*
 		noiseSeeds = new float[baseVertices.Length];
 		for(int i = 0; i < baseVertices.Length; i++) {
@@ -130,8 +124,9 @@ public class TerrainController : MonoBehaviour
             particle.enabled = (i < numParticlesDesired) ? 1 : 0;
             particle.size = 15;// Random.Range(6, 6);
             particle.seed = 0;
+            
             if (i < baseVertices.Length)
-                particle.position = transform.position + baseVertices[i] + (baseNormals[i] * Random.Range(2, 6)) + new Vector3(Random.Range(0,2),Random.Range(0, 2),0);
+                particle.position = transform.localToWorldMatrix.MultiplyPoint(baseVertices[i]) + (baseNormals[i] * Random.Range(2, 6)) + new Vector3(Random.Range(0,2),Random.Range(0, 2),0);
             else
                 particle.position = new Vector3(-999, 0, 0);
             particle.velocity = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));

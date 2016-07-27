@@ -16,6 +16,7 @@ public class GradientBg : MonoBehaviour
     //
     void Awake()
     {
+        if (!enabled) return;
         gradientLayer = Mathf.Clamp(gradientLayer, 0, 31);
         if (!mainCamera)
         {
