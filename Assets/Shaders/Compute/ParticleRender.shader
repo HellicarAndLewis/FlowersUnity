@@ -98,7 +98,7 @@ Shader "Custom/ParticleRender" {
 
 					//o.color = float4 (particles[inst].colour.rgb, particles[inst].enabled);
 					//o.color = float4 (1, 1, 1, particles[inst].enabled);
-					o.color = float4 (particles[inst].colour.rgb, 1);
+					//o.color = float4 (particles[inst].colour.rgb, 1);
 					o.color = float4 (1, 1, 1, 1);
 
 					return o;
