@@ -73,6 +73,7 @@ public class ComputeParticleController : MonoBehaviour
             var particle = particles[i];
             particle.enabled = (i < numParticlesDesired) ? 1 : 0;
             particle.size = Random.Range(4, 4);
+            particle.seed = Random.value;
             particle.position = new Vector3(Random.Range(bounds.x * -0.5f, bounds.x * 0.5f),
                                          Random.Range(bounds.y * -0.5f, bounds.y * 0.5f),
                                          Random.Range(bounds.z * -0.5f, bounds.z * 0.5f));

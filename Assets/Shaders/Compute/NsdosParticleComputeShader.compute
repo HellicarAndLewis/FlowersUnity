@@ -30,7 +30,7 @@ float GetNoise(float3 position, float seed, float time)
 		return 1.0;
 	else
 	{ 
-		float location = snoise(position.xy * noisePositionScale);
+		float location = snoise(position.xy * noisePositionScale) * noisePositionMult;
 		return (snoise(float2(location, time * noiseTimeScale)) + 1 ) * 0.5;
 	}
 }
