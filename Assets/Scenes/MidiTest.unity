@@ -305,7 +305,7 @@ GameObject:
   - 114: {fileID: 49521487}
   - 114: {fileID: 49521486}
   m_Layer: 5
-  m_Name: Slider (4)
+  m_Name: Slider 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -326,7 +326,7 @@ RectTransform:
   - {fileID: 826375707}
   - {fileID: 598307470}
   m_Father: {fileID: 444949737}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -71, y: 0}
@@ -914,7 +914,7 @@ GameObject:
   - 114: {fileID: 325528767}
   - 114: {fileID: 325528766}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Slider 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -935,7 +935,7 @@ RectTransform:
   - {fileID: 1915971309}
   - {fileID: 1011445026}
   m_Father: {fileID: 444949737}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -224.5, y: 0}
@@ -1013,7 +1013,7 @@ GameObject:
   - 114: {fileID: 345428237}
   - 114: {fileID: 345428236}
   m_Layer: 5
-  m_Name: Slider (6)
+  m_Name: Slider 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1034,7 +1034,7 @@ RectTransform:
   - {fileID: 883300041}
   - {fileID: 1558846664}
   m_Father: {fileID: 444949737}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -33, y: 0.0000030994415}
@@ -1356,15 +1356,15 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 345428235}
+  - {fileID: 325528765}
   - {fileID: 1919517480}
+  - {fileID: 1489738187}
   - {fileID: 49521485}
+  - {fileID: 345428235}
+  - {fileID: 1400462543}
+  - {fileID: 1941978697}
   - {fileID: 786223872}
   - {fileID: 841039238}
-  - {fileID: 1941978697}
-  - {fileID: 325528765}
-  - {fileID: 1400462543}
-  - {fileID: 1489738187}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
@@ -1485,7 +1485,7 @@ GameObject:
   - 114: {fileID: 786223874}
   - 114: {fileID: 786223873}
   m_Layer: 5
-  m_Name: Slider (3)
+  m_Name: 'Slider 8 '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1506,7 +1506,7 @@ RectTransform:
   - {fileID: 1910963149}
   - {fileID: 1118657101}
   m_Father: {fileID: 444949737}
-  m_RootOrder: 3
+  m_RootOrder: 7
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 167, y: 0}
@@ -1652,7 +1652,7 @@ GameObject:
   - 114: {fileID: 841039240}
   - 114: {fileID: 841039239}
   m_Layer: 5
-  m_Name: Slider (2)
+  m_Name: Slider Master
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1673,7 +1673,7 @@ RectTransform:
   - {fileID: 792703893}
   - {fileID: 531576435}
   m_Father: {fileID: 444949737}
-  m_RootOrder: 4
+  m_RootOrder: 8
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 224.5, y: -0.000012397999}
@@ -2057,7 +2057,7 @@ GameObject:
   - 114: {fileID: 1400462545}
   - 114: {fileID: 1400462544}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Slider 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2078,7 +2078,7 @@ RectTransform:
   - {fileID: 383053801}
   - {fileID: 605374564}
   m_Father: {fileID: 444949737}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -2428,7 +2428,7 @@ GameObject:
   - 114: {fileID: 1489738189}
   - 114: {fileID: 1489738188}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Slider 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2449,7 +2449,7 @@ RectTransform:
   - {fileID: 1046351761}
   - {fileID: 1396566823}
   m_Father: {fileID: 444949737}
-  m_RootOrder: 8
+  m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -121, y: 0}
@@ -3298,7 +3298,7 @@ GameObject:
   - 114: {fileID: 1919517482}
   - 114: {fileID: 1919517481}
   m_Layer: 5
-  m_Name: Slider (5)
+  m_Name: Slider 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3431,7 +3431,7 @@ GameObject:
   - 114: {fileID: 1941978699}
   - 114: {fileID: 1941978698}
   m_Layer: 5
-  m_Name: Slider (1)
+  m_Name: Slider 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3452,7 +3452,7 @@ RectTransform:
   - {fileID: 1919779957}
   - {fileID: 1060722817}
   m_Father: {fileID: 444949737}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 66, y: 0}
