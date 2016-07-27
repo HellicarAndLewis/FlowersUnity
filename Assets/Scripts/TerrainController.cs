@@ -12,6 +12,8 @@ public class TerrainController : MonoBehaviour
 	public Terrain terrain;
     public MeshFilter baseMesh;
     public Material meshMaterial;
+    [Range(0, 1)]
+    public float terrainScale = 1;
     [Range(0.1f, 2)]
     public float timeScale = 1;
     [Range(0.001f, 0.006f)]
@@ -27,6 +29,7 @@ public class TerrainController : MonoBehaviour
     public float flowerNoiseTimeScale = 0.1f;
     [Range(0, 1)]
     public float flowerAlpha = 1f;
+    public bool flowersEnabled = true;
 
     // Compute particles
     public ComputeShader particleComputeShader;
@@ -159,20 +162,19 @@ public class TerrainController : MonoBehaviour
 	//
 	void Update()
 	{
-        UpdateParticles();
+        if (flowersEnabled) UpdateParticles();
 
         Mesh mesh = meshFilter.mesh;
 		Vector3[] vertices = mesh.vertices;
 		int i = 0;
 		float scaledTime = CaptureTime.Elapsed * timeScale;
 		while(i < vertices.Length) {
-            //vertices[i] = particles[i].position;
             Vector3 noiseIn = baseVertices[i] * noiseInScale;
 			float noise = Mathf.PerlinNoise(noiseIn.x, noiseIn.z) * 10;
 			noise = Mathf.PerlinNoise(noise, scaledTime) - 0.5f;
 			vertices[i] = baseVertices[i] + (baseNormals[i] * (noise * noiseOutScale));
-            
-			i++;
+            vertices[i].y *= terrainScale;
+            i++;
 		}
 		mesh.vertices = vertices;
 		mesh.RecalculateNormals();
@@ -216,7 +218,7 @@ public class TerrainController : MonoBehaviour
         {
             return;
         }
-        if (particleMaterial)
+        if (particleMaterial && flowersEnabled)
         {
             particleMaterial.SetBuffer("particles", particleBuffer);
             particleMaterial.SetBuffer("quadPoints", quadBuffer);
