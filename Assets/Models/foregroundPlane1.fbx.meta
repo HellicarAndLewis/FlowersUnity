@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 815346601ddbdbc418d6bb603be4e4b6
-timeCreated: 1469629094
+guid: fc90cd1ce960e4245aa8b6eef1a86cf0
+timeCreated: 1469634440
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: BlendShape1
+    4300000: mountainPlane1
     9500000: //RootNode
   materials:
     importMaterials: 1
