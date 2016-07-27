@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 /// <summary>
 /// Compute shader based particle system controller
@@ -12,9 +13,13 @@ public class ComputeParticleController : MonoBehaviour
     public int numParticles = 1000;
     public Vector3 bounds = new Vector3(80f, 30f, 80f);
     public Vector3 speed = new Vector3(0.1f, -0.2f, 0.1f);
+    [Range(0, 0.1f)]
     public float flowerNoisePositionScale = 0.01f;
+    [Range(0, 0.5f)]
     public float flowerNoisePositionMult = 1f;
+    [Range(0, 1f)]
     public float flowerNoiseTimeScale = 0.1f;
+    [Range(0, 1f)]
     public float flowerAlpha = 1f;
 
     // Render
@@ -83,6 +88,7 @@ public class ComputeParticleController : MonoBehaviour
 
         // Initialise the quad compute buffer: 6 positions for rendering a quad made of two triangles
         quadBuffer = new ComputeBuffer(6, QuadStride);
+        // TL, TR, BR, BR, BL, TL
         quadBuffer.SetData(new[]
         {
             new Vector3(-0.5f, 0.5f),
@@ -100,7 +106,9 @@ public class ComputeParticleController : MonoBehaviour
     {
         if (!SystemInfo.supportsComputeShaders || particles == null)
             return;
-        
+
+        //particles.OrderByDescending(particle => particle.position.z);
+
         // set the particles compute buffer
         particleComputeShader.SetBuffer(particleUpdateKernel, "particles", particleBuffer);
 

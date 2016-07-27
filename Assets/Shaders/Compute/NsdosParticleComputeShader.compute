@@ -26,8 +26,13 @@ float alpha = 1;
 //
 float GetNoise(float3 position, float seed, float time)
 {
-	float location = snoise(position * noisePositionScale) * noisePositionMult;
-	return (snoise(float2(location, time * noiseTimeScale)) + 1 ) * 0.5;
+	if (noiseTimeScale == 0.0)
+		return 1.0;
+	else
+	{ 
+		float location = snoise(position.xy * noisePositionScale);
+		return (snoise(float2(location, time * noiseTimeScale)) + 1 ) * 0.5;
+	}
 }
 
 // ----------------------------------------------------------------------------------
@@ -52,18 +57,14 @@ void CSMain(uint3 id : SV_DispatchThreadID)
 	uint count, stride;
 	particles.GetDimensions(count, stride);
 
-	enabled = 1;//GetNoise(position, seed, time) * alpha;
+	enabled = GetNoise(position, seed, time) * alpha;
 
 	// ----------------------------------------------------------------------------------
 	// update forces
 	float3 force = float3(0, 0, 0);
-	//force.y = snoise(float2(position.z, time * noiseTimeScale) * noisePositionScale) * noisePositionMult;
-	//force.x = snoise(float2(position.y, time * noiseTimeScale) * noisePositionScale) * noisePositionMult;
-	//force.z = snoise(float2(position.x, time * noiseTimeScale) * noisePositionScale) * noisePositionMult;
 	force.y = snoise(float2(position.z, position.x) * noisePositionScale) * noisePositionMult;
 	force.x = snoise(float2(position.y, position.z) * noisePositionScale) * noisePositionMult;
 	force.z = snoise(float2(position.x, position.y) * noisePositionScale) * noisePositionMult;
-
 	force = speed + force;
 
 	// ----------------------------------------------------------------------------------

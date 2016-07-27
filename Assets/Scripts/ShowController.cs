@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
-using UnityEditor.SceneManagement;
 
 public enum ShowMode
 {

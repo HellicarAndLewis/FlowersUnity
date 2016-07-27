@@ -12,7 +12,7 @@ Shader "Custom/ParticleRender" {
 	SubShader {
 		Pass 
 		{
-			Tags { "RenderType"="Transparent"}
+			Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
 			//Less | Greater | LEqual | GEqual | Equal | NotEqual | Always
 			ZTest LEqual
 			ZWrite Off
@@ -66,8 +66,18 @@ Shader "Custom/ParticleRender" {
 					v2f o;
 					float3 worldPosition = particles[inst].position;
 					float size = particles[inst].size;
-					float3 quadPoint = quadPoints[id] * size;
+					float3 quadPoint = quadPoints[id];
 
+					// Quad deform for blossom effect (WIP)
+					// deform all for uniform shrink/grow
+					// deform 1 & 4 for opposite corners
+					//if (id == 1 || id == 4)
+					//{
+						quadPoint.x *= particles[inst].enabled;
+						quadPoint.y *= particles[inst].enabled;
+						quadPoint.z = (1 - particles[inst].enabled) * -0.5;
+					//}
+					quadPoint *= size;
 
 					float4x4 rot_mat = rotate(float3(0, particles[inst].enabled * 1, 0), float4(0, 0, 0, 1));
 					float4 viewPos = mul(UNITY_MATRIX_V, float4(worldPosition, 1.0f));
@@ -87,7 +97,9 @@ Shader "Custom/ParticleRender" {
 					o.uv = particles[inst].texOffset + ( (quadPoints[id] + 0.5f) * float2(texBounds.xy));
 
 					//o.color = float4 (particles[inst].colour.rgb, particles[inst].enabled);
-					o.color = float4 (1, 1, 1, particles[inst].enabled);
+					//o.color = float4 (1, 1, 1, particles[inst].enabled);
+					o.color = float4 (particles[inst].colour.rgb, 1);
+					o.color = float4 (1, 1, 1, 1);
 
 					return o;
 				}
