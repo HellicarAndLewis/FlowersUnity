@@ -7,7 +7,9 @@ public class onsetDetector : MonoBehaviour {
 
     int lookBackWindow = 5;
 
+    [HideInInspector]
     public float[] lastSpectrum;
+    [HideInInspector]
     public float[] currentSpectrum;
     [Range(1.0f, 5.0f)]
     public float cutoff;
