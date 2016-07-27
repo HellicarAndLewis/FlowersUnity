@@ -192,6 +192,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010676835072, guid: becd0b9c4aabead48be377be7dddd3a5,
+        type: 2}
+      propertyPath: isGuiEnabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: becd0b9c4aabead48be377be7dddd3a5, type: 2}
   m_IsPrefabParent: 0
@@ -226,10 +231,10 @@ MonoBehaviour:
     type: 3}
   numParticles: 10000
   bounds: {x: 120, y: 100, z: 80}
-  speed: {x: 0, y: -0.1, z: 0}
-  flowerNoisePositionScale: 0
-  flowerNoisePositionMult: 0
-  flowerNoiseTimeScale: 0
+  speed: {x: 0, y: -0.15, z: 0}
+  flowerNoisePositionScale: 0.02
+  flowerNoisePositionMult: 0.15
+  flowerNoiseTimeScale: 0.2
   flowerAlpha: 1
   particleMaterial: {fileID: 2100000, guid: ce20ff2dbfa039b469c77e3187972d4e, type: 2}
   texRows: 3
