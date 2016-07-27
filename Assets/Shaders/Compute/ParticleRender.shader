@@ -16,7 +16,7 @@ Shader "Custom/ParticleRender" {
 			//Less | Greater | LEqual | GEqual | Equal | NotEqual | Always
 			ZTest LEqual
 			ZWrite Off
-			Cull Off
+			Cull Back
 			Blend SrcAlpha OneMinusSrcAlpha
 
 			CGPROGRAM
@@ -70,7 +70,6 @@ Shader "Custom/ParticleRender" {
 
 					// Quad deform for blossom effect (WIP)
 					// deform all for uniform shrink/grow
-					//quadPoint *= (1 - particles[inst].enabled);
 					// 14  : TR & BL
 					//if (id == 1 || id == 4)
 					// 123 : RIGHT
@@ -88,6 +87,7 @@ Shader "Custom/ParticleRender" {
 						float2x2 rotationMatrix = float2x2(cosX, -sinX, sinX, cosX);
 						quadPoint.xy = mul(quadPoint.xy, rotationMatrix);
 					}
+					quadPoint *= particles[inst].enabled;
 					quadPoint *= size;
 
 					// set vertex position using projection and view matrices and the quad point

@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4368103, g: 0.48440862, b: 0.56459606, a: 1}
+  m_IndirectSpecularColor: {r: 0.43681046, g: 0.48440892, b: 0.56459653, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -107,7 +107,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &90246058
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -207,6 +207,11 @@ Prefab:
     - target: {fileID: 4000010350095430, guid: becd0b9c4aabead48be377be7dddd3a5, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010676835072, guid: becd0b9c4aabead48be377be7dddd3a5,
+        type: 2}
+      propertyPath: isGuiEnabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: becd0b9c4aabead48be377be7dddd3a5, type: 2}
@@ -346,13 +351,15 @@ MonoBehaviour:
   terrain: {fileID: 0}
   baseMesh: {fileID: 1436150571}
   meshMaterial: {fileID: 0}
+  terrainScale: 1
   timeScale: 0.5
   noiseInScale: 0.002
-  noiseOutScale: 6
+  noiseOutScale: 2
   flowerNoisePositionScale: 0.01
   flowerNoisePositionMult: 1
   flowerNoiseTimeScale: 0.2
-  flowerAlpha: 1
+  flowerAlpha: 0
+  flowersEnabled: 1
   particleComputeShader: {fileID: 7200000, guid: 5d55532549fa7ee4d934bd3fa936fbdf,
     type: 3}
   particleMaterial: {fileID: 2100000, guid: 1de4d81220e8f71469176adc327f08f4, type: 2}
@@ -466,7 +473,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &1404699599
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -616,7 +623,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &1807461957
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -778,12 +785,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1827569483}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb72eb5323db34bc09948a2af39c4d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colour: {r: 0.3254902, g: 1, b: 0.80392164, a: 1}
+  colour: {r: 0.5372549, g: 0.3019608, b: 0.88235295, a: 1}
   isEnabled: 1
   forceUpdate: 0
   mode: 1
@@ -834,10 +841,10 @@ MonoBehaviour:
   screenBlendMode: 0
   sunTransform: {fileID: 1855786428}
   radialBlurIterations: 2
-  sunColor: {r: 0.977282, g: 1, b: 0.7647059, a: 1}
-  sunThreshold: {r: 0.33823532, g: 0.33823532, b: 0.33823532, a: 1}
+  sunColor: {r: 1, g: 1, b: 1, a: 1}
+  sunThreshold: {r: 0.34509805, g: 0.34509805, b: 0.34509805, a: 1}
   sunShaftBlurRadius: 2.5
-  sunShaftIntensity: 1.15
+  sunShaftIntensity: 0.6
   maxRadius: 0.63
   useDepthTexture: 1
   sunShaftsShader: {fileID: 4800000, guid: d3b1c8c1036784176946f5cfbfb7fe4c, type: 3}
