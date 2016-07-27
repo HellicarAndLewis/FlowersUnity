@@ -76,7 +76,7 @@ public class onsetDetector : MonoBehaviour {
         confidence = CalculateSpectrum(fluxMid, spectralFluxMid, lookBackWindow/3, 3);
         onsetMid = getConfidenceSmoothed(confidence, onsetMid);
 
-        confidence = CalculateSpectrum(fluxMid, spectralFluxMid, lookBackWindow/3, 4);
+        confidence = CalculateSpectrum(fluxMid, spectralFluxTreble, lookBackWindow/3, 4);
         onsetTreble = getConfidenceSmoothed(confidence, onsetTreble);
 
         currentSpectrum.CopyTo(lastSpectrum, 0);
