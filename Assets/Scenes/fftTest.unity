@@ -291,8 +291,11 @@ MonoBehaviour:
   fft: {fileID: 0}
   lastSpectrum: []
   currentSpectrum: []
-  sensitivity: 2
-  onsetConfidence: 0
+  cutoff: 3.08
+  onsetTotal: 0
+  onsetBass: 0
+  onsetMid: 0
+  onsetTreble: 0
   attackUp: 1
   attackDown: 0.1
 --- !u!1 &1704023419
@@ -413,8 +416,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onset: {fileID: 1197486128}
-  box: {fileID: 1791640568}
+  rock: {fileID: 0}
   onsetConfidence: 0
+  speed: 0
 --- !u!23 &1791640570
 MeshRenderer:
   m_ObjectHideFlags: 0
