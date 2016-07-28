@@ -27,7 +27,7 @@ public class TerrainBlendDeformer : TerrainDeformer
 	//
 	override protected void Awake()
 	{
-        if (!baseMesh) {
+        if (!baseSkinnedMesh) {
 			Debug.LogError("You need to set a SkinnedMeshRenderer");
             return;
 		}
@@ -42,7 +42,7 @@ public class TerrainBlendDeformer : TerrainDeformer
         if (!meshFilter) meshFilter = gameObject.AddComponent<MeshFilter>();
         if (!GetComponent<MeshRenderer>()) gameObject.AddComponent<MeshRenderer>();
         meshFilter.mesh = mesh;
-        Debug.Log(baseVertices.Length);
+        Debug.Log("TerrainBlendDeformer, verts: " + baseVertices.Length);
     }
 
 

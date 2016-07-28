@@ -74,6 +74,7 @@ public class TerrainDeformer : MonoBehaviour
             i++;
         }
         mesh.vertices = vertices;
+        mesh.RecalculateBounds();
         mesh.RecalculateNormals();
     }
     
