@@ -10,7 +10,6 @@ public class TerrainController : MonoBehaviour
 	// --------------------------------------------------------------------------------------------------------
 	//
     public MeshFilter baseMesh;
-    public Material meshMaterial;
     [Range(0, 1)]
     public float terrainScale = 1;
     [Range(0.1f, 2)]
@@ -20,15 +19,20 @@ public class TerrainController : MonoBehaviour
     [Range(0, 30)]
     public float noiseOutScale = 2f;
 
-    [Range(0.01f, 0.001f)]
+    //[Range(0.01f, 0.001f)]
     public float flowerNoisePositionScale = 0.01f;
-    [Range(1, 10)]
+    //[Range(1, 10)]
     public float flowerNoisePositionMult = 1f;
     [Range(0, 1)]
     public float flowerNoiseTimeScale = 0.1f;
     [Range(0, 1)]
     public float flowerAlpha = 1f;
+    [Range(0, 20)]
+    public float flowerScale = 1f;
+    [Range(0, 20)]
+    public float flowerElevation = 0f;
     public bool flowersEnabled = true;
+    public int flowersPerTriangle = 1;
 
     // Compute particles
     public ComputeShader particleComputeShader;
@@ -50,7 +54,8 @@ public class TerrainController : MonoBehaviour
 	private Mesh mesh;
 	private Vector3[] baseVertices;
 	private Vector3[] baseNormals;
-	private float[] noiseSeeds;
+    private int[] baseTriangles;
+    private float[] noiseSeeds;
 
 
 	// --------------------------------------------------------------------------------------------------------
@@ -66,7 +71,8 @@ public class TerrainController : MonoBehaviour
         
 		baseVertices = mesh.vertices;
 		baseNormals = mesh.normals;
-		meshFilter = GetComponent<MeshFilter>();
+        baseTriangles = mesh.triangles;
+        meshFilter = GetComponent<MeshFilter>();
         if (!meshFilter) meshFilter = gameObject.AddComponent<MeshFilter>();
         if (!GetComponent<MeshRenderer>()) gameObject.AddComponent<MeshRenderer>();
 
@@ -106,7 +112,7 @@ public class TerrainController : MonoBehaviour
 
         // Number of particles needs to be divisible by GroupSize
         // Store the original desired number of particles
-        numParticles = baseVertices.Length;
+        numParticles = (baseTriangles.Length/3) * flowersPerTriangle;
         numParticlesDesired = numParticles;
         numParticles = Mathf.CeilToInt(numParticles / (float)GroupSize) * GroupSize;
 
@@ -118,21 +124,35 @@ public class TerrainController : MonoBehaviour
         particles = new ComputeParticleData[numParticles];
 
         // Set some initial values
-        for (var i = 0; i < numParticles; i++)
+        int particleIndex = 0;
+        for (var i = 0; i < baseTriangles.Length; i+=3)
         {
-            var particle = particles[i];
-            particle.enabled = (i < numParticlesDesired) ? 1 : 0;
-            particle.size = 15;// Random.Range(6, 6);
-            particle.seed = 0;
+            var p1 = baseVertices[baseTriangles[i]];
+            var p2 = baseVertices[baseTriangles[i + 1]];
+            var p3 = baseVertices[baseTriangles[i + 2]];
+            var range = (p2 - p1).magnitude * 0.5;
+            for (int j = 0; j < flowersPerTriangle; j++)
+            {
+                var p1p2 = p2 - p1;
+                var p1p32 = p3 - p1;
+                var particlePos = p1 + (p1p2 * Random.Range(0, 1f)) + (p1p32 * Random.Range(0, 1f));
+
+                var particle = particles[particleIndex];
+                particle.enabled = (particleIndex < numParticlesDesired) ? 1 : 0;
+                particle.size = flowerScale;
+                particle.seed = 0;
+
+                particle.position = transform.localToWorldMatrix.MultiplyPoint(particlePos);
+                particle.position += baseNormals[baseTriangles[i]] * flowerElevation;// Random.Range(0, flowerElevation));
+
+                particle.velocity = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
+                particle.colour = Color.white;
+                particle.texOffset = new Vector2(0, 0);
+                particles[particleIndex] = particle;
+
+                particleIndex++;
+            }
             
-            if (i < baseVertices.Length)
-                particle.position = transform.localToWorldMatrix.MultiplyPoint(baseVertices[i]) + (baseNormals[i] * Random.Range(2, 6)) + new Vector3(Random.Range(0,2),Random.Range(0, 2),0);
-            else
-                particle.position = new Vector3(-999, 0, 0);
-            particle.velocity = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
-            particle.colour = Color.white;
-            particle.texOffset = new Vector2(0, 0);
-            particles[i] = particle;
         }
 
         // set the initial values in the buffer
