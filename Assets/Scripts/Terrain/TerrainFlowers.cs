@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public class TerrainFlowers : MonoBehaviour
 {
@@ -109,7 +110,7 @@ public class TerrainFlowers : MonoBehaviour
                 var particle = particles[particleIndex];
                 particle.enabled = (particleIndex < numParticlesDesired) ? 1 : 0;
                 particle.size = flowerScale;
-                particle.seed = 0;
+                particle.seed = Random.Range(-0.06f, 0.06f);
 
                 particle.position = transform.localToWorldMatrix.MultiplyPoint(particlePos);
                 particle.position += baseNormals[baseTriangles[i]] * flowerElevation;// Random.Range(0, flowerElevation));
@@ -125,6 +126,7 @@ public class TerrainFlowers : MonoBehaviour
         }
 
         // set the initial values in the buffer
+        particles.OrderBy(particle => particle.position.z);
         particleBuffer.SetData(particles);
 
         // Initialise the quad compute buffer: 6 positions for rendering a quad made of two triangles
@@ -192,6 +194,7 @@ public class TerrainFlowers : MonoBehaviour
             particleMaterial.SetBuffer("particles", particleBuffer);
             particleMaterial.SetBuffer("quadPoints", quadBuffer);
             particleMaterial.SetVector("texBounds", new Vector4(1, 1, 0, 0));
+            particleMaterial.SetInt("revealType", 3);
             particleMaterial.SetPass(0);
             Graphics.DrawProcedural(MeshTopology.Triangles, 6, numParticles);
         }
