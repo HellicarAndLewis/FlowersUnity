@@ -133,7 +133,7 @@ public class TerrainController : MonoBehaviour
             {
                 var p1p2 = p2 - p1;
                 var p1p32 = p3 - p1;
-                var particlePos = p1 + (p1p2 * Random.Range(0, 1f)) + (p1p32 * Random.Range(0, 1f)); // (p1 + p2 + p3) / 3.0f;
+                var particlePos = p1 + (p1p2 * Random.Range(0, 1f)) + (p1p32 * Random.Range(0, 1f));
 
                 var particle = particles[particleIndex];
                 particle.enabled = (particleIndex < numParticlesDesired) ? 1 : 0;
@@ -141,7 +141,7 @@ public class TerrainController : MonoBehaviour
                 particle.seed = 0;
 
                 particle.position = transform.localToWorldMatrix.MultiplyPoint(particlePos);
-                particle.position += (baseNormals[baseTriangles[i]] * Random.Range(1, 1));// + new Vector3(Random.Range(0, 1), Random.Range(0, 1), 0);
+                particle.position += (baseNormals[baseTriangles[i]] * Random.Range(1, 1));
 
                 particle.velocity = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
                 particle.colour = Color.white;
