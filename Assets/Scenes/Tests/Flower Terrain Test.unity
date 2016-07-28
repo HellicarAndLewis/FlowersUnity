@@ -188,6 +188,7 @@ GameObject:
   - 33: {fileID: 1762948130}
   - 64: {fileID: 1762948129}
   - 23: {fileID: 1762948128}
+  - 114: {fileID: 1762948132}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -249,69 +250,35 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1762948127}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.11630976, y: -0.1377691, z: -0.1642183, w: 0.96980625}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 1838848600}
-  m_RootOrder: 0
---- !u!1 &1838848598
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1838848600}
-  - 114: {fileID: 1838848599}
-  m_Layer: 0
-  m_Name: Flower Plane
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1838848599
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+--- !u!114 &1762948132
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1838848598}
+  m_GameObject: {fileID: 1762948127}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40738722fd4e5469eb0419ef1a938350, type: 3}
+  m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMesh: {fileID: 1762948130}
-  terrainScale: 1
-  timeScale: 0.1
-  noiseInScale: 0.001
-  noiseOutScale: 0
-  flowerNoisePositionScale: 0.01
-  flowerNoisePositionMult: 1
+  flowerNoisePositionScale: 0.34
+  flowerNoisePositionMult: 2.28
   flowerNoiseTimeScale: 0.1
   flowerAlpha: 1
   flowerScale: 1
+  flowerElevation: 0.5
   flowersEnabled: 1
-  flowersPerTriangle: 20
+  flowersPerTriangle: 100
   particleComputeShader: {fileID: 7200000, guid: 5d55532549fa7ee4d934bd3fa936fbdf,
     type: 3}
   particleMaterial: {fileID: 2100000, guid: 1de4d81220e8f71469176adc327f08f4, type: 2}
---- !u!4 &1838848600
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1838848598}
-  m_LocalRotation: {x: 0.11630976, y: -0.1377691, z: -0.1642183, w: 0.96980625}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 10.39, y: -18.09, z: -20.88}
-  m_Children:
-  - {fileID: 1762948131}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
 --- !u!1 &2003436072
 GameObject:
   m_ObjectHideFlags: 0

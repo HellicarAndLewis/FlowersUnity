@@ -2,14 +2,15 @@
 using System.Collections;
 
 /// <summary>
-/// Manages terrain mesh and animation
+/// Deforms a terrain mesh by manupulating its vertices
 /// </summary>
 public class TerrainDeformer : MonoBehaviour
 {
 
-	// --------------------------------------------------------------------------------------------------------
-	//
     public MeshFilter baseMesh;
+
+    // --------------------------------------------------------------------------------------------------------
+    // Common public
     [Range(0, 10)]
     public float terrainScale = 1;
     [Range(0, 2)]
@@ -21,17 +22,16 @@ public class TerrainDeformer : MonoBehaviour
 
 
     // --------------------------------------------------------------------------------------------------------
+    // Common protected
+    protected MeshFilter meshFilter;
+    protected Mesh mesh;
+    protected Vector3[] baseVertices;
+    protected Vector3[] baseNormals;
+
+
+    // --------------------------------------------------------------------------------------------------------
     //
-	private MeshFilter meshFilter;
-	private Mesh mesh;
-	private Vector3[] baseVertices;
-	private Vector3[] baseNormals;
-    private int[] baseTriangles;
-
-
-	// --------------------------------------------------------------------------------------------------------
-	//
-	void Awake()
+    virtual protected void Awake()
 	{
         if (!baseMesh) {
 			Debug.LogError("You need to set a mesh filter");
@@ -41,7 +41,6 @@ public class TerrainDeformer : MonoBehaviour
         baseMesh.gameObject.SetActive(false);
 		baseVertices = mesh.vertices;
 		baseNormals = mesh.normals;
-        baseTriangles = mesh.triangles;
         meshFilter = GetComponent<MeshFilter>();
         if (!meshFilter) meshFilter = gameObject.AddComponent<MeshFilter>();
         if (!GetComponent<MeshRenderer>()) gameObject.AddComponent<MeshRenderer>();
@@ -50,27 +49,32 @@ public class TerrainDeformer : MonoBehaviour
         Debug.Log(baseVertices.Length);
         
     }
-    
-	
-	// --------------------------------------------------------------------------------------------------------
-	//
-	void Update()
+
+
+    // --------------------------------------------------------------------------------------------------------
+    //
+    virtual protected void Update()
 	{
+        UpdateDeformation();
+    }
+
+    protected void UpdateDeformation(float scale = 1.0f)
+    {
         Mesh mesh = meshFilter.mesh;
-		Vector3[] vertices = mesh.vertices;
-		int i = 0;
-		float scaledTime = CaptureTime.Elapsed * timeScale;
-		while(i < vertices.Length) {
+        Vector3[] vertices = mesh.vertices;
+        int i = 0;
+        float scaledTime = CaptureTime.Elapsed * timeScale;
+        while (i < vertices.Length)
+        {
             Vector3 noiseIn = baseVertices[i] * noiseInScale;
-			float noise = Mathf.PerlinNoise(noiseIn.x, noiseIn.z) * 10;
-			noise = Mathf.PerlinNoise(noise, scaledTime) - 0.5f;
-			vertices[i] = baseVertices[i] + (baseNormals[i] * (noise * noiseOutScale));
+            float noise = Mathf.PerlinNoise(noiseIn.x, noiseIn.z) * 10;
+            noise = Mathf.PerlinNoise(noise, scaledTime) - 0.5f;
+            vertices[i] = baseVertices[i] + (baseNormals[i] * (noise * noiseOutScale) * scale);
             vertices[i].y *= terrainScale;
             i++;
-		}
-		mesh.vertices = vertices;
-		mesh.RecalculateNormals();
-        
+        }
+        mesh.vertices = vertices;
+        mesh.RecalculateNormals();
     }
     
 }

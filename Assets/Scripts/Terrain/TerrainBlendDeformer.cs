@@ -2,75 +2,54 @@
 using System.Collections;
 
 /// <summary>
-/// Manages terrain mesh and animation
+/// Takes the TerrainDeformer and adds the ability to blend between blend shapes in a skinned mesh
 /// </summary>
-public class TerrainBlendDeformer : MonoBehaviour
+public class TerrainBlendDeformer : TerrainDeformer
 {
 
 	// --------------------------------------------------------------------------------------------------------
 	//
-    public SkinnedMeshRenderer baseMesh;
-    [Range(0, 1)]
-    public float terrainScale = 1;
-    [Range(0.1f, 2)]
-    public float timeScale = 1;
-    [Range(0f, 1f)]
-	public float noiseInScale = 0.001f;
-    [Range(0, 30)]
-    public float noiseOutScale = 2f;
+    public SkinnedMeshRenderer baseSkinnedMesh;
 
+    // --------------------------------------------------------------------------------------------------------
+    // Blend specific
     public enum State
     {
-        Noise=0, PreBlend, Blend, PostBlend 
+        Deform=0, PreBlend, Blend, PostBlend 
     }
-    public State state = State.Noise;
+    private State state = State.Deform;
+    private float blendWeight = 0;
+    private int blendDirection = 1;
+    private float noiseOutScaleTransition = 0;
 
-    public float blendWeight = 0;
-    public int blendDirection = 1;
-    public float noiseOutScaleTransition = 0;
+
+	// --------------------------------------------------------------------------------------------------------
+	//
+	override protected void Awake()
+	{
+        if (!baseMesh) {
+			Debug.LogError("You need to set a SkinnedMeshRenderer");
+            return;
+		}
+        mesh = new Mesh();
+        baseSkinnedMesh.BakeMesh(mesh);
+        baseSkinnedMesh.gameObject.SetActive(false);
+        
+		baseVertices = mesh.vertices;
+		baseNormals = mesh.normals;
+        meshFilter = GetComponent<MeshFilter>();
+
+        if (!meshFilter) meshFilter = gameObject.AddComponent<MeshFilter>();
+        if (!GetComponent<MeshRenderer>()) gameObject.AddComponent<MeshRenderer>();
+        meshFilter.mesh = mesh;
+        Debug.Log(baseVertices.Length);
+    }
 
 
 
     // --------------------------------------------------------------------------------------------------------
     //
-    private MeshFilter meshFilter;
-	private Mesh mesh;
-	private Vector3[] baseVertices;
-	private Vector3[] baseNormals;
-    private int[] baseTriangles;
-    private float[] noiseSeeds;
-
-
-	// --------------------------------------------------------------------------------------------------------
-	//
-	void Awake()
-	{
-        if (!baseMesh) {
-			Debug.LogError("You need to set a mesh filter");
-            return;
-		}
-        mesh = new Mesh();
-        baseMesh.BakeMesh(mesh);
-        baseMesh.gameObject.SetActive(false);
-        
-		baseVertices = mesh.vertices;
-		baseNormals = mesh.normals;
-        baseTriangles = mesh.triangles;
-        meshFilter = GetComponent<MeshFilter>();
-        if (!meshFilter) meshFilter = gameObject.AddComponent<MeshFilter>();
-        if (!GetComponent<MeshRenderer>()) gameObject.AddComponent<MeshRenderer>();
-
-        meshFilter.mesh = mesh;
-        Debug.Log(baseVertices.Length);
-        
-
-    }
-    
-    
-	
-	// --------------------------------------------------------------------------------------------------------
-	//
-	void Update()
+    override protected void Update()
 	{
         if (Input.GetKeyDown("b"))
         {
@@ -79,8 +58,8 @@ public class TerrainBlendDeformer : MonoBehaviour
 
         switch (state)
         {
-            case State.Noise:
-                UpdateNoise();
+            case State.Deform:
+                UpdateDeformation(noiseOutScaleTransition);
                 break;
             case State.PreBlend:
                 noiseOutScaleTransition -= 0.01f;
@@ -89,7 +68,7 @@ public class TerrainBlendDeformer : MonoBehaviour
                     noiseOutScaleTransition = 0;
                     state = State.Blend;
                 }
-                UpdateNoise();
+                UpdateDeformation(noiseOutScaleTransition);
                 break;
             case State.Blend:
                 UpdateBlend();
@@ -99,9 +78,9 @@ public class TerrainBlendDeformer : MonoBehaviour
                 if (noiseOutScaleTransition >= 1)
                 {
                     noiseOutScaleTransition = 1;
-                    state = State.Noise;
+                    state = State.Deform;
                 }
-                UpdateNoise();
+                UpdateDeformation(noiseOutScaleTransition);
                 break;
             default:
                 break;
@@ -109,11 +88,13 @@ public class TerrainBlendDeformer : MonoBehaviour
         
     }
 
+    // --------------------------------------------------------------------------------------------------------
+    //
     void UpdateBlend()
     {
         blendWeight += (1 * blendDirection);
-        baseMesh.SetBlendShapeWeight(0, blendWeight);
-        baseMesh.BakeMesh(mesh);
+        baseSkinnedMesh.SetBlendShapeWeight(0, blendWeight);
+        baseSkinnedMesh.BakeMesh(mesh);
         meshFilter.mesh = mesh;
 
         if (blendWeight > 100 || blendWeight <= 0)
@@ -123,31 +104,12 @@ public class TerrainBlendDeformer : MonoBehaviour
             blendDirection *= -1;
             baseVertices = mesh.vertices;
             baseNormals = mesh.normals;
-            baseTriangles = mesh.triangles;
+
             if (gameObject.GetComponent<TerrainFlowers>())
             {
                 gameObject.GetComponent<TerrainFlowers>().Init();
             }
         }
-        mesh.RecalculateNormals();
-    }
-
-    void UpdateNoise()
-    {
-        Mesh mesh = meshFilter.mesh;
-        Vector3[] vertices = mesh.vertices;
-        int i = 0;
-        float scaledTime = CaptureTime.Elapsed * timeScale;
-        while (i < vertices.Length)
-        {
-            Vector3 noiseIn = baseVertices[i] * noiseInScale;
-            float noise = Mathf.PerlinNoise(noiseIn.x, noiseIn.z) * 10;
-            noise = Mathf.PerlinNoise(noise, scaledTime) - 0.5f;
-            vertices[i] = baseVertices[i] + (baseNormals[i] * (noise * noiseOutScale) * noiseOutScaleTransition);
-            vertices[i].y *= terrainScale;
-            i++;
-        }
-        mesh.vertices = vertices;
         mesh.RecalculateNormals();
     }
     

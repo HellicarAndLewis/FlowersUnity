@@ -221,6 +221,7 @@ MonoBehaviour:
   timeScale: 1
   noiseInScale: 0.001
   noiseOutScale: 2
+  baseSkinnedMesh: {fileID: 397963238}
   state: 0
   blendWeight: 0
   blendDirection: 1
@@ -260,7 +261,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 547523178}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
