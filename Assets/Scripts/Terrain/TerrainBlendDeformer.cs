@@ -4,7 +4,7 @@ using System.Collections;
 /// <summary>
 /// Manages terrain mesh and animation
 /// </summary>
-public class TerrainBlend : MonoBehaviour
+public class TerrainBlendDeformer : MonoBehaviour
 {
 
 	// --------------------------------------------------------------------------------------------------------
