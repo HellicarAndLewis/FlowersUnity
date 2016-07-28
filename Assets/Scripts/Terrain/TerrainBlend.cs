@@ -43,7 +43,7 @@ public class TerrainBlend : MonoBehaviour
 
 	// --------------------------------------------------------------------------------------------------------
 	//
-	void Start()
+	void Awake()
 	{
         if (!baseMesh) {
 			Debug.LogError("You need to set a mesh filter");
@@ -51,7 +51,7 @@ public class TerrainBlend : MonoBehaviour
 		}
         mesh = new Mesh();
         baseMesh.BakeMesh(mesh);
-        //baseMesh.gameObject.SetActive(false);
+        baseMesh.gameObject.SetActive(false);
         
 		baseVertices = mesh.vertices;
 		baseNormals = mesh.normals;
@@ -113,7 +113,6 @@ public class TerrainBlend : MonoBehaviour
     {
         blendWeight += (1 * blendDirection);
         baseMesh.SetBlendShapeWeight(0, blendWeight);
-
         baseMesh.BakeMesh(mesh);
         meshFilter.mesh = mesh;
 
@@ -122,13 +121,14 @@ public class TerrainBlend : MonoBehaviour
             noiseOutScaleTransition = 0;
             state = State.PostBlend;
             blendDirection *= -1;
-            //baseMesh.BakeMesh(mesh);
-            //meshFilter.mesh = mesh;
             baseVertices = mesh.vertices;
             baseNormals = mesh.normals;
             baseTriangles = mesh.triangles;
+            if (gameObject.GetComponent<TerrainFlowers>())
+            {
+                gameObject.GetComponent<TerrainFlowers>().Init();
+            }
         }
-
         mesh.RecalculateNormals();
     }
 

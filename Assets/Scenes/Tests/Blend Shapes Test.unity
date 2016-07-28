@@ -99,7 +99,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: d1f355d1ba917fb45bc966d47580a3bf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.07
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d1f355d1ba917fb45bc966d47580a3bf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -159,7 +159,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: c577adb09c83d41a09081b20e860e958, type: 2}
     - target: {fileID: 100000, guid: d1f355d1ba917fb45bc966d47580a3bf, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d1f355d1ba917fb45bc966d47580a3bf, type: 3}
@@ -183,6 +183,7 @@ GameObject:
   - 4: {fileID: 547523179}
   - 114: {fileID: 547523180}
   - 23: {fileID: 547523181}
+  - 114: {fileID: 547523182}
   m_Layer: 0
   m_Name: Terrain Control
   m_TagString: Untagged
@@ -253,6 +254,28 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &547523182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 547523178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flowerNoisePositionScale: 0.01
+  flowerNoisePositionMult: 1
+  flowerNoiseTimeScale: 0.1
+  flowerAlpha: 1
+  flowerScale: 1
+  flowerElevation: 0.5
+  flowersEnabled: 1
+  flowersPerTriangle: 2
+  particleComputeShader: {fileID: 7200000, guid: 5d55532549fa7ee4d934bd3fa936fbdf,
+    type: 3}
+  particleMaterial: {fileID: 2100000, guid: 1de4d81220e8f71469176adc327f08f4, type: 2}
 --- !u!1001 &704726310
 Prefab:
   m_ObjectHideFlags: 0
