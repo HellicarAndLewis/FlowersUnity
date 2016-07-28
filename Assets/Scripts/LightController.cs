@@ -72,7 +72,7 @@ public class LightController : MonoBehaviour
 				progress = 1;
 			}
 
-            sunLight.intensity = onset.onsetTotal * 8.0f;
+            if (onset) sunLight.intensity = onset.onsetTotal * 8.0f;
 			
 			current.colour = Color.Lerp(previous.colour, target.colour, progress);
 			current.eulerAngle = Vector3.Lerp(previous.eulerAngle, target.eulerAngle, progress);
