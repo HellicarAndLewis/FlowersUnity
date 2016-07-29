@@ -31,6 +31,13 @@ public class GradientBg : MonoBehaviour
         mesh.colors = new Color[4] { bottomColor, bottomColor, topColor, topColor, };
         mesh.triangles = new int[6] { 0, 1, 2, 1, 3, 2 };
 
+        var scale = transform.localScale;
+        scale.y = 0.6f;
+        transform.localScale = scale;
+        var pos = transform.position;
+        pos.y = frustum.y * -0.4f;
+        transform.position = pos;
+
         Shader shader = Shader.Find("Vertex Colour Only");
         Material mat = new Material(shader);
 
