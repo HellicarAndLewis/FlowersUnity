@@ -182,13 +182,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c811289aa8c2354fad8da394352b50d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio: {fileID: 0}
+  microphone: 
+  fftWindow: 0
   sensitivity: 100
   loudness: 0
-  bins: 30
+  bins: 0
   spectrum: []
   spectrumBinned: []
-  lerpSpeed: 0.39
+  lerpSpeed: 0
   maxMode: 0
 --- !u!82 &1197486126
 AudioSource:
@@ -198,7 +199,8 @@ AudioSource:
   m_GameObject: {fileID: 1197486124}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300001, guid: e373327acd8166244a9b97e44ada55a9,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -416,7 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onset: {fileID: 1197486128}
-  rock: {fileID: 0}
+  rock: {fileID: 1791640568}
   onsetConfidence: 0
   speed: 0
 --- !u!23 &1791640570
