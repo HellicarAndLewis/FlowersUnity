@@ -3,36 +3,36 @@
 	Properties
 	{
 		_MainTex("Base (RGB)", 2D) = "white" {}
-	_pixelWidth("Pixel Width", Range(0, 1)) = 0
-		_pixelHeight("Pixel Height", Range(0, 1)) = 0
+		_amount("Amount", Range(0, 3)) = 0
+		_angle("Angle", Range(0, 1)) = 0
 	}
-		SubShader
+	SubShader
 	{
 		Pass
-	{
-		CGPROGRAM
-#pragma vertex vert_img
-#pragma fragment frag
+		{
+			CGPROGRAM
+			#pragma vertex vert_img
+			#pragma fragment frag
 
-#include "UnityCG.cginc"
+			#include "UnityCG.cginc"
+			#define M_PI 3.1415926535897932384626433832795
 
-		uniform sampler2D _MainTex;
-	uniform float _pixelWidth;
-	uniform float _pixelHeight;
+			uniform sampler2D _MainTex;
+			uniform float amount;
+			uniform float angle;
 
-	float4 frag(v2f_img i) : COLOR{
-		float2 uv = i.uv;
+			float4 frag(v2f_img i) : COLOR{
+				float2 offset = 0.3 * amount * float2(1.0, 1.0) * float2(cos(angle * amount * M_PI), sin(angle * amount * M_PI));
 
-		float dx = _pixelWidth;
-		float dy = _pixelHeight;
-		float2 coord = float2(dx*floor(uv.x / dx), dy*floor(uv.y / dy));
+				float4 cr = tex2D(_MainTex, i.uv + offset);
+				float4 cga = tex2D(_MainTex, i.uv);
+				float4 cb = tex2D(_MainTex, i.uv - offset);
 
-		float4 c = tex2D(_MainTex, coord);
+				float4 result = float4(cr.r, cga.g, cb.b, cga.a);
 
-		float4 result = c;
-		return result;
-	}
-		ENDCG
-	}
+				return result;
+			}
+			ENDCG
+		}
 	}
 }
