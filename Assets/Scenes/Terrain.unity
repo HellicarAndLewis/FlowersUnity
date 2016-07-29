@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.19117647, g: 0.19117647, b: 0.19117647, a: 1}
+  m_AmbientSkyColor: {r: 0.102941155, g: 0.102941155, b: 0.102941155, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -460,16 +460,16 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 666276420}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56ba38b20adee0a4cb7d27fafd92be3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   baseMesh: {fileID: 0}
   terrainScale: 1
-  timeScale: 0.2
-  noiseInScale: 0.04
-  noiseOutScale: 0.05
+  timeScale: 0.4
+  noiseInScale: 0.3
+  noiseOutScale: 0.06
   baseSkinnedMesh: {fileID: 1163155839}
   blendPresets:
   - blendWeights:
@@ -1716,9 +1716,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseMesh: {fileID: 0}
   terrainScale: 1
-  timeScale: 0.2
-  noiseInScale: 0.04
-  noiseOutScale: 0.05
+  timeScale: 0.4
+  noiseInScale: 0.3
+  noiseOutScale: 0.06
   baseSkinnedMesh: {fileID: 303716327}
   blendPresets:
   - blendWeights:
@@ -2248,7 +2248,6 @@ GameObject:
   - 114: {fileID: 1827569492}
   - 114: {fileID: 1827569493}
   - 114: {fileID: 1827569494}
-  - 114: {fileID: 1827569495}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2335,7 +2334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb72eb5323db34bc09948a2af39c4d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colour: {r: 0.32156864, g: 1, b: 0.80392164, a: 1}
+  colour: {r: 0.58431375, g: 0.8235294, b: 0.84313726, a: 1}
   isEnabled: 1
   forceUpdate: 0
   mode: 1
@@ -2348,15 +2347,15 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1827569483}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd70d448b18cfbc46af26466f752332c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   visualizeFocus: 0
   focalLength: 3.7
-  focalSize: 0.574
-  aperture: 0.603
+  focalSize: 0.657
+  aperture: 0.54
   focalTransform: {fileID: 0}
   maxBlurSize: 2
   highResolution: 0
@@ -2447,21 +2446,6 @@ MonoBehaviour:
   heightDensity: 0.001
   startDistance: 1
   fogShader: {fileID: 4800000, guid: 70d8568987ac0499f952b54c7c13e265, type: 3}
---- !u!114 &1827569495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1827569483}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8eb48f27753f2884cad560cf4ee33ae8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 1827569487}
-  topColor: {r: 0.23551036, g: 0.9705882, b: 0.7990334, a: 1}
-  bottomColor: {r: 0.9490197, g: 0.80392164, b: 0.945017, a: 1}
-  gradientLayer: 31
 --- !u!1 &1855786427
 GameObject:
   m_ObjectHideFlags: 0
@@ -2689,9 +2673,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseMesh: {fileID: 0}
   terrainScale: 1
-  timeScale: 0.2
-  noiseInScale: 0.04
-  noiseOutScale: 0.05
+  timeScale: 0.4
+  noiseInScale: 0.3
+  noiseOutScale: 0.06
   baseSkinnedMesh: {fileID: 796097080}
   blendPresets:
   - blendWeights:
@@ -2769,7 +2753,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 7
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.80784315, b: 0.2627451, a: 1}
   m_Intensity: 0.67
   m_Range: 10
   m_SpotAngle: 30

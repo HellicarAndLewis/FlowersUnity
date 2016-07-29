@@ -40,9 +40,9 @@ public class LightController : MonoBehaviour
 		// Dawn
 		if(presets[0] == null)
 			presets[0] = new LightPreset(){colour= Color.cyan, eulerAngle = new Vector3(20, 80, 0)};
-		// Daylight
-		if(presets[1] == null)
-			presets[1] = new LightPreset(){colour= new Color(0.98f, 1, 0.32f), eulerAngle= new Vector3(123, 26, 0)};
+        // Daylight, FFCE43FF
+        if (presets[1] == null)
+			presets[1] = new LightPreset(){colour= new Color(1, 0.808f, 0.263f), eulerAngle= new Vector3(56, 26, 0)};
 		// Dusk
 		if(presets[2] == null)
 			presets[2] = new LightPreset(){colour= Color.red, eulerAngle= new Vector3(170, 80, 0)};

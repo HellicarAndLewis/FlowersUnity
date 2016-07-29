@@ -136,10 +136,13 @@ public class TerrainBlendDeformer : TerrainDeformer
         var targetPreset = blendPresets[blendPresetIndex];
         for (int i = 0; i < 3; i++)
         {
-            if (!activePreset.Lerp(i, targetPreset.blendWeights[i], 0.05f))
+            if (!activePreset.Lerp(i, targetPreset.blendWeights[i], 0.02f))
                 isComplete = false;
             baseSkinnedMesh.SetBlendShapeWeight(i, activePreset.blendWeights[i]);
         }
+
+        //var material = GetComponent<Renderer>().material;
+        //material.SetFloat("_Blend", someFloatValue);
 
         baseSkinnedMesh.BakeMesh(mesh);
         meshFilter.mesh = mesh;

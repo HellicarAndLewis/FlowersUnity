@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 07f2caea57180744bbc1d14a402f695d
-timeCreated: 1469792391
+timeCreated: 1469808531
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -94,7 +94,7 @@ SubstanceImporter:
         second: 0.5
       - first:
           name: _DetailNormalMapScale
-        second: 0.88
+        second: 0
       - first:
           name: _DstBlend
         second: 0
