@@ -263,6 +263,8 @@ GameObject:
   - 114: {fileID: 1196706949}
   - 114: {fileID: 1196706950}
   - 114: {fileID: 1196706951}
+  - 114: {fileID: 1196706952}
+  - 114: {fileID: 1196706953}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -344,26 +346,54 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1196706943}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca4af2ceb2bcee041a7ae1c1c8b0e76e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 0.0332
-  height: 0.0001
+  width: 0.0079
+  height: 0.0076
 --- !u!114 &1196706950
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1196706943}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17bd9b508bd76774aabc072e32991c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intensity: 9.96
+  intensity: 6.14
 --- !u!114 &1196706951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1196706943}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8bdb3db6f0d8e499aab317a853bfeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 0.21
+  angle: 1.42
+--- !u!114 &1196706952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1196706943}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ce533a80c932c44bcefd40fb19b43d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 1.438
+  nIntensity: 0.55
+  sIntensity: 0.186
+  sCount: 67.9
+--- !u!114 &1196706953
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -371,8 +401,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1196706943}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d8bdb3db6f0d8e499aab317a853bfeb, type: 3}
+  m_Script: {fileID: 11500000, guid: b8b0ee45c737c9d48b7a5b539478acaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 0.64
-  angle: 0.933
+  amount: 0.253
+  distortion: 0.13
+  distortion2: 0.0253
+  speed: 27.8
+  rollSpeed: 0.228
