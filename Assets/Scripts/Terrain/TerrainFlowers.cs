@@ -26,7 +26,7 @@ public class TerrainFlowers : MonoBehaviour
     private ComputeParticleData[] particles;
     private int numParticles = 1000;
     private int numParticlesDesired = 0;
-    private int particleUpdateKernel;
+    private int particleUpdateKernel = -1;
     private const int GroupSize = 128;
     // Render particles
     public Material particleMaterial;
@@ -73,7 +73,7 @@ public class TerrainFlowers : MonoBehaviour
         }
 
         // find and set the particle compute shader kernal
-        particleUpdateKernel = particleComputeShader.FindKernel("CSMain");
+        if (particleUpdateKernel == -1) particleUpdateKernel = particleComputeShader.FindKernel("CSMain");
         if (particleUpdateKernel == -1)
         {
             Debug.LogError("Failed to find CSMain kernel in ParticleController.Start()");
@@ -88,6 +88,8 @@ public class TerrainFlowers : MonoBehaviour
 
         // create the compute buffer with the particle count
         // and the particle data stride which is the size of each element in the buffer
+        if (particleBuffer != null)
+            particleBuffer.Release();
         particleBuffer = new ComputeBuffer(numParticles, ComputeParticleConstants.ParticleDataStride);
 
         // Create an array of ParticleData
@@ -97,12 +99,14 @@ public class TerrainFlowers : MonoBehaviour
         int particleIndex = 0;
         for (var i = 0; i < baseTriangles.Length; i += 3)
         {
+            // points for this triangle
             var p1 = baseVertices[baseTriangles[i]];
             var p2 = baseVertices[baseTriangles[i + 1]];
             var p3 = baseVertices[baseTriangles[i + 2]];
-            var range = (p2 - p1).magnitude * 0.5;
+            // draw multiple flowers per triangle for denser coverage
             for (int j = 0; j < flowersPerTriangle; j++)
             {
+                // random point on the surface of the triangle
                 var p1p2 = p2 - p1;
                 var p1p32 = p3 - p1;
                 var particlePos = p1 + (p1p2 * Random.Range(0, 1f)) + (p1p32 * Random.Range(0, 1f));
@@ -111,11 +115,11 @@ public class TerrainFlowers : MonoBehaviour
                 particle.enabled = (particleIndex < numParticlesDesired) ? 1 : 0;
                 particle.size = flowerScale;
                 particle.seed = Random.Range(-0.06f, 0.06f);
-
+                // transform the position to take into account the mesh position and rotation
                 particle.position = transform.localToWorldMatrix.MultiplyPoint(particlePos);
-                particle.position += baseNormals[baseTriangles[i]] * flowerElevation;// Random.Range(0, flowerElevation));
-
-                particle.velocity = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
+                // push the position out along the normal
+                particle.position += baseNormals[baseTriangles[i]] * flowerElevation;
+                particle.velocity = Vector3.zero;
                 particle.colour = Color.white;
                 particle.texOffset = new Vector2(0, 0);
                 particles[particleIndex] = particle;
@@ -130,6 +134,8 @@ public class TerrainFlowers : MonoBehaviour
         particleBuffer.SetData(particles);
 
         // Initialise the quad compute buffer: 6 positions for rendering a quad made of two triangles
+        if (quadBuffer != null)
+            quadBuffer.Release();
         quadBuffer = new ComputeBuffer(6, QuadStride);
         quadBuffer.SetData(new[]
         {

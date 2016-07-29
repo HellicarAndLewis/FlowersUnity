@@ -173,15 +173,6 @@ public class ComputeParticleController : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(gameObject.transform.position, bounds);
-        if (particles != null)
-        {
-            foreach (var particle in particles)
-            {
-                //if (particle.enabled > 0)
-                    //DrawArrow.ForGizmo(particle.position, particle.velocity.normalized, Color.yellow, 0.5f);
-            }
-        }
-        
     }
 
     // ----------------------------------------------------------------------------------

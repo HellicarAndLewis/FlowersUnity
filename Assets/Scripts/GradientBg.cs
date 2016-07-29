@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GradientBg : MonoBehaviour
 {
-    public Camera mainCamera;
+    
     public Color topColor = Color.blue;
     public Color bottomColor = Color.white;
     public int gradientLayer = 7;
@@ -11,46 +11,37 @@ public class GradientBg : MonoBehaviour
     // --------------------------------------------------------------------------------------------------------
     //
     private Mesh mesh;
+    private Camera mainCam;
 
     // --------------------------------------------------------------------------------------------------------
     //
     void Awake()
     {
         if (!enabled) return;
-        gradientLayer = Mathf.Clamp(gradientLayer, 0, 31);
-        if (!mainCamera)
-        {
-            Debug.LogError("Must attach GradientBackground script to the camera");
-            return;
-        }
 
-        mainCamera.clearFlags = CameraClearFlags.Depth;
-        mainCamera.cullingMask = mainCamera.cullingMask & ~(1 << gradientLayer);
+        mainCam = FindObjectOfType<Camera>();
 
-        var gradientGO = new GameObject("Gradient Cam", typeof(Camera));
-        Camera gradientCam = gradientGO.GetComponent<Camera>();
-        gradientCam.depth = mainCamera.depth - 1;
-        gradientCam.cullingMask = 1 << gradientLayer;
+        var frustum = DisplayUtils.GetFrustumSizeAtZ(transform.position.z, mainCam);
+        var w = frustum.x;
+        var h = frustum.y;
 
         mesh = new Mesh();
         mesh.vertices = new Vector3[4]
-                        {new Vector3(-100f, .577f, 1f), new Vector3(100f, .577f, 1f), new Vector3(-100f, -.577f, 1f), new Vector3(100f, -.577f, 1f)};
-        mesh.colors = new Color[4] { topColor, topColor, bottomColor, bottomColor };
+                        {new Vector3(-w, h, 1f), new Vector3(w, h, 1f), new Vector3(-w, -h, 1f), new Vector3(w, -h, 1f)};
+        mesh.colors = new Color[4] { bottomColor, bottomColor, topColor, topColor, };
         mesh.triangles = new int[6] { 0, 1, 2, 1, 3, 2 };
 
         Shader shader = Shader.Find("Vertex Colour Only");
         Material mat = new Material(shader);
-        GameObject gradientPlane = new GameObject("Gradient Plane", typeof(MeshFilter), typeof(MeshRenderer));
 
-        gradientPlane.GetComponent<MeshFilter>().mesh = mesh;
-        gradientPlane.GetComponent<Renderer>().material = mat;
-        gradientPlane.layer = gradientLayer;
+        GetComponent<MeshFilter>().mesh = mesh;
+        GetComponent<Renderer>().material = mat;
     }
 
     // --------------------------------------------------------------------------------------------------------
     //
     void Update()
     {
-        mesh.colors = new Color[4] { topColor, topColor, bottomColor, bottomColor };
+        mesh.colors = new Color[4] { bottomColor, bottomColor, topColor, topColor, };
     }
 }

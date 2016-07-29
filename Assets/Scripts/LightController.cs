@@ -59,11 +59,6 @@ public class LightController : MonoBehaviour
 	//
 	void Update()
 	{
-		if(Input.GetKeyDown("1")) Preset(TerrainMode.Dawn);
-		if(Input.GetKeyDown("2")) Preset(TerrainMode.Daytime);
-		if(Input.GetKeyDown("3")) Preset(TerrainMode.Dusk);
-        if (Input.GetKeyDown("4")) Preset(TerrainMode.Night);
-
         if (sunLight) {
 			if(transitionElapsed < transitionTime) {
 				transitionElapsed += Time.deltaTime;
