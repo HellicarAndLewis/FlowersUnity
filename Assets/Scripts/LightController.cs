@@ -59,11 +59,6 @@ public class LightController : MonoBehaviour
 	//
 	void Update()
 	{
-		if(Input.GetKeyDown("1")) Preset(TerrainMode.Dawn);
-		if(Input.GetKeyDown("2")) Preset(TerrainMode.Daytime);
-		if(Input.GetKeyDown("3")) Preset(TerrainMode.Dusk);
-        if (Input.GetKeyDown("4")) Preset(TerrainMode.Night);
-
         if (sunLight) {
 			if(transitionElapsed < transitionTime) {
 				transitionElapsed += Time.deltaTime;
@@ -72,7 +67,7 @@ public class LightController : MonoBehaviour
 				progress = 1;
 			}
 
-            sunLight.intensity = onset.onsetTotal * 8.0f;
+            if (onset) sunLight.intensity = onset.onsetTotal * 8.0f;
 			
 			current.colour = Color.Lerp(previous.colour, target.colour, progress);
 			current.eulerAngle = Vector3.Lerp(previous.eulerAngle, target.eulerAngle, progress);

@@ -41,13 +41,16 @@ void CSMain(uint3 id : SV_DispatchThreadID)
 	// read particle data in from the buffer
 	float3 position = particles[i].position;
 	float enabled = particles[i].enabled;
+	float seed = particles[i].seed;
 
 	// ----------------------------------------------------------------------------------
 	// set the enabled/alpha to the noise value
-	enabled = GetNoise(float2(position.x, position.z), time) * alpha;
+	enabled = alpha;
+	seed = GetNoise(float2(position.x, position.z), time);
 
 	// ----------------------------------------------------------------------------------
 	// write the updated values back to the buffer
+	particles[i].seed = seed;
 	particles[i].position = position;
 	particles[i].enabled = enabled;
 }

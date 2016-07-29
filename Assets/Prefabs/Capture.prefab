@@ -60,7 +60,7 @@ MonoBehaviour:
   captureCamera: {fileID: 0}
   realtimeElapsed: 0
   frameRate: 25
-  crf: 15
+  crf: 23
   duration: 60
   showProcessWindow: 0
 --- !u!114 &114000011974415640

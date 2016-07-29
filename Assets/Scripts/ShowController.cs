@@ -23,6 +23,11 @@ public class ShowController : MonoBehaviour
     
 	void Update()
 	{
+        if (Input.GetKeyDown("1")) Preset(TerrainMode.Dawn);
+        if (Input.GetKeyDown("2")) Preset(TerrainMode.Daytime);
+        if (Input.GetKeyDown("3")) Preset(TerrainMode.Dusk);
+        if (Input.GetKeyDown("4")) Preset(TerrainMode.Night);
+
         if (Input.GetKeyDown("q")) GoToMode(ShowMode.Nsdos);
         if (Input.GetKeyDown("w")) GoToMode(ShowMode.Blank);
         if (Input.GetKeyDown("e")) GoToMode(ShowMode.Terrain);
@@ -43,6 +48,16 @@ public class ShowController : MonoBehaviour
         {
             //SceneManager.LoadScene("Terrain");
             sceneFade.EndScene("Terrain");
+        }
+    }
+
+    public void Preset(TerrainMode mode)
+    {
+        FindObjectOfType<LightController>().Preset(mode);
+        var terrains = FindObjectsOfType<TerrainBlendDeformer>();
+        foreach (var terrain in terrains)
+        {
+            terrain.Preset(mode);
         }
     }
 }

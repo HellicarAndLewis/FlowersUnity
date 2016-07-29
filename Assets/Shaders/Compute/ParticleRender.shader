@@ -32,11 +32,10 @@ Shader "Custom/ParticleRender" {
 
 				StructuredBuffer<ParticleData> particles;
 				StructuredBuffer<float3> quadPoints;
-
 				sampler2D _MainTex;
 				float4 texBounds;
-
 				float4 _Color;
+				int revealType;
 
 				// ----------------------------------------------------------
 				struct v2f
@@ -67,36 +66,42 @@ Shader "Custom/ParticleRender" {
 					float3 worldPosition = particles[inst].position;
 					float size = particles[inst].size;
 					float3 quadPoint = quadPoints[id];
+					float angle = particles[inst].seed * 3;
 
 					// Quad deform for blossom effect (WIP)
-					// deform all for uniform shrink/grow
-					// 14  : TR & BL
-					//if (id == 1 || id == 4)
 					// 123 : RIGHT
-					if (id == 1 || id == 2 || id == 3)
-					// 015 : TOP
-					//if (id == 0 || id == 1 || id == 5)
-					// 054 : LEFT
-					//if (id == 0 || id == 4 || id == 5)
-					// 432 : BOTTOM
-					//if (id == 4 || id == 3 || id == 2)
+					if (revealType == 1 && (id == 1 || id == 2 || id == 3))
 					{
 						//quadPoint.z = (1 - particles[inst].enabled) * -0.5;
 						float sinX = sin((1 - particles[inst].enabled) * 3);
 						float cosX = cos((1 - particles[inst].enabled) * 3);
 						float2x2 rotationMatrix = float2x2(cosX, -sinX, sinX, cosX);
 						quadPoint.xy = mul(quadPoint.xy, rotationMatrix);
+						quadPoint *= particles[inst].enabled;
+						quadPoint *= size;
 					}
-					quadPoint *= particles[inst].enabled;
-					quadPoint *= size;
+					else if (revealType == 2)
+					{
+						if (id == 0 || id == 1 || id == 5)
+							quadPoint.y *= ((particles[inst].enabled * 2) - 1);
+						quadPoint *= particles[inst].enabled;
+						quadPoint *= size;
+						quadPoint.y += (0.5 * size * particles[inst].enabled);
+					}
+					else if (revealType == 3)
+					{
+						quadPoint *= size * particles[inst].enabled * ((particles[inst].seed * 0.5) + 0.5);
+						angle = ((particles[inst].seed * 2) - 1) * 0.6;
+					}
 
+					
 					// set vertex position using projection and view matrices and the quad point
 					o.pos = mul(UNITY_MATRIX_P, mul(UNITY_MATRIX_V, float4(worldPosition, 1.0f)) + float4(quadPoint, 0.0f));
 
 					// Rotate the texture coordinates around the z axis
 					//float2 uvPoint = quadPoints[id];
-					float sinX = sin(particles[inst].seed * 3);
-					float cosX = cos(particles[inst].seed * 3);
+					float sinX = sin(angle);
+					float cosX = cos(angle);
 					float2x2 rotationMatrix = float2x2(cosX, -sinX, sinX, cosX);
 					float2 uvPoint = mul(quadPoints[id], rotationMatrix);
 

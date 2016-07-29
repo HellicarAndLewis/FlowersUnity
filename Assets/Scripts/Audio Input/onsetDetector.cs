@@ -37,9 +37,9 @@ public class onsetDetector : MonoBehaviour {
         lastSpectrum = new float[1024];
         currentSpectrum = new float[1024];
         spectralFlux = new Queue(lookBackWindow);
-        spectralFluxBass = new Queue(lookBackWindow);
-        spectralFluxMid = new Queue(lookBackWindow);
-        spectralFluxTreble = new Queue(lookBackWindow);
+        spectralFluxBass = new Queue(lookBackWindow/3);
+        spectralFluxMid = new Queue(lookBackWindow/3);
+        spectralFluxTreble = new Queue(lookBackWindow/3);
     }
 
     // Update is called once per frame

@@ -1,35 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 
-/// <summary>
-/// Manages terrain mesh and animation
-/// </summary>
-public class TerrainController : MonoBehaviour
+public class TerrainFlowers : MonoBehaviour
 {
 
-	// --------------------------------------------------------------------------------------------------------
-	//
-	public Terrain terrain;
-    public MeshFilter baseMesh;
-    public Material meshMaterial;
-    [Range(0, 1)]
-    public float terrainScale = 1;
-    [Range(0.1f, 2)]
-    public float timeScale = 1;
-    [Range(0.001f, 0.006f)]
-	public float noiseInScale = 0.001f;
-    [Range(0, 30)]
-    public float noiseOutScale = 2f;
-
-    [Range(0.01f, 0.001f)]
+    //[Range(0.01f, 0.001f)]
     public float flowerNoisePositionScale = 0.01f;
-    [Range(1, 10)]
+    //[Range(1, 10)]
     public float flowerNoisePositionMult = 1f;
     [Range(0, 1)]
     public float flowerNoiseTimeScale = 0.1f;
     [Range(0, 1)]
     public float flowerAlpha = 1f;
+    [Range(0, 20)]
+    public float flowerScale = 1f;
+    [Range(0, 20)]
+    public float flowerElevation = 0f;
     public bool flowersEnabled = true;
+    public int flowersPerTriangle = 1;
 
     // Compute particles
     public ComputeShader particleComputeShader;
@@ -37,7 +26,7 @@ public class TerrainController : MonoBehaviour
     private ComputeParticleData[] particles;
     private int numParticles = 1000;
     private int numParticlesDesired = 0;
-    private int particleUpdateKernel;
+    private int particleUpdateKernel = -1;
     private const int GroupSize = 128;
     // Render particles
     public Material particleMaterial;
@@ -47,53 +36,34 @@ public class TerrainController : MonoBehaviour
 
     // --------------------------------------------------------------------------------------------------------
     //
-    private TerrainData terrainData;
-	private MeshFilter meshFilter;
-	private Mesh mesh;
-	private Vector3[] baseVertices;
-	private Vector3[] baseNormals;
-	private float[] noiseSeeds;
+    private MeshFilter meshFilter;
+    private Vector3[] baseVertices;
+    private Vector3[] baseNormals;
+    private int[] baseTriangles;
 
+    // --------------------------------------------------------------------------------------------------------
+    //
+    void Start()
+    {
+        Init();
+    }
 
-	// --------------------------------------------------------------------------------------------------------
-	//
-	void Start()
-	{
-        if (!terrain && !baseMesh) {
-			Debug.LogError("You need to set a terrain or mesh filter");
-		}
-        if (terrain)
+    public void Init()
+    {
+        meshFilter = GetComponent<MeshFilter>();
+        if (!meshFilter)
         {
-            terrainData = terrain.terrainData;
-            mesh = TerrainToMesh.Generate(terrainData, terrain.GetPosition());
-            terrain.enabled = false;
+            Debug.LogError("TerrainFlowers script requires a mesh filter on the same game object");
+            return;
         }
-        else if (baseMesh)
-        {
-            mesh = baseMesh.mesh;
-            baseMesh.gameObject.SetActive(false);
-        }
-		
-		baseVertices = mesh.vertices;
-		baseNormals = mesh.normals;
-		meshFilter = GetComponent<MeshFilter>();
-		meshFilter.mesh = mesh;
-        
-        /*
-		noiseSeeds = new float[baseVertices.Length];
-		for(int i = 0; i < baseVertices.Length; i++) {
-			Vector3 noiseIn = baseVertices[i] * noiseInScale;
-			float noise = Mathf.PerlinNoise(noiseIn.x, noiseIn.z) * 10;
-			noiseSeeds[i] = noise;
-		}
-        */
-        Debug.Log(baseVertices.Length);
-        
+        var mesh = meshFilter.mesh;
+        baseVertices = mesh.vertices;
+        baseNormals = mesh.normals;
+        baseTriangles = mesh.triangles;
         InitParticles();
 
     }
 
-    
     void InitParticles()
     {
         if (!SystemInfo.supportsComputeShaders)
@@ -103,7 +73,7 @@ public class TerrainController : MonoBehaviour
         }
 
         // find and set the particle compute shader kernal
-        particleUpdateKernel = particleComputeShader.FindKernel("CSMain");
+        if (particleUpdateKernel == -1) particleUpdateKernel = particleComputeShader.FindKernel("CSMain");
         if (particleUpdateKernel == -1)
         {
             Debug.LogError("Failed to find CSMain kernel in ParticleController.Start()");
@@ -112,38 +82,60 @@ public class TerrainController : MonoBehaviour
 
         // Number of particles needs to be divisible by GroupSize
         // Store the original desired number of particles
-        numParticles = baseVertices.Length;
+        numParticles = (baseTriangles.Length / 3) * flowersPerTriangle;
         numParticlesDesired = numParticles;
         numParticles = Mathf.CeilToInt(numParticles / (float)GroupSize) * GroupSize;
 
         // create the compute buffer with the particle count
         // and the particle data stride which is the size of each element in the buffer
+        if (particleBuffer != null)
+            particleBuffer.Release();
         particleBuffer = new ComputeBuffer(numParticles, ComputeParticleConstants.ParticleDataStride);
 
         // Create an array of ParticleData
         particles = new ComputeParticleData[numParticles];
 
         // Set some initial values
-        for (var i = 0; i < numParticles; i++)
+        int particleIndex = 0;
+        for (var i = 0; i < baseTriangles.Length; i += 3)
         {
-            var particle = particles[i];
-            particle.enabled = (i < numParticlesDesired) ? 1 : 0;
-            particle.size = 15;// Random.Range(6, 6);
-            particle.seed = 0;
-            if (i < baseVertices.Length)
-                particle.position = transform.position + baseVertices[i] + (baseNormals[i] * Random.Range(2, 6)) + new Vector3(Random.Range(0,2),Random.Range(0, 2),0);
-            else
-                particle.position = new Vector3(-999, 0, 0);
-            particle.velocity = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
-            particle.colour = Color.white;
-            particle.texOffset = new Vector2(0, 0);
-            particles[i] = particle;
+            // points for this triangle
+            var p1 = baseVertices[baseTriangles[i]];
+            var p2 = baseVertices[baseTriangles[i + 1]];
+            var p3 = baseVertices[baseTriangles[i + 2]];
+            // draw multiple flowers per triangle for denser coverage
+            for (int j = 0; j < flowersPerTriangle; j++)
+            {
+                // random point on the surface of the triangle
+                var p1p2 = p2 - p1;
+                var p1p32 = p3 - p1;
+                var particlePos = p1 + (p1p2 * Random.Range(0, 1f)) + (p1p32 * Random.Range(0, 1f));
+
+                var particle = particles[particleIndex];
+                particle.enabled = (particleIndex < numParticlesDesired) ? 1 : 0;
+                particle.size = flowerScale;
+                particle.seed = Random.Range(-0.06f, 0.06f);
+                // transform the position to take into account the mesh position and rotation
+                particle.position = transform.localToWorldMatrix.MultiplyPoint(particlePos);
+                // push the position out along the normal
+                particle.position += baseNormals[baseTriangles[i]] * flowerElevation;
+                particle.velocity = Vector3.zero;
+                particle.colour = Color.white;
+                particle.texOffset = new Vector2(0, 0);
+                particles[particleIndex] = particle;
+
+                particleIndex++;
+            }
+
         }
 
         // set the initial values in the buffer
+        particles.OrderBy(particle => particle.position.z);
         particleBuffer.SetData(particles);
 
         // Initialise the quad compute buffer: 6 positions for rendering a quad made of two triangles
+        if (quadBuffer != null)
+            quadBuffer.Release();
         quadBuffer = new ComputeBuffer(6, QuadStride);
         quadBuffer.SetData(new[]
         {
@@ -156,29 +148,14 @@ public class TerrainController : MonoBehaviour
         });
 
     }
-    
-	
-	// --------------------------------------------------------------------------------------------------------
-	//
-	void Update()
-	{
+
+
+    // --------------------------------------------------------------------------------------------------------
+    //
+    void Update()
+    {
         if (flowersEnabled) UpdateParticles();
 
-        Mesh mesh = meshFilter.mesh;
-		Vector3[] vertices = mesh.vertices;
-		int i = 0;
-		float scaledTime = CaptureTime.Elapsed * timeScale;
-		while(i < vertices.Length) {
-            Vector3 noiseIn = baseVertices[i] * noiseInScale;
-			float noise = Mathf.PerlinNoise(noiseIn.x, noiseIn.z) * 10;
-			noise = Mathf.PerlinNoise(noise, scaledTime) - 0.5f;
-			vertices[i] = baseVertices[i] + (baseNormals[i] * (noise * noiseOutScale));
-            vertices[i].y *= terrainScale;
-            i++;
-		}
-		mesh.vertices = vertices;
-		mesh.RecalculateNormals();
-        
     }
 
     // ----------------------------------------------------------------------------------
@@ -223,6 +200,7 @@ public class TerrainController : MonoBehaviour
             particleMaterial.SetBuffer("particles", particleBuffer);
             particleMaterial.SetBuffer("quadPoints", quadBuffer);
             particleMaterial.SetVector("texBounds", new Vector4(1, 1, 0, 0));
+            particleMaterial.SetInt("revealType", 3);
             particleMaterial.SetPass(0);
             Graphics.DrawProcedural(MeshTopology.Triangles, 6, numParticles);
         }
