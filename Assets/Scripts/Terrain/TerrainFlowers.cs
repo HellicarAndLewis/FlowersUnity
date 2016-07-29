@@ -1,23 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-/// <summary>
-/// Manages terrain mesh and animation
-/// </summary>
-public class TerrainController : MonoBehaviour
+public class TerrainFlowers : MonoBehaviour
 {
-
-	// --------------------------------------------------------------------------------------------------------
-	//
-    public MeshFilter baseMesh;
-    [Range(0, 1)]
-    public float terrainScale = 1;
-    [Range(0.1f, 2)]
-    public float timeScale = 1;
-    [Range(0.001f, 0.006f)]
-	public float noiseInScale = 0.001f;
-    [Range(0, 30)]
-    public float noiseOutScale = 2f;
 
     //[Range(0.01f, 0.001f)]
     public float flowerNoisePositionScale = 0.01f;
@@ -50,50 +35,34 @@ public class TerrainController : MonoBehaviour
 
     // --------------------------------------------------------------------------------------------------------
     //
-	private MeshFilter meshFilter;
-	private Mesh mesh;
-	private Vector3[] baseVertices;
-	private Vector3[] baseNormals;
+    private MeshFilter meshFilter;
+    private Vector3[] baseVertices;
+    private Vector3[] baseNormals;
     private int[] baseTriangles;
-    private float[] noiseSeeds;
 
+    // --------------------------------------------------------------------------------------------------------
+    //
+    void Start()
+    {
+        Init();
+    }
 
-	// --------------------------------------------------------------------------------------------------------
-	//
-	void Start()
-	{
-        if (!baseMesh) {
-			Debug.LogError("You need to set a mesh filter");
-            return;
-		}
-        mesh = baseMesh.mesh;
-        baseMesh.gameObject.SetActive(false);
-        
-		baseVertices = mesh.vertices;
-		baseNormals = mesh.normals;
-        baseTriangles = mesh.triangles;
+    public void Init()
+    {
         meshFilter = GetComponent<MeshFilter>();
-        if (!meshFilter) meshFilter = gameObject.AddComponent<MeshFilter>();
-        if (!GetComponent<MeshRenderer>()) gameObject.AddComponent<MeshRenderer>();
-
-        meshFilter.mesh = mesh;
-        
-
-        /*
-		noiseSeeds = new float[baseVertices.Length];
-		for(int i = 0; i < baseVertices.Length; i++) {
-			Vector3 noiseIn = baseVertices[i] * noiseInScale;
-			float noise = Mathf.PerlinNoise(noiseIn.x, noiseIn.z) * 10;
-			noiseSeeds[i] = noise;
-		}
-        */
-        Debug.Log(baseVertices.Length);
-        
+        if (!meshFilter)
+        {
+            Debug.LogError("TerrainFlowers script requires a mesh filter on the same game object");
+            return;
+        }
+        var mesh = meshFilter.mesh;
+        baseVertices = mesh.vertices;
+        baseNormals = mesh.normals;
+        baseTriangles = mesh.triangles;
         InitParticles();
 
     }
 
-    
     void InitParticles()
     {
         if (!SystemInfo.supportsComputeShaders)
@@ -112,7 +81,7 @@ public class TerrainController : MonoBehaviour
 
         // Number of particles needs to be divisible by GroupSize
         // Store the original desired number of particles
-        numParticles = (baseTriangles.Length/3) * flowersPerTriangle;
+        numParticles = (baseTriangles.Length / 3) * flowersPerTriangle;
         numParticlesDesired = numParticles;
         numParticles = Mathf.CeilToInt(numParticles / (float)GroupSize) * GroupSize;
 
@@ -125,7 +94,7 @@ public class TerrainController : MonoBehaviour
 
         // Set some initial values
         int particleIndex = 0;
-        for (var i = 0; i < baseTriangles.Length; i+=3)
+        for (var i = 0; i < baseTriangles.Length; i += 3)
         {
             var p1 = baseVertices[baseTriangles[i]];
             var p2 = baseVertices[baseTriangles[i + 1]];
@@ -152,7 +121,7 @@ public class TerrainController : MonoBehaviour
 
                 particleIndex++;
             }
-            
+
         }
 
         // set the initial values in the buffer
@@ -171,29 +140,14 @@ public class TerrainController : MonoBehaviour
         });
 
     }
-    
-	
-	// --------------------------------------------------------------------------------------------------------
-	//
-	void Update()
-	{
+
+
+    // --------------------------------------------------------------------------------------------------------
+    //
+    void Update()
+    {
         if (flowersEnabled) UpdateParticles();
 
-        Mesh mesh = meshFilter.mesh;
-		Vector3[] vertices = mesh.vertices;
-		int i = 0;
-		float scaledTime = CaptureTime.Elapsed * timeScale;
-		while(i < vertices.Length) {
-            Vector3 noiseIn = baseVertices[i] * noiseInScale;
-			float noise = Mathf.PerlinNoise(noiseIn.x, noiseIn.z) * 10;
-			noise = Mathf.PerlinNoise(noise, scaledTime) - 0.5f;
-			vertices[i] = baseVertices[i] + (baseNormals[i] * (noise * noiseOutScale));
-            vertices[i].y *= terrainScale;
-            i++;
-		}
-		mesh.vertices = vertices;
-		mesh.RecalculateNormals();
-        
     }
 
     // ----------------------------------------------------------------------------------
