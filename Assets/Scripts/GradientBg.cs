@@ -35,7 +35,7 @@ public class GradientBg : MonoBehaviour
         scale.y = 0.6f;
         transform.localScale = scale;
         var pos = transform.position;
-        pos.y = frustum.y * -0.4f;
+        pos.y = frustum.y * -0.5f;
         transform.position = pos;
 
         Shader shader = Shader.Find("Vertex Colour Only");

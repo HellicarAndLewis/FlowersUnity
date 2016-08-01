@@ -11,7 +11,7 @@ public class LightPreset
 /// <summary>
 /// Simple controller for lerping between light presets
 /// </summary>
-public class LightController : MonoBehaviour
+public class LightController : AnimatedController
 {
 	// --------------------------------------------------------------------------------------------------------
 	//
@@ -29,8 +29,10 @@ public class LightController : MonoBehaviour
 
 	// --------------------------------------------------------------------------------------------------------
 	//
-	void Start()
+	override protected void Start()
 	{
+        base.Start();
+
 		if(!sunLight)
 			sunLight = FindObjectOfType<Light>();
 
@@ -55,10 +57,13 @@ public class LightController : MonoBehaviour
 		Preset(TerrainMode.Daytime);
 	}
 
-	// --------------------------------------------------------------------------------------------------------
-	//
-	void Update()
+    // --------------------------------------------------------------------------------------------------------
+    //
+    override protected void Update()
 	{
+        base.Update();
+
+        /*
         if (sunLight) {
 			if(transitionElapsed < transitionTime) {
 				transitionElapsed += Time.deltaTime;
@@ -77,6 +82,7 @@ public class LightController : MonoBehaviour
 			rotation.eulerAngles = current.eulerAngle;
 			sunLight.transform.localRotation = rotation;
 		}
+        */
 	}
 
 	// --------------------------------------------------------------------------------------------------------

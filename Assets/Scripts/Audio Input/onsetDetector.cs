@@ -13,7 +13,7 @@ public class onsetDetector : MonoBehaviour {
     public float[] currentSpectrum;
     [Range(1.0f, 5.0f)]
     public float cutoff;
-    [HideInInspector]
+    //[HideInInspector]
     public float onsetTotal;
     [HideInInspector]
     public float onsetBass;
@@ -34,12 +34,12 @@ public class onsetDetector : MonoBehaviour {
     // Use this for initialization
     void Start () {
         if (!fft) fft = GetComponent<fftAnalyzer>();
-        lastSpectrum = new float[1024];
-        currentSpectrum = new float[1024];
+        lastSpectrum = new float[512];
+        currentSpectrum = new float[lastSpectrum.Length];
         spectralFlux = new Queue(lookBackWindow);
-        spectralFluxBass = new Queue(lookBackWindow/3);
-        spectralFluxMid = new Queue(lookBackWindow/3);
-        spectralFluxTreble = new Queue(lookBackWindow/3);
+        spectralFluxBass = new Queue(lookBackWindow);
+        spectralFluxMid = new Queue(lookBackWindow);
+        spectralFluxTreble = new Queue(lookBackWindow);
     }
 
     // Update is called once per frame
@@ -72,13 +72,13 @@ public class onsetDetector : MonoBehaviour {
         float confidence = CalculateSpectrum(flux, spectralFlux, lookBackWindow, 1);
         onsetTotal = getConfidenceSmoothed(confidence, onsetTotal);
 
-        confidence = CalculateSpectrum(fluxBass, spectralFluxBass, lookBackWindow/3, 2);
+        confidence = CalculateSpectrum(fluxBass, spectralFluxBass, lookBackWindow, 2);
         onsetBass = getConfidenceSmoothed(confidence, onsetBass);
 
-        confidence = CalculateSpectrum(fluxMid, spectralFluxMid, lookBackWindow/3, 3);
+        confidence = CalculateSpectrum(fluxMid, spectralFluxMid, lookBackWindow, 3);
         onsetMid = getConfidenceSmoothed(confidence, onsetMid);
 
-        confidence = CalculateSpectrum(fluxMid, spectralFluxTreble, lookBackWindow/3, 4);
+        confidence = CalculateSpectrum(fluxMid, spectralFluxTreble, lookBackWindow, 4);
         onsetTreble = getConfidenceSmoothed(confidence, onsetTreble);
 
         currentSpectrum.CopyTo(lastSpectrum, 0);
