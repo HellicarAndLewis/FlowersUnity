@@ -41,6 +41,7 @@ public class ShowController : AnimatedController
         {
             controller.PlayNormalised(terrainTime);
         }
+        if (Input.GetKeyDown("r")) resumePlayback = true;
         UpdateTerrainMode();
 
         if (Input.GetKeyDown("1")) Preset(TerrainMode.Intro);

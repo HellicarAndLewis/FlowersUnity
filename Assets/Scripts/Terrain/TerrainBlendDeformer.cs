@@ -10,13 +10,6 @@ public class TerrainBlendDeformer : TerrainDeformer
 	// --------------------------------------------------------------------------------------------------------
 	//
     public SkinnedMeshRenderer baseSkinnedMesh;
-    public BlendPreset[] blendPresets = new BlendPreset[5];
-    public int blendPresetIndex = 0;
-    public int previousBlendPresetIndex = 0;
-    public BlendPreset activePreset = new BlendPreset();
-
-    public float blendTime = 0;
-    public float blendDuration = 2;
 
     // --------------------------------------------------------------------------------------------------------
     // Blend specific
@@ -49,42 +42,17 @@ public class TerrainBlendDeformer : TerrainDeformer
         if (!GetComponent<MeshRenderer>()) gameObject.AddComponent<MeshRenderer>();
         meshFilter.mesh = mesh;
         Debug.Log("TerrainBlendDeformer, verts: " + baseVertices.Length);
-
-        for (int i = 0; i < blendPresets.Length; i++)
-        {
-            if (blendPresets[i] == null)
-            {
-                blendPresets[i] = new BlendPreset();
-                blendPresets[i].blendWeights[i] = 100;
-            }
-        }
-
+        
         flowers = gameObject.GetComponent<TerrainFlowers>();
-
     }
 
     public override void Preset(TerrainMode mode, float duration = -1)
     {
         var index = (int)mode;
+        if (index == blendPresetIndex) return;
+
+        base.Preset(mode, duration);
         state = State.PreBlend;
-
-        GetComponent<Renderer>().material = blendPresets[index].material;
-        if (index > blendPresetIndex)
-        {
-            // next preset is higher, need to fade the prior material up
-            texBlendTarget = 1;
-            texBlendPrevious = 0;
-            if (index > 0) GetComponent<Renderer>().material = blendPresets[index - 1].material;
-        }
-        else
-        {
-            // next preset is lower, fade down to it
-            texBlendTarget = 0;
-            texBlendPrevious = 1;
-        }
-        GetComponent<Renderer>().material.SetFloat("_Blend", texBlendPrevious);
-
-        blendPresetIndex = index;
     }
 
     // --------------------------------------------------------------------------------------------------------
@@ -133,24 +101,20 @@ public class TerrainBlendDeformer : TerrainDeformer
 
     // --------------------------------------------------------------------------------------------------------
     //
-    void UpdateBlend()
+    override protected void UpdateBlend()
     {
-        blendTime += CaptureTime.Delta;
-        bool isComplete = (blendTime > blendDuration);
-        float progress = blendTime / blendDuration;
+        base.UpdateBlend();
+
         var previousPreset = blendPresets[previousBlendPresetIndex];
         var targetPreset = blendPresets[blendPresetIndex];
+        bool isComplete = (blendTime > blendDuration);
 
+        float progress = blendTime / blendDuration;
         for (int i = 0; i < 3; i++)
         {
             activePreset.Lerp(i, previousPreset.blendWeights[i], targetPreset.blendWeights[i], progress);
             baseSkinnedMesh.SetBlendShapeWeight(i, activePreset.blendWeights[i]);
         }
-
-        activePreset.texBlend = Mathf.Lerp(texBlendPrevious, texBlendTarget, progress);
-
-        var material = GetComponent<Renderer>().material;
-        material.SetFloat("_Blend", activePreset.texBlend);
 
         baseSkinnedMesh.BakeMesh(mesh);
         meshFilter.mesh = mesh;
@@ -164,6 +128,7 @@ public class TerrainBlendDeformer : TerrainDeformer
             baseNormals = mesh.normals;
             noiseOutScaleTransition = 0;
             state = State.PostBlend;
+
             if (flowers)
                 flowers.Init();
         }

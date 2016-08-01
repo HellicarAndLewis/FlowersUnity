@@ -428,6 +428,153 @@ Transform:
   - {fileID: 1336186498}
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!1 &509915829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 509915830}
+  - 114: {fileID: 509915831}
+  - 114: {fileID: 509915832}
+  - 33: {fileID: 509915834}
+  - 23: {fileID: 509915833}
+  m_Layer: 0
+  m_Name: Hero Rock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &509915830
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 509915829}
+  m_LocalRotation: {x: -0, y: -0.51601017, z: -0, w: 0.85658246}
+  m_LocalPosition: {x: 0, y: 5, z: 14.439941}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: -62.13, z: 0}
+  m_Children:
+  - {fileID: 1177453588}
+  m_Father: {fileID: 1397962699}
+  m_RootOrder: 0
+--- !u!114 &509915831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 509915829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2f4a393607d3be4a83dbd07256e0807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rock: {fileID: 509915829}
+  speed: 0.175
+--- !u!114 &509915832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 509915829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40738722fd4e5469eb0419ef1a938350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseMesh: {fileID: 1177453592}
+  terrainScale: 1
+  timeScale: 0
+  posNoiseInScale: 0.25
+  posNoiseOutScale: 10
+  noiseOutScale: {x: 0.5, y: 0.5, z: 0.5}
+  blendPresets:
+  - blendWeights:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    material: {fileID: 2100000, guid: 246ce721f72da49bcbae9983610b4c21, type: 2}
+  - blendWeights:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    material: {fileID: 2100000, guid: 0d2bde0d3a4192d479988ca0b9e8faca, type: 2}
+  - blendWeights:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    material: {fileID: 2100000, guid: 37627ba1626918d4e9412b710d728250, type: 2}
+  - blendWeights:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    material: {fileID: 2100000, guid: b14a63ecce4dcc94cb21ad6071f7b501, type: 2}
+  - blendWeights:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    material: {fileID: 2100000, guid: b14a63ecce4dcc94cb21ad6071f7b501, type: 2}
+  blendPresetIndex: 0
+  previousBlendPresetIndex: 0
+  activePreset:
+    blendWeights:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    material: {fileID: 0}
+  blendTime: 0
+  blendDuration: 2
+--- !u!23 &509915833
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 509915829}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 246ce721f72da49bcbae9983610b4c21, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedWireframeHidden: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &509915834
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 509915829}
+  m_Mesh: {fileID: 0}
 --- !u!1 &527833383
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,11 +689,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseMesh: {fileID: 0}
   terrainScale: 1
-  timeScale: 0.4
-  posNoiseInScale: 0.001
+  timeScale: 0
+  posNoiseInScale: 0.287
   posNoiseOutScale: 10
-  noiseOutScale: {x: 0.01, y: 0.1, z: 0.01}
-  baseSkinnedMesh: {fileID: 1163155839}
+  noiseOutScale: {x: 0.3, y: 0.8, z: 0.3}
   blendPresets:
   - blendWeights:
     - 128
@@ -554,7 +700,6 @@ MonoBehaviour:
     - 175
     - 0
     - 0
-    texBlend: 0
     material: {fileID: 2100000, guid: 246ce721f72da49bcbae9983610b4c21, type: 2}
   - blendWeights:
     - 0
@@ -562,7 +707,6 @@ MonoBehaviour:
     - 0
     - 0
     - 0
-    texBlend: 0
     material: {fileID: 2100000, guid: 0d2bde0d3a4192d479988ca0b9e8faca, type: 2}
   - blendWeights:
     - 0
@@ -570,7 +714,6 @@ MonoBehaviour:
     - 100
     - 0
     - 0
-    texBlend: 1
     material: {fileID: 2100000, guid: 37627ba1626918d4e9412b710d728250, type: 2}
   - blendWeights:
     - 0
@@ -578,7 +721,6 @@ MonoBehaviour:
     - 50
     - 0
     - 0
-    texBlend: 1
     material: {fileID: 2100000, guid: b14a63ecce4dcc94cb21ad6071f7b501, type: 2}
   - blendWeights:
     - 128
@@ -586,7 +728,6 @@ MonoBehaviour:
     - 175
     - 0
     - 0
-    texBlend: 0
     material: {fileID: 2100000, guid: b14a63ecce4dcc94cb21ad6071f7b501, type: 2}
   blendPresetIndex: 0
   previousBlendPresetIndex: 0
@@ -597,10 +738,10 @@ MonoBehaviour:
     - 0
     - 0
     - 0
-    texBlend: 0
     material: {fileID: 0}
   blendTime: 0
   blendDuration: 2
+  baseSkinnedMesh: {fileID: 1163155839}
   state: 0
 --- !u!4 &666276422
 Transform:
@@ -896,7 +1037,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400204, guid: a79c07729ff4a024e9870a1370ed54b9, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400180, guid: a79c07729ff4a024e9870a1370ed54b9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1218,7 +1359,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400204, guid: a79c07729ff4a024e9870a1370ed54b9, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 400180, guid: a79c07729ff4a024e9870a1370ed54b9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1625,7 +1766,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400204, guid: a79c07729ff4a024e9870a1370ed54b9, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400180, guid: a79c07729ff4a024e9870a1370ed54b9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1748,7 +1889,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1397962699}
+    m_TransformParent: {fileID: 509915830}
     m_Modifications:
     - target: {fileID: 400000, guid: ec888740918388c4ba8d446edf67d47a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1756,11 +1897,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec888740918388c4ba8d446edf67d47a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec888740918388c4ba8d446edf67d47a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.439941
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec888740918388c4ba8d446edf67d47a, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1768,7 +1909,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec888740918388c4ba8d446edf67d47a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.51601017
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec888740918388c4ba8d446edf67d47a, type: 3}
       propertyPath: m_LocalRotation.z
@@ -1776,7 +1917,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec888740918388c4ba8d446edf67d47a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.85658246
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ec888740918388c4ba8d446edf67d47a, type: 3}
       propertyPath: m_RootOrder
@@ -1802,6 +1943,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300014, guid: ec888740918388c4ba8d446edf67d47a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ec888740918388c4ba8d446edf67d47a, type: 3}
   m_IsPrefabParent: 0
@@ -1819,13 +1964,18 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1177453589}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2f4a393607d3be4a83dbd07256e0807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rock: {fileID: 1177453589}
   speed: 0.175
+--- !u!33 &1177453592 stripped
+MeshFilter:
+  m_PrefabParentObject: {fileID: 3300014, guid: ec888740918388c4ba8d446edf67d47a,
+    type: 3}
+  m_PrefabInternal: {fileID: 1177453587}
 --- !u!1 &1336186497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1908,11 +2058,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseMesh: {fileID: 0}
   terrainScale: 1
-  timeScale: 0.4
-  posNoiseInScale: 0.001
+  timeScale: 0
+  posNoiseInScale: 0.287
   posNoiseOutScale: 10
-  noiseOutScale: {x: 0.01, y: 0.1, z: 0.01}
-  baseSkinnedMesh: {fileID: 303716327}
+  noiseOutScale: {x: 0.3, y: 0.8, z: 0.3}
   blendPresets:
   - blendWeights:
     - 48
@@ -1920,7 +2069,6 @@ MonoBehaviour:
     - 68
     - 0
     - 0
-    texBlend: 0
     material: {fileID: 2100000, guid: 246ce721f72da49bcbae9983610b4c21, type: 2}
   - blendWeights:
     - 0
@@ -1928,7 +2076,6 @@ MonoBehaviour:
     - 0
     - 0
     - 0
-    texBlend: 0
     material: {fileID: 2100000, guid: 0d2bde0d3a4192d479988ca0b9e8faca, type: 2}
   - blendWeights:
     - 0
@@ -1936,7 +2083,6 @@ MonoBehaviour:
     - 100
     - 0
     - 0
-    texBlend: 1
     material: {fileID: 2100000, guid: 37627ba1626918d4e9412b710d728250, type: 2}
   - blendWeights:
     - 0
@@ -1944,7 +2090,6 @@ MonoBehaviour:
     - 50
     - 0
     - 0
-    texBlend: 1
     material: {fileID: 2100000, guid: b14a63ecce4dcc94cb21ad6071f7b501, type: 2}
   - blendWeights:
     - 48
@@ -1952,7 +2097,6 @@ MonoBehaviour:
     - 68
     - 0
     - 0
-    texBlend: 0
     material: {fileID: 2100000, guid: b14a63ecce4dcc94cb21ad6071f7b501, type: 2}
   blendPresetIndex: 0
   previousBlendPresetIndex: 0
@@ -1963,10 +2107,10 @@ MonoBehaviour:
     - 0
     - 0
     - 0
-    texBlend: 0
     material: {fileID: 0}
   blendTime: 0
   blendDuration: 2
+  baseSkinnedMesh: {fileID: 303716327}
   state: 0
 --- !u!114 &1336186502
 MonoBehaviour:
@@ -2122,7 +2266,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1177453588}
+  - {fileID: 509915830}
   - {fileID: 780585580}
   - {fileID: 1087227813}
   - {fileID: 977195068}
@@ -2256,6 +2400,54 @@ MonoBehaviour:
   posNoiseInScale: 0.001
   posNoiseOutScale: 10
   noiseOutScale: {x: 0, y: 0, z: 0}
+  blendPresets:
+  - blendWeights:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    material: {fileID: 2100000, guid: 246ce721f72da49bcbae9983610b4c21, type: 2}
+  - blendWeights:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    material: {fileID: 2100000, guid: 0d2bde0d3a4192d479988ca0b9e8faca, type: 2}
+  - blendWeights:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    material: {fileID: 2100000, guid: 37627ba1626918d4e9412b710d728250, type: 2}
+  - blendWeights:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    material: {fileID: 2100000, guid: b14a63ecce4dcc94cb21ad6071f7b501, type: 2}
+  - blendWeights:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    material: {fileID: 2100000, guid: b14a63ecce4dcc94cb21ad6071f7b501, type: 2}
+  blendPresetIndex: 0
+  previousBlendPresetIndex: 0
+  activePreset:
+    blendWeights:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    material: {fileID: 0}
+  blendTime: 0
+  blendDuration: 2
 --- !u!23 &1449427875
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2895,11 +3087,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseMesh: {fileID: 0}
   terrainScale: 1
-  timeScale: 0.4
-  posNoiseInScale: 0.001
+  timeScale: 0
+  posNoiseInScale: 0.287
   posNoiseOutScale: 10
-  noiseOutScale: {x: 0.01, y: 0.1, z: 0.01}
-  baseSkinnedMesh: {fileID: 796097080}
+  noiseOutScale: {x: 0.3, y: 0.8, z: 0.3}
   blendPresets:
   - blendWeights:
     - 102
@@ -2907,7 +3098,6 @@ MonoBehaviour:
     - -30
     - 0
     - 0
-    texBlend: 0
     material: {fileID: 2100000, guid: 246ce721f72da49bcbae9983610b4c21, type: 2}
   - blendWeights:
     - 0
@@ -2915,7 +3105,6 @@ MonoBehaviour:
     - 0
     - 0
     - 0
-    texBlend: 0
     material: {fileID: 2100000, guid: 0d2bde0d3a4192d479988ca0b9e8faca, type: 2}
   - blendWeights:
     - 0
@@ -2923,7 +3112,6 @@ MonoBehaviour:
     - 100
     - 0
     - 0
-    texBlend: 1
     material: {fileID: 2100000, guid: 37627ba1626918d4e9412b710d728250, type: 2}
   - blendWeights:
     - 0
@@ -2931,7 +3119,6 @@ MonoBehaviour:
     - 50
     - 0
     - 0
-    texBlend: 1
     material: {fileID: 2100000, guid: b14a63ecce4dcc94cb21ad6071f7b501, type: 2}
   - blendWeights:
     - 102
@@ -2939,7 +3126,6 @@ MonoBehaviour:
     - -30
     - 0
     - 0
-    texBlend: 0
     material: {fileID: 2100000, guid: b14a63ecce4dcc94cb21ad6071f7b501, type: 2}
   blendPresetIndex: 0
   previousBlendPresetIndex: 0
@@ -2950,10 +3136,10 @@ MonoBehaviour:
     - 0
     - 0
     - 0
-    texBlend: 0
     material: {fileID: 0}
   blendTime: 0
   blendDuration: 2
+  baseSkinnedMesh: {fileID: 796097080}
   state: 0
 --- !u!114 &1941404715
 MonoBehaviour:
