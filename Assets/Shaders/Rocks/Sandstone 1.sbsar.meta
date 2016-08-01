@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 07f2caea57180744bbc1d14a402f695d
-timeCreated: 1470064096
+guid: 17de628059b54bd468b2965709fb942e
+timeCreated: 1470067306
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -24,7 +24,7 @@ SubstanceImporter:
     materialInformation:
       serializedVersion: 5
       offset: {x: 0, y: 0}
-      scale: {x: 15, y: 1}
+      scale: {x: 44, y: 20.6}
       generateMipmaps: 1
       generateAllOutputs: 0
       animationUpdateRate: 42
@@ -35,13 +35,13 @@ SubstanceImporter:
           name: _BumpMap
         second:
           texture: {instanceID: 0}
-          scale: {x: 15, y: 1}
+          scale: {x: 44, y: 20.6}
           offset: {x: 0, y: 0}
       - first:
           name: _DetailAlbedoMap
         second:
           texture: {instanceID: 0}
-          scale: {x: 6, y: 6}
+          scale: {x: 29.7, y: 38.2}
           offset: {x: 0, y: 0}
       - first:
           name: _DetailMask
@@ -59,13 +59,13 @@ SubstanceImporter:
           name: _EmissionMap
         second:
           texture: {instanceID: 0}
-          scale: {x: 15, y: 1}
+          scale: {x: 44, y: 20.6}
           offset: {x: 0, y: 0}
       - first:
           name: _MainTex
         second:
           texture: {instanceID: 0}
-          scale: {x: 15, y: 1}
+          scale: {x: 44, y: 20.6}
           offset: {x: 0, y: 0}
       - first:
           name: _OcclusionMap
@@ -83,7 +83,7 @@ SubstanceImporter:
           name: _SpecGlossMap
         second:
           texture: {instanceID: 0}
-          scale: {x: 15, y: 1}
+          scale: {x: 44, y: 20.6}
           offset: {x: 0, y: 0}
       floats:
       - first:
@@ -94,7 +94,7 @@ SubstanceImporter:
         second: 0.5
       - first:
           name: _DetailNormalMapScale
-        second: 0.88
+        second: 0.97
       - first:
           name: _DstBlend
         second: 0

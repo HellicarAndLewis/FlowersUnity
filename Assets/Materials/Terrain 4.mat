@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pummice
+  m_Name: Terrain 4
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _EMISSION _NORMALMAP _PARALLAXMAP
+  m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP _PARALLAXMAP
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -18,7 +18,7 @@ Material:
     - first:
         name: _BumpMap
       second:
-        m_Texture: {fileID: 2800000, guid: 0c3ca7110f2feda43beef4d1d5f12252, type: 3}
+        m_Texture: {fileID: 2800000, guid: 43058b36c9f1cdd43b91c7a05372c591, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -31,7 +31,7 @@ Material:
         name: _DetailAlbedoMap
       second:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 3}
+        m_Scale: {x: 4, y: 3}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _DetailMask
@@ -54,13 +54,13 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: cc844cfccb1e5a74da4fa88a6ebc54f4, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 3, y: 3}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _MetallicGlossMap
       second:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 5429a2405319c6f4b85588cf87d2d858, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -90,7 +90,7 @@ Material:
     - first:
         name: _OcclusionMap
       second:
-        m_Texture: {fileID: 2800000, guid: cc844cfccb1e5a74da4fa88a6ebc54f4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 299882d8775fc2840930eebd13d91c83, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -132,7 +132,7 @@ Material:
     m_Floats:
     - first:
         name: _BumpScale
-      second: -0.43
+      second: 1
     - first:
         name: _Cutoff
       second: 0.5
@@ -144,16 +144,16 @@ Material:
       second: 0
     - first:
         name: _GlossMapScale
-      second: 0
+      second: 0.063
     - first:
         name: _Glossiness
-      second: 0.366
+      second: 0.27
     - first:
         name: _GlossyReflections
       second: 1
     - first:
         name: _Metallic
-      second: 1
+      second: 0
     - first:
         name: _Metallic0
       second: 0
@@ -171,10 +171,10 @@ Material:
       second: 0
     - first:
         name: _OcclusionStrength
-      second: 0
+      second: 1
     - first:
         name: _Parallax
-      second: 0.005
+      second: 0.0109
     - first:
         name: _Shininess
       second: 0.078125
@@ -208,7 +208,7 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.45588237, g: 0.45588237, b: 0.45588237, a: 1}
+      second: {r: 1, g: 1, b: 1, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
