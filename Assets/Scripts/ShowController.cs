@@ -13,16 +13,17 @@ public enum TerrainMode
 
 public class ShowController : AnimatedController
 {
+    public TerrainMode terrainMode;
+    public bool pauseBetweenScenes = true;
+    public bool resumePlayback = false;
     public AnimatedController[] controllers;
     public float[] terrainSceneTimes = new float[5];
-    public TerrainMode terrainMode;
 
     private float previousTime = 0;
     private float terrainTime = 0;
     SceneFadeInOut sceneFade;
     
-
-
+    
     // --------------------------------------------------------------------------------------------------------
     //
     void Awake()
@@ -36,7 +37,6 @@ public class ShowController : AnimatedController
 	{
         base.Update();
         terrainTime = Mathf.Lerp(terrainTime, normalisedTime, 0.1f);
-
         foreach (var controller in controllers)
         {
             controller.PlayNormalised(terrainTime);
@@ -47,7 +47,7 @@ public class ShowController : AnimatedController
         if (Input.GetKeyDown("2")) Preset(TerrainMode.Dawn);
         if (Input.GetKeyDown("3")) Preset(TerrainMode.Daytime);
         if (Input.GetKeyDown("4")) Preset(TerrainMode.Dusk);
-        if (Input.GetKeyDown("4")) Preset(TerrainMode.Night);
+        if (Input.GetKeyDown("5")) Preset(TerrainMode.Night);
 
         if (Input.GetKeyDown("q")) GoToMode(ShowMode.Nsdos);
         if (Input.GetKeyDown("w")) GoToMode(ShowMode.Blank);
@@ -59,8 +59,19 @@ public class ShowController : AnimatedController
         var nextMode = GetTerrainForTime(normalisedTime);
         if (terrainMode != nextMode)
         {
-            terrainMode = nextMode;
-            Preset(terrainMode, false);
+            if (pauseBetweenScenes && !resumePlayback)
+            {
+                isPlaying = false;
+                animator.speed = 0;
+            }
+            else
+            {
+                StartAnimation();
+                resumePlayback = false;
+                terrainMode = nextMode;
+                Preset(terrainMode, false);
+            }
+            
         }
     }
 
