@@ -37,7 +37,8 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43681046, g: 0.48440892, b: 0.56459653, a: 1}
+  m_IndirectSpecularColor: {r: 0.0040970035, g: 0.00022419976, b: 0.000000057845227,
+    a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -561,6 +562,7 @@ MonoBehaviour:
     - 0
     - 0
   blendPresetIndex: 0
+  previousBlendPresetIndex: 0
   activePreset:
     blendWeights:
     - 0
@@ -568,6 +570,8 @@ MonoBehaviour:
     - 0
     - 0
     - 0
+  blendTime: 0
+  blendDuration: 2
   state: 0
 --- !u!4 &666276422
 Transform:
@@ -781,12 +785,12 @@ Prefab:
     - target: {fileID: 114000010975793872, guid: a6488d61b35c69645bae7394b095add0,
         type: 2}
       propertyPath: terrainSceneTimes.Array.data[1]
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 114000010975793872, guid: a6488d61b35c69645bae7394b095add0,
         type: 2}
       propertyPath: terrainSceneTimes.Array.data[2]
-      value: 0.3
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 114000010975793872, guid: a6488d61b35c69645bae7394b095add0,
         type: 2}
@@ -1877,6 +1881,7 @@ MonoBehaviour:
     - 0
     - 0
   blendPresetIndex: 0
+  previousBlendPresetIndex: 0
   activePreset:
     blendWeights:
     - 0
@@ -1884,6 +1889,8 @@ MonoBehaviour:
     - 0
     - 0
     - 0
+  blendTime: 0
+  blendDuration: 2
   state: 0
 --- !u!114 &1336186502
 MonoBehaviour:
@@ -2869,6 +2876,7 @@ MonoBehaviour:
     - 0
     - 0
   blendPresetIndex: 0
+  previousBlendPresetIndex: 0
   activePreset:
     blendWeights:
     - 0
@@ -2876,6 +2884,8 @@ MonoBehaviour:
     - 0
     - 0
     - 0
+  blendTime: 0
+  blendDuration: 2
   state: 0
 --- !u!114 &1941404715
 MonoBehaviour:
@@ -2958,7 +2968,7 @@ Transform:
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 206.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 208.9, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1903944106}
   m_RootOrder: 0

@@ -18,6 +18,7 @@ public class ShowController : AnimatedController
     public TerrainMode terrainMode;
 
     private float previousTime = 0;
+    private float terrainTime = 0;
     SceneFadeInOut sceneFade;
     
 
@@ -34,10 +35,11 @@ public class ShowController : AnimatedController
     override protected void Update()
 	{
         base.Update();
+        terrainTime = Mathf.Lerp(terrainTime, normalisedTime, 0.1f);
 
         foreach (var controller in controllers)
         {
-            controller.PlayNormalised(normalisedTime);
+            controller.PlayNormalised(terrainTime);
         }
         UpdateTerrainMode();
 
