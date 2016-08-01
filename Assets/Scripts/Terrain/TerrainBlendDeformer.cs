@@ -67,6 +67,23 @@ public class TerrainBlendDeformer : TerrainDeformer
     {
         var index = (int)mode;
         state = State.PreBlend;
+
+        GetComponent<Renderer>().material = blendPresets[index].material;
+        if (index > blendPresetIndex)
+        {
+            // next preset is higher, need to fade the prior material up
+            texBlendTarget = 1;
+            texBlendPrevious = 0;
+            if (index > 0) GetComponent<Renderer>().material = blendPresets[index - 1].material;
+        }
+        else
+        {
+            // next preset is lower, fade down to it
+            texBlendTarget = 0;
+            texBlendPrevious = 1;
+        }
+        GetComponent<Renderer>().material.SetFloat("_Blend", texBlendPrevious);
+
         blendPresetIndex = index;
     }
 
@@ -129,7 +146,8 @@ public class TerrainBlendDeformer : TerrainDeformer
             activePreset.Lerp(i, previousPreset.blendWeights[i], targetPreset.blendWeights[i], progress);
             baseSkinnedMesh.SetBlendShapeWeight(i, activePreset.blendWeights[i]);
         }
-        activePreset.texBlend = Mathf.Lerp(previousPreset.texBlend, targetPreset.texBlend, progress);
+
+        activePreset.texBlend = Mathf.Lerp(texBlendPrevious, texBlendTarget, progress);
 
         var material = GetComponent<Renderer>().material;
         material.SetFloat("_Blend", activePreset.texBlend);

@@ -6,6 +6,7 @@ public class BlendPreset
 {
     public float[] blendWeights = new float[5];
     public float texBlend = 0;
+    public Material material;
 
     public BlendPreset()
     {
@@ -50,8 +51,9 @@ public class TerrainDeformer : MonoBehaviour
     protected Vector3[] baseVertices;
     protected Vector3[] baseNormals;
 
-    private float texBlendTarget = 0;
-    private float texBlend = 0;
+    protected float texBlendPrevious = 0;
+    protected float texBlendTarget = 0;
+    protected float texBlend = 0;
 
 
     // --------------------------------------------------------------------------------------------------------

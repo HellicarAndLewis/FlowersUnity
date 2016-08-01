@@ -62,7 +62,7 @@
 
 			// ambient occulsion map
 			o.Occlusion = lerp(1.0, tex2D(_OcclusionTex, IN.uv_OcclusionTex), _OcclusionIntentsity) * (1 - _Blend);
-			o.Occlusion += lerp(1.0, tex2D(_OcclusionTex2, IN.uv_OcclusionTex), _OcclusionIntentsity) * (_Blend);
+			o.Occlusion += lerp(1.0, tex2D(_OcclusionTex2, IN.uv_OcclusionTex2), _OcclusionIntentsity) * (_Blend);
 		}
 
 		ENDCG

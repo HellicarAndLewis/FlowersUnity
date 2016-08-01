@@ -488,10 +488,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c053c02afb32bfe4aad6e3b155026961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoPlay: 0
   isPlaying: 0
   reset: 0
-  loop: 0
   normalisedTime: 0
   duration: 10
 --- !u!114 &527833387
@@ -557,6 +555,7 @@ MonoBehaviour:
     - 0
     - 0
     texBlend: 0
+    material: {fileID: 2100000, guid: 246ce721f72da49bcbae9983610b4c21, type: 2}
   - blendWeights:
     - 0
     - 100
@@ -564,6 +563,7 @@ MonoBehaviour:
     - 0
     - 0
     texBlend: 0
+    material: {fileID: 2100000, guid: 0d2bde0d3a4192d479988ca0b9e8faca, type: 2}
   - blendWeights:
     - 0
     - 0
@@ -571,6 +571,7 @@ MonoBehaviour:
     - 0
     - 0
     texBlend: 1
+    material: {fileID: 2100000, guid: 37627ba1626918d4e9412b710d728250, type: 2}
   - blendWeights:
     - 0
     - 60
@@ -578,6 +579,7 @@ MonoBehaviour:
     - 0
     - 0
     texBlend: 1
+    material: {fileID: 2100000, guid: b14a63ecce4dcc94cb21ad6071f7b501, type: 2}
   - blendWeights:
     - 128
     - 0
@@ -585,6 +587,7 @@ MonoBehaviour:
     - 0
     - 0
     texBlend: 0
+    material: {fileID: 2100000, guid: b14a63ecce4dcc94cb21ad6071f7b501, type: 2}
   blendPresetIndex: 0
   previousBlendPresetIndex: 0
   activePreset:
@@ -595,6 +598,7 @@ MonoBehaviour:
     - 0
     - 0
     texBlend: 0
+    material: {fileID: 0}
   blendTime: 0
   blendDuration: 2
   state: 0
@@ -654,7 +658,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 666276420}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -1156,10 +1160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750bc614039363f4cb4696f494385f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoPlay: 1
   isPlaying: 0
   reset: 0
-  loop: 0
   normalisedTime: 0
   duration: 30
 --- !u!95 &864548073
@@ -1465,15 +1467,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c811289aa8c2354fad8da394352b50d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  microphone: 
-  fftWindow: 0
-  sensitivity: 100
-  loudness: 0
-  bins: 0
   spectrum: []
-  spectrumBinned: []
+  bins: 0
   lerpSpeed: 1
-  maxMode: 0
 --- !u!82 &1049966768
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1925,6 +1921,7 @@ MonoBehaviour:
     - 0
     - 0
     texBlend: 0
+    material: {fileID: 2100000, guid: 246ce721f72da49bcbae9983610b4c21, type: 2}
   - blendWeights:
     - 0
     - 100
@@ -1932,6 +1929,7 @@ MonoBehaviour:
     - 0
     - 0
     texBlend: 0
+    material: {fileID: 2100000, guid: 0d2bde0d3a4192d479988ca0b9e8faca, type: 2}
   - blendWeights:
     - 0
     - 0
@@ -1939,6 +1937,7 @@ MonoBehaviour:
     - 0
     - 0
     texBlend: 1
+    material: {fileID: 2100000, guid: 37627ba1626918d4e9412b710d728250, type: 2}
   - blendWeights:
     - 0
     - 60
@@ -1946,6 +1945,7 @@ MonoBehaviour:
     - 0
     - 0
     texBlend: 1
+    material: {fileID: 2100000, guid: b14a63ecce4dcc94cb21ad6071f7b501, type: 2}
   - blendWeights:
     - 48
     - 0
@@ -1953,6 +1953,7 @@ MonoBehaviour:
     - 0
     - 0
     texBlend: 0
+    material: {fileID: 2100000, guid: b14a63ecce4dcc94cb21ad6071f7b501, type: 2}
   blendPresetIndex: 0
   previousBlendPresetIndex: 0
   activePreset:
@@ -1963,6 +1964,7 @@ MonoBehaviour:
     - 0
     - 0
     texBlend: 0
+    material: {fileID: 0}
   blendTime: 0
   blendDuration: 2
   state: 0
@@ -1972,7 +1974,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1336186497}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -2289,7 +2291,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1449427872}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -2764,10 +2766,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb156c22a80eb4be08a8410584eac780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoPlay: 0
   isPlaying: 0
   reset: 0
-  loop: 0
   normalisedTime: 0
   duration: 10
   sunLight: {fileID: 1972648263}
@@ -2908,6 +2908,7 @@ MonoBehaviour:
     - 0
     - 0
     texBlend: 0
+    material: {fileID: 2100000, guid: 246ce721f72da49bcbae9983610b4c21, type: 2}
   - blendWeights:
     - 0
     - 100
@@ -2915,6 +2916,7 @@ MonoBehaviour:
     - 0
     - 0
     texBlend: 0
+    material: {fileID: 2100000, guid: 0d2bde0d3a4192d479988ca0b9e8faca, type: 2}
   - blendWeights:
     - 0
     - 0
@@ -2922,6 +2924,7 @@ MonoBehaviour:
     - 0
     - 0
     texBlend: 1
+    material: {fileID: 2100000, guid: 37627ba1626918d4e9412b710d728250, type: 2}
   - blendWeights:
     - 0
     - 60
@@ -2929,6 +2932,7 @@ MonoBehaviour:
     - 0
     - 0
     texBlend: 1
+    material: {fileID: 2100000, guid: b14a63ecce4dcc94cb21ad6071f7b501, type: 2}
   - blendWeights:
     - 102
     - -27
@@ -2936,6 +2940,7 @@ MonoBehaviour:
     - 0
     - 0
     texBlend: 0
+    material: {fileID: 2100000, guid: b14a63ecce4dcc94cb21ad6071f7b501, type: 2}
   blendPresetIndex: 0
   previousBlendPresetIndex: 0
   activePreset:
@@ -2946,6 +2951,7 @@ MonoBehaviour:
     - 0
     - 0
     texBlend: 0
+    material: {fileID: 0}
   blendTime: 0
   blendDuration: 2
   state: 0
@@ -2955,7 +2961,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1941404710}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
