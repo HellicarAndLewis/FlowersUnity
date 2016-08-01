@@ -1,24 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[System.Serializable]
-public class BlendPreset
-{
-    public float[] blendWeights = new float[5];
-    public BlendPreset()
-    {
-        for (int i = 0; i < blendWeights.Length; i++)
-        {
-            blendWeights[i] = 0;
-        }
-    }
-    public void Lerp(int i, float from, float to, float t)
-    {
-        blendWeights[i] = Mathf.Lerp(from, to, t);
-    }
-}
-
-
 /// <summary>
 /// Takes the TerrainDeformer and adds the ability to blend between blend shapes in a skinned mesh
 /// </summary>
@@ -81,7 +63,7 @@ public class TerrainBlendDeformer : TerrainDeformer
 
     }
 
-    public void Preset(TerrainMode mode, float duration = -1)
+    public override void Preset(TerrainMode mode, float duration = -1)
     {
         var index = (int)mode;
         state = State.PreBlend;
@@ -147,9 +129,10 @@ public class TerrainBlendDeformer : TerrainDeformer
             activePreset.Lerp(i, previousPreset.blendWeights[i], targetPreset.blendWeights[i], progress);
             baseSkinnedMesh.SetBlendShapeWeight(i, activePreset.blendWeights[i]);
         }
+        activePreset.texBlend = Mathf.Lerp(previousPreset.texBlend, targetPreset.texBlend, progress);
 
-        //var material = GetComponent<Renderer>().material;
-        //material.SetFloat("_Blend", someFloatValue);
+        var material = GetComponent<Renderer>().material;
+        material.SetFloat("_Blend", activePreset.texBlend);
 
         baseSkinnedMesh.BakeMesh(mesh);
         meshFilter.mesh = mesh;

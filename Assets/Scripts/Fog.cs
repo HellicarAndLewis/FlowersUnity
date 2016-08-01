@@ -28,7 +28,7 @@ public class Fog : MonoBehaviour
     {
         if (forceUpdate)
         {
-            forceUpdate = false;
+            //forceUpdate = false;
             Refresh();
         }
     }

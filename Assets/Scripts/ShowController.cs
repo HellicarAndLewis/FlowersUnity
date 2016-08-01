@@ -112,7 +112,7 @@ public class ShowController : AnimatedController
         }
 
         terrainMode = mode;
-        var terrains = FindObjectsOfType<TerrainBlendDeformer>();
+        var terrains = FindObjectsOfType<TerrainDeformer>();
         foreach (var terrain in terrains)
         {
             terrain.Preset(mode);

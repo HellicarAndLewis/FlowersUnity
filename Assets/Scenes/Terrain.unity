@@ -37,8 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0040970035, g: 0.00022419976, b: 0.000000057845227,
-    a: 1}
+  m_IndirectSpecularColor: {r: 0.43681046, g: 0.48440892, b: 0.56459653, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -350,7 +349,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &310750922
 Transform:
   m_ObjectHideFlags: 0
@@ -439,6 +438,7 @@ GameObject:
   - 4: {fileID: 527833384}
   - 95: {fileID: 527833385}
   - 114: {fileID: 527833386}
+  - 114: {fileID: 527833387}
   m_Layer: 0
   m_Name: Sky
   m_TagString: Untagged
@@ -494,6 +494,24 @@ MonoBehaviour:
   loop: 0
   normalisedTime: 0
   duration: 10
+--- !u!114 &527833387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 527833383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb72eb5323db34bc09948a2af39c4d06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colour: {r: 0, g: 0, b: 0, a: 1}
+  isEnabled: 1
+  forceUpdate: 1
+  mode: 1
+  density: 0.001
+  endDistance: 90
+  startDistance: 2
 --- !u!1 &666276420
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,8 +545,9 @@ MonoBehaviour:
   baseMesh: {fileID: 0}
   terrainScale: 1
   timeScale: 0.4
-  noiseInScale: 0.3
-  noiseOutScale: 0.06
+  posNoiseInScale: 0.001
+  posNoiseOutScale: 10
+  noiseOutScale: {x: 0.01, y: 0.1, z: 0.01}
   baseSkinnedMesh: {fileID: 1163155839}
   blendPresets:
   - blendWeights:
@@ -537,30 +556,35 @@ MonoBehaviour:
     - 175
     - 0
     - 0
+    texBlend: 0
   - blendWeights:
     - 0
     - 100
     - 0
     - 0
     - 0
+    texBlend: 0
   - blendWeights:
     - 0
     - 0
     - 100
     - 0
     - 0
+    texBlend: 1
   - blendWeights:
     - 0
     - 0
     - 0
     - 100
     - 0
+    texBlend: 1
   - blendWeights:
     - 128
     - 0
     - 175
     - 0
     - 0
+    texBlend: 0
   blendPresetIndex: 0
   previousBlendPresetIndex: 0
   activePreset:
@@ -570,6 +594,7 @@ MonoBehaviour:
     - 0
     - 0
     - 0
+    texBlend: 0
   blendTime: 0
   blendDuration: 2
   state: 0
@@ -1846,8 +1871,9 @@ MonoBehaviour:
   baseMesh: {fileID: 0}
   terrainScale: 1
   timeScale: 0.4
-  noiseInScale: 0.3
-  noiseOutScale: 0.06
+  posNoiseInScale: 0.001
+  posNoiseOutScale: 10
+  noiseOutScale: {x: 0.01, y: 0.1, z: 0.01}
   baseSkinnedMesh: {fileID: 303716327}
   blendPresets:
   - blendWeights:
@@ -1856,30 +1882,35 @@ MonoBehaviour:
     - 68
     - 0
     - 0
+    texBlend: 0
   - blendWeights:
     - 0
     - 100
     - 0
     - 0
     - 0
+    texBlend: 0
   - blendWeights:
     - 0
     - 0
     - 100
     - 0
     - 0
+    texBlend: 1
   - blendWeights:
     - 0
     - 0
     - 0
     - 100
     - 0
+    texBlend: 1
   - blendWeights:
     - 48
     - 0
     - 68
     - 0
     - 0
+    texBlend: 0
   blendPresetIndex: 0
   previousBlendPresetIndex: 0
   activePreset:
@@ -1889,6 +1920,7 @@ MonoBehaviour:
     - 0
     - 0
     - 0
+    texBlend: 0
   blendTime: 0
   blendDuration: 2
   state: 0
@@ -2177,8 +2209,9 @@ MonoBehaviour:
   baseMesh: {fileID: 266735878}
   terrainScale: 1
   timeScale: 1
-  noiseInScale: 0.001
-  noiseOutScale: 0
+  posNoiseInScale: 0.001
+  posNoiseOutScale: 10
+  noiseOutScale: {x: 0, y: 0, z: 0}
 --- !u!23 &1449427875
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2385,7 +2418,6 @@ GameObject:
   - 92: {fileID: 1827569486}
   - 124: {fileID: 1827569485}
   - 81: {fileID: 1827569484}
-  - 114: {fileID: 1827569489}
   - 114: {fileID: 1827569490}
   - 114: {fileID: 1827569491}
   - 114: {fileID: 1827569492}
@@ -2466,24 +2498,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 864548071}
   m_RootOrder: 1
---- !u!114 &1827569489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1827569483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb72eb5323db34bc09948a2af39c4d06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colour: {r: 0.58431375, g: 0.8235294, b: 0.84313726, a: 1}
-  isEnabled: 1
-  forceUpdate: 0
-  mode: 1
-  density: 0.001
-  endDistance: 90
-  startDistance: 2
 --- !u!114 &1827569490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2528,8 +2542,8 @@ MonoBehaviour:
   screenBlendMode: 0
   sunTransform: {fileID: 1855786428}
   radialBlurIterations: 2
-  sunColor: {r: 1, g: 1, b: 1, a: 1}
-  sunThreshold: {r: 0.34509805, g: 0.34509805, b: 0.34509805, a: 1}
+  sunColor: {r: 1, g: 0.9411765, b: 0.8156863, a: 1}
+  sunThreshold: {r: 0, g: 0, b: 0, a: 1}
   sunShaftBlurRadius: 2.5
   sunShaftIntensity: 0.6
   maxRadius: 0.63
@@ -2611,7 +2625,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1855786427}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 50, y: 130, z: 90}
+  m_LocalPosition: {x: 20, y: 20, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -2632,7 +2646,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1894516562
 Transform:
   m_ObjectHideFlags: 0
@@ -2841,8 +2855,9 @@ MonoBehaviour:
   baseMesh: {fileID: 0}
   terrainScale: 1
   timeScale: 0.4
-  noiseInScale: 0.3
-  noiseOutScale: 0.06
+  posNoiseInScale: 0.001
+  posNoiseOutScale: 10
+  noiseOutScale: {x: 0.01, y: 0.1, z: 0.01}
   baseSkinnedMesh: {fileID: 796097080}
   blendPresets:
   - blendWeights:
@@ -2851,30 +2866,35 @@ MonoBehaviour:
     - -30
     - 0
     - 0
+    texBlend: 0
   - blendWeights:
     - 0
     - 100
     - 0
     - 0
     - 0
+    texBlend: 0
   - blendWeights:
     - 0
     - 0
     - 100
     - 0
     - 0
+    texBlend: 1
   - blendWeights:
     - 0
     - 0
     - 0
     - 100
     - 0
+    texBlend: 1
   - blendWeights:
     - 102
     - -27
     - -30
     - 0
     - 0
+    texBlend: 0
   blendPresetIndex: 0
   previousBlendPresetIndex: 0
   activePreset:
@@ -2884,6 +2904,7 @@ MonoBehaviour:
     - 0
     - 0
     - 0
+    texBlend: 0
   blendTime: 0
   blendDuration: 2
   state: 0
@@ -2968,7 +2989,7 @@ Transform:
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 206.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 208.9, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1903944106}
   m_RootOrder: 0
