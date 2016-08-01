@@ -4,7 +4,7 @@ using System.Collections;
 [System.Serializable]
 public class BlendPreset
 {
-    public float[] blendWeights = new float[4];
+    public float[] blendWeights = new float[5];
     public BlendPreset()
     {
         for (int i = 0; i < blendWeights.Length; i++)
@@ -12,10 +12,9 @@ public class BlendPreset
             blendWeights[i] = 0;
         }
     }
-    public bool Lerp(int i, float target, float t)
+    public void Lerp(int i, float from, float to, float t)
     {
-        blendWeights[i] = Mathf.Lerp(blendWeights[i], target, t);
-        return (blendWeights[i] >= target - 0.1 && blendWeights[i] <= target + 0.1);
+        blendWeights[i] = Mathf.Lerp(from, to, t);
     }
 }
 
@@ -29,9 +28,13 @@ public class TerrainBlendDeformer : TerrainDeformer
 	// --------------------------------------------------------------------------------------------------------
 	//
     public SkinnedMeshRenderer baseSkinnedMesh;
-    public BlendPreset[] blendPresets = new BlendPreset[4];
+    public BlendPreset[] blendPresets = new BlendPreset[5];
     public int blendPresetIndex = 0;
+    public int previousBlendPresetIndex = 0;
     public BlendPreset activePreset = new BlendPreset();
+
+    public float blendTime = 0;
+    public float blendDuration = 2;
 
     // --------------------------------------------------------------------------------------------------------
     // Blend specific
@@ -100,11 +103,12 @@ public class TerrainBlendDeformer : TerrainDeformer
                 UpdateDeformation(noiseOutScaleTransition);
                 break;
             case State.PreBlend:
-                noiseOutScaleTransition -= 0.01f;
+                noiseOutScaleTransition -= 0.1f;
                 flowers.flowerAlpha = noiseOutScaleTransition;
                 if (noiseOutScaleTransition <= 0)
                 {
                     noiseOutScaleTransition = 0;
+                    blendTime = 0;
                     state = State.Blend;
                 }
                 UpdateDeformation(noiseOutScaleTransition);
@@ -113,7 +117,7 @@ public class TerrainBlendDeformer : TerrainDeformer
                 UpdateBlend();
                 break;
             case State.PostBlend:
-                noiseOutScaleTransition += 0.01f;
+                noiseOutScaleTransition += 0.1f;
                 flowers.flowerAlpha = noiseOutScaleTransition;
                 if (noiseOutScaleTransition >= 1)
                 {
@@ -132,12 +136,15 @@ public class TerrainBlendDeformer : TerrainDeformer
     //
     void UpdateBlend()
     {
-        bool isComplete = true;
+        blendTime += CaptureTime.Delta;
+        bool isComplete = (blendTime > blendDuration);
+        float progress = blendTime / blendDuration;
+        var previousPreset = blendPresets[previousBlendPresetIndex];
         var targetPreset = blendPresets[blendPresetIndex];
+
         for (int i = 0; i < 3; i++)
         {
-            if (!activePreset.Lerp(i, targetPreset.blendWeights[i], 0.02f))
-                isComplete = false;
+            activePreset.Lerp(i, previousPreset.blendWeights[i], targetPreset.blendWeights[i], progress);
             baseSkinnedMesh.SetBlendShapeWeight(i, activePreset.blendWeights[i]);
         }
 
@@ -151,6 +158,7 @@ public class TerrainBlendDeformer : TerrainDeformer
 
         if (isComplete)
         {
+            previousBlendPresetIndex = blendPresetIndex;
             baseVertices = mesh.vertices;
             baseNormals = mesh.normals;
             noiseOutScaleTransition = 0;

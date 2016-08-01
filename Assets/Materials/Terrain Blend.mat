@@ -102,7 +102,7 @@ Material:
     m_Floats:
     - first:
         name: _Blend
-      second: 0
+      second: 0.495
     - first:
         name: _BumpScale
       second: 1
