@@ -16,28 +16,28 @@ public class fftAnalyzer : MonoBehaviour
     void Start()
     {
         spectrum = new float[samples];
-
         OSCHandler.Instance.Init();
-
-        servers = new Dictionary<string, ServerLog>();
     }
 
     void Update()
     {
         OSCHandler.Instance.UpdateLogs();
         servers = OSCHandler.Instance.Servers;
+        var packets = servers["fftInput"].packets;
 
-        int newestIndex = servers["fftInput"].packets.Count - 1;
-        UnityOSC.OSCPacket packet = servers["fftInput"].packets[newestIndex];
-        int i = 0;
-        foreach(object data in packet.Data)
+        if (packets.Count > 0)
         {
-            float height = float.Parse(data.ToString());
-            spectrum[i] = height;
-            Debug.DrawLine(new Vector3(i / 10.0f, 0.0f, 0.0f), new Vector3(i / 10.0f, height, 0.0f));
-            i++;
+            int newestIndex = packets.Count - 1;
+            var packet = packets[newestIndex];
+            int i = 0;
+            foreach (object data in packet.Data)
+            {
+                float height = float.Parse(data.ToString());
+                spectrum[i] = height;
+                Debug.DrawLine(new Vector3(i / 10.0f, 0.0f, 0.0f), new Vector3(i / 10.0f, height, 0.0f));
+                i++;
+            }
         }
-
         
     }
 }
