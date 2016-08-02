@@ -21,6 +21,7 @@ public class ShowController : AnimatedController
 
     private float previousTime = 0;
     private float terrainTime = 0;
+    private bool isPausedBetweenScenes = false;
     SceneFadeInOut sceneFade;
     
     
@@ -55,6 +56,15 @@ public class ShowController : AnimatedController
         if (Input.GetKeyDown("e")) GoToMode(ShowMode.Terrain);
     }
 
+    public void Play()
+    {
+        if (!isPlaying && !isPausedBetweenScenes) isPlaying = true;
+        else if (isPausedBetweenScenes)
+        {
+            resumePlayback = true;
+        }
+    }
+
     void UpdateTerrainMode()
     {
         var nextMode = GetTerrainForTime(normalisedTime);
@@ -62,11 +72,13 @@ public class ShowController : AnimatedController
         {
             if (pauseBetweenScenes && !resumePlayback)
             {
+                isPausedBetweenScenes = true;
                 isPlaying = false;
                 animator.speed = 0;
             }
             else
             {
+                isPausedBetweenScenes = false;
                 StartAnimation();
                 resumePlayback = false;
                 terrainMode = nextMode;
@@ -95,7 +107,7 @@ public class ShowController : AnimatedController
 
     // --------------------------------------------------------------------------------------------------------
     //
-    void GoToMode(ShowMode mode)
+    public void GoToMode(ShowMode mode)
     {
         if (mode == ShowMode.Nsdos)
         {
@@ -110,6 +122,19 @@ public class ShowController : AnimatedController
         {
             sceneFade.EndScene("Terrain");
         }
+    }
+
+    public void GoNSDOS()
+    {
+        GoToMode(ShowMode.Nsdos);
+    }
+    public void GoBlank()
+    {
+        GoToMode(ShowMode.Blank);
+    }
+    public void GoTerrain()
+    {
+        GoToMode(ShowMode.Terrain);
     }
 
     // --------------------------------------------------------------------------------------------------------

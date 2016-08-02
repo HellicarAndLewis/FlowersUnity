@@ -8,7 +8,7 @@ public class fftAnalyzer : MonoBehaviour
     private int samples = 256;
     public float[] spectrum;
     public float[] spectrumBinned;
-   [Range (1, 256)]
+    [Range(1, 256)]
     public int bins;
 
     // --------------------------------------------------------------------------------------------------------
@@ -51,7 +51,7 @@ public class fftAnalyzer : MonoBehaviour
             }
             average /= i;
 
-            if(bins > 0)
+            if (bins > 0)
             {
                 spectrumBinned = new float[bins];
                 int spectrumChannelsPerBin = spectrum.Length / bins;
@@ -68,6 +68,7 @@ public class fftAnalyzer : MonoBehaviour
             }
         }
     }
+    
 
     // --------------------------------------------------------------------------------------------------------
     //

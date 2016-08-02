@@ -83,6 +83,7 @@ public class OSCHandler : MonoBehaviour
 	private Dictionary<string, ServerLog> _servers = new Dictionary<string, ServerLog>();
 	
 	private const int _loglength = 25;
+    private bool isInited = false;
 	#endregion
 	
 	/// <summary>
@@ -97,7 +98,6 @@ public class OSCHandler : MonoBehaviour
 
         //Initialize OSC servers (listeners)
         //Example:
-
         CreateServer("fftInput", 12345);
 	}
 	
@@ -127,18 +127,31 @@ public class OSCHandler : MonoBehaviour
 	/// </summary>
 	void OnApplicationQuit() 
 	{
-		foreach(KeyValuePair<string,ClientLog> pair in _clients)
-		{
-			pair.Value.client.Close();
-		}
-		
-		foreach(KeyValuePair<string,ServerLog> pair in _servers)
-		{
-			pair.Value.server.Close();
-		}
-			
-		_instance = null;
+        Close();
 	}
+
+    public void OnDestroy()
+    {
+        Close();
+    }
+
+    public void Close()
+    {
+        foreach (KeyValuePair<string, ClientLog> pair in _clients)
+        {
+            pair.Value.client.Close();
+        }
+
+        foreach (KeyValuePair<string, ServerLog> pair in _servers)
+        {
+            pair.Value.server.Close();
+        }
+
+        _clients.Clear();
+        _servers.Clear();
+
+        _instance = null;
+    }
 	
 	/// <summary>
 	/// Creates an OSC Client (sends OSC messages) given an outgoing port and address.

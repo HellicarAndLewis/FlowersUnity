@@ -23,7 +23,7 @@ public class AnimatedController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("AnimatedController needs to have an Animator compontent");
+            Debug.LogWarning("AnimatedController needs to have an Animator compontent");
         }
     }
     

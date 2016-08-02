@@ -172,4 +172,9 @@ public class TerrainDeformer : MonoBehaviour
         material.SetFloat("_Blend", texBlend);
     }
 
+    public void SetDeformThresholdY(float deformThresholdY)
+    {
+        this.deformThresholdY = deformThresholdY;
+    }
+
 }

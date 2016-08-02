@@ -83,6 +83,7 @@ public class CaptureToPipe : Capture
     {
         if (isGuiEnabled)
 		{
+            //GUI.FocusWindow();
 			GUI.contentColor = guiTextColour;
             float padding = 10;
             int uiWidth = 256;
