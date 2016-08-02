@@ -131,23 +131,29 @@ public class TerrainDeformer : MonoBehaviour
             float scaledTime = CaptureTime.Elapsed * timeScale;
             while (i < vertices.Length)
             {
-                Vector3 noiseIn = baseVertices[i] * posNoiseInScale;
-                float noise = Mathf.PerlinNoise(noiseIn.x, noiseIn.y) * posNoiseOutScale;
-                if (fft)
+                if (vertices[i].y >= 0)
                 {
-                    int sampleI = (int)MathUtils.Map(noise, 0, posNoiseOutScale, 0, fft.spectrum.Length - 1, true);
-                    noise *= fft.spectrum[sampleI];
+                    Vector3 noiseIn = baseVertices[i] * posNoiseInScale;
+                    float noise = Mathf.PerlinNoise(noiseIn.x, noiseIn.y) * posNoiseOutScale;
+                    if (fft)
+                    {
+                        int sampleI = (int)MathUtils.Map(noise, 0, posNoiseOutScale, 0, fft.spectrum.Length - 1, true);
+                        noise *= fft.spectrum[sampleI];
+                    }
+                    else
+                    {
+                        noise = Mathf.PerlinNoise(noise, scaledTime);
+                    }
+                    var scaledNormal = baseNormals[i];
+                    scaledNormal.Scale(noiseOutScale);
+                    vertices[i] = baseVertices[i] + (scaledNormal * noise * scale);
+                    vertices[i].y *= terrainScale;
                 }
                 else
                 {
-                    noise = Mathf.PerlinNoise(noise, scaledTime);
+                    vertices[i] = baseVertices[i];
                 }
-                var scaledNormal = baseNormals[i];
-                scaledNormal.Scale(noiseOutScale);
-                vertices[i] = baseVertices[i] + (scaledNormal * noise * scale);
-                vertices[i].y *= terrainScale;
                 i++;
-
             }
             mesh.vertices = vertices;
         }
