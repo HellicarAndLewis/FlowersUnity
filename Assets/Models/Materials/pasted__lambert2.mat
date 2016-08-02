@@ -6,10 +6,10 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Terrain Blend
-  m_Shader: {fileID: 4800000, guid: cd44e0d80af0d6a46b522d2696b653b5, type: 3}
-  m_ShaderKeywords: _EMISSION
-  m_LightmapFlags: 1
+  m_Name: pasted__lambert2
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
   m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
@@ -18,14 +18,8 @@ Material:
     - first:
         name: _BumpMap
       second:
-        m_Texture: {fileID: 2800000, guid: 43058b36c9f1cdd43b91c7a05372c591, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - first:
-        name: _BumpMap2
-      second:
-        m_Texture: {fileID: 2800000, guid: 43058b36c9f1cdd43b91c7a05372c591, type: 3}
-        m_Scale: {x: 2.56, y: 1.56}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _DetailAlbedoMap
@@ -54,23 +48,11 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: dc917c93401b27248bcaad3924bfaae8, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - first:
-        name: _MainTex2
-      second:
-        m_Texture: {fileID: 467525775, guid: 07f2caea57180744bbc1d14a402f695d, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - first:
-        name: _MetallicGlossMap
-      second:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
-        name: _MetallicMap
+        name: _MetallicGlossMap
       second:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -82,27 +64,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
-        name: _OcclusionTex
-      second:
-        m_Texture: {fileID: 2800000, guid: 299882d8775fc2840930eebd13d91c83, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - first:
-        name: _OcclusionTex2
-      second:
-        m_Texture: {fileID: 2800000, guid: 299882d8775fc2840930eebd13d91c83, type: 3}
-        m_Scale: {x: 50, y: 50}
-        m_Offset: {x: 0, y: 0}
-    - first:
         name: _ParallaxMap
       second:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - first:
-        name: _Blend
-      second: 0
     - first:
         name: _BumpScale
       second: 1
@@ -120,7 +87,7 @@ Material:
       second: 1
     - first:
         name: _Glossiness
-      second: 0.18
+      second: 0.5
     - first:
         name: _GlossyReflections
       second: 1
@@ -130,9 +97,6 @@ Material:
     - first:
         name: _Mode
       second: 0
-    - first:
-        name: _OcclusionIntentsity
-      second: 1
     - first:
         name: _OcclusionStrength
       second: 1
@@ -149,9 +113,6 @@ Material:
         name: _SrcBlend
       second: 1
     - first:
-        name: _Tex2
-      second: 0
-    - first:
         name: _UVSec
       second: 0
     - first:
@@ -160,7 +121,7 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.6838235, g: 0.6838235, b: 0.6838235, a: 1}
+      second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}

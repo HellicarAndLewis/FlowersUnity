@@ -1,16 +1,20 @@
 fileFormatVersion: 2
-guid: e726b7b951c7f0343b8b877a2e09a8fb
-timeCreated: 1469629211
+guid: e586507bd12fa394da70deac5bae3a82
+timeCreated: 1470046332
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: BlendShape1
+    100000: group
+    100002: //RootNode
+    100004: mountainPlane
+    400000: group
+    400002: //RootNode
+    400004: mountainPlane
+    4300000: mountainPlane
     9500000: //RootNode
+    13700000: mountainPlane
+    13700002: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -52,7 +56,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 0
+    normalImportMode: 1
     tangentImportMode: 3
   importAnimation: 1
   copyAvatar: 0

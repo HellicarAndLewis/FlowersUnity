@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 07f2caea57180744bbc1d14a402f695d
-timeCreated: 1469808531
+timeCreated: 1470064096
 licenseType: Free
 SubstanceImporter:
   serializedVersion: 5
@@ -41,7 +41,7 @@ SubstanceImporter:
           name: _DetailAlbedoMap
         second:
           texture: {instanceID: 0}
-          scale: {x: 2.56, y: 2.26}
+          scale: {x: 6, y: 6}
           offset: {x: 0, y: 0}
       - first:
           name: _DetailMask
@@ -94,7 +94,7 @@ SubstanceImporter:
         second: 0.5
       - first:
           name: _DetailNormalMapScale
-        second: 0
+        second: 0.88
       - first:
           name: _DstBlend
         second: 0

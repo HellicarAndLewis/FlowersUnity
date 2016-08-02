@@ -3,16 +3,14 @@ using System.Collections;
 
 public class AnimatedController : MonoBehaviour
 {
-    
-    public bool autoPlay = true;
     public bool isPlaying = false;
     public bool reset = false;
-    public bool loop = false;
     [Range(0, 1)]
     public float normalisedTime = 0;
     public float duration = 30;
 
-    private Animator animator;
+    private bool loop = false;
+    protected Animator animator;
 
     // --------------------------------------------------------------------------------------------------------
     //
@@ -33,17 +31,14 @@ public class AnimatedController : MonoBehaviour
     //
     virtual protected void Update()
     {
-        if (autoPlay) UpdateAnimation(CaptureTime.Delta);
+        if (reset) StartAnimation(true);
+        if (isPlaying) UpdateAnimation(CaptureTime.Delta);
     }
 
     // --------------------------------------------------------------------------------------------------------
     //
     public void UpdateAnimation(float deltaTime)
     {
-
-        if (!isPlaying || reset)
-            StartAnimation();
-
         if (animator)
         {
             var currentState = animator.GetCurrentAnimatorStateInfo(0);
@@ -61,7 +56,6 @@ public class AnimatedController : MonoBehaviour
                     StartAnimation();
                 else
                 {
-                    autoPlay = false;
                     isPlaying = false;
                     animator.speed = 0;
                 }
@@ -80,16 +74,20 @@ public class AnimatedController : MonoBehaviour
 
     // --------------------------------------------------------------------------------------------------------
     //
-    public void StartAnimation()
+    public void StartAnimation(bool reset = false)
     {
         //Debug.Log("AnimatedPath.StartAnimation");
         if (animator)
         {
-            animator.speed = 1;
-            var animationHash = animator.GetCurrentAnimatorStateInfo(0).fullPathHash;
-            animator.Play(animationHash, 0, 0);
             isPlaying = true;
             reset = false;
+            animator.speed = 1;
+            if (reset)
+            {
+                var animationHash = animator.GetCurrentAnimatorStateInfo(0).fullPathHash;
+                animator.Play(animationHash, 0, 0);
+            }
+            
         }
     }
 }

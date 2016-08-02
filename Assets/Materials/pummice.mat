@@ -31,7 +31,7 @@ Material:
         name: _DetailAlbedoMap
       second:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 4, y: 3}
+        m_Scale: {x: 1, y: 3}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _DetailMask
@@ -49,13 +49,13 @@ Material:
         name: _EmissionMap
       second:
         m_Texture: {fileID: 2800000, guid: 5429a2405319c6f4b85588cf87d2d858, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 3, y: 3}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _MainTex
       second:
         m_Texture: {fileID: 2800000, guid: cc844cfccb1e5a74da4fa88a6ebc54f4, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 3, y: 3}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _MetallicGlossMap
@@ -132,7 +132,7 @@ Material:
     m_Floats:
     - first:
         name: _BumpScale
-      second: -0.34
+      second: -0.43
     - first:
         name: _Cutoff
       second: 0.5
@@ -147,7 +147,7 @@ Material:
       second: 0
     - first:
         name: _Glossiness
-      second: 0.27
+      second: 0.366
     - first:
         name: _GlossyReflections
       second: 1
