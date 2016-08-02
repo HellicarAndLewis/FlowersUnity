@@ -108,14 +108,16 @@ public class TerrainDeformer : MonoBehaviour
         while (i < vertices.Length)
         {
             Vector3 noiseIn = baseVertices[i] * posNoiseInScale;
-            float noise = Mathf.PerlinNoise(noiseIn.x, noiseIn.z) * posNoiseOutScale;
+            float noise = Mathf.PerlinNoise(noiseIn.x, noiseIn.y) * posNoiseOutScale;
             if (fft)
             {
                 int sampleI = (int)MathUtils.Map(noise, 0, posNoiseOutScale, 0, fft.spectrum.Length-1, true);
                 noise *= fft.spectrum[sampleI];
             }
-            
-            //noise = Mathf.PerlinNoise(noise, scaledTime) - 0.5f;
+            else
+            {
+                noise = Mathf.PerlinNoise(noise, scaledTime) - 0.5f;
+            }
             var scaledNormal = baseNormals[i];
             scaledNormal.Scale(noiseOutScale);
             vertices[i] = baseVertices[i] + (scaledNormal * noise * scale);
