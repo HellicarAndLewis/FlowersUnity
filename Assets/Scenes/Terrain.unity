@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43681046, g: 0.48440892, b: 0.56459653, a: 1}
+  m_IndirectSpecularColor: {r: 0.4368103, g: 0.48440862, b: 0.56459606, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -488,10 +488,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c053c02afb32bfe4aad6e3b155026961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoPlay: 0
   isPlaying: 0
   reset: 0
-  loop: 0
   normalisedTime: 0
   duration: 10
 --- !u!114 &527833387
@@ -1156,10 +1154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750bc614039363f4cb4696f494385f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoPlay: 1
   isPlaying: 0
   reset: 0
-  loop: 0
   normalisedTime: 0
   duration: 30
 --- !u!95 &864548073
@@ -1465,15 +1461,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c811289aa8c2354fad8da394352b50d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  microphone: 
-  fftWindow: 0
-  sensitivity: 100
-  loudness: 0
-  bins: 0
   spectrum: []
-  spectrumBinned: []
+  bins: 0
   lerpSpeed: 1
-  maxMode: 0
 --- !u!82 &1049966768
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2205,6 +2195,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1053679017}
   m_RootOrder: 0
+--- !u!1 &1412053124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1412053125}
+  - 114: {fileID: 1412053127}
+  - 114: {fileID: 1412053126}
+  m_Layer: 0
+  m_Name: Audio In
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1412053125
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1412053124}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1557827842}
+  m_RootOrder: 2
+--- !u!114 &1412053126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1412053124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c811289aa8c2354fad8da394352b50d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spectrum: []
+  bins: 0
+  lerpSpeed: 0
+--- !u!114 &1412053127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1412053124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2fd3e425ee563449b709bcdb9d23d1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1449427872
 GameObject:
   m_ObjectHideFlags: 0
@@ -2333,6 +2378,7 @@ Transform:
   m_Children:
   - {fileID: 1930249028}
   - {fileID: 1626662946}
+  - {fileID: 1412053125}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &1626662946 stripped
@@ -2764,10 +2810,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb156c22a80eb4be08a8410584eac780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoPlay: 0
   isPlaying: 0
   reset: 0
-  loop: 0
   normalisedTime: 0
   duration: 10
   sunLight: {fileID: 1972648263}

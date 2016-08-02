@@ -52,11 +52,12 @@ public class TerrainDeformer : MonoBehaviour
 
     private float texBlendTarget = 0;
     private float texBlend = 0;
+    protected fftAnalyzer fft;
 
 
     // --------------------------------------------------------------------------------------------------------
     //
-    virtual protected void Awake()
+    virtual protected void Start()
 	{
         if (!baseMesh) {
 			Debug.LogError("You need to set a mesh filter");
@@ -108,7 +109,13 @@ public class TerrainDeformer : MonoBehaviour
         {
             Vector3 noiseIn = baseVertices[i] * posNoiseInScale;
             float noise = Mathf.PerlinNoise(noiseIn.x, noiseIn.z) * posNoiseOutScale;
-            noise = Mathf.PerlinNoise(noise, scaledTime) - 0.5f;
+            if (fft)
+            {
+                int sampleI = (int)MathUtils.Map(noise, 0, posNoiseOutScale, 0, fft.spectrum.Length-1, true);
+                noise *= fft.spectrum[sampleI];
+            }
+            
+            //noise = Mathf.PerlinNoise(noise, scaledTime) - 0.5f;
             var scaledNormal = baseNormals[i];
             scaledNormal.Scale(noiseOutScale);
             vertices[i] = baseVertices[i] + (scaledNormal * noise * scale);
