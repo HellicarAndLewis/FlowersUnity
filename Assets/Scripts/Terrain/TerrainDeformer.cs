@@ -58,15 +58,15 @@ public class TerrainDeformer : MonoBehaviour
     protected Mesh mesh;
     protected Vector3[] baseVertices;
     protected Vector3[] baseNormals;
-
     protected float texBlendPrevious = 0;
     protected float texBlendTarget = 0;
     protected float texBlend = 0;
+    protected fftAnalyzer fft;
 
 
     // --------------------------------------------------------------------------------------------------------
     //
-    virtual protected void Awake()
+    virtual protected void Start()
 	{
         if (!baseMesh) {
 			Debug.LogError("You need to set a mesh filter");
@@ -82,7 +82,7 @@ public class TerrainDeformer : MonoBehaviour
         meshFilter.mesh = mesh;
 
         Debug.Log(baseVertices.Length);
-        
+        fft = FindObjectOfType<fftAnalyzer>();
     }
 
 
@@ -125,23 +125,33 @@ public class TerrainDeformer : MonoBehaviour
 
         if (timeScale > 0)
         {
+
             Vector3[] vertices = mesh.vertices;
             int i = 0;
             float scaledTime = CaptureTime.Elapsed * timeScale;
             while (i < vertices.Length)
             {
                 Vector3 noiseIn = baseVertices[i] * posNoiseInScale;
-                float noise = Mathf.PerlinNoise(noiseIn.x, noiseIn.z) * posNoiseOutScale;
-                noise = Mathf.PerlinNoise(noise, scaledTime);
+                float noise = Mathf.PerlinNoise(noiseIn.x, noiseIn.y) * posNoiseOutScale;
+                if (fft)
+                {
+                    int sampleI = (int)MathUtils.Map(noise, 0, posNoiseOutScale, 0, fft.spectrum.Length - 1, true);
+                    noise *= fft.spectrum[sampleI];
+                }
+                else
+                {
+                    noise = Mathf.PerlinNoise(noise, scaledTime);
+                }
                 var scaledNormal = baseNormals[i];
                 scaledNormal.Scale(noiseOutScale);
                 vertices[i] = baseVertices[i] + (scaledNormal * noise * scale);
                 vertices[i].y *= terrainScale;
                 i++;
+
             }
             mesh.vertices = vertices;
         }
-        
+
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();
     }

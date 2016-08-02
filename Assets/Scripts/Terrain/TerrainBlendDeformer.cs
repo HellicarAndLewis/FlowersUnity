@@ -18,13 +18,14 @@ public class TerrainBlendDeformer : TerrainDeformer
         Deform=0, PreBlend, Blend, PostBlend 
     }
     public State state = State.Deform;
+
     private float noiseOutScaleTransition = 1;
     private TerrainFlowers flowers;
 
 
     // --------------------------------------------------------------------------------------------------------
     //
-    override protected void Awake()
+    override protected void Start()
 	{
         if (!baseSkinnedMesh) {
 			Debug.LogError("You need to set a SkinnedMeshRenderer");
@@ -44,6 +45,7 @@ public class TerrainBlendDeformer : TerrainDeformer
         Debug.Log("TerrainBlendDeformer, verts: " + baseVertices.Length);
         
         flowers = gameObject.GetComponent<TerrainFlowers>();
+        fft = FindObjectOfType<fftAnalyzer>();
     }
 
     public override void Preset(TerrainMode mode, float duration = -1)

@@ -90,6 +90,61 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &18219783
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 18219784}
+  - 114: {fileID: 18219786}
+  - 114: {fileID: 18219785}
+  m_Layer: 0
+  m_Name: Audio Input
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &18219784
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 18219783}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1557827842}
+  m_RootOrder: 2
+--- !u!114 &18219785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 18219783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c811289aa8c2354fad8da394352b50d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spectrum: []
+  spectrumBinned: []
+  bins: 0
+--- !u!114 &18219786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 18219783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2fd3e425ee563449b709bcdb9d23d1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &25004456 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000012750241952, guid: a6488d61b35c69645bae7394b095add0,
@@ -498,35 +553,35 @@ MonoBehaviour:
     - 0
     - 0
     - 0
-    material: {fileID: 2100000, guid: 246ce721f72da49bcbae9983610b4c21, type: 2}
+    material: {fileID: 0}
   - blendWeights:
     - 0
     - 0
     - 0
     - 0
     - 0
-    material: {fileID: 2100000, guid: 0d2bde0d3a4192d479988ca0b9e8faca, type: 2}
+    material: {fileID: 0}
   - blendWeights:
     - 0
     - 0
     - 0
     - 0
     - 0
-    material: {fileID: 2100000, guid: 37627ba1626918d4e9412b710d728250, type: 2}
+    material: {fileID: 0}
   - blendWeights:
     - 0
     - 0
     - 0
     - 0
     - 0
-    material: {fileID: 2100000, guid: b14a63ecce4dcc94cb21ad6071f7b501, type: 2}
+    material: {fileID: 0}
   - blendWeights:
     - 0
     - 0
     - 0
     - 0
     - 0
-    material: {fileID: 2100000, guid: b14a63ecce4dcc94cb21ad6071f7b501, type: 2}
+    material: {fileID: 0}
   blendPresetIndex: 0
   previousBlendPresetIndex: 0
   activePreset:
@@ -1609,8 +1664,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spectrum: []
+  spectrumBinned: []
   bins: 0
-  lerpSpeed: 1
 --- !u!82 &1049966768
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2407,35 +2462,35 @@ MonoBehaviour:
     - 0
     - 0
     - 0
-    material: {fileID: 2100000, guid: 246ce721f72da49bcbae9983610b4c21, type: 2}
+    material: {fileID: 0}
   - blendWeights:
     - 0
     - 0
     - 0
     - 0
     - 0
-    material: {fileID: 2100000, guid: 0d2bde0d3a4192d479988ca0b9e8faca, type: 2}
+    material: {fileID: 0}
   - blendWeights:
     - 0
     - 0
     - 0
     - 0
     - 0
-    material: {fileID: 2100000, guid: 37627ba1626918d4e9412b710d728250, type: 2}
+    material: {fileID: 0}
   - blendWeights:
     - 0
     - 0
     - 0
     - 0
     - 0
-    material: {fileID: 2100000, guid: b14a63ecce4dcc94cb21ad6071f7b501, type: 2}
+    material: {fileID: 0}
   - blendWeights:
     - 0
     - 0
     - 0
     - 0
     - 0
-    material: {fileID: 2100000, guid: b14a63ecce4dcc94cb21ad6071f7b501, type: 2}
+    material: {fileID: 0}
   blendPresetIndex: 0
   previousBlendPresetIndex: 0
   activePreset:
@@ -2527,6 +2582,7 @@ Transform:
   m_Children:
   - {fileID: 1930249028}
   - {fileID: 1626662946}
+  - {fileID: 18219784}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &1626662946 stripped
