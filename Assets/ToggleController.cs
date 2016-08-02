@@ -6,12 +6,14 @@ public class ToggleController : MonoBehaviour {
 
     public Toggle toggle;
     public int cc;
-    bool toggleWasOn;
+    bool keyWasDown;
     // Use this for initialization
     void Start()
     {
         if (!toggle)
             toggle = GetComponentInChildren<Toggle>();
+
+        keyWasDown = false;
     }
 
     // Update is called once per frame
@@ -19,14 +21,16 @@ public class ToggleController : MonoBehaviour {
     {
         if (!toggle.interactable)
         {
-            bool test = MidiJack.MidiMaster.GetKeyDown(cc);
-            if (test && !toggle.isOn)
+            bool isDown = MidiJack.MidiMaster.GetKeyDown(cc);
+            if (isDown && !keyWasDown)
             {
-                toggle.isOn = true;
+                toggle.isOn = !toggle.isOn;
+                keyWasDown = true;
             }
-            if (test && toggle.isOn)
+            bool isUp = MidiJack.MidiMaster.GetKeyUp(cc);
+            if(isUp && keyWasDown)
             {
-                toggle.isOn = false;
+                keyWasDown = false;
             }
         }
     }
