@@ -7,9 +7,9 @@ public class fftAnalyzer : MonoBehaviour
     private int audioSampleRate = 44100;
     private int samples = 256;
     public float[] spectrum;
+    public float[] spectrumBinned;
+   [Range (1, 256)]
     public int bins;
-    [Range(0, 1)]
-    public float lerpSpeed;
 
     // --------------------------------------------------------------------------------------------------------
     //
@@ -46,14 +46,42 @@ public class fftAnalyzer : MonoBehaviour
                 spectrum[i] = height;
                 average += height;
                 peak = Mathf.Max(peak, height);
-                Debug.DrawLine(new Vector3(i / 10.0f, 0.0f, 0.0f), new Vector3(i / 10.0f, height, 0.0f));
+                Debug.DrawLine(new Vector3(i / 10.0f, 0.0f, 0.0f), new Vector3(i / 10.0f, spectrum[i], 0.0f));
                 i++;
             }
-
             average /= i;
 
+            if(bins > 0)
+            {
+                spectrumBinned = new float[bins];
+                int spectrumChannelsPerBin = spectrum.Length / bins;
+                for (i = 0; i < bins; i++)
+                {
+                    for (int j = i * spectrumChannelsPerBin; j < (i + 1) * spectrumChannelsPerBin; j++)
+                    {
+                        spectrumBinned[i] += spectrum[j];
+                    }
+                    spectrumBinned[i] /= spectrumChannelsPerBin;
+
+                    Debug.DrawLine(new Vector3(i / 10.0f, 0.0f, 1.0f), new Vector3(i / 10.0f, spectrumBinned[i], 1.0f));
+                }
+            }
         }
-        
+    }
+
+    // --------------------------------------------------------------------------------------------------------
+    //
+    public int Bins
+    {
+        get
+        {
+            return this.bins;
+        }
+
+        set
+        {
+            bins = Bins;
+        }
     }
 
     // --------------------------------------------------------------------------------------------------------
