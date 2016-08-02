@@ -39,6 +39,7 @@ public class TerrainDeformer : MonoBehaviour
 	public float posNoiseInScale = 0.001f;
     [Range(0, 100f)]
     public float posNoiseOutScale = 10f;
+    public float deformThresholdY = -999;
 
     public Vector3 noiseOutScale = Vector3.one;
 
@@ -131,7 +132,7 @@ public class TerrainDeformer : MonoBehaviour
             float scaledTime = CaptureTime.Elapsed * timeScale;
             while (i < vertices.Length)
             {
-                if (vertices[i].y >= 0)
+                if (vertices[i].y >= deformThresholdY)
                 {
                     Vector3 noiseIn = baseVertices[i] * posNoiseInScale;
                     float noise = Mathf.PerlinNoise(noiseIn.x, noiseIn.y) * posNoiseOutScale;

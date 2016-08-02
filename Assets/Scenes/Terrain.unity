@@ -209,7 +209,7 @@ Prefab:
     - target: {fileID: 114000010676835072, guid: becd0b9c4aabead48be377be7dddd3a5,
         type: 2}
       propertyPath: isGuiEnabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114000010676835072, guid: becd0b9c4aabead48be377be7dddd3a5,
         type: 2}
@@ -516,10 +516,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseMesh: {fileID: 1177453592}
   terrainScale: 1
-  timeScale: 0
+  timeScale: 1
   posNoiseInScale: 0.25
   posNoiseOutScale: 10
-  noiseOutScale: {x: 0.5, y: 0.5, z: 0.5}
+  deformThresholdY: -999
+  noiseOutScale: {x: 0.2, y: 0.2, z: 0.2}
   blendPresets:
   - blendWeights:
     - 0
@@ -527,35 +528,35 @@ MonoBehaviour:
     - 0
     - 0
     - 0
-    material: {fileID: 0}
+    material: {fileID: 2100000, guid: 246ce721f72da49bcbae9983610b4c21, type: 2}
   - blendWeights:
     - 0
     - 0
     - 0
     - 0
     - 0
-    material: {fileID: 0}
+    material: {fileID: 2100000, guid: 0d2bde0d3a4192d479988ca0b9e8faca, type: 2}
   - blendWeights:
     - 0
     - 0
     - 0
     - 0
     - 0
-    material: {fileID: 0}
+    material: {fileID: 2100000, guid: 37627ba1626918d4e9412b710d728250, type: 2}
   - blendWeights:
     - 0
     - 0
     - 0
     - 0
     - 0
-    material: {fileID: 0}
+    material: {fileID: 2100000, guid: b14a63ecce4dcc94cb21ad6071f7b501, type: 2}
   - blendWeights:
     - 0
     - 0
     - 0
     - 0
     - 0
-    material: {fileID: 0}
+    material: {fileID: 2100000, guid: b14a63ecce4dcc94cb21ad6071f7b501, type: 2}
   blendPresetIndex: 0
   previousBlendPresetIndex: 0
   activePreset:
@@ -721,6 +722,7 @@ MonoBehaviour:
   timeScale: 0.121
   posNoiseInScale: 0.287
   posNoiseOutScale: 10
+  deformThresholdY: -999
   noiseOutScale: {x: 0.1, y: 0.1, z: 0.1}
   blendPresets:
   - blendWeights:
@@ -837,6 +839,7 @@ MonoBehaviour:
   flowerNoisePositionMult: 1
   flowerNoiseTimeScale: 0.1
   flowerAlpha: 1
+  flowerTerrainScale: 1
   flowerScale: 0.2
   flowerElevation: 0
   flowersEnabled: 1
@@ -1094,7 +1097,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400204, guid: a79c07729ff4a024e9870a1370ed54b9, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400180, guid: a79c07729ff4a024e9870a1370ed54b9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1417,7 +1420,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400204, guid: a79c07729ff4a024e9870a1370ed54b9, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400180, guid: a79c07729ff4a024e9870a1370ed54b9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1653,7 +1656,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400204, guid: a79c07729ff4a024e9870a1370ed54b9, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400180, guid: a79c07729ff4a024e9870a1370ed54b9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1949,6 +1952,7 @@ MonoBehaviour:
   timeScale: 0.121
   posNoiseInScale: 0.287
   posNoiseOutScale: 10
+  deformThresholdY: -999
   noiseOutScale: {x: 0.1, y: 0.1, z: 0.1}
   blendPresets:
   - blendWeights:
@@ -2015,6 +2019,7 @@ MonoBehaviour:
   flowerNoisePositionMult: 1
   flowerNoiseTimeScale: 0.1
   flowerAlpha: 1
+  flowerTerrainScale: 1
   flowerScale: 0.2
   flowerElevation: 0
   flowersEnabled: 1
@@ -2242,6 +2247,7 @@ MonoBehaviour:
   timeScale: 1
   posNoiseInScale: 0.001
   posNoiseOutScale: 10
+  deformThresholdY: -999
   noiseOutScale: {x: 0, y: 0, z: 0}
   blendPresets:
   - blendWeights:
@@ -2335,6 +2341,7 @@ MonoBehaviour:
   flowerNoisePositionMult: 1
   flowerNoiseTimeScale: 0.2
   flowerAlpha: 1
+  flowerTerrainScale: 1
   flowerScale: 0.2
   flowerElevation: 0
   flowersEnabled: 1
@@ -2826,6 +2833,7 @@ MonoBehaviour:
   timeScale: 0.121
   posNoiseInScale: 0.287
   posNoiseOutScale: 10
+  deformThresholdY: -999
   noiseOutScale: {x: 0.1, y: 0.1, z: 0.1}
   blendPresets:
   - blendWeights:
@@ -2892,6 +2900,7 @@ MonoBehaviour:
   flowerNoisePositionMult: 1
   flowerNoiseTimeScale: 0.1
   flowerAlpha: 1
+  flowerTerrainScale: 1
   flowerScale: 0.2
   flowerElevation: 0
   flowersEnabled: 1
@@ -2958,7 +2967,7 @@ Transform:
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 206.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 56, y: 26, z: 0}
   m_Children: []
   m_Father: {fileID: 1903944106}
   m_RootOrder: 0

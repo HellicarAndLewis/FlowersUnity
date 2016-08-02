@@ -72,7 +72,7 @@ public class ComputeParticleController : MonoBehaviour
         {
             var particle = particles[i];
             particle.enabled = (i < numParticlesDesired) ? 1 : 0;
-            particle.size = Random.Range(4, 4);
+            particle.size = Random.Range(8, 8);
             particle.seed = Random.Range(-0.1f, 0.1f);
             particle.position = new Vector3(Random.Range(bounds.x * -0.5f, bounds.x * 0.5f),
                                          Random.Range(bounds.y * -0.5f, bounds.y * 0.5f),
@@ -150,6 +150,7 @@ public class ComputeParticleController : MonoBehaviour
             particleMaterial.SetBuffer("particles", particleBuffer);
             particleMaterial.SetBuffer("quadPoints", quadBuffer);
             particleMaterial.SetVector("texBounds", new Vector4(1 / (float)texCols, 1 / (float)texRows, 0, 0));
+            particleMaterial.SetFloat("scale", 1);
             particleMaterial.SetPass(0);
             Graphics.DrawProcedural(MeshTopology.Triangles, 6, numParticles);
         }
