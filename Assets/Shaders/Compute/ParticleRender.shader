@@ -70,13 +70,15 @@ Shader "Custom/ParticleRender" {
 
 					// Quad deform for blossom effect (WIP)
 					// 123 : RIGHT
-					if (revealType == 1 && (id == 1 || id == 2 || id == 3))
+					if (revealType == 1)
 					{
-						//quadPoint.z = (1 - particles[inst].enabled) * -0.5;
-						float sinX = sin((1 - particles[inst].enabled) * 3);
-						float cosX = cos((1 - particles[inst].enabled) * 3);
-						float2x2 rotationMatrix = float2x2(cosX, -sinX, sinX, cosX);
-						quadPoint.xy = mul(quadPoint.xy, rotationMatrix);
+						if (id == 1 || id == 2 || id == 3)
+						{
+							float sinX = sin((1 - particles[inst].enabled) * 3);
+							float cosX = cos((1 - particles[inst].enabled) * 3);
+							float2x2 rotationMatrix = float2x2(cosX, -sinX, sinX, cosX);
+							quadPoint.xy = mul(quadPoint.xy, rotationMatrix);
+						}
 						quadPoint *= particles[inst].enabled;
 						quadPoint *= size;
 					}
