@@ -21,4 +21,9 @@ public class BWEffect : MonoBehaviour {
         material.SetFloat("_bwBlend", intensity);
         Graphics.Blit(source, destination, material);
 	}
+
+    public void OnIntensityChange(float _val)
+    {
+        intensity = 5.0f - _val * 10.0f;
+    }
 }
