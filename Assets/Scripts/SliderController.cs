@@ -6,6 +6,7 @@ public class SliderController : MonoBehaviour {
 
     public Slider slider;
     public int cc;
+
 	// Use this for initialization
 	void Start () {
         if (!slider)
