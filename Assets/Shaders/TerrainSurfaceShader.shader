@@ -2,19 +2,18 @@
 	Properties
 	{
 		_Blend("Blend", Range(0, 1)) = 0.0
-
 		_Color("Color", Color) = (1,1,1,1)
+
 		_MainTex("Albedo 1", 2D) = "white" {}
+		_BumpMap("Normal Map 1", 2D) = "bump" {}
+		_OcclusionTex("Occlusion 1", 2D) = "white" {}
+
 		_MainTex2("Albedo 2", 2D) = "white" {}
+		_BumpMap2("Normal Map 2", 2D) = "bump" {}
+		_OcclusionTex2("Occlusion 2", 2D) = "white" {}
 
 		_Glossiness("Smoothness", Range(0, 1)) = 0.5
 		_Metallic("Metallic", Range(0, 1)) = 0.0
-
-		_BumpMap("Normal Map 1", 2D) = "bump" {}
-		_BumpMap2("Normal Map 2", 2D) = "bump" {}
-
-		_OcclusionTex("Occlusion 1", 2D) = "white" {}
-		_OcclusionTex2("Occlusion 2", 2D) = "white" {}
 		_OcclusionIntentsity("Occlusion intensity", Range(0,1)) = 1.0
 
 	}
@@ -62,7 +61,7 @@
 
 			// ambient occulsion map
 			o.Occlusion = lerp(1.0, tex2D(_OcclusionTex, IN.uv_OcclusionTex), _OcclusionIntentsity) * (1 - _Blend);
-			o.Occlusion += lerp(1.0, tex2D(_OcclusionTex2, IN.uv_OcclusionTex), _OcclusionIntentsity) * (_Blend);
+			o.Occlusion += lerp(1.0, tex2D(_OcclusionTex2, IN.uv_OcclusionTex2), _OcclusionIntentsity) * (_Blend);
 		}
 
 		ENDCG
