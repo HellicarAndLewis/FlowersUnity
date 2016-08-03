@@ -7,7 +7,7 @@ public class BadTVEffect : MonoBehaviour
 {
     [Range(0.0f, 1.0f)]
     public float amount;
-    [Range(0.0f, 10.0f)]
+    [Range(0.01f, 10.0f)]
     public float distortion;
     [Range(0.0f, 1.0f)]
     public float distortion2;
