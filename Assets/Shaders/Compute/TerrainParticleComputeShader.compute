@@ -18,6 +18,9 @@ float noisePositionMult = 10;
 float noiseTimeScale = 0.1;
 float time = 0;
 float alpha = 1;
+float fftVolume0 = 1;
+float fftVolume1 = 1;
+float fftVolume2 = 1;
 
 // ----------------------------------------------------------------------------------
 //
@@ -46,7 +49,13 @@ void CSMain(uint3 id : SV_DispatchThreadID)
 	// ----------------------------------------------------------------------------------
 	// set the enabled/alpha to the noise value
 	enabled = alpha;
-	seed = GetNoise(float2(position.x, position.z), time);
+
+	float fftSeed = (snoise(position) + 1 ) * 0.5;
+	float fftScale = fftVolume0;
+	if (fftSeed > 0.33) fftScale = fftVolume1;
+	if (fftSeed > 0.66) fftScale = fftVolume2;
+
+	seed = GetNoise(float2(position.x, position.z), time) * fftScale;
 
 	// ----------------------------------------------------------------------------------
 	// write the updated values back to the buffer

@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.9798028, g: 1.0139546, b: 1.0349777, a: 1}
+  m_IndirectSpecularColor: {r: 0.9926571, g: 1.0192711, b: 1.0130187, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -132,8 +132,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spectrum: []
-  spectrumBinned: []
-  bins: 0
+  spectrumBinned:
+  - 0
+  - 0
+  - 0
+  bins: 3
 --- !u!114 &18219786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1154,6 +1157,7 @@ MonoBehaviour:
   flowerElevation: 0
   flowersEnabled: 1
   flowersPerTriangle: 3
+  isAudioResponsive: 1
   particleComputeShader: {fileID: 7200000, guid: 5d55532549fa7ee4d934bd3fa936fbdf,
     type: 3}
   particleMaterial: {fileID: 2100000, guid: 1de4d81220e8f71469176adc327f08f4, type: 2}
@@ -1665,10 +1669,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   primaryCam: {fileID: 1827569487}
-  isPrimaryFullscreen: 0
+  isPrimaryFullscreen: 1
   primaryViewport: {x: 0, y: 0, z: 1872, w: 1584}
   secondaryCam: {fileID: 538694267}
-  isSecondaryFullscreen: 0
+  isSecondaryFullscreen: 1
   secondaryViewport: {x: 0, y: 0, z: 1872, w: 1584}
 --- !u!1 &887855701
 GameObject:
@@ -2761,6 +2765,7 @@ MonoBehaviour:
   flowerElevation: 0
   flowersEnabled: 1
   flowersPerTriangle: 3
+  isAudioResponsive: 1
   particleComputeShader: {fileID: 7200000, guid: 5d55532549fa7ee4d934bd3fa936fbdf,
     type: 3}
   particleMaterial: {fileID: 2100000, guid: 1de4d81220e8f71469176adc327f08f4, type: 2}
@@ -3151,6 +3156,7 @@ MonoBehaviour:
   flowerElevation: 0
   flowersEnabled: 1
   flowersPerTriangle: 10
+  isAudioResponsive: 1
   particleComputeShader: {fileID: 7200000, guid: 5d55532549fa7ee4d934bd3fa936fbdf,
     type: 3}
   particleMaterial: {fileID: 2100000, guid: 1de4d81220e8f71469176adc327f08f4, type: 2}
@@ -4151,6 +4157,7 @@ MonoBehaviour:
   flowerElevation: 0
   flowersEnabled: 1
   flowersPerTriangle: 3
+  isAudioResponsive: 1
   particleComputeShader: {fileID: 7200000, guid: 5d55532549fa7ee4d934bd3fa936fbdf,
     type: 3}
   particleMaterial: {fileID: 2100000, guid: 1de4d81220e8f71469176adc327f08f4, type: 2}
