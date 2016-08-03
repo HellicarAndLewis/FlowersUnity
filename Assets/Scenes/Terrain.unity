@@ -734,6 +734,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc62cd541f346e24e8ba68a9333c7d71, type: 2}
   m_IsPrefabParent: 0
+--- !u!20 &538694267 stripped
+Camera:
+  m_PrefabParentObject: {fileID: 20000012069387982, guid: dc62cd541f346e24e8ba68a9333c7d71,
+    type: 2}
+  m_PrefabInternal: {fileID: 538694266}
 --- !u!4 &551788232 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000012897518720, guid: dc62cd541f346e24e8ba68a9333c7d71,
@@ -1030,6 +1035,11 @@ Prefab:
       propertyPath: controllers.Array.data[4]
       value: 
       objectReference: {fileID: 438541962}
+    - target: {fileID: 131000013864590102, guid: a6488d61b35c69645bae7394b095add0,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6488d61b35c69645bae7394b095add0, type: 2}
   m_IsPrefabParent: 0
@@ -1590,7 +1600,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 993936327}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5a68f6872bfb464592c7be4ec3e9602, type: 3}
   m_Name: 
@@ -1865,27 +1875,27 @@ Prefab:
     - target: {fileID: 224000010843990008, guid: cbc9e92fa9e25c5499ac53c05a3cc3a6,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224000010843990008, guid: cbc9e92fa9e25c5499ac53c05a3cc3a6,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 224000010570111140, guid: cbc9e92fa9e25c5499ac53c05a3cc3a6,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 224000010570111140, guid: cbc9e92fa9e25c5499ac53c05a3cc3a6,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224000010570111140, guid: cbc9e92fa9e25c5499ac53c05a3cc3a6,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cbc9e92fa9e25c5499ac53c05a3cc3a6, type: 2}
@@ -2516,6 +2526,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea41a28ce99d7be498bdefb93ba68fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  primaryCam: {fileID: 1827569487}
+  isPrimaryFullscreen: 0
+  primaryViewport: {x: 0, y: 0, z: 1872, w: 1584}
+  secondaryCam: {fileID: 538694267}
+  isSecondaryFullscreen: 0
+  secondaryViewport: {x: 0, y: 0, z: 1872, w: 1584}
 --- !u!1 &1597274579
 GameObject:
   m_ObjectHideFlags: 0

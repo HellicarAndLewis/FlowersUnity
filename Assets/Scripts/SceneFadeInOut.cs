@@ -16,7 +16,7 @@ public class SceneFadeInOut : MonoBehaviour
     void Awake()
     {
         texture = GetComponent<GUITexture>();
-        texture.enabled = true;
+        texture.enabled = false;
         texture.pixelInset = new Rect(0f, 0f, Screen.width, Screen.height);
     }
 
@@ -72,9 +72,11 @@ public class SceneFadeInOut : MonoBehaviour
     //
     public void EndScene(string nextSceneName)
     {
-        this.nextSceneName = nextSceneName;
-        texture.enabled = true;
-        sceneStarting = false;
-        sceneEnding = true;
+        //this.nextSceneName = nextSceneName;
+        //texture.enabled = true;
+        //sceneStarting = false;
+        //sceneEnding = true;
+
+        SceneManager.LoadScene(nextSceneName);
     }
 }
