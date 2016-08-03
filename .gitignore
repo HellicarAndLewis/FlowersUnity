@@ -14,3 +14,5 @@ obj/Debug
 Assets/.Capture
 flowers_Data/
 flowers.exe
+*.pdb
+*.zip

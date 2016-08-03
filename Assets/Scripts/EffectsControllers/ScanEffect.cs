@@ -7,11 +7,11 @@ public class ScanEffect : MonoBehaviour
 {
     [Range(0.0f, 1.0f)]
     public float amount;
-    [Range(0.0f, 0.5f)]
+    [Range(0.0f, 2.0f)]
     public float nIntensity;
-    [Range(0.0f, 0.1f)]
+    [Range(0.0f, 1.0f)]
     public float sIntensity;
-    [Range(0.0f, 100.0f)]
+    [Range(0.0f, 200.0f)]
     public float sCount;
     private Material material;
     // Use this for initialization
@@ -29,5 +29,33 @@ public class ScanEffect : MonoBehaviour
         material.SetFloat("sCount", sCount);
 
         Graphics.Blit(source, destination, material);
+    }
+
+    public void OnAmount(float _val)
+    {
+        float m = 1.0f;
+        float b = 0.0f;
+        amount = m * _val + b;
+    }
+
+    public void OnNIntensity(float _val)
+    {
+        float m = 2.0f;
+        float b = 0.0f;
+        nIntensity = m * _val + b;
+    }
+
+    public void OnsIntensity(float _val)
+    {
+        float m = 1.0f;
+        float b = 0.0f;
+        sIntensity = m * _val + b;
+    }
+
+    public void OnsCount(float _val)
+    {
+        float m = 200.0f;
+        float b = 0.0f;
+        sCount = m * _val + b;
     }
 }

@@ -23,4 +23,18 @@ public class RGBEffect : MonoBehaviour
         material.SetFloat("angle", angle);
         Graphics.Blit(source, destination, material);
     }
+
+    public void OnAmount(float _val)
+    {
+        float m = 1.5f;
+        float b = 0.0f;
+        amount = m * _val + b;
+    }
+
+    public void OnAngle(float _val)
+    {
+        float m = 2.0f * 3.14159f;
+        float b = 0.0f;
+        angle = m * _val + b;
+    }
 }

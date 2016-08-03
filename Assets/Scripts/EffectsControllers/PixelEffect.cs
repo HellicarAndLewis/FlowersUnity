@@ -22,4 +22,18 @@ public class PixelEffect : MonoBehaviour
         material.SetFloat("_pixelHeight", height);
         Graphics.Blit(source, destination, material);
     }
+
+    public void OnWidth(float _val)
+    {
+        float m = 0.1f;
+        float b = 0.0001f;
+        width = m * _val + b;
+    }
+
+    public void OnHeight(float _val)
+    {
+        float m = 0.1f;
+        float b = 0.0001f;
+        height = m * _val + b;
+    }
 }

@@ -4,6 +4,7 @@ using System.Collections;
 [ExecuteInEditMode]
 public class BWEffect : MonoBehaviour {
 
+    [Range(-5.0f, 5.0f)]
     public float intensity;
     private Material material;
 	// Use this for initialization
@@ -21,4 +22,11 @@ public class BWEffect : MonoBehaviour {
         material.SetFloat("_bwBlend", intensity);
         Graphics.Blit(source, destination, material);
 	}
+
+    public void OnIntensity(float _val)
+    {
+        float m = 10.0f;
+        float b = -5.0f;
+        intensity = m * _val + b;
+    }
 }
