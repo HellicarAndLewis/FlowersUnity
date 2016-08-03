@@ -20,7 +20,7 @@ public class DisplaysController : MonoBehaviour
     public void Refresh()
     {
         SetViewport(primaryCam, isPrimaryFullscreen, primaryViewport);
-        SetViewport(secondaryCam, isSecondaryFullscreen, secondaryViewport);
+        if (secondaryCam) SetViewport(secondaryCam, isSecondaryFullscreen, secondaryViewport);
     }
     
     void SetViewport(Camera cam, bool isFullscreen, Vector4 viewport)

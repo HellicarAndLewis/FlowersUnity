@@ -44,6 +44,7 @@ public class TerrainFlowers : MonoBehaviour
     // --------------------------------------------------------------------------------------------------------
     //
     private MeshFilter meshFilter;
+    private SkinnedMeshRenderer skinnedMesh;
     private Vector3[] baseVertices;
     private Vector3[] baseNormals;
     private int[] baseTriangles;
@@ -60,18 +61,33 @@ public class TerrainFlowers : MonoBehaviour
 
     public void Init()
     {
+        Mesh mesh;
         meshFilter = GetComponent<MeshFilter>();
-        if (!meshFilter)
+        if (meshFilter)
         {
-            Debug.LogError("TerrainFlowers script requires a mesh filter on the same game object");
-            return;
+            mesh = meshFilter.mesh;
+            baseVertices = mesh.vertices;
+            baseNormals = mesh.normals;
+            baseTriangles = mesh.triangles;
         }
-        var mesh = meshFilter.mesh;
-        baseVertices = mesh.vertices;
-        baseNormals = mesh.normals;
-        baseTriangles = mesh.triangles;
+        else
+        {
+            if (GetComponent<SkinnedMeshRenderer>())
+            {
+                mesh = new Mesh();
+                GetComponent<SkinnedMeshRenderer>().BakeMesh(mesh);
+                baseVertices = mesh.vertices;
+                baseNormals = mesh.normals;
+                baseTriangles = mesh.triangles;
+            }
+            else
+            {
+                Debug.LogError("TerrainFlowers script requires a mesh filter or skinned mesh renderer on the same game object");
+                return;
+            }
+        }
+        
         InitParticles();
-
     }
 
     void InitParticles()
@@ -166,7 +182,16 @@ public class TerrainFlowers : MonoBehaviour
     {
         if (forceRefresh)
         {
+            forceRefresh = false;
             InitParticles();
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            flowerAlpha += 0.05f;
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            flowerAlpha -= 0.05f;
         }
         UpdateParticles();
     }
