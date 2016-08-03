@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Terrain Blend
+  m_Name: 2 Day Dusk
   m_Shader: {fileID: 4800000, guid: cd44e0d80af0d6a46b522d2696b653b5, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
@@ -19,13 +19,13 @@ Material:
         name: _BumpMap
       second:
         m_Texture: {fileID: 2800000, guid: 43058b36c9f1cdd43b91c7a05372c591, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 2.56, y: 1.56}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _BumpMap2
       second:
-        m_Texture: {fileID: 2800000, guid: 43058b36c9f1cdd43b91c7a05372c591, type: 3}
-        m_Scale: {x: 2.56, y: 1.56}
+        m_Texture: {fileID: 2800000, guid: 0c3ca7110f2feda43beef4d1d5f12252, type: 3}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _DetailAlbedoMap
@@ -54,7 +54,7 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: dc917c93401b27248bcaad3924bfaae8, type: 3}
+        m_Texture: {fileID: 467525775, guid: 07f2caea57180744bbc1d14a402f695d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -85,13 +85,13 @@ Material:
         name: _OcclusionTex
       second:
         m_Texture: {fileID: 2800000, guid: 299882d8775fc2840930eebd13d91c83, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 2.56, y: 1.56}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _OcclusionTex2
       second:
-        m_Texture: {fileID: 2800000, guid: 299882d8775fc2840930eebd13d91c83, type: 3}
-        m_Scale: {x: 50, y: 50}
+        m_Texture: {fileID: 2800000, guid: cc844cfccb1e5a74da4fa88a6ebc54f4, type: 3}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _ParallaxMap
@@ -120,7 +120,7 @@ Material:
       second: 1
     - first:
         name: _Glossiness
-      second: 0.18
+      second: 0.3
     - first:
         name: _GlossyReflections
       second: 1

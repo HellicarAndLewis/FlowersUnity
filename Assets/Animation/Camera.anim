@@ -41,13 +41,13 @@ AnimationClip:
         tangentMode: 10
       - time: 4
         value: 0
-        inSlope: 0.16999999
-        outSlope: 0.16999999
+        inSlope: -0.465
+        outSlope: -0.465
         tangentMode: 10
       - time: 5
-        value: 1.27
-        inSlope: 1.27
-        outSlope: 1.27
+        value: 0
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -56,26 +56,6 @@ AnimationClip:
     path: Main Camera
     classID: 114
     script: {fileID: 11500000, guid: 4975a6e437fc3b149a8cd508ce5bdd69, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 31
-      - time: 4
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 31
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: autoPlay
-    path: 
-    classID: 114
-    script: {fileID: 11500000, guid: 750bc614039363f4cb4696f494385f27, type: 3}
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -96,13 +76,13 @@ AnimationClip:
         tangentMode: 10
       - time: 4
         value: 0
-        inSlope: 0.050000012
-        outSlope: 0.050000012
+        inSlope: -0.25
+        outSlope: -0.25
         tangentMode: 10
       - time: 5
-        value: 0.6
-        inSlope: 0.6
-        outSlope: 0.6
+        value: 0
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -122,12 +102,6 @@ AnimationClip:
     - path: 1058044976
       attribute: 3920803986
       script: {fileID: 11500000, guid: 4975a6e437fc3b149a8cd508ce5bdd69, type: 3}
-      classID: 114
-      customType: 0
-      isPPtrCurve: 0
-    - path: 0
-      attribute: 2468184339
-      script: {fileID: 11500000, guid: 750bc614039363f4cb4696f494385f27, type: 3}
       classID: 114
       customType: 0
       isPPtrCurve: 0
@@ -184,13 +158,13 @@ AnimationClip:
         tangentMode: 10
       - time: 4
         value: 0
-        inSlope: 0.16999999
-        outSlope: 0.16999999
+        inSlope: -0.465
+        outSlope: -0.465
         tangentMode: 10
       - time: 5
-        value: 1.27
-        inSlope: 1.27
-        outSlope: 1.27
+        value: 0
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -199,26 +173,6 @@ AnimationClip:
     path: Main Camera
     classID: 114
     script: {fileID: 11500000, guid: 4975a6e437fc3b149a8cd508ce5bdd69, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 31
-      - time: 4
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 31
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: autoPlay
-    path: 
-    classID: 114
-    script: {fileID: 11500000, guid: 750bc614039363f4cb4696f494385f27, type: 3}
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -239,13 +193,13 @@ AnimationClip:
         tangentMode: 10
       - time: 4
         value: 0
-        inSlope: 0.050000012
-        outSlope: 0.050000012
+        inSlope: -0.25
+        outSlope: -0.25
         tangentMode: 10
       - time: 5
-        value: 0.6
-        inSlope: 0.6
-        outSlope: 0.6
+        value: 0
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2

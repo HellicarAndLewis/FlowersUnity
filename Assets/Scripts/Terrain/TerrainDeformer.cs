@@ -5,7 +5,7 @@ using System.Collections;
 public class BlendPreset
 {
     public float[] blendWeights = new float[5];
-    public float texBlend = 0;
+    public Material material;
 
     public BlendPreset()
     {
@@ -39,8 +39,18 @@ public class TerrainDeformer : MonoBehaviour
 	public float posNoiseInScale = 0.001f;
     [Range(0, 100f)]
     public float posNoiseOutScale = 10f;
+    public float deformThresholdY = -999;
 
     public Vector3 noiseOutScale = Vector3.one;
+
+
+    public BlendPreset[] blendPresets = new BlendPreset[5];
+    public int blendPresetIndex = 0;
+    public int previousBlendPresetIndex = 0;
+    public BlendPreset activePreset = new BlendPreset();
+
+    public float blendTime = 0;
+    public float blendDuration = 2;
 
 
     // --------------------------------------------------------------------------------------------------------
@@ -49,14 +59,15 @@ public class TerrainDeformer : MonoBehaviour
     protected Mesh mesh;
     protected Vector3[] baseVertices;
     protected Vector3[] baseNormals;
-
-    private float texBlendTarget = 0;
-    private float texBlend = 0;
+    protected float texBlendPrevious = 0;
+    protected float texBlendTarget = 0;
+    protected float texBlend = 0;
+    protected fftAnalyzer fft;
 
 
     // --------------------------------------------------------------------------------------------------------
     //
-    virtual protected void Awake()
+    virtual protected void Start()
 	{
         if (!baseMesh) {
 			Debug.LogError("You need to set a mesh filter");
@@ -72,7 +83,7 @@ public class TerrainDeformer : MonoBehaviour
         meshFilter.mesh = mesh;
 
         Debug.Log(baseVertices.Length);
-        
+        fft = FindObjectOfType<fftAnalyzer>();
     }
 
 
@@ -80,44 +91,90 @@ public class TerrainDeformer : MonoBehaviour
     //
     virtual protected void Update()
 	{
-        texBlend = Mathf.Lerp(texBlend, texBlendTarget, 0.05f);
-        var material = GetComponent<Renderer>().material;
-        material.SetFloat("_Blend", texBlend);
+        if (blendTime < blendDuration) UpdateBlend();
         UpdateDeformation();
     }
 
     virtual public void Preset(TerrainMode mode, float duration = -1)
     {
-        if (mode==TerrainMode.Daytime || mode==TerrainMode.Dusk)
+        var index = (int)mode;
+        if (index == blendPresetIndex) return;
+
+        GetComponent<Renderer>().material = blendPresets[index].material;
+        if (index > blendPresetIndex)
         {
+            // next preset is higher, need to fade the prior material up
             texBlendTarget = 1;
+            texBlendPrevious = 0;
+            if (index > 0) GetComponent<Renderer>().material = blendPresets[index - 1].material;
         }
         else
         {
+            // next preset is lower, fade down to it
             texBlendTarget = 0;
+            texBlendPrevious = 1;
         }
+        GetComponent<Renderer>().material.SetFloat("_Blend", texBlendPrevious);
+        blendTime = 0;
+
+        blendPresetIndex = index;
     }
 
     protected void UpdateDeformation(float scale = 1.0f)
     {
         Mesh mesh = meshFilter.mesh;
-        Vector3[] vertices = mesh.vertices;
-        int i = 0;
-        float scaledTime = CaptureTime.Elapsed * timeScale;
-        while (i < vertices.Length)
+
+        if (timeScale > 0)
         {
-            Vector3 noiseIn = baseVertices[i] * posNoiseInScale;
-            float noise = Mathf.PerlinNoise(noiseIn.x, noiseIn.z) * posNoiseOutScale;
-            noise = Mathf.PerlinNoise(noise, scaledTime) - 0.5f;
-            var scaledNormal = baseNormals[i];
-            scaledNormal.Scale(noiseOutScale);
-            vertices[i] = baseVertices[i] + (scaledNormal * noise * scale);
-            vertices[i].y *= terrainScale;
-            i++;
+
+            Vector3[] vertices = mesh.vertices;
+            int i = 0;
+            float scaledTime = CaptureTime.Elapsed * timeScale;
+            while (i < vertices.Length)
+            {
+                if (vertices[i].y >= deformThresholdY)
+                {
+                    Vector3 noiseIn = baseVertices[i] * posNoiseInScale;
+                    float noise = Mathf.PerlinNoise(noiseIn.x, noiseIn.y) * posNoiseOutScale;
+                    if (fft)
+                    {
+                        int sampleI = (int)MathUtils.Map(noise, 0, posNoiseOutScale, 0, fft.spectrum.Length - 1, true);
+                        noise *= fft.spectrum[sampleI];
+                    }
+                    else
+                    {
+                        noise = Mathf.PerlinNoise(noise, scaledTime);
+                    }
+                    var scaledNormal = baseNormals[i];
+                    scaledNormal.Scale(noiseOutScale);
+                    vertices[i] = baseVertices[i] + (scaledNormal * noise * scale);
+                    vertices[i].y *= terrainScale;
+                }
+                else
+                {
+                    vertices[i] = baseVertices[i];
+                }
+                i++;
+            }
+            mesh.vertices = vertices;
         }
-        mesh.vertices = vertices;
+
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();
     }
-    
+
+    virtual protected void UpdateBlend()
+    {
+        blendTime += CaptureTime.Delta;
+        float progress = blendTime / blendDuration;
+        texBlend = Mathf.Lerp(texBlendPrevious, texBlendTarget, progress);
+        var material = GetComponent<Renderer>().material;
+        material.SetFloat("_Blend", texBlend);
+    }
+
+    public void SetDeformThresholdY(float deformThresholdY)
+    {
+        this.deformThresholdY = deformThresholdY;
+    }
+
 }

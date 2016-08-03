@@ -36,6 +36,7 @@ Shader "Custom/ParticleRender" {
 				float4 texBounds;
 				float4 _Color;
 				int revealType;
+				float scale;
 
 				// ----------------------------------------------------------
 				struct v2f
@@ -72,13 +73,12 @@ Shader "Custom/ParticleRender" {
 					// 123 : RIGHT
 					if (revealType == 1 && (id == 1 || id == 2 || id == 3))
 					{
-						//quadPoint.z = (1 - particles[inst].enabled) * -0.5;
 						float sinX = sin((1 - particles[inst].enabled) * 3);
 						float cosX = cos((1 - particles[inst].enabled) * 3);
 						float2x2 rotationMatrix = float2x2(cosX, -sinX, sinX, cosX);
 						quadPoint.xy = mul(quadPoint.xy, rotationMatrix);
 						quadPoint *= particles[inst].enabled;
-						quadPoint *= size;
+						quadPoint *= (size * scale);
 					}
 					else if (revealType == 2)
 					{
@@ -86,11 +86,11 @@ Shader "Custom/ParticleRender" {
 							quadPoint.y *= ((particles[inst].enabled * 2) - 1);
 						quadPoint *= particles[inst].enabled;
 						quadPoint *= size;
-						quadPoint.y += (0.5 * size * particles[inst].enabled);
+						quadPoint.y += (0.5 * size * particles[inst].enabled * scale);
 					}
 					else if (revealType == 3)
 					{
-						quadPoint *= size * particles[inst].enabled * ((particles[inst].seed * 0.5) + 0.5);
+						quadPoint *= size * particles[inst].enabled * ((particles[inst].seed * 0.5) + 0.5) * scale;
 						angle = ((particles[inst].seed * 2) - 1) * 0.6;
 					}
 

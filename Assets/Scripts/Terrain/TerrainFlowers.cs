@@ -13,6 +13,8 @@ public class TerrainFlowers : MonoBehaviour
     public float flowerNoiseTimeScale = 0.1f;
     [Range(0, 1)]
     public float flowerAlpha = 1f;
+    [Range(0, 1)]
+    public float flowerTerrainScale = 1f;
     [Range(0, 20)]
     public float flowerScale = 1f;
     [Range(0, 20)]
@@ -201,6 +203,7 @@ public class TerrainFlowers : MonoBehaviour
             particleMaterial.SetBuffer("quadPoints", quadBuffer);
             particleMaterial.SetVector("texBounds", new Vector4(1, 1, 0, 0));
             particleMaterial.SetInt("revealType", 3);
+            particleMaterial.SetFloat("scale", flowerTerrainScale);
             particleMaterial.SetPass(0);
             Graphics.DrawProcedural(MeshTopology.Triangles, 6, numParticles);
         }
