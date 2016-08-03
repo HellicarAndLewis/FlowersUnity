@@ -12,30 +12,17 @@ public class DisplaysController : MonoBehaviour
     public bool isSecondaryFullscreen = true;
     public Vector4 secondaryViewport = new Vector4(0, 0, 1872, 1584);
 
-    void Start()
+    void Awake()
     {
-        Debug.Log("displays connected: " + Display.displays.Length);
+        Refresh();
+    }
 
-        for(int i = 1; i < Display.displays.Length; i++)
-        {
-            Debug.Log("display " + i + " activated.");
-            Display.displays[i].Activate();
-        }
-
+    public void Refresh()
+    {
         SetViewport(primaryCam, isPrimaryFullscreen, primaryViewport);
         SetViewport(secondaryCam, isSecondaryFullscreen, secondaryViewport);
     }
-
-    void Update()
-    {
-        if (Input.GetKeyDown("f"))
-        {
-            Screen.fullScreen = !Screen.fullScreen;
-        }
-
-    }
-
-
+    
     void SetViewport(Camera cam, bool isFullscreen, Vector4 viewport)
     {
         if (isFullscreen)

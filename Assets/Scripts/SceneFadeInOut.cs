@@ -1,32 +1,37 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneFadeInOut : MonoBehaviour
 {
     public float fadeSpeed = 1.5f;
+    public Image image;
 
-    private GUITexture texture;
-    private string nextSceneName = "";
-    private bool sceneStarting = true;
-    private bool sceneEnding = false;
+    public delegate void FadeOutComplete();
+    public event FadeOutComplete OnFadeOut;
+    public delegate void FadeInComplete();
+    public event FadeInComplete OnFadeIn;
+
+    private bool isFadingIn = true;
+    private bool isFadingOut = false;
+
+
 
     // --------------------------------------------------------------------------------------------------------
     //
     void Awake()
     {
-        texture = GetComponent<GUITexture>();
-        texture.enabled = false;
-        texture.pixelInset = new Rect(0f, 0f, Screen.width, Screen.height);
+        FadeIn();
     }
 
     // --------------------------------------------------------------------------------------------------------
     //
     void Update()
     {
-        if (sceneStarting)
+        if (isFadingIn)
             UpdateFadeIn();
-        else if (sceneEnding)
+        else if (isFadingOut)
             UpdateFadeOut();
     }
 
@@ -34,14 +39,14 @@ public class SceneFadeInOut : MonoBehaviour
     //
     void FadeToClear()
     {
-        texture.color = Color.Lerp(texture.color, Color.clear, fadeSpeed * Time.deltaTime);
+        image.color = Color.Lerp(image.color, Color.clear, fadeSpeed * Time.deltaTime);
     }
 
     // --------------------------------------------------------------------------------------------------------
     //
     void FadeToBlack()
     {
-        texture.color = Color.Lerp(texture.color, Color.black, fadeSpeed * Time.deltaTime);
+        image.color = Color.Lerp(image.color, Color.black, fadeSpeed * Time.deltaTime);
     }
 
     // --------------------------------------------------------------------------------------------------------
@@ -49,34 +54,41 @@ public class SceneFadeInOut : MonoBehaviour
     void UpdateFadeIn()
     {
         FadeToClear();
-        if (texture.color.a <= 0.05f)
+        if (image.color.a <= 0.05f)
         {
-            texture.color = Color.clear;
-            texture.enabled = false;
-            sceneStarting = false;
+            image.color = Color.clear;
+            image.enabled = false;
+            isFadingIn = false;
+            if (OnFadeIn != null)
+                OnFadeIn();
         }
     }
 
     public void UpdateFadeOut()
     {
         FadeToBlack();
-        if (texture.color.a >= 0.95f)
+        if (image.color.a >= 0.95f)
         {
-            Debug.Log("Load next scene");
-            if (nextSceneName != "")
-                SceneManager.LoadScene(nextSceneName);
+            if (OnFadeOut != null)
+                OnFadeOut();
         }
     }
 
     // --------------------------------------------------------------------------------------------------------
     //
-    public void EndScene(string nextSceneName)
+    public void FadeIn()
     {
-        //this.nextSceneName = nextSceneName;
-        //texture.enabled = true;
-        //sceneStarting = false;
-        //sceneEnding = true;
+        image.enabled = true;
+        isFadingIn = true;
+        isFadingOut = false;
+    }
 
-        SceneManager.LoadScene(nextSceneName);
+    // --------------------------------------------------------------------------------------------------------
+    //
+    public void FadeOut()
+    {
+        image.enabled = true;
+        isFadingIn = false;
+        isFadingOut = true;
     }
 }
