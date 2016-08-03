@@ -66,6 +66,6 @@ public class BadTVEffect : MonoBehaviour
     {
         float m = 20.0f;
         float b = 0.0f;
-        amount = m * _val + b;
+        rollSpeed = m * _val + b;
     }
 }

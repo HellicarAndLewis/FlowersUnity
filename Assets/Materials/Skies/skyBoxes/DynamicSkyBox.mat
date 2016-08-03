@@ -181,7 +181,7 @@ Material:
       second: {r: 1, g: 1, b: 1, a: 0}
     - first:
         name: _SkyTint
-      second: {r: 0.29438797, g: 0.42295894, b: 0.7279409, a: 0}
+      second: {r: 0, g: 0.3529412, b: 0.5882353, a: 0}
     - first:
         name: _Tint
       second: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
