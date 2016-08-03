@@ -162,7 +162,7 @@ Material:
       second: 2
     - first:
         name: _SunSize
-      second: 0.053
+      second: 0.033
     - first:
         name: _UVSec
       second: 0
@@ -178,7 +178,7 @@ Material:
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _GroundColor
-      second: {r: 1, g: 0.65922916, b: 0.22794116, a: 1}
+      second: {r: 0.6271626, g: 0.750173, b: 0.85294116, a: 1}
     - first:
         name: _SkyTint
       second: {r: 0, g: 0, b: 0, a: 0}

@@ -423,15 +423,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 04bbfde394e68134d981cd6f75e96364, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.34
+      value: 4.97
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 04bbfde394e68134d981cd6f75e96364, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.2535851
+      value: -0.45
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 04bbfde394e68134d981cd6f75e96364, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.96
+      value: -10.13
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 04bbfde394e68134d981cd6f75e96364, type: 3}
       propertyPath: m_LocalRotation.x
@@ -566,7 +566,56 @@ MonoBehaviour:
   timeScale: 0.5
   posNoiseInScale: 0.001
   posNoiseOutScale: 10
+  deformThresholdY: -999
   noiseOutScale: {x: 1, y: 1, z: 1}
+  blendPresets:
+  - blendWeights:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    material: {fileID: 0}
+  - blendWeights:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    material: {fileID: 0}
+  - blendWeights:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    material: {fileID: 0}
+  - blendWeights:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    material: {fileID: 0}
+  - blendWeights:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    material: {fileID: 0}
+  blendPresetIndex: 0
+  previousBlendPresetIndex: 0
+  activePreset:
+    blendWeights:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    material: {fileID: 0}
+  blendTime: 0
+  blendDuration: 2
 --- !u!4 &666276422
 Transform:
   m_ObjectHideFlags: 0
@@ -630,31 +679,31 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 04bbfde394e68134d981cd6f75e96364, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.9
+      value: -1.777742
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 04bbfde394e68134d981cd6f75e96364, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.62
+      value: -1.69
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 04bbfde394e68134d981cd6f75e96364, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.38
+      value: -7.639834
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 04bbfde394e68134d981cd6f75e96364, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.0589142
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 04bbfde394e68134d981cd6f75e96364, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.98376626
+      value: -0.95318806
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 04bbfde394e68134d981cd6f75e96364, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.04521872
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 04bbfde394e68134d981cd6f75e96364, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.17945491
+      value: -0.29311594
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 04bbfde394e68134d981cd6f75e96364, type: 3}
       propertyPath: m_RootOrder
@@ -714,7 +763,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 04bbfde394e68134d981cd6f75e96364, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 159.597
+      value: 145.942
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 04bbfde394e68134d981cd6f75e96364, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 4.8180003
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 04bbfde394e68134d981cd6f75e96364, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 6.885
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 04bbfde394e68134d981cd6f75e96364, type: 3}
@@ -2989,7 +3046,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: 5b6ec77b896a7c547aa71011c91617cb, type: 3}
       propertyPath: m_BlendShapeWeights.Array.data[3]
-      value: 96.15
+      value: 74.58
       objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: 5b6ec77b896a7c547aa71011c91617cb, type: 3}
       propertyPath: m_Materials.Array.data[0]

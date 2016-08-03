@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: nightSky
+  m_Name: daySky 1
   m_Shader: {fileID: 106, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _SUNDISK_HIGH_QUALITY
   m_LightmapFlags: 1
@@ -108,7 +108,7 @@ Material:
     m_Floats:
     - first:
         name: _AtmosphereThickness
-      second: 0.57
+      second: 0.82
     - first:
         name: _BumpScale
       second: 1
@@ -123,7 +123,7 @@ Material:
       second: 0
     - first:
         name: _Exposure
-      second: 0.4
+      second: 1.14
     - first:
         name: _GlossMapScale
       second: 1
@@ -162,7 +162,7 @@ Material:
       second: 2
     - first:
         name: _SunSize
-      second: 0.038
+      second: 0.033
     - first:
         name: _UVSec
       second: 0
@@ -178,10 +178,10 @@ Material:
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _GroundColor
-      second: {r: 0, g: 0, b: 0, a: 1}
+      second: {r: 1, g: 0.65922916, b: 0.22794116, a: 1}
     - first:
         name: _SkyTint
-      second: {r: 0.41911763, g: 0.23412777, b: 0, a: 0}
+      second: {r: 0, g: 0, b: 0, a: 0}
     - first:
         name: _Tint
       second: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
