@@ -81,17 +81,25 @@ public class ShowController : AnimatedController
         var nextMode = GetTerrainForTime(normalisedTime);
         if (terrainMode != nextMode)
         {
-            if (pauseBetweenScenes && !resumePlayback)
+            if (isPlaying)
             {
-                isPausedBetweenScenes = true;
-                isPlaying = false;
-                animator.speed = 0;
+                if (pauseBetweenScenes && !resumePlayback)
+                {
+                    isPausedBetweenScenes = true;
+                    isPlaying = false;
+                    animator.speed = 0;
+                }
+                else
+                {
+                    isPausedBetweenScenes = false;
+                    StartAnimation();
+                    resumePlayback = false;
+                    terrainMode = nextMode;
+                    Preset(terrainMode, false);
+                }
             }
             else
             {
-                isPausedBetweenScenes = false;
-                StartAnimation();
-                resumePlayback = false;
                 terrainMode = nextMode;
                 Preset(terrainMode, false);
             }

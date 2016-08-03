@@ -1,4 +1,7 @@
-﻿public class SkyboxCamera : MonoBehaviour
+﻿using UnityEngine;
+using System.Collections;
+
+public class SkyboxCamera : MonoBehaviour
 {
 
 
