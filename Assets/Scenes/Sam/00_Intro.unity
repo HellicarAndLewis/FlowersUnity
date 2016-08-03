@@ -416,8 +416,9 @@ MonoBehaviour:
   baseMesh: {fileID: 0}
   terrainScale: 1
   timeScale: 0.5
-  noiseInScale: 0.002
-  noiseOutScale: 6
+  posNoiseInScale: 0.001
+  posNoiseOutScale: 10
+  noiseOutScale: {x: 1, y: 1, z: 1}
 --- !u!4 &666276422
 Transform:
   m_ObjectHideFlags: 0
@@ -825,6 +826,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb156c22a80eb4be08a8410584eac780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlaying: 0
+  reset: 0
+  normalisedTime: 0
+  duration: 30
   sunLight: {fileID: 0}
   transitionTime: 5
   progress: 1
@@ -889,7 +894,7 @@ Prefab:
     - target: {fileID: 2300014, guid: ec888740918388c4ba8d446edf67d47a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c577adb09c83d41a09081b20e860e958, type: 2}
+      objectReference: {fileID: 2100000, guid: f2116ed42e68cb34c90d5a768d29d9ed, type: 2}
     - target: {fileID: 400000, guid: ec888740918388c4ba8d446edf67d47a, type: 3}
       propertyPath: m_LocalScale.x
       value: 1

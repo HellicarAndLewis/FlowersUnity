@@ -4,7 +4,7 @@ using System.Collections;
 public class rockController : MonoBehaviour {
 
     public GameObject rock;
-    [Range(0, 5)]
+    [Range(-5, 5)]
     public float speed;
 	// Use this for initialization
 	void Start () {

@@ -132,7 +132,7 @@ Material:
     m_Floats:
     - first:
         name: _BumpScale
-      second: -0.43
+      second: 0.8
     - first:
         name: _Cutoff
       second: 0.5
@@ -147,7 +147,7 @@ Material:
       second: 0
     - first:
         name: _Glossiness
-      second: 0.366
+      second: 0
     - first:
         name: _GlossyReflections
       second: 1
@@ -174,7 +174,7 @@ Material:
       second: 0
     - first:
         name: _Parallax
-      second: 0.005
+      second: 0.0373
     - first:
         name: _Shininess
       second: 0.078125
