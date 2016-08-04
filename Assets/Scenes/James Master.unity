@@ -533,8 +533,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SetDeformThresholdY
+      - m_Target: {fileID: 1067789282}
+        m_MethodName: onPosMult
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1496,7 +1496,18 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 513940257}
+        m_MethodName: OnConnectedChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
@@ -3114,7 +3125,18 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 513940256}
+        m_MethodName: OnConnectedChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
@@ -4681,7 +4703,7 @@ GameObject:
   - 222: {fileID: 360725013}
   - 114: {fileID: 360725012}
   m_Layer: 0
-  m_Name: Text (7)
+  m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4739,7 +4761,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Knob 1
+  m_Text: 'Speed
 
 '
 --- !u!222 &360725013
@@ -7634,7 +7656,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 541096580}
   m_Layer: 0
-  m_Name: GuiStack 7
+  m_Name: Noise
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9655,7 +9677,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button 2
+  m_Text: Speed Connected
 --- !u!222 &685402124
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11472,7 +11494,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Stack 1
+  m_Text: 'Noise
 
 '
 --- !u!222 &795603303
@@ -18260,7 +18282,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Toggle On
+  m_Text: Pos Mult Connected
 --- !u!222 &1391344855
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19285,7 +19307,7 @@ GameObject:
   - 222: {fileID: 1504540614}
   - 114: {fileID: 1504540613}
   m_Layer: 0
-  m_Name: Text (7)
+  m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19343,7 +19365,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Knob 1
+  m_Text: 'Pos Mult
 
 '
 --- !u!222 &1504540614
@@ -19945,7 +19967,7 @@ GameObject:
   - 222: {fileID: 1564976436}
   - 114: {fileID: 1564976435}
   m_Layer: 0
-  m_Name: Text (7)
+  m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20003,7 +20025,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Knob 1
+  m_Text: 'Pos Scale
 
 '
 --- !u!222 &1564976436
