@@ -70,8 +70,12 @@ public class TerrainDeformer : MonoBehaviour
     virtual protected void Start()
 	{
         if (!baseMesh) {
-			Debug.LogError("You need to set a mesh filter");
-            return;
+            baseMesh = gameObject.GetComponentInChildren<MeshFilter>();
+            if (!baseMesh)
+            {
+                Debug.LogError("You need to set a mesh filter!");
+                return;
+            }
 		}
         mesh = baseMesh.mesh;
         baseMesh.gameObject.SetActive(false);
@@ -100,24 +104,27 @@ public class TerrainDeformer : MonoBehaviour
         var index = (int)mode;
         if (index == blendPresetIndex) return;
 
-        GetComponent<Renderer>().material = blendPresets[index].material;
-        if (index > blendPresetIndex)
+        if (blendPresets[index].material)
         {
-            // next preset is higher, need to fade the prior material up
-            texBlendTarget = 1;
-            texBlendPrevious = 0;
-            if (index > 0) GetComponent<Renderer>().material = blendPresets[index - 1].material;
+            GetComponent<Renderer>().material = blendPresets[index].material;
+            if (index > blendPresetIndex)
+            {
+                // next preset is higher, need to fade the prior material up
+                texBlendTarget = 1;
+                texBlendPrevious = 0;
+                if (index > 0) GetComponent<Renderer>().material = blendPresets[index - 1].material;
+            }
+            else
+            {
+                // next preset is lower, fade down to it
+                texBlendTarget = 0;
+                texBlendPrevious = 1;
+            }
+            GetComponent<Renderer>().material.SetFloat("_Blend", texBlendPrevious);
+            blendTime = 0;
+            blendPresetIndex = index;
         }
-        else
-        {
-            // next preset is lower, fade down to it
-            texBlendTarget = 0;
-            texBlendPrevious = 1;
-        }
-        GetComponent<Renderer>().material.SetFloat("_Blend", texBlendPrevious);
-        blendTime = 0;
-
-        blendPresetIndex = index;
+        
     }
 
     protected void UpdateDeformation(float scale = 1.0f)

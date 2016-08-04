@@ -5,22 +5,27 @@ using System.Linq;
 public class TerrainFlowers : MonoBehaviour
 {
 
-    //[Range(0.01f, 0.001f)]
+    [Range(0, 1)]
     public float flowerNoisePositionScale = 0.01f;
-    //[Range(1, 10)]
+    [Range(0, 40)]
     public float flowerNoisePositionMult = 1f;
     [Range(0, 1)]
     public float flowerNoiseTimeScale = 0.1f;
     [Range(0, 1)]
     public float flowerAlpha = 1f;
-    [Range(0, 1)]
-    public float flowerTerrainScale = 1f;
+    public bool isAudioResponsive = true;
+
+
+    public bool forceRefresh = false;
     [Range(0, 20)]
     public float flowerScale = 1f;
+    public int flowersPerTriangle = 1;
     [Range(0, 20)]
     public float flowerElevation = 0f;
-    public bool flowersEnabled = true;
-    public int flowersPerTriangle = 1;
+
+
+    [HideInInspector]
+    public float flowerTerrainScale = 1f;
 
     // Compute particles
     public ComputeShader particleComputeShader;
@@ -35,35 +40,54 @@ public class TerrainFlowers : MonoBehaviour
     private ComputeBuffer quadBuffer;
     private const int QuadStride = 12;
 
-
+    
     // --------------------------------------------------------------------------------------------------------
     //
     private MeshFilter meshFilter;
+    private SkinnedMeshRenderer skinnedMesh;
     private Vector3[] baseVertices;
     private Vector3[] baseNormals;
     private int[] baseTriangles;
+    private fftAnalyzer fft;
+
 
     // --------------------------------------------------------------------------------------------------------
     //
     void Start()
     {
+        fft = FindObjectOfType<fftAnalyzer>();
         Init();
     }
 
     public void Init()
     {
+        Mesh mesh;
         meshFilter = GetComponent<MeshFilter>();
-        if (!meshFilter)
+        if (meshFilter)
         {
-            Debug.LogError("TerrainFlowers script requires a mesh filter on the same game object");
-            return;
+            mesh = meshFilter.mesh;
+            baseVertices = mesh.vertices;
+            baseNormals = mesh.normals;
+            baseTriangles = mesh.triangles;
         }
-        var mesh = meshFilter.mesh;
-        baseVertices = mesh.vertices;
-        baseNormals = mesh.normals;
-        baseTriangles = mesh.triangles;
+        else
+        {
+            if (GetComponent<SkinnedMeshRenderer>())
+            {
+                mesh = new Mesh();
+                GetComponent<SkinnedMeshRenderer>().BakeMesh(mesh);
+                baseVertices = mesh.vertices;
+                baseNormals = mesh.normals;
+                baseTriangles = mesh.triangles;
+            }
+            else
+            {
+                Debug.LogError("TerrainFlowers script requires a mesh filter or skinned mesh renderer on the same game object");
+                return;
+            }
+        }
+        
         InitParticles();
-
     }
 
     void InitParticles()
@@ -156,8 +180,20 @@ public class TerrainFlowers : MonoBehaviour
     //
     void Update()
     {
-        if (flowersEnabled) UpdateParticles();
-
+        if (forceRefresh)
+        {
+            forceRefresh = false;
+            InitParticles();
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            flowerAlpha += 0.05f;
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            flowerAlpha -= 0.05f;
+        }
+        UpdateParticles();
     }
 
     // ----------------------------------------------------------------------------------
@@ -171,11 +207,23 @@ public class TerrainFlowers : MonoBehaviour
         particleComputeShader.SetBuffer(particleUpdateKernel, "particles", particleBuffer);
 
         // set params
+        var fftVolume0 = 1.0f;
+        var fftVolume1 = 1.0f;
+        var fftVolume2 = 1.0f;
+        if (fft && isAudioResponsive)
+        {
+            fftVolume0 = fft.spectrumBinned[0] + 0.5f;
+            fftVolume1 = fft.spectrumBinned[1] + 0.5f;
+            fftVolume2 = fft.spectrumBinned[2] + 0.5f;
+        }
         particleComputeShader.SetFloat("time", CaptureTime.Elapsed);
         particleComputeShader.SetFloat("noisePositionScale", flowerNoisePositionScale);
         particleComputeShader.SetFloat("noisePositionMult", flowerNoisePositionMult);
         particleComputeShader.SetFloat("noiseTimeScale", flowerNoiseTimeScale);
         particleComputeShader.SetFloat("alpha", flowerAlpha);
+        particleComputeShader.SetFloat("fftVolume0", fftVolume0);
+        particleComputeShader.SetFloat("fftVolume1", fftVolume1);
+        particleComputeShader.SetFloat("fftVolume2", fftVolume2);
 
         // dispatch, launch threads on GPUs
         // numParticles need to be divisible by group size, which corresponds to [numthreads] in the shader
@@ -197,13 +245,14 @@ public class TerrainFlowers : MonoBehaviour
         {
             return;
         }
-        if (particleMaterial && flowersEnabled)
+        if (particleMaterial)
         {
+            var scale = flowerTerrainScale;
             particleMaterial.SetBuffer("particles", particleBuffer);
             particleMaterial.SetBuffer("quadPoints", quadBuffer);
             particleMaterial.SetVector("texBounds", new Vector4(1, 1, 0, 0));
             particleMaterial.SetInt("revealType", 3);
-            particleMaterial.SetFloat("scale", flowerTerrainScale);
+            particleMaterial.SetFloat("scale", scale);
             particleMaterial.SetPass(0);
             Graphics.DrawProcedural(MeshTopology.Triangles, 6, numParticles);
         }

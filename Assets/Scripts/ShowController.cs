@@ -192,8 +192,6 @@ public class ShowController : AnimatedController
         }
 
         showMode = queuedShowMode;
-        //queuedShowMode = ShowMode.Null;
-        FindObjectOfType<DisplaysController>().Refresh();
     }
 
     public void GoNSDOS()
