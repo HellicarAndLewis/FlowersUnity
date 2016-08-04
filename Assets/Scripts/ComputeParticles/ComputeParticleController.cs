@@ -186,4 +186,18 @@ public class ComputeParticleController : MonoBehaviour
         }
     }
 
+    // ----------------------------------------------------------------------------------
+    //
+    public void onPosScale(float _val)
+    {
+        flowerNoisePositionScale = _val * 0.1f;
+    }
+
+    // ----------------------------------------------------------------------------------
+    //
+    public void onPosMult(float _val)
+    {
+        flowerNoisePositionMult = _val * 0.5f;
+    }
+
 }

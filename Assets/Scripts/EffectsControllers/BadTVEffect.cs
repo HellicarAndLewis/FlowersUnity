@@ -20,6 +20,7 @@ public class BadTVEffect : MonoBehaviour
     void Awake()
     {
         material = new Material(Shader.Find("Hidden/BadTV"));
+        distortion = 0.01f;
     }
 
     // Update is called once per frame
@@ -44,7 +45,7 @@ public class BadTVEffect : MonoBehaviour
     public void OnDistortion(float _val)
     {
         float m = 10.0f;
-        float b = 0.0f;
+        float b = 0.01f;
         distortion = m * _val + b;
     }
 
