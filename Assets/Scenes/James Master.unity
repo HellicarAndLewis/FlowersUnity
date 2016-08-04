@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.97990984, g: 1.0129588, b: 1.0141611, a: 1}
+  m_IndirectSpecularColor: {r: 0.10029403, g: 0.09429207, b: 0.40376237, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -6669,6 +6669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lerpSpeedUp: 0.6
   lerpSpeedDown: 0.05
+  liveScale: 1
   scale: 1
 --- !u!1 &484504549
 GameObject:
@@ -9413,11 +9414,15 @@ MonoBehaviour:
   flowerNoisePositionMult: 1
   flowerNoiseTimeScale: 0.1
   flowerAlpha: 1
-  flowerTerrainScale: 1
+  maxAngle: 0.2
+  minBrightness: 0.8
+  minLightBrightness: 1
+  isAudioResponsive: 1
+  forceRefresh: 0
   flowerScale: 0.2
-  flowerElevation: 0
-  flowersEnabled: 1
   flowersPerTriangle: 3
+  flowerElevation: 0
+  flowerTerrainScale: 1
   particleComputeShader: {fileID: 7200000, guid: 5d55532549fa7ee4d934bd3fa936fbdf,
     type: 3}
   particleMaterial: {fileID: 2100000, guid: 1de4d81220e8f71469176adc327f08f4, type: 2}
@@ -9890,6 +9895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lerpSpeedUp: 0.6
   lerpSpeedDown: 0.05
+  liveScale: 1
   scale: 1
 --- !u!1 &720060752
 GameObject:
@@ -17091,11 +17097,15 @@ MonoBehaviour:
   flowerNoisePositionMult: 1
   flowerNoiseTimeScale: 0.1
   flowerAlpha: 1
-  flowerTerrainScale: 1
+  maxAngle: 0.2
+  minBrightness: 0.8
+  minLightBrightness: 1
+  isAudioResponsive: 1
+  forceRefresh: 0
   flowerScale: 0.2
-  flowerElevation: 0
-  flowersEnabled: 1
   flowersPerTriangle: 3
+  flowerElevation: 0
+  flowerTerrainScale: 1
   particleComputeShader: {fileID: 7200000, guid: 5d55532549fa7ee4d934bd3fa936fbdf,
     type: 3}
   particleMaterial: {fileID: 2100000, guid: 1de4d81220e8f71469176adc327f08f4, type: 2}
@@ -18675,11 +18685,15 @@ MonoBehaviour:
   flowerNoisePositionMult: 1
   flowerNoiseTimeScale: 0.2
   flowerAlpha: 1
-  flowerTerrainScale: 1
+  maxAngle: 0.2
+  minBrightness: 0.8
+  minLightBrightness: 1
+  isAudioResponsive: 1
+  forceRefresh: 0
   flowerScale: 0.2
-  flowerElevation: 0
-  flowersEnabled: 1
   flowersPerTriangle: 10
+  flowerElevation: 0
+  flowerTerrainScale: 1
   particleComputeShader: {fileID: 7200000, guid: 5d55532549fa7ee4d934bd3fa936fbdf,
     type: 3}
   particleMaterial: {fileID: 2100000, guid: 1de4d81220e8f71469176adc327f08f4, type: 2}
@@ -20555,8 +20569,8 @@ RectTransform:
   - {fileID: 27614705}
   - {fileID: 1718787635}
   - {fileID: 725062781}
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 1752233787}
+  m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -22151,6 +22165,7 @@ Transform:
   - {fileID: 1312186871}
   - {fileID: 1067789281}
   - {fileID: 1787465424}
+  - {fileID: 1599344038}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!114 &1752233788
@@ -24766,11 +24781,15 @@ MonoBehaviour:
   flowerNoisePositionMult: 1
   flowerNoiseTimeScale: 0.1
   flowerAlpha: 1
-  flowerTerrainScale: 1
+  maxAngle: 0.2
+  minBrightness: 0.8
+  minLightBrightness: 1
+  isAudioResponsive: 1
+  forceRefresh: 0
   flowerScale: 0.2
-  flowerElevation: 0
-  flowersEnabled: 1
   flowersPerTriangle: 3
+  flowerElevation: 0
+  flowerTerrainScale: 1
   particleComputeShader: {fileID: 7200000, guid: 5d55532549fa7ee4d934bd3fa936fbdf,
     type: 3}
   particleMaterial: {fileID: 2100000, guid: 1de4d81220e8f71469176adc327f08f4, type: 2}
