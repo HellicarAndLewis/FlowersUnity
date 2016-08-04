@@ -3,7 +3,7 @@ using System.Collections;
 
 public enum ShowMode
 {
-    Nsdos, Blank, Terrain, Null
+    Nsdos=0, Blank, Rock, Logo, Terrain, Null
 }
 
 public enum TerrainMode
@@ -13,9 +13,7 @@ public enum TerrainMode
 
 public class ShowController : AnimatedController
 {
-    public SceneFadeInOut nsdos;
-    public SceneFadeInOut blank;
-    public SceneFadeInOut terrain;
+    public SceneFadeInOut[] scenes;
 
     public ShowMode showMode = ShowMode.Terrain;
     private ShowMode queuedShowMode = ShowMode.Terrain;
@@ -43,6 +41,14 @@ public class ShowController : AnimatedController
             Debug.Log("display " + i + " activated.");
             Display.displays[i].Activate();
         }
+
+        for (int i = 0; i < scenes.Length; i++)
+        {
+            scenes[i].OnFadeOut += OnSceneFadeOut;
+        }
+
+        queuedShowMode = showMode;
+        ToggleScenes();
     }
 
     override protected void Update()
@@ -64,7 +70,9 @@ public class ShowController : AnimatedController
 
         if (Input.GetKeyDown("q")) GoToMode(ShowMode.Nsdos);
         if (Input.GetKeyDown("w")) GoToMode(ShowMode.Blank);
-        if (Input.GetKeyDown("e")) GoToMode(ShowMode.Terrain);
+        if (Input.GetKeyDown("e")) GoToMode(ShowMode.Rock);
+        if (Input.GetKeyDown("r")) GoToMode(ShowMode.Logo);
+        if (Input.GetKeyDown("t")) GoToMode(ShowMode.Terrain);
     }
 
     public void Play()
@@ -130,68 +138,40 @@ public class ShowController : AnimatedController
     {
         // close current mode, add new one to queue
         queuedShowMode = mode;
-        
-        if (showMode == ShowMode.Nsdos)
+        int sceneIndex = (int)showMode;
+        if (sceneIndex > -1 && sceneIndex < (int)ShowMode.Null)
         {
-            nsdos.OnFadeOut += Nsdos_OnFadeOut;
-            nsdos.FadeOut();
-        }
-        else if (showMode == ShowMode.Blank)
-        {
-            blank.OnFadeOut += Blank_OnFadeOut;
-            blank.FadeOut();
-        }
-        else if (showMode == ShowMode.Terrain)
-        {
-            terrain.OnFadeOut += Terrain_OnFadeOut;
-            terrain.FadeOut();
+            scenes[sceneIndex].FadeOut();
         }
         
     }
-
-    private void Terrain_OnFadeOut()
+    // --------------------------------------------------------------------------------------------------------
+    //
+    private void OnSceneFadeOut()
     {
-        terrain.OnFadeOut -= Nsdos_OnFadeOut;
         ToggleScenes();
     }
 
-    private void Blank_OnFadeOut()
-    {
-        blank.OnFadeOut -= Nsdos_OnFadeOut;
-        ToggleScenes();
-    }
-
-    private void Nsdos_OnFadeOut()
-    {
-        nsdos.OnFadeOut -= Nsdos_OnFadeOut;
-        ToggleScenes();
-    }
-
+    // --------------------------------------------------------------------------------------------------------
+    //
     public void ToggleScenes()
     {
-        if (queuedShowMode == ShowMode.Nsdos)
-        {
-            nsdos.gameObject.SetActive(true);
-            nsdos.FadeIn();
-            blank.gameObject.SetActive(false);
-            terrain.gameObject.SetActive(false);
-        }
-        else if (queuedShowMode == ShowMode.Blank)
-        {
-            nsdos.gameObject.SetActive(false);
-            blank.gameObject.SetActive(true);
-            blank.FadeIn();
-            terrain.gameObject.SetActive(false);
-        }
-        else if (queuedShowMode == ShowMode.Terrain)
-        {
-            nsdos.gameObject.SetActive(false);
-            blank.gameObject.SetActive(false);
-            terrain.gameObject.SetActive(true);
-            terrain.FadeIn();
-        }
-
         showMode = queuedShowMode;
+        int sceneIndex = (int)showMode;
+        if (sceneIndex > -1 && sceneIndex < (int)ShowMode.Null)
+        {
+            SetAllActive(false);
+            scenes[sceneIndex].gameObject.SetActive(true);
+            scenes[sceneIndex].FadeIn();
+        }
+    }
+
+    private void SetAllActive(bool active)
+    {
+        for (int i = 0; i < scenes.Length; i++)
+        {
+            scenes[i].gameObject.SetActive(false);
+        }
     }
 
     public void GoNSDOS()
@@ -201,6 +181,14 @@ public class ShowController : AnimatedController
     public void GoBlank()
     {
         GoToMode(ShowMode.Blank);
+    }
+    public void GoRock()
+    {
+        GoToMode(ShowMode.Rock);
+    }
+    public void GoLogo()
+    {
+        GoToMode(ShowMode.Logo);
     }
     public void GoTerrain()
     {
