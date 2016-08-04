@@ -1153,6 +1153,8 @@ MonoBehaviour:
   flowerNoiseTimeScale: 0.1
   flowerAlpha: 1
   maxAngle: 0.2
+  minBrightness: 0.8
+  minLightBrightness: 1
   isAudioResponsive: 1
   forceRefresh: 0
   flowerScale: 0.2
@@ -2762,11 +2764,13 @@ MonoBehaviour:
   flowerNoiseTimeScale: 0.1
   flowerAlpha: 1
   maxAngle: 0.2
+  minBrightness: 0.8
+  minLightBrightness: 1
   isAudioResponsive: 1
   forceRefresh: 0
   flowerScale: 0.2
   flowersPerTriangle: 3
-  flowerElevation: 0.12
+  flowerElevation: -0.04
   flowerTerrainScale: 1
   particleComputeShader: {fileID: 7200000, guid: 5d55532549fa7ee4d934bd3fa936fbdf,
     type: 3}
@@ -3154,11 +3158,13 @@ MonoBehaviour:
   flowerNoiseTimeScale: 0.2
   flowerAlpha: 1
   maxAngle: 0.2
+  minBrightness: 0.8
+  minLightBrightness: 1
   isAudioResponsive: 1
   forceRefresh: 0
   flowerScale: 0.2
   flowersPerTriangle: 10
-  flowerElevation: 0.12
+  flowerElevation: 0
   flowerTerrainScale: 1
   particleComputeShader: {fileID: 7200000, guid: 5d55532549fa7ee4d934bd3fa936fbdf,
     type: 3}
@@ -4156,6 +4162,8 @@ MonoBehaviour:
   flowerNoiseTimeScale: 0.1
   flowerAlpha: 1
   maxAngle: 0.2
+  minBrightness: 0.8
+  minLightBrightness: 1
   isAudioResponsive: 1
   forceRefresh: 0
   flowerScale: 0.2

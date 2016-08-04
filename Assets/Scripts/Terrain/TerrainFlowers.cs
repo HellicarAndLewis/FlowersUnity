@@ -18,7 +18,11 @@ public class TerrainFlowers : MonoBehaviour
     public float maxAngle = 0.2f;
     [Range(0, 1)]
     public float minBrightness = 0.8f;
+    [Range(0, 1)]
+    public float minLightBrightness = 1.0f;
+
     
+
     public bool isAudioResponsive = true;
 
     // --------------------------------------------------------------------------------------------------------
@@ -27,8 +31,8 @@ public class TerrainFlowers : MonoBehaviour
     [Range(0, 20)]
     public float flowerScale = 1f;
     public int flowersPerTriangle = 1;
-    [Range(0, 20)]
-    public float flowerElevation = 0f;
+    [Range(-1, 1)]
+    public float flowerElevation = -0.1f;
     
     [HideInInspector]
     public float flowerTerrainScale = 1f;
@@ -266,6 +270,7 @@ public class TerrainFlowers : MonoBehaviour
             particleMaterial.SetVector("texBounds", new Vector4(1, 1, 0, 0));
             particleMaterial.SetInt("revealType", 3);
             particleMaterial.SetFloat("scale", scale);
+            particleMaterial.SetFloat("minBright", minLightBrightness);
             particleMaterial.SetPass(0);
             Graphics.DrawProcedural(MeshTopology.Triangles, 6, numParticles);
         }
