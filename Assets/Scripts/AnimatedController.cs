@@ -4,7 +4,6 @@ using System.Collections;
 public class AnimatedController : MonoBehaviour
 {
     public bool isPlaying = false;
-    public bool reset = false;
     [Range(0, 1)]
     public float normalisedTime = 0;
     public float duration = 30;
@@ -31,8 +30,16 @@ public class AnimatedController : MonoBehaviour
     //
     virtual protected void Update()
     {
-        if (reset) StartAnimation(true);
-        if (isPlaying) UpdateAnimation(CaptureTime.Delta);
+        if (isPlaying)
+        {
+            animator.speed = 1;
+            UpdateAnimation(CaptureTime.Delta);
+        }
+        else
+        {
+            PlayNormalised(normalisedTime);
+            animator.speed = 0;
+        }
     }
 
     // --------------------------------------------------------------------------------------------------------
@@ -45,22 +52,28 @@ public class AnimatedController : MonoBehaviour
             var length = duration;
             normalisedTime = currentState.normalizedTime + (deltaTime / length);
 
-            if (normalisedTime < 1.0f)
+            if (normalisedTime < 0.99f)
             {
                 PlayNormalised(normalisedTime);
             }
             else
             {
                 Debug.Log("AnimatedController.Complete");
-                if (loop)
-                    StartAnimation();
-                else
-                {
-                    isPlaying = false;
-                    animator.speed = 0;
-                }
+                Pause();
             }
         }
+    }
+
+    public void Play()
+    {
+        isPlaying = true;
+        animator.speed = 1;
+    }
+
+    public void Pause()
+    {
+        isPlaying = false;
+        animator.speed = 0;
     }
 
     // --------------------------------------------------------------------------------------------------------
@@ -73,7 +86,6 @@ public class AnimatedController : MonoBehaviour
             var currentState = animator.GetCurrentAnimatorStateInfo(0);
             animator.Play(currentState.fullPathHash, 0, normalisedTime);
         }
-        
     }
 
     // --------------------------------------------------------------------------------------------------------

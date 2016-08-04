@@ -12,8 +12,7 @@ public class RockGroupController : MonoBehaviour
     public float lerpSpeedDown = 0.05f;
     [Range(0, 1)]
     public float liveScale = 1;
-
-    [HideInInspector]
+    [Range(0, 1)]
     public float scale = 1;
 
     void Start()

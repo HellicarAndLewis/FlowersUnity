@@ -23,6 +23,8 @@ float minBrightness = 0.8;
 float fftVolume0 = 1;
 float fftVolume1 = 1;
 float fftVolume2 = 1;
+float growAbove = 0;
+float minScale = 0;
 
 // ----------------------------------------------------------------------------------
 //
@@ -64,7 +66,7 @@ void CSMain(uint3 id : SV_DispatchThreadID)
 
 	float alphaVariety = alpha * map(seed, 0, 1, 1, 5, true);
 	if (alphaVariety > 1) alphaVariety = 1;
-	float alphaNoise = map(scaledNoise, 0, 1, 0.7, 1);
+	float alphaNoise = map(scaledNoise, 0, 1, minScale, 1);
 	enabled = alphaVariety * alphaNoise;
 
 	float bright = map(scaledNoise, 0, 1, minBrightness, 1, true);
@@ -72,6 +74,11 @@ void CSMain(uint3 id : SV_DispatchThreadID)
 
 	float angleOffset = map(scaledNoise, 0, 1, -maxAngle, maxAngle, true);
 	angle = baseAngle + angleOffset;
+
+	if (position.y < growAbove)
+	{
+		enabled = 0;
+	}
 
 	// ----------------------------------------------------------------------------------
 	// write the updated values back to the buffer

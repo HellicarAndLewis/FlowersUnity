@@ -22,111 +22,16 @@ AnimationClip:
       - time: 0
         value: 0
         inSlope: 1
-        outSlope: 1
-        tangentMode: 10
-      - time: 1
-        value: 1
-        inSlope: 1
         outSlope: -0
         tangentMode: 21
-      - time: 2
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 3
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 4
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 5
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: flowerAlpha
-    path: Grass Floor
-    classID: 114
-    script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
+      - time: 1.1666666
         value: 0
         inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 0.8333333
-        value: 0
-        inSlope: 0
-        outSlope: 5.9999995
+        outSlope: 2.9999998
         tangentMode: 21
-      - time: 1
+      - time: 1.5
         value: 1
-        inSlope: 5.9999995
-        outSlope: -0
-        tangentMode: 21
-      - time: 5
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: flowerAlpha
-    path: Mountain FR
-    classID: 114
-    script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 0.9166667
-        value: 0
-        inSlope: 0
-        outSlope: 12.000003
-        tangentMode: 21
-      - time: 1
-        value: 1
-        inSlope: 12.000003
-        outSlope: -0
-        tangentMode: 21
-      - time: 5
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: flowerAlpha
-    path: Mountain BR
-    classID: 114
-    script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 1
-        outSlope: 1
-        tangentMode: 21
-      - time: 1
-        value: 1
-        inSlope: 1
+        inSlope: 2.9999998
         outSlope: -0
         tangentMode: 21
       - time: 5
@@ -141,41 +46,6 @@ AnimationClip:
     path: Mountain BL
     classID: 114
     script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 2.8333333
-        value: 0
-        inSlope: 0
-        outSlope: 5.999997
-        tangentMode: 21
-      - time: 3
-        value: 1
-        inSlope: 7.4999986
-        outSlope: 7.4999986
-        tangentMode: 10
-      - time: 4
-        value: 10
-        inSlope: 9
-        outSlope: -0
-        tangentMode: 21
-      - time: 5
-        value: 10
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: posNoiseOutScale
-    path: Mountain FR
-    classID: 114
-    script: {fileID: 11500000, guid: 56ba38b20adee0a4cb7d27fafd92be3d, type: 3}
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -219,31 +89,51 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 2.8333333
+      - time: 1
         value: 0
-        inSlope: 0
-        outSlope: 5.999997
-        tangentMode: 21
-      - time: 3
-        value: 1
-        inSlope: 7.4999986
-        outSlope: 7.4999986
+        inSlope: 1.4999999
+        outSlope: 1.4999999
         tangentMode: 10
-      - time: 4
-        value: 10
-        inSlope: 9
-        outSlope: -0
-        tangentMode: 21
+      - time: 1.3333334
+        value: 1
+        inSlope: 1.4999999
+        outSlope: 1.4999999
+        tangentMode: 10
       - time: 5
-        value: 10
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+    attribute: flowerAlpha
+    path: Foreground
+    classID: 114
+    script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: -0
+        tangentMode: 21
+      - time: 2.5
+        value: 0
+        inSlope: 0
+        outSlope: 2
+        tangentMode: 5
+      - time: 5
+        value: 10
+        inSlope: 4
+        outSlope: 4
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
     attribute: posNoiseOutScale
-    path: Mountain BR
+    path: Foreground
     classID: 114
     script: {fileID: 11500000, guid: 56ba38b20adee0a4cb7d27fafd92be3d, type: 3}
   - curve:
@@ -268,7 +158,32 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: isAudioResponsive
-    path: Grass Floor
+    path: Mountain BL
+    classID: 114
+    script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 5
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: isAudioResponsive
+    path: Foreground
     classID: 114
     script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_PPtrCurves: []
@@ -279,33 +194,9 @@ AnimationClip:
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
     genericBindings:
-    - path: 1812277766
-      attribute: 1964372334
-      script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
-      classID: 114
-      customType: 0
-      isPPtrCurve: 0
-    - path: 2797448602
-      attribute: 1964372334
-      script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
-      classID: 114
-      customType: 0
-      isPPtrCurve: 0
-    - path: 3268503710
-      attribute: 1964372334
-      script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
-      classID: 114
-      customType: 0
-      isPPtrCurve: 0
     - path: 954095101
       attribute: 1964372334
       script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
-      classID: 114
-      customType: 0
-      isPPtrCurve: 0
-    - path: 2797448602
-      attribute: 3139455364
-      script: {fileID: 11500000, guid: 56ba38b20adee0a4cb7d27fafd92be3d, type: 3}
       classID: 114
       customType: 0
       isPPtrCurve: 0
@@ -315,13 +206,25 @@ AnimationClip:
       classID: 114
       customType: 0
       isPPtrCurve: 0
-    - path: 3268503710
+    - path: 3526526592
+      attribute: 1964372334
+      script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3526526592
       attribute: 3139455364
       script: {fileID: 11500000, guid: 56ba38b20adee0a4cb7d27fafd92be3d, type: 3}
       classID: 114
       customType: 0
       isPPtrCurve: 0
-    - path: 1812277766
+    - path: 954095101
+      attribute: 1215350920
+      script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 3526526592
       attribute: 1215350920
       script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
       classID: 114
@@ -355,111 +258,16 @@ AnimationClip:
       - time: 0
         value: 0
         inSlope: 1
-        outSlope: 1
-        tangentMode: 10
-      - time: 1
-        value: 1
-        inSlope: 1
         outSlope: -0
         tangentMode: 21
-      - time: 2
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 3
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 4
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 5
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: flowerAlpha
-    path: Grass Floor
-    classID: 114
-    script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
+      - time: 1.1666666
         value: 0
         inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 0.8333333
-        value: 0
-        inSlope: 0
-        outSlope: 5.9999995
+        outSlope: 2.9999998
         tangentMode: 21
-      - time: 1
+      - time: 1.5
         value: 1
-        inSlope: 5.9999995
-        outSlope: -0
-        tangentMode: 21
-      - time: 5
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: flowerAlpha
-    path: Mountain FR
-    classID: 114
-    script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 0.9166667
-        value: 0
-        inSlope: 0
-        outSlope: 12.000003
-        tangentMode: 21
-      - time: 1
-        value: 1
-        inSlope: 12.000003
-        outSlope: -0
-        tangentMode: 21
-      - time: 5
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: flowerAlpha
-    path: Mountain BR
-    classID: 114
-    script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 1
-        outSlope: 1
-        tangentMode: 21
-      - time: 1
-        value: 1
-        inSlope: 1
+        inSlope: 2.9999998
         outSlope: -0
         tangentMode: 21
       - time: 5
@@ -474,41 +282,6 @@ AnimationClip:
     path: Mountain BL
     classID: 114
     script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 2.8333333
-        value: 0
-        inSlope: 0
-        outSlope: 5.999997
-        tangentMode: 21
-      - time: 3
-        value: 1
-        inSlope: 7.4999986
-        outSlope: 7.4999986
-        tangentMode: 10
-      - time: 4
-        value: 10
-        inSlope: 9
-        outSlope: -0
-        tangentMode: 21
-      - time: 5
-        value: 10
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: posNoiseOutScale
-    path: Mountain FR
-    classID: 114
-    script: {fileID: 11500000, guid: 56ba38b20adee0a4cb7d27fafd92be3d, type: 3}
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -552,31 +325,51 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 2.8333333
+      - time: 1
         value: 0
-        inSlope: 0
-        outSlope: 5.999997
-        tangentMode: 21
-      - time: 3
-        value: 1
-        inSlope: 7.4999986
-        outSlope: 7.4999986
+        inSlope: 1.4999999
+        outSlope: 1.4999999
         tangentMode: 10
-      - time: 4
-        value: 10
-        inSlope: 9
-        outSlope: -0
-        tangentMode: 21
+      - time: 1.3333334
+        value: 1
+        inSlope: 1.4999999
+        outSlope: 1.4999999
+        tangentMode: 10
       - time: 5
-        value: 10
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+    attribute: flowerAlpha
+    path: Foreground
+    classID: 114
+    script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: -0
+        tangentMode: 21
+      - time: 2.5
+        value: 0
+        inSlope: 0
+        outSlope: 2
+        tangentMode: 5
+      - time: 5
+        value: 10
+        inSlope: 4
+        outSlope: 4
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
     attribute: posNoiseOutScale
-    path: Mountain BR
+    path: Foreground
     classID: 114
     script: {fileID: 11500000, guid: 56ba38b20adee0a4cb7d27fafd92be3d, type: 3}
   - curve:
@@ -601,7 +394,32 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: isAudioResponsive
-    path: Grass Floor
+    path: Mountain BL
+    classID: 114
+    script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 2
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      - time: 5
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 31
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: isAudioResponsive
+    path: Foreground
     classID: 114
     script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_EulerEditorCurves: []

@@ -20,8 +20,11 @@ public class TerrainFlowers : MonoBehaviour
     public float minBrightness = 0.8f;
     [Range(0, 1)]
     public float minLightBrightness = 1.0f;
+    [Range(0, 1)]
+    public float minScale = 0.8f;
+    public float growAbove = 0.0f;
 
-    
+
 
     public bool isAudioResponsive = true;
 
@@ -33,8 +36,8 @@ public class TerrainFlowers : MonoBehaviour
     public int flowersPerTriangle = 1;
     [Range(-1, 1)]
     public float flowerElevation = -0.1f;
-    
-    [HideInInspector]
+
+    [Range(0, 1)]
     public float flowerTerrainScale = 1f;
 
     // Compute particles
@@ -240,8 +243,9 @@ public class TerrainFlowers : MonoBehaviour
         particleComputeShader.SetFloat("fftVolume2", fftVolume2);
         particleComputeShader.SetFloat("maxAngle", maxAngle);
         particleComputeShader.SetFloat("minBrightness", minBrightness);
+        particleComputeShader.SetFloat("growAbove", growAbove);
+        particleComputeShader.SetFloat("minScale", minScale);
         
-
         // dispatch, launch threads on GPUs
         // numParticles need to be divisible by group size, which corresponds to [numthreads] in the shader
         var numberOfGroups = Mathf.CeilToInt((float)numParticles / GroupSize);

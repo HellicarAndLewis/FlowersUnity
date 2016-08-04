@@ -59,7 +59,7 @@ public class ShowController : AnimatedController
         {
             controller.PlayNormalised(terrainTime);
         }
-        if (Input.GetKeyDown("r")) resumePlayback = true;
+        if (!isPlaying && Input.GetKeyDown("p")) Play();
         UpdateTerrainMode();
 
         if (Input.GetKeyDown("1")) Preset(TerrainMode.Intro);
@@ -74,16 +74,7 @@ public class ShowController : AnimatedController
         if (Input.GetKeyDown("r")) GoToMode(ShowMode.Logo);
         if (Input.GetKeyDown("t")) GoToMode(ShowMode.Terrain);
     }
-
-    public void Play()
-    {
-        if (!isPlaying && !isPausedBetweenScenes) isPlaying = true;
-        else if (isPausedBetweenScenes)
-        {
-            resumePlayback = true;
-        }
-    }
-
+    
     void UpdateTerrainMode()
     {
         var nextMode = GetTerrainForTime(normalisedTime);
@@ -91,23 +82,19 @@ public class ShowController : AnimatedController
         {
             if (isPlaying)
             {
-                if (pauseBetweenScenes && !resumePlayback)
+                if (pauseBetweenScenes)
                 {
-                    isPausedBetweenScenes = true;
-                    isPlaying = false;
-                    animator.speed = 0;
+                    Pause();
                 }
                 else
                 {
-                    isPausedBetweenScenes = false;
-                    StartAnimation();
-                    resumePlayback = false;
                     terrainMode = nextMode;
                     Preset(terrainMode, false);
                 }
             }
             else
             {
+                // we're scrubbing, update the terrain mode
                 terrainMode = nextMode;
                 Preset(terrainMode, false);
             }
