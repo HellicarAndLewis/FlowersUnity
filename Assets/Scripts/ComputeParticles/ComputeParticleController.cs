@@ -150,7 +150,7 @@ public class ComputeParticleController : MonoBehaviour
             particleMaterial.SetBuffer("particles", particleBuffer);
             particleMaterial.SetBuffer("quadPoints", quadBuffer);
             particleMaterial.SetVector("texBounds", new Vector4(1 / (float)texCols, 1 / (float)texRows, 0, 0));
-            particleMaterial.SetFloat("scale", 1);
+            particleMaterial.SetInt("revealType", 1);
             particleMaterial.SetPass(0);
             Graphics.DrawProcedural(MeshTopology.Triangles, 6, numParticles);
         }
