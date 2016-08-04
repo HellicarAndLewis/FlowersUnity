@@ -6,8 +6,14 @@ public class RockGroupController : MonoBehaviour
 {
     List<JumpingRock> rocks = new List<JumpingRock>();
 
+    [Range(0, 1)]
     public float lerpSpeedUp = 0.6f;
+    [Range(0, 1)]
     public float lerpSpeedDown = 0.05f;
+    [Range(0, 1)]
+    public float liveScale = 1;
+
+    [HideInInspector]
     public float scale = 1;
 
     void Start()
@@ -27,7 +33,7 @@ public class RockGroupController : MonoBehaviour
         {
             rock.lerpSpeedUp = lerpSpeedUp;
             rock.lerpSpeedDown = lerpSpeedDown;
-            rock.scale = scale;
+            rock.scale = scale * liveScale;
         }
     }
 }

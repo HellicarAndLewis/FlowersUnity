@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.59001154, g: 0.61011237, b: 0.6656648, a: 1}
+  m_IndirectSpecularColor: {r: 0.22684214, g: 0.21751255, b: 0.23467556, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -462,8 +462,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce4ecf8a491f5f84e9f69e92db0aa94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpSpeedUp: 0.6
-  lerpSpeedDown: 0.05
+  lerpSpeedUp: 0.3
+  lerpSpeedDown: 0.1
+  liveScale: 0.5
   scale: 1
 --- !u!1 &509915829
 GameObject:
@@ -1184,8 +1185,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce4ecf8a491f5f84e9f69e92db0aa94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpSpeedUp: 0.6
-  lerpSpeedDown: 0.05
+  lerpSpeedUp: 0.3
+  lerpSpeedDown: 0.1
+  liveScale: 0.5
   scale: 1
 --- !u!1001 &766318199
 Prefab:
@@ -1672,10 +1674,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   primaryCam: {fileID: 1827569487}
-  isPrimaryFullscreen: 1
+  isPrimaryFullscreen: 0
   primaryViewport: {x: 0, y: 0, z: 1872, w: 1584}
   secondaryCam: {fileID: 538694267}
-  isSecondaryFullscreen: 1
+  isSecondaryFullscreen: 0
   secondaryViewport: {x: 0, y: 0, z: 1872, w: 1584}
 --- !u!1 &887855701
 GameObject:
@@ -3408,7 +3410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   primaryCam: {fileID: 1787465430}
-  isPrimaryFullscreen: 1
+  isPrimaryFullscreen: 0
   primaryViewport: {x: 0, y: 0, z: 1872, w: 1584}
   secondaryCam: {fileID: 350459716}
   isSecondaryFullscreen: 0

@@ -67,9 +67,13 @@ public class AnimatedController : MonoBehaviour
     //
     public void PlayNormalised(float normalisedTime)
     {
-        this.normalisedTime = normalisedTime;
-        var currentState = animator.GetCurrentAnimatorStateInfo(0);
-        animator.Play(currentState.fullPathHash, 0, normalisedTime);
+        if (animator)
+        {
+            this.normalisedTime = normalisedTime;
+            var currentState = animator.GetCurrentAnimatorStateInfo(0);
+            animator.Play(currentState.fullPathHash, 0, normalisedTime);
+        }
+        
     }
 
     // --------------------------------------------------------------------------------------------------------
