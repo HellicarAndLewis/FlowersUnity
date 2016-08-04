@@ -21,10 +21,11 @@ Shader "Custom/ParticleRender" {
 
 			CGPROGRAM
 
-// Upgrade NOTE: excluded shader from OpenGL ES 2.0 because it does not contain a surface program or both vertex and fragment programs.
-#pragma exclude_renderers gles
+				// Upgrade NOTE: excluded shader from OpenGL ES 2.0 because it does not contain a surface program or both vertex and fragment programs.
+				#pragma exclude_renderers gles
 				#pragma vertex star_vertex
 				#pragma fragment frag
+				#pragma multi_compile_fog
 
 				#pragma target 5.0
 				
@@ -41,6 +42,7 @@ Shader "Custom/ParticleRender" {
 				int revealType;
 				float scale;
 				float minBright;
+				int fogEnabled;
 
 				// ----------------------------------------------------------
 				struct v2f
@@ -48,6 +50,8 @@ Shader "Custom/ParticleRender" {
 					float4 pos : SV_POSITION;
 					float2 uv : TEXCOORD0;
 					float4 color: COLOR;
+					//Used to pass fog amount around number should be a free texcoord.
+					UNITY_FOG_COORDS(1)
 				};
 
 				float4x4 rotate(float3 r, float4 d) // r=rotations axes
@@ -126,6 +130,13 @@ Shader "Custom/ParticleRender" {
 					o.color = float4 (particles[inst].colour.rgb * scaledDiff, 1);
 					//o.color = float4 (1, 1, 1, 1);
 
+					if (fogEnabled == 1)
+					{
+						//Compute fog amount from clip space position.
+						UNITY_TRANSFER_FOG(o, o.pos);
+					}
+					
+
 					return o;
 				}
 
@@ -134,7 +145,15 @@ Shader "Custom/ParticleRender" {
 				{
 					float4 texCol = tex2Dbias (_MainTex, float4(i.uv, 0.0f, -1.0f));
 					float4 particleCol = i.color;
-					return float4(texCol.rgb * particleCol.rgb, texCol.a * particleCol.a);
+					float4 colour = float4(texCol.rgb * particleCol.rgb, texCol.a * particleCol.a);
+
+					if (fogEnabled == 1)
+					{
+						//Apply fog (additive pass are automatically handled)
+						UNITY_APPLY_FOG(i.fogCoord, colour);
+					}
+
+					return colour;
 				}
 
 			ENDCG

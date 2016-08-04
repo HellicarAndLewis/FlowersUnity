@@ -271,6 +271,7 @@ public class TerrainFlowers : MonoBehaviour
             particleMaterial.SetInt("revealType", 3);
             particleMaterial.SetFloat("scale", scale);
             particleMaterial.SetFloat("minBright", minLightBrightness);
+            particleMaterial.SetInt("fogEnabled", 1);
             particleMaterial.SetPass(0);
             Graphics.DrawProcedural(MeshTopology.Triangles, 6, numParticles);
         }
