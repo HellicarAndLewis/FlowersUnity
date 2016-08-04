@@ -112,7 +112,7 @@ public class TerrainBlendDeformer : TerrainDeformer
         bool isComplete = (blendTime > blendDuration);
 
         float progress = blendTime / blendDuration;
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
             activePreset.Lerp(i, previousPreset.blendWeights[i], targetPreset.blendWeights[i], progress);
             baseSkinnedMesh.SetBlendShapeWeight(i, activePreset.blendWeights[i]);
