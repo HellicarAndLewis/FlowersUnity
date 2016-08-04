@@ -211,6 +211,4 @@ public class ComputeParticleController : MonoBehaviour
     {
         speed.y = 0.0f - _val * 0.5f;
     }
-
-
 }
