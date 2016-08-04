@@ -7,15 +7,15 @@ using System.Collections;
 public class TerrainBlendDeformer : TerrainDeformer
 {
 
-	// --------------------------------------------------------------------------------------------------------
-	//
+    // --------------------------------------------------------------------------------------------------------
+    //
     public SkinnedMeshRenderer baseSkinnedMesh;
 
     // --------------------------------------------------------------------------------------------------------
     // Blend specific
     public enum State
     {
-        Deform=0, PreBlend, Blend, PostBlend 
+        Deform = 0, PreBlend, Blend, PostBlend
     }
     public State state = State.Deform;
 
@@ -26,24 +26,25 @@ public class TerrainBlendDeformer : TerrainDeformer
     // --------------------------------------------------------------------------------------------------------
     //
     override protected void Start()
-	{
-        if (!baseSkinnedMesh) {
-			Debug.LogError("You need to set a SkinnedMeshRenderer");
+    {
+        if (!baseSkinnedMesh)
+        {
+            Debug.LogError("You need to set a SkinnedMeshRenderer");
             return;
-		}
+        }
         mesh = new Mesh();
         baseSkinnedMesh.BakeMesh(mesh);
         baseSkinnedMesh.gameObject.SetActive(false);
-        
-		baseVertices = mesh.vertices;
-		baseNormals = mesh.normals;
+
+        baseVertices = mesh.vertices;
+        baseNormals = mesh.normals;
         meshFilter = GetComponent<MeshFilter>();
 
         if (!meshFilter) meshFilter = gameObject.AddComponent<MeshFilter>();
         if (!GetComponent<MeshRenderer>()) gameObject.AddComponent<MeshRenderer>();
         meshFilter.mesh = mesh;
         Debug.Log("TerrainBlendDeformer, verts: " + baseVertices.Length);
-        
+
         flowers = gameObject.GetComponent<TerrainFlowers>();
         fft = FindObjectOfType<fftAnalyzer>();
     }
@@ -60,7 +61,7 @@ public class TerrainBlendDeformer : TerrainDeformer
     // --------------------------------------------------------------------------------------------------------
     //
     override protected void Update()
-	{
+    {
         if (Input.GetKeyDown("b"))
         {
             Preset(TerrainMode.Dawn);
@@ -98,7 +99,7 @@ public class TerrainBlendDeformer : TerrainDeformer
             default:
                 break;
         }
-        
+
     }
 
     // --------------------------------------------------------------------------------------------------------
@@ -136,5 +137,15 @@ public class TerrainBlendDeformer : TerrainDeformer
         }
 
     }
-    
+
+    public void OnDrawGizmosSelected()
+    {
+        /*
+        for (int i = 0; i < mesh.vertexCount; i++)
+        {
+            var p1 = transform.localToWorldMatrix.MultiplyPoint(mesh.vertices[i]);
+            Gizmos.DrawLine(p1, p1 + (mesh.normals[i] * 0.3f));
+        }
+        */
+    }
 }

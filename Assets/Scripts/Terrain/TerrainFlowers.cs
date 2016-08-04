@@ -4,7 +4,8 @@ using System.Linq;
 
 public class TerrainFlowers : MonoBehaviour
 {
-
+    // --------------------------------------------------------------------------------------------------------
+    // Realtime
     [Range(0, 1)]
     public float flowerNoisePositionScale = 0.01f;
     [Range(0, 40)]
@@ -13,17 +14,19 @@ public class TerrainFlowers : MonoBehaviour
     public float flowerNoiseTimeScale = 0.1f;
     [Range(0, 1)]
     public float flowerAlpha = 1f;
+    [Range(0, Mathf.PI)]
+    public float maxAngle = 0.2f;
     public bool isAudioResponsive = true;
 
-
+    // --------------------------------------------------------------------------------------------------------
+    // Require particle system refresh
     public bool forceRefresh = false;
     [Range(0, 20)]
     public float flowerScale = 1f;
     public int flowersPerTriangle = 1;
     [Range(0, 20)]
     public float flowerElevation = 0f;
-
-
+    
     [HideInInspector]
     public float flowerTerrainScale = 1f;
 
@@ -129,6 +132,9 @@ public class TerrainFlowers : MonoBehaviour
             var p1 = baseVertices[baseTriangles[i]];
             var p2 = baseVertices[baseTriangles[i + 1]];
             var p3 = baseVertices[baseTriangles[i + 2]];
+
+            var avgNormal = (baseNormals[baseTriangles[i]] + baseNormals[baseTriangles[i + 1]] + baseNormals[baseTriangles[i + 2]]) / 3;
+
             // draw multiple flowers per triangle for denser coverage
             for (int j = 0; j < flowersPerTriangle; j++)
             {
@@ -141,11 +147,12 @@ public class TerrainFlowers : MonoBehaviour
                 particle.enabled = (particleIndex < numParticlesDesired) ? 1 : 0;
                 particle.size = flowerScale;
                 particle.seed = Random.value;
-                particle.baseAngle = Vector3.Cross(Vector3.up, (particlePos - p1)).z;
+                particle.baseAngle = -Vector3.Cross(Vector3.up, avgNormal).z;
                 // transform the position to take into account the mesh position and rotation
                 particle.position = transform.localToWorldMatrix.MultiplyPoint(particlePos);
                 // push the position out along the normal
-                particle.position += baseNormals[baseTriangles[i]] * flowerElevation;
+                var direction = baseNormals[baseTriangles[i]];
+                particle.position += (direction * flowerElevation);
                 particle.velocity = Vector3.zero;
                 particle.colour = Color.white;
                 particle.texOffset = new Vector2(0, 0);
@@ -225,6 +232,7 @@ public class TerrainFlowers : MonoBehaviour
         particleComputeShader.SetFloat("fftVolume0", fftVolume0);
         particleComputeShader.SetFloat("fftVolume1", fftVolume1);
         particleComputeShader.SetFloat("fftVolume2", fftVolume2);
+        particleComputeShader.SetFloat("maxAngle", maxAngle);
 
         // dispatch, launch threads on GPUs
         // numParticles need to be divisible by group size, which corresponds to [numthreads] in the shader

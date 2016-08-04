@@ -90,8 +90,9 @@ Shader "Custom/ParticleRender" {
 					}
 					else if (revealType == 3)
 					{
-						quadPoint *= size * particles[inst].enabled * ((particles[inst].angle * 0.5) + 0.8) * scale;
-						//quadPoint -= 0.5;
+						float scaledSize = size * particles[inst].enabled * scale;
+						quadPoint *= scaledSize;
+						quadPoint -= (scaledSize * 0.5);
 					}
 
 					
@@ -110,8 +111,8 @@ Shader "Custom/ParticleRender" {
 
 					//o.color = float4 (particles[inst].colour.rgb, particles[inst].enabled);
 					//o.color = float4 (1, 1, 1, particles[inst].enabled);
-					//o.color = float4 (particles[inst].colour.rgb, 1);
-					o.color = float4 (1, 1, 1, 1);
+					o.color = float4 (particles[inst].colour.rgb, 1);
+					//o.color = float4 (1, 1, 1, 1);
 
 					return o;
 				}
