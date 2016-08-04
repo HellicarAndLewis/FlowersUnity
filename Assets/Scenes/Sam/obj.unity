@@ -90,6 +90,78 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &399518554
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9.3001
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9997187
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.023718012
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.286057
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.17316116
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.28605697
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -537.361
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1334543792, guid: f1dcb3fd6e86fce4894fbb98cc50d11a,
+        type: 3}
+    - target: {fileID: 2300002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1334543792, guid: f1dcb3fd6e86fce4894fbb98cc50d11a,
+        type: 3}
+    - target: {fileID: 100002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_Name
+      value: dayCanyons (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+  m_IsPrefabParent: 0
 --- !u!1 &730863672
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,6 +225,78 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!1001 &1434420354
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9566814
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.29113707
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.66161144
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4004986
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6616115
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -574.023
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1334543792, guid: f1dcb3fd6e86fce4894fbb98cc50d11a,
+        type: 3}
+    - target: {fileID: 2300002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1334543792, guid: f1dcb3fd6e86fce4894fbb98cc50d11a,
+        type: 3}
+    - target: {fileID: 100002, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+      propertyPath: m_Name
+      value: dayCanyons (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 9d4d07e9060c8da428e314accac34a1a, type: 3}
+  m_IsPrefabParent: 0
 --- !u!1 &1468064778
 GameObject:
   m_ObjectHideFlags: 0
