@@ -181,28 +181,28 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 0
-        inSlope: 1
-        outSlope: 1
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       - time: 1
-        value: 1
-        inSlope: 0.147194
-        outSlope: 0.147194
+        value: 0
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       - time: 2
-        value: 0.294388
-        inSlope: -0.058823526
-        outSlope: -0.058823526
+        value: 0
+        inSlope: 0.056862745
+        outSlope: 0.056862745
         tangentMode: 10
       - time: 3
-        value: 0.88235295
-        inSlope: -0.07065925
-        outSlope: -0.07065925
+        value: 0.11372549
+        inSlope: 0.07653475
+        outSlope: 0.07653475
         tangentMode: 10
       - time: 4
         value: 0.1530695
-        inSlope: -0.36464173
-        outSlope: -0.36464173
+        inSlope: 0.019672003
+        outSlope: 0.019672003
         tangentMode: 10
       - time: 5
         value: 0.1530695
@@ -221,28 +221,28 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 0.3529412
-        inSlope: -0.2720588
-        outSlope: -0.2720588
+        inSlope: -0.10588236
+        outSlope: -0.10588236
         tangentMode: 10
       - time: 1
-        value: 0.08088237
-        inSlope: 0.035008863
-        outSlope: 0.035008863
+        value: 0.24705882
+        inSlope: -0.1764706
+        outSlope: -0.1764706
         tangentMode: 10
       - time: 2
-        value: 0.4229589
-        inSlope: 0.030925587
-        outSlope: 0.030925587
+        value: 0
+        inSlope: -0.12352941
+        outSlope: -0.12352941
         tangentMode: 10
       - time: 3
-        value: 0.14273354
-        inSlope: -0.20612696
-        outSlope: -0.20612696
+        value: 0
+        inSlope: 0.0053525064
+        outSlope: 0.0053525064
         tangentMode: 10
       - time: 4
         value: 0.010705013
-        inSlope: -0.06601427
-        outSlope: -0.06601427
+        inSlope: 0.0053525064
+        outSlope: 0.0053525064
         tangentMode: 10
       - time: 5
         value: 0.010705013
@@ -261,28 +261,28 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 0.5882353
-        inSlope: 0.23427957
-        outSlope: 0.23427957
+        inSlope: -0.2392157
+        outSlope: -0.2392157
         tangentMode: 10
       - time: 1
-        value: 0.8225149
-        inSlope: 0.06985292
-        outSlope: 0.06985292
+        value: 0.34901962
+        inSlope: -0.29411766
+        outSlope: -0.29411766
         tangentMode: 10
       - time: 2
-        value: 0.72794116
-        inSlope: -0.33989066
-        outSlope: -0.33989066
+        value: 0
+        inSlope: 0.31764704
+        outSlope: 0.31764704
         tangentMode: 10
       - time: 3
-        value: 0.14273354
-        inSlope: -0.24264704
-        outSlope: -0.24264704
+        value: 0.9843137
+        inSlope: 0.121323526
+        outSlope: 0.121323526
         tangentMode: 10
       - time: 4
         value: 0.24264705
-        inSlope: 0.049956754
-        outSlope: 0.049956754
+        inSlope: -0.37083334
+        outSlope: -0.37083334
         tangentMode: 10
       - time: 5
         value: 0.24264705
@@ -313,6 +313,221 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: SkyTint.a
+    path: Skybox
+    classID: 114
+    script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: -0.39753085
+        outSlope: -0.39753085
+        tangentMode: 10
+      - time: 1
+        value: 0.60246915
+        inSlope: -0.33271605
+        outSlope: -0.33271605
+        tangentMode: 10
+      - time: 3
+        value: 0.06666667
+        inSlope: 0.09938271
+        outSlope: 0.09938271
+        tangentMode: 10
+      - time: 5
+        value: 1
+        inSlope: 0.46666667
+        outSlope: 0.46666667
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: Ground.r
+    path: Skybox
+    classID: 114
+    script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: -0.41256356
+        outSlope: -0.41256356
+        tangentMode: 10
+      - time: 1
+        value: 0.58743644
+        inSlope: -0.34529775
+        outSlope: -0.34529775
+        tangentMode: 10
+      - time: 3
+        value: 0.03137255
+        inSlope: 0.10314089
+        outSlope: 0.10314089
+        tangentMode: 10
+      - time: 5
+        value: 1
+        inSlope: 0.48431373
+        outSlope: 0.48431373
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: Ground.g
+    path: Skybox
+    classID: 114
+    script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: -0.42091507
+        outSlope: -0.42091507
+        tangentMode: 10
+      - time: 1
+        value: 0.57908493
+        inSlope: -0.3522876
+        outSlope: -0.3522876
+        tangentMode: 10
+      - time: 3
+        value: 0.011764707
+        inSlope: 0.10522877
+        outSlope: 0.10522877
+        tangentMode: 10
+      - time: 5
+        value: 1
+        inSlope: 0.49411765
+        outSlope: 0.49411765
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: Ground.b
+    path: Skybox
+    classID: 114
+    script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 3
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 5
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: Ground.a
+    path: Skybox
+    classID: 114
+    script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.042
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1
+        value: 0.042
+        inSlope: 0.0040000007
+        outSlope: 0.0040000007
+        tangentMode: 10
+      - time: 2
+        value: 0.05
+        inSlope: 0.0040000007
+        outSlope: 0.0040000007
+        tangentMode: 10
+      - time: 3
+        value: 0.05
+        inSlope: -0.0020000003
+        outSlope: -0.0020000003
+        tangentMode: 10
+      - time: 5
+        value: 0.042
+        inSlope: -0.0040000007
+        outSlope: -0.0040000007
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: SunSize
+    path: Skybox
+    classID: 114
+    script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1.76
+        inSlope: -0.08518517
+        outSlope: -0.08518517
+        tangentMode: 10
+      - time: 1
+        value: 1.6748148
+        inSlope: -0.071296304
+        outSlope: -0.071296304
+        tangentMode: 10
+      - time: 3
+        value: 1.56
+        inSlope: 0.021296293
+        outSlope: 0.021296293
+        tangentMode: 10
+      - time: 5
+        value: 1.76
+        inSlope: 0.100000024
+        outSlope: 0.100000024
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: Exposure
+    path: Skybox
+    classID: 114
+    script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1.15
+        inSlope: -0.34074074
+        outSlope: -0.34074074
+        tangentMode: 10
+      - time: 1
+        value: 0.80925924
+        inSlope: -0.2851852
+        outSlope: -0.2851852
+        tangentMode: 10
+      - time: 3
+        value: 0.35
+        inSlope: 0.08518518
+        outSlope: 0.08518518
+        tangentMode: 10
+      - time: 5
+        value: 1.15
+        inSlope: 0.39999998
+        outSlope: 0.39999998
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: AtmosphereThickness
     path: Skybox
     classID: 114
     script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}
@@ -360,6 +575,42 @@ AnimationClip:
       classID: 114
       customType: 0
       isPPtrCurve: 0
+    - path: 887481240
+      attribute: 3560373599
+      script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 887481240
+      attribute: 3119192500
+      script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 887481240
+      attribute: 3380735291
+      script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 887481240
+      attribute: 2215259458
+      script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 887481240
+      attribute: 3237563291
+      script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 887481240
+      attribute: 3606763503
+      script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
     - path: 0
       attribute: 415948786
       script: {fileID: 11500000, guid: bb72eb5323db34bc09948a2af39c4d06, type: 3}
@@ -368,6 +619,12 @@ AnimationClip:
       isPPtrCurve: 0
     - path: 887481240
       attribute: 3811116939
+      script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}
+      classID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - path: 887481240
+      attribute: 1351138433
       script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}
       classID: 114
       customType: 0
@@ -559,28 +816,28 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 0
-        inSlope: 1
-        outSlope: 1
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       - time: 1
-        value: 1
-        inSlope: 0.147194
-        outSlope: 0.147194
+        value: 0
+        inSlope: 0
+        outSlope: 0
         tangentMode: 10
       - time: 2
-        value: 0.294388
-        inSlope: -0.058823526
-        outSlope: -0.058823526
+        value: 0
+        inSlope: 0.056862745
+        outSlope: 0.056862745
         tangentMode: 10
       - time: 3
-        value: 0.88235295
-        inSlope: -0.07065925
-        outSlope: -0.07065925
+        value: 0.11372549
+        inSlope: 0.07653475
+        outSlope: 0.07653475
         tangentMode: 10
       - time: 4
         value: 0.1530695
-        inSlope: -0.36464173
-        outSlope: -0.36464173
+        inSlope: 0.019672003
+        outSlope: 0.019672003
         tangentMode: 10
       - time: 5
         value: 0.1530695
@@ -599,28 +856,28 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 0.3529412
-        inSlope: -0.2720588
-        outSlope: -0.2720588
+        inSlope: -0.10588236
+        outSlope: -0.10588236
         tangentMode: 10
       - time: 1
-        value: 0.08088237
-        inSlope: 0.035008863
-        outSlope: 0.035008863
+        value: 0.24705882
+        inSlope: -0.1764706
+        outSlope: -0.1764706
         tangentMode: 10
       - time: 2
-        value: 0.4229589
-        inSlope: 0.030925587
-        outSlope: 0.030925587
+        value: 0
+        inSlope: -0.12352941
+        outSlope: -0.12352941
         tangentMode: 10
       - time: 3
-        value: 0.14273354
-        inSlope: -0.20612696
-        outSlope: -0.20612696
+        value: 0
+        inSlope: 0.0053525064
+        outSlope: 0.0053525064
         tangentMode: 10
       - time: 4
         value: 0.010705013
-        inSlope: -0.06601427
-        outSlope: -0.06601427
+        inSlope: 0.0053525064
+        outSlope: 0.0053525064
         tangentMode: 10
       - time: 5
         value: 0.010705013
@@ -639,28 +896,28 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: 0.5882353
-        inSlope: 0.23427957
-        outSlope: 0.23427957
+        inSlope: -0.2392157
+        outSlope: -0.2392157
         tangentMode: 10
       - time: 1
-        value: 0.8225149
-        inSlope: 0.06985292
-        outSlope: 0.06985292
+        value: 0.34901962
+        inSlope: -0.29411766
+        outSlope: -0.29411766
         tangentMode: 10
       - time: 2
-        value: 0.72794116
-        inSlope: -0.33989066
-        outSlope: -0.33989066
+        value: 0
+        inSlope: 0.31764704
+        outSlope: 0.31764704
         tangentMode: 10
       - time: 3
-        value: 0.14273354
-        inSlope: -0.24264704
-        outSlope: -0.24264704
+        value: 0.9843137
+        inSlope: 0.121323526
+        outSlope: 0.121323526
         tangentMode: 10
       - time: 4
         value: 0.24264705
-        inSlope: 0.049956754
-        outSlope: 0.049956754
+        inSlope: -0.37083334
+        outSlope: -0.37083334
         tangentMode: 10
       - time: 5
         value: 0.24264705
@@ -691,6 +948,221 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: SkyTint.a
+    path: Skybox
+    classID: 114
+    script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: -0.39753085
+        outSlope: -0.39753085
+        tangentMode: 10
+      - time: 1
+        value: 0.60246915
+        inSlope: -0.33271605
+        outSlope: -0.33271605
+        tangentMode: 10
+      - time: 3
+        value: 0.06666667
+        inSlope: 0.09938271
+        outSlope: 0.09938271
+        tangentMode: 10
+      - time: 5
+        value: 1
+        inSlope: 0.46666667
+        outSlope: 0.46666667
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: Ground.r
+    path: Skybox
+    classID: 114
+    script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: -0.41256356
+        outSlope: -0.41256356
+        tangentMode: 10
+      - time: 1
+        value: 0.58743644
+        inSlope: -0.34529775
+        outSlope: -0.34529775
+        tangentMode: 10
+      - time: 3
+        value: 0.03137255
+        inSlope: 0.10314089
+        outSlope: 0.10314089
+        tangentMode: 10
+      - time: 5
+        value: 1
+        inSlope: 0.48431373
+        outSlope: 0.48431373
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: Ground.g
+    path: Skybox
+    classID: 114
+    script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1
+        inSlope: -0.42091507
+        outSlope: -0.42091507
+        tangentMode: 10
+      - time: 1
+        value: 0.57908493
+        inSlope: -0.3522876
+        outSlope: -0.3522876
+        tangentMode: 10
+      - time: 3
+        value: 0.011764707
+        inSlope: 0.10522877
+        outSlope: 0.10522877
+        tangentMode: 10
+      - time: 5
+        value: 1
+        inSlope: 0.49411765
+        outSlope: 0.49411765
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: Ground.b
+    path: Skybox
+    classID: 114
+    script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 3
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 5
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: Ground.a
+    path: Skybox
+    classID: 114
+    script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.042
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 1
+        value: 0.042
+        inSlope: 0.0040000007
+        outSlope: 0.0040000007
+        tangentMode: 10
+      - time: 2
+        value: 0.05
+        inSlope: 0.0040000007
+        outSlope: 0.0040000007
+        tangentMode: 10
+      - time: 3
+        value: 0.05
+        inSlope: -0.0020000003
+        outSlope: -0.0020000003
+        tangentMode: 10
+      - time: 5
+        value: 0.042
+        inSlope: -0.0040000007
+        outSlope: -0.0040000007
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: SunSize
+    path: Skybox
+    classID: 114
+    script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1.76
+        inSlope: -0.08518517
+        outSlope: -0.08518517
+        tangentMode: 10
+      - time: 1
+        value: 1.6748148
+        inSlope: -0.071296304
+        outSlope: -0.071296304
+        tangentMode: 10
+      - time: 3
+        value: 1.56
+        inSlope: 0.021296293
+        outSlope: 0.021296293
+        tangentMode: 10
+      - time: 5
+        value: 1.76
+        inSlope: 0.100000024
+        outSlope: 0.100000024
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: Exposure
+    path: Skybox
+    classID: 114
+    script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 1.15
+        inSlope: -0.34074074
+        outSlope: -0.34074074
+        tangentMode: 10
+      - time: 1
+        value: 0.80925924
+        inSlope: -0.2851852
+        outSlope: -0.2851852
+        tangentMode: 10
+      - time: 3
+        value: 0.35
+        inSlope: 0.08518518
+        outSlope: 0.08518518
+        tangentMode: 10
+      - time: 5
+        value: 1.15
+        inSlope: 0.39999998
+        outSlope: 0.39999998
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: AtmosphereThickness
     path: Skybox
     classID: 114
     script: {fileID: 11500000, guid: 69c70b3dc0774bf43931da7794275af8, type: 3}

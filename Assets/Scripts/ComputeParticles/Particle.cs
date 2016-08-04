@@ -18,6 +18,8 @@ public struct ComputeParticleData
     public float size;
     public float mass;
     public float seed;
+    public float baseAngle;
+    public float angle;
 
 };
 
@@ -30,5 +32,5 @@ internal static class ComputeParticleConstants
     public const int SizeofVector2 = 2 * SizeofFloat;
     public const int SizeofVector3 = 3 * SizeofFloat;
     public const int SizeofVector4 = 4 * SizeofFloat;
-    public const int ParticleDataStride = (1 * SizeofVector4) + (2 * SizeofVector3) + (1 * SizeofVector2) + (4 * SizeofFloat);
+    public const int ParticleDataStride = (1 * SizeofVector4) + (2 * SizeofVector3) + (1 * SizeofVector2) + (6 * SizeofFloat);
 }

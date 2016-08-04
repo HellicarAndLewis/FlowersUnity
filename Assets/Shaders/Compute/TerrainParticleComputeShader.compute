@@ -18,13 +18,18 @@ float noisePositionMult = 10;
 float noiseTimeScale = 0.1;
 float time = 0;
 float alpha = 1;
+float maxAngle = 0.3;
+float minBrightness = 0.8;
+float fftVolume0 = 1;
+float fftVolume1 = 1;
+float fftVolume2 = 1;
 
 // ----------------------------------------------------------------------------------
 //
 float GetNoise(float2 position, float time)
 {
 	float location = snoise(position * noisePositionScale) * noisePositionMult;
-	return (snoise(float2(location, time * noiseTimeScale)) + 1 ) * 0.5;
+	return (snoise(float2(location, time * noiseTimeScale)));
 }
 
 // ----------------------------------------------------------------------------------
@@ -42,14 +47,37 @@ void CSMain(uint3 id : SV_DispatchThreadID)
 	float3 position = particles[i].position;
 	float enabled = particles[i].enabled;
 	float seed = particles[i].seed;
+	float baseAngle = particles[i].baseAngle;
+	float angle = particles[i].angle;
+	float4 colour = particles[i].colour;
 
 	// ----------------------------------------------------------------------------------
-	// set the enabled/alpha to the noise value
-	enabled = alpha;
-	seed = GetNoise(float2(position.x, position.z), time);
+
+	// FFT input
+	float fftSeed = snoise(position);
+	float fftScale = fftVolume0;
+	if (fftSeed > 0.33) fftScale = fftVolume1;
+	if (fftSeed > 0.66) fftScale = fftVolume2;
+
+	// noise
+	float scaledNoise = GetNoise(float2(position.x, position.z), time) * fftScale;
+
+	float alphaVariety = alpha * map(seed, 0, 1, 1, 5, true);
+	if (alphaVariety > 1) alphaVariety = 1;
+	float alphaNoise = map(scaledNoise, 0, 1, 0.7, 1);
+	enabled = alphaVariety * alphaNoise;
+
+	float bright = map(scaledNoise, 0, 1, minBrightness, 1, true);
+	colour.xyz = float3(bright, bright, bright);
+
+	float angleOffset = map(scaledNoise, 0, 1, -maxAngle, maxAngle, true);
+	angle = baseAngle + angleOffset;
 
 	// ----------------------------------------------------------------------------------
 	// write the updated values back to the buffer
+	particles[i].colour = colour;
+	particles[i].baseAngle = baseAngle;
+	particles[i].angle = angle;
 	particles[i].seed = seed;
 	particles[i].position = position;
 	particles[i].enabled = enabled;
