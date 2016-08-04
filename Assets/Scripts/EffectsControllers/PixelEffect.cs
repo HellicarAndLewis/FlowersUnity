@@ -13,6 +13,8 @@ public class PixelEffect : MonoBehaviour
     void Awake()
     {
         material = new Material(Shader.Find("Hidden/Pixelation"));
+        width = 0.0001f;
+        height = 0.0001f;
     }
 
     // Update is called once per frame
