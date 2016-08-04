@@ -120,9 +120,9 @@ public class TerrainBlendDeformer : TerrainDeformer
         }
 
         baseSkinnedMesh.BakeMesh(mesh);
-        meshFilter.mesh = mesh;
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();
+        meshFilter.mesh = mesh;
 
         if (isComplete)
         {
@@ -141,7 +141,7 @@ public class TerrainBlendDeformer : TerrainDeformer
     public void OnDrawGizmosSelected()
     {
         /*
-        for (int i = 0; i < mesh.vertexCount; i++)
+        for (int i = 0; i < mesh.vertexCount/10; i++)
         {
             var p1 = transform.localToWorldMatrix.MultiplyPoint(mesh.vertices[i]);
             Gizmos.DrawLine(p1, p1 + (mesh.normals[i] * 0.3f));

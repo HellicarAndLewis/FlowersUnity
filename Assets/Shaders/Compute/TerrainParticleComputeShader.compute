@@ -19,6 +19,7 @@ float noiseTimeScale = 0.1;
 float time = 0;
 float alpha = 1;
 float maxAngle = 0.3;
+float minBrightness = 0.8;
 float fftVolume0 = 1;
 float fftVolume1 = 1;
 float fftVolume2 = 1;
@@ -66,7 +67,7 @@ void CSMain(uint3 id : SV_DispatchThreadID)
 	float alphaNoise = map(scaledNoise, 0, 1, 0.7, 1);
 	enabled = alphaVariety * alphaNoise;
 
-	float bright = map(scaledNoise, 0, 1, 0.9, 1, true);
+	float bright = map(scaledNoise, 0, 1, minBrightness, 1, true);
 	colour.xyz = float3(bright, bright, bright);
 
 	float angleOffset = map(scaledNoise, 0, 1, -maxAngle, maxAngle, true);

@@ -129,7 +129,7 @@ public class TerrainDeformer : MonoBehaviour
 
     protected void UpdateDeformation(float scale = 1.0f)
     {
-        Mesh mesh = meshFilter.mesh;
+        //Mesh mesh = meshFilter.mesh;
 
         if (timeScale > 0)
         {
@@ -168,6 +168,7 @@ public class TerrainDeformer : MonoBehaviour
 
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();
+        meshFilter.mesh = mesh;
     }
 
     virtual protected void UpdateBlend()

@@ -16,6 +16,9 @@ public class TerrainFlowers : MonoBehaviour
     public float flowerAlpha = 1f;
     [Range(0, Mathf.PI)]
     public float maxAngle = 0.2f;
+    [Range(0, 1)]
+    public float minBrightness = 0.8f;
+    
     public bool isAudioResponsive = true;
 
     // --------------------------------------------------------------------------------------------------------
@@ -147,12 +150,11 @@ public class TerrainFlowers : MonoBehaviour
                 particle.enabled = (particleIndex < numParticlesDesired) ? 1 : 0;
                 particle.size = flowerScale;
                 particle.seed = Random.value;
-                particle.baseAngle = -Vector3.Cross(Vector3.up, avgNormal).z;
+                particle.baseAngle = -Vector3.Cross(Vector3.up, avgNormal).z * 0.1f;
                 // transform the position to take into account the mesh position and rotation
-                particle.position = transform.localToWorldMatrix.MultiplyPoint(particlePos);
                 // push the position out along the normal
-                var direction = baseNormals[baseTriangles[i]];
-                particle.position += (direction * flowerElevation);
+                var direction = avgNormal;
+                particle.position = transform.localToWorldMatrix.MultiplyPoint(particlePos + (direction * flowerElevation));
                 particle.velocity = Vector3.zero;
                 particle.colour = Color.white;
                 particle.texOffset = new Vector2(0, 0);
@@ -233,6 +235,8 @@ public class TerrainFlowers : MonoBehaviour
         particleComputeShader.SetFloat("fftVolume1", fftVolume1);
         particleComputeShader.SetFloat("fftVolume2", fftVolume2);
         particleComputeShader.SetFloat("maxAngle", maxAngle);
+        particleComputeShader.SetFloat("minBrightness", minBrightness);
+        
 
         // dispatch, launch threads on GPUs
         // numParticles need to be divisible by group size, which corresponds to [numthreads] in the shader
