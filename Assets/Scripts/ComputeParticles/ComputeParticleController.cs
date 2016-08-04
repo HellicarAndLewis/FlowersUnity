@@ -200,4 +200,11 @@ public class ComputeParticleController : MonoBehaviour
         flowerNoisePositionMult = _val * 0.5f;
     }
 
+    // ----------------------------------------------------------------------------------
+    //
+    public void onYSpeed(float _val)
+    {
+        speed.y = 0.0f - _val * 0.5f;
+    }
+
 }
