@@ -500,6 +500,32 @@ float3 getNoiseOffsetFbm( float4 _pos, int _octaves, float _lacunarity, float _p
   return p;
 }
 
+float map(float value, float inputMin, float inputMax, float outputMin, float outputMax, bool clamp = false)
+{
+	if (abs(inputMin - inputMax) < 0)
+	{
+		return outputMin;
+	}
+	else
+	{
+		float outVal = ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin);
+
+		if (clamp)
+		{
+			if (outputMax < outputMin)
+			{
+				if (outVal < outputMax) outVal = outputMax;
+				else if (outVal > outputMin) outVal = outputMin;
+			}
+			else
+			{
+				if (outVal > outputMax) outVal = outputMax;
+				else if (outVal < outputMin) outVal = outputMin;
+			}
+		}
+		return outVal;
+	}
+}
 
 
 //                 Credits from source glsl file:

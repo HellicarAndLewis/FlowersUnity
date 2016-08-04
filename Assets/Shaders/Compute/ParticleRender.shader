@@ -12,7 +12,7 @@ Shader "Custom/ParticleRender" {
 	SubShader {
 		Pass 
 		{
-			Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
+			Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" "LightMode" = "ForwardBase" }
 			//Less | Greater | LEqual | GEqual | Equal | NotEqual | Always
 			ZTest LEqual
 			ZWrite Off
@@ -20,15 +20,19 @@ Shader "Custom/ParticleRender" {
 			Blend SrcAlpha OneMinusSrcAlpha
 
 			CGPROGRAM
-// Upgrade NOTE: excluded shader from OpenGL ES 2.0 because it does not contain a surface program or both vertex and fragment programs.
-#pragma exclude_renderers gles
+
+				// Upgrade NOTE: excluded shader from OpenGL ES 2.0 because it does not contain a surface program or both vertex and fragment programs.
+				#pragma exclude_renderers gles
 				#pragma vertex star_vertex
 				#pragma fragment frag
+				#pragma multi_compile_fog
 
 				#pragma target 5.0
 				
 				#include "UnityCG.cginc"
+				#include "UnityLightingCommon.cginc" // for _LightColor0
 				#include "Particle.cginc"
+				#include "Noise.cginc"
 
 				StructuredBuffer<ParticleData> particles;
 				StructuredBuffer<float3> quadPoints;
@@ -37,6 +41,8 @@ Shader "Custom/ParticleRender" {
 				float4 _Color;
 				int revealType;
 				float scale;
+				float minBright;
+				int fogEnabled;
 
 				// ----------------------------------------------------------
 				struct v2f
@@ -44,6 +50,8 @@ Shader "Custom/ParticleRender" {
 					float4 pos : SV_POSITION;
 					float2 uv : TEXCOORD0;
 					float4 color: COLOR;
+					//Used to pass fog amount around number should be a free texcoord.
+					UNITY_FOG_COORDS(1)
 				};
 
 				float4x4 rotate(float3 r, float4 d) // r=rotations axes
@@ -71,14 +79,17 @@ Shader "Custom/ParticleRender" {
 
 					// Quad deform for blossom effect (WIP)
 					// 123 : RIGHT
-					if (revealType == 1 && (id == 1 || id == 2 || id == 3))
+					if (revealType == 1)
 					{
-						float sinX = sin((1 - particles[inst].enabled) * 3);
-						float cosX = cos((1 - particles[inst].enabled) * 3);
-						float2x2 rotationMatrix = float2x2(cosX, -sinX, sinX, cosX);
-						quadPoint.xy = mul(quadPoint.xy, rotationMatrix);
+						if (id == 1 || id == 2 || id == 3)
+						{
+							float sinX = sin((1 - particles[inst].enabled) * 3);
+							float cosX = cos((1 - particles[inst].enabled) * 3);
+							float2x2 rotationMatrix = float2x2(cosX, -sinX, sinX, cosX);
+							quadPoint.xy = mul(quadPoint.xy, rotationMatrix);
+						}
 						quadPoint *= particles[inst].enabled;
-						quadPoint *= (size * scale);
+						quadPoint *= size;
 					}
 					else if (revealType == 2)
 					{
@@ -90,8 +101,9 @@ Shader "Custom/ParticleRender" {
 					}
 					else if (revealType == 3)
 					{
-						quadPoint *= size * particles[inst].enabled * ((particles[inst].angle * 0.5) + 0.8) * scale;
-						//quadPoint -= 0.5;
+						float scaledSize = size * particles[inst].enabled * scale;
+						quadPoint *= scaledSize;
+						quadPoint.y += (scaledSize * 0.5);
 					}
 
 					
@@ -108,10 +120,25 @@ Shader "Custom/ParticleRender" {
 					// texture coord based on spritesheet logic (offset and size)
 					o.uv = particles[inst].texOffset + ( (uvPoint + 0.5f) * float2(texBounds.xy));
 
-					//o.color = float4 (particles[inst].colour.rgb, particles[inst].enabled);
-					//o.color = float4 (1, 1, 1, particles[inst].enabled);
-					//o.color = float4 (particles[inst].colour.rgb, 1);
-					o.color = float4 (1, 1, 1, 1);
+					// get vertex normal in world space
+					half3 worldNormal = UnityObjectToWorldNormal(float3(0,1,0));
+					// dot product between normal and light direction for
+					// standard diffuse (Lambert) lighting
+					half nl = max(0, dot(worldNormal, _WorldSpaceLightPos0.xyz));
+					// factor in the light color
+					float diff = nl * _LightColor0;
+
+					float scaledDiff = map(diff.r, 0, 1, minBright, 1, true);
+
+					o.color = float4 (particles[inst].colour.rgb * scaledDiff, 1);
+					//o.color = float4 (1, 1, 1, 1);
+
+					if (fogEnabled == 1)
+					{
+						//Compute fog amount from clip space position.
+						UNITY_TRANSFER_FOG(o, o.pos);
+					}
+					
 
 					return o;
 				}
@@ -121,8 +148,15 @@ Shader "Custom/ParticleRender" {
 				{
 					float4 texCol = tex2Dbias (_MainTex, float4(i.uv, 0.0f, -1.0f));
 					float4 particleCol = i.color;
-					return float4(texCol.rgb * particleCol.rgb, texCol.a * particleCol.a);
-					//return float4 (1.0f - (1.0f - texCol.rgb) * (1.0f - particleCol.rgb), texCol.a * particleCol.a );
+					float4 colour = float4(texCol.rgb * particleCol.rgb, texCol.a * particleCol.a);
+
+					if (fogEnabled == 1)
+					{
+						//Apply fog (additive pass are automatically handled)
+						UNITY_APPLY_FOG(i.fogCoord, colour);
+					}
+
+					return colour;
 				}
 
 			ENDCG
