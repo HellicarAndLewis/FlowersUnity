@@ -140,7 +140,8 @@ public class TerrainFlowers : MonoBehaviour
                 var particle = particles[particleIndex];
                 particle.enabled = (particleIndex < numParticlesDesired) ? 1 : 0;
                 particle.size = flowerScale;
-                particle.seed = Random.Range(-0.06f, 0.06f);
+                particle.seed = Random.value;
+                particle.baseAngle = Vector3.Cross(Vector3.up, (particlePos - p1)).z;
                 // transform the position to take into account the mesh position and rotation
                 particle.position = transform.localToWorldMatrix.MultiplyPoint(particlePos);
                 // push the position out along the normal

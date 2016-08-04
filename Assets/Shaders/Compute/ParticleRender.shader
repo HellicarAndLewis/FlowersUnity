@@ -67,7 +67,7 @@ Shader "Custom/ParticleRender" {
 					float3 worldPosition = particles[inst].position;
 					float size = particles[inst].size;
 					float3 quadPoint = quadPoints[id];
-					float angle = particles[inst].seed * 3;
+					float angle = particles[inst].angle;
 
 					// Quad deform for blossom effect (WIP)
 					// 123 : RIGHT
@@ -90,8 +90,8 @@ Shader "Custom/ParticleRender" {
 					}
 					else if (revealType == 3)
 					{
-						quadPoint *= size * particles[inst].enabled * ((particles[inst].seed * 0.5) + 0.5) * scale;
-						angle = ((particles[inst].seed * 2) - 1) * 0.6;
+						quadPoint *= size * particles[inst].enabled * ((particles[inst].angle * 0.5) + 0.8) * scale;
+						//quadPoint -= 0.5;
 					}
 
 					

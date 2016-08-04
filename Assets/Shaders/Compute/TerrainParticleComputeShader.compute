@@ -45,20 +45,29 @@ void CSMain(uint3 id : SV_DispatchThreadID)
 	float3 position = particles[i].position;
 	float enabled = particles[i].enabled;
 	float seed = particles[i].seed;
+	float baseAngle = particles[i].baseAngle;
+	float angle = particles[i].angle;
 
 	// ----------------------------------------------------------------------------------
-	// set the enabled/alpha to the noise value
-	enabled = alpha;
 
-	float fftSeed = (snoise(position) + 1 ) * 0.5;
+	float fftSeed = (snoise(position) + 1) * 0.5;
 	float fftScale = fftVolume0;
 	if (fftSeed > 0.33) fftScale = fftVolume1;
 	if (fftSeed > 0.66) fftScale = fftVolume2;
 
-	seed = GetNoise(float2(position.x, position.z), time) * fftScale;
+	float alphaVariety = (seed * 4) + 1;
+	float alphaNoise = 1;// ((GetNoise(float2(position.x, position.z), time) * fftScale) * 0.5) + 0.5;
+	enabled = alpha * alphaVariety * alphaNoise;
+	if (enabled > 1) enabled = 1;
+
+	float maxAngle = 0.6;
+	float angleOffset = (((GetNoise(float2(position.x, position.z), time) * fftScale) * 2) - 1) * maxAngle;
+	angle = baseAngle + angleOffset;
 
 	// ----------------------------------------------------------------------------------
 	// write the updated values back to the buffer
+	particles[i].baseAngle = baseAngle;
+	particles[i].angle = angle;
 	particles[i].seed = seed;
 	particles[i].position = position;
 	particles[i].enabled = enabled;

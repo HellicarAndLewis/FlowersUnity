@@ -14,4 +14,6 @@ struct ParticleData
 	float size;
 	float mass;
 	float seed;
+	float baseAngle;
+	float angle;
 };
