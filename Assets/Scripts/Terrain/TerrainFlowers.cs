@@ -33,7 +33,7 @@ public class TerrainFlowers : MonoBehaviour
     public bool forceRefresh = false;
     [Range(0, 20)]
     public float flowerScale = 1f;
-    public int flowersPerTriangle = 1;
+    public float flowersPerTriangle = 1;
     [Range(-1, 1)]
     public float flowerElevation = -0.1f;
 
@@ -62,12 +62,16 @@ public class TerrainFlowers : MonoBehaviour
     private Vector3[] baseNormals;
     private int[] baseTriangles;
     private fftAnalyzer fft;
+    private int texRows = 3;
+    private int texCols = 3;
+    private ShowController showControl;
 
 
     // --------------------------------------------------------------------------------------------------------
     //
     void Start()
     {
+        showControl = FindObjectOfType<ShowController>();
         fft = FindObjectOfType<fftAnalyzer>();
         Init();
     }
@@ -121,7 +125,7 @@ public class TerrainFlowers : MonoBehaviour
 
         // Number of particles needs to be divisible by GroupSize
         // Store the original desired number of particles
-        numParticles = (baseTriangles.Length / 3) * flowersPerTriangle;
+        numParticles = (int)((baseTriangles.Length / 3) * Mathf.Ceil(flowersPerTriangle));
         numParticlesDesired = numParticles;
         numParticles = Mathf.CeilToInt(numParticles / (float)GroupSize) * GroupSize;
 
@@ -142,33 +146,25 @@ public class TerrainFlowers : MonoBehaviour
             var p1 = baseVertices[baseTriangles[i]];
             var p2 = baseVertices[baseTriangles[i + 1]];
             var p3 = baseVertices[baseTriangles[i + 2]];
-
             var avgNormal = (baseNormals[baseTriangles[i]] + baseNormals[baseTriangles[i + 1]] + baseNormals[baseTriangles[i + 2]]) / 3;
-
-            // draw multiple flowers per triangle for denser coverage
-            for (int j = 0; j < flowersPerTriangle; j++)
+            if (flowersPerTriangle >= 1)
             {
-                // random point on the surface of the triangle
-                var p1p2 = p2 - p1;
-                var p1p32 = p3 - p1;
-                var particlePos = p1 + (p1p2 * Random.Range(0, 1f)) + (p1p32 * Random.Range(0, 1f));
-
-                var particle = particles[particleIndex];
-                particle.enabled = (particleIndex < numParticlesDesired) ? 1 : 0;
-                particle.size = flowerScale;
-                particle.seed = Random.value;
-                particle.baseAngle = -Vector3.Cross(Vector3.up, avgNormal).z * 0.1f;
-                // transform the position to take into account the mesh position and rotation
-                // push the position out along the normal
-                var direction = avgNormal;
-                particle.position = transform.localToWorldMatrix.MultiplyPoint(particlePos + (direction * flowerElevation));
-                particle.velocity = Vector3.zero;
-                particle.colour = Color.white;
-                particle.texOffset = new Vector2(0, 0);
-                particles[particleIndex] = particle;
-
-                particleIndex++;
+                // draw multiple flowers per triangle for denser coverage
+                for (int j = 0; j < flowersPerTriangle; j++)
+                {
+                    InitParticle(particleIndex, p1, p2, p3, avgNormal);
+                    particleIndex++;
+                }
             }
+            else
+            {
+                if (Random.value <= flowersPerTriangle)
+                {
+                    InitParticle(particleIndex, p1, p2, p3, avgNormal);
+                    particleIndex++;
+                }
+            }
+            
 
         }
 
@@ -192,6 +188,74 @@ public class TerrainFlowers : MonoBehaviour
 
     }
 
+    private void InitParticle(int particleIndex, Vector3 p1, Vector3 p2, Vector3 p3, Vector3 avgNormal)
+    {
+        // random point on the surface of the triangle
+        var p1p2 = p2 - p1;
+        var p1p32 = p3 - p1;
+        var particlePos = p1 + (p1p2 * Random.Range(0, 1f)) + (p1p32 * Random.Range(0, 1f));
+
+        var particle = particles[particleIndex];
+        particle.enabled = (particleIndex < numParticlesDesired) ? 1 : 0;
+        particle.size = flowerScale;
+        particle.seed = Random.value;
+        particle.baseAngle = -Vector3.Cross(Vector3.up, avgNormal).z * 0.1f;
+        // transform the position to take into account the mesh position and rotation
+        // push the position out along the normal
+        var direction = avgNormal;
+        particle.position = transform.localToWorldMatrix.MultiplyPoint(particlePos + (direction * flowerElevation));
+        particle.velocity = Vector3.zero;
+        particle.colour = Color.white;
+        particle.texOffset = new Vector2(0, 0);
+
+        particle.texOffset = GetTexOffset();
+
+        particles[particleIndex] = particle;
+
+    }
+
+    private Vector2 GetTexOffset()
+    {
+        if (showControl.terrainMode == TerrainMode.Dawn)
+        {
+            // 1,1 or 3,2
+            if (Random.value > 0.5f)
+                return GetTexOffset(1, 1);
+            else
+                return GetTexOffset(3, 2);
+        }
+        else if (showControl.terrainMode == TerrainMode.Daytime)
+        {
+            // 1,3 2,3
+            if (Random.value > 0.5f)
+                return GetTexOffset(1, 3);
+            else
+                return GetTexOffset(2, 3);
+        }
+        else if (showControl.terrainMode == TerrainMode.Dusk)
+        {
+            // 2,2 or 1,2
+            if (Random.value > 0.5f)
+                return GetTexOffset(2, 2);
+            else
+                return GetTexOffset(1, 2);
+        }
+        else if (showControl.terrainMode == TerrainMode.Night)
+        {
+            // 1,2 2,1
+            if (Random.value > 0.5f)
+                return GetTexOffset(2, 1);
+            else
+                return GetTexOffset(1, 2);
+        }
+        else return Vector3.zero;
+        
+    }
+
+    private Vector2 GetTexOffset(float col, float row)
+    {
+        return new Vector2(col / texCols, row / texRows);
+    }
 
     // --------------------------------------------------------------------------------------------------------
     //
@@ -272,6 +336,7 @@ public class TerrainFlowers : MonoBehaviour
             particleMaterial.SetBuffer("particles", particleBuffer);
             particleMaterial.SetBuffer("quadPoints", quadBuffer);
             particleMaterial.SetVector("texBounds", new Vector4(1, 1, 0, 0));
+            particleMaterial.SetVector("texBounds", new Vector4(1 / (float)texCols, 1 / (float)texRows, 0, 0));
             particleMaterial.SetInt("revealType", 3);
             particleMaterial.SetFloat("scale", scale);
             particleMaterial.SetFloat("minBright", minLightBrightness);
