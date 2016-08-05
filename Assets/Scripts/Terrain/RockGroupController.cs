@@ -35,4 +35,9 @@ public class RockGroupController : MonoBehaviour
             rock.scale = scale * liveScale;
         }
     }
+
+    public void OnScale(float _val)
+    {
+        scale = _val;
+    }
 }
