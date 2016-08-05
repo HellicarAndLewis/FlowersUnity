@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5900484, g: 0.6102118, b: 0.6658395, a: 1}
+  m_IndirectSpecularColor: {r: 0.36977744, g: 0.36953682, b: 0.38765016, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -342,7 +342,7 @@ Transform:
   - {fileID: 830534368}
   - {fileID: 388210969}
   m_Father: {fileID: 622889918}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!114 &100215990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -752,7 +752,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlaying: 0
-  reset: 0
   normalisedTime: 0
   duration: 30
 --- !u!95 &438541963
@@ -981,7 +980,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlaying: 0
-  reset: 0
   normalisedTime: 0
   duration: 10
 --- !u!114 &527833387
@@ -1342,7 +1340,6 @@ Transform:
   - {fileID: 53697144}
   - {fileID: 1400675290}
   - {fileID: 968821752}
-  - {fileID: 1265605812}
   - {fileID: 1140494012}
   - {fileID: 996713855}
   - {fileID: 100215989}
@@ -1985,6 +1982,7 @@ MonoBehaviour:
   maxAngle: 0.2
   minBrightness: 0.8
   minLightBrightness: 0.8
+  minScale: 0.8
   growAbove: -1.11
   isAudioResponsive: 1
   forceRefresh: 0
@@ -2156,7 +2154,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlaying: 0
-  reset: 0
   normalisedTime: 0
   duration: 30
 --- !u!95 &864548073
@@ -2691,7 +2688,7 @@ RectTransform:
   m_Children:
   - {fileID: 913271560}
   m_Father: {fileID: 622889918}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -3165,7 +3162,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 95.94098, y: -0.000015258789, z: -0.000015258789}
   m_Children: []
   m_Father: {fileID: 622889918}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!108 &1140494013
 Light:
   m_ObjectHideFlags: 0
@@ -3472,55 +3469,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &1265605811
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1265605812}
-  - 114: {fileID: 1265605813}
-  m_Layer: 0
-  m_Name: Lighting (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1265605812
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1265605811}
-  m_LocalRotation: {x: 0.037052028, y: -0, z: -0, w: 0.9993134}
-  m_LocalPosition: {x: -0.68471324, y: 0.35164395, z: 2.4539008}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 4.209, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 622889918}
-  m_RootOrder: 7
---- !u!114 &1265605813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1265605811}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb156c22a80eb4be08a8410584eac780, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPlaying: 0
-  reset: 0
-  normalisedTime: 0
-  duration: 30
-  sunLight: {fileID: 0}
-  transitionTime: 5
-  progress: 1
-  transitionElapsed: 0
-  onset: {fileID: 0}
 --- !u!1 &1312186870
 GameObject:
   m_ObjectHideFlags: 0
@@ -3743,7 +3691,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlaying: 0
-  reset: 0
   normalisedTime: 0
   duration: 30
 --- !u!95 &1397962701
@@ -6061,6 +6008,7 @@ MonoBehaviour:
   maxAngle: 0.2
   minBrightness: 0.8
   minLightBrightness: 0.8
+  minScale: 0.8
   growAbove: 0.3
   isAudioResponsive: 1
   forceRefresh: 0
@@ -6265,7 +6213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 0
-  distortion: 0
+  distortion: 0.01
   distortion2: 0
   speed: 0
   rollSpeed: 0
@@ -6809,7 +6757,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlaying: 0
-  reset: 0
   normalisedTime: 0
   duration: 30
 --- !u!4 &1903944106

@@ -142,17 +142,12 @@ public class TerrainFlowers : MonoBehaviour
         int particleIndex = 0;
         for (var i = 0; i < baseTriangles.Length; i += 3)
         {
-            // points for this triangle
-            var p1 = baseVertices[baseTriangles[i]];
-            var p2 = baseVertices[baseTriangles[i + 1]];
-            var p3 = baseVertices[baseTriangles[i + 2]];
-            var avgNormal = (baseNormals[baseTriangles[i]] + baseNormals[baseTriangles[i + 1]] + baseNormals[baseTriangles[i + 2]]) / 3;
             if (flowersPerTriangle >= 1)
             {
                 // draw multiple flowers per triangle for denser coverage
                 for (int j = 0; j < flowersPerTriangle; j++)
                 {
-                    InitParticle(particleIndex, p1, p2, p3, avgNormal);
+                    InitParticle(particleIndex, baseTriangles[i], baseTriangles[i + 1], baseTriangles[i + 2]);
                     particleIndex++;
                 }
             }
@@ -160,7 +155,7 @@ public class TerrainFlowers : MonoBehaviour
             {
                 if (Random.value <= flowersPerTriangle)
                 {
-                    InitParticle(particleIndex, p1, p2, p3, avgNormal);
+                    InitParticle(particleIndex, baseTriangles[i], baseTriangles[i + 1], baseTriangles[i + 2]);
                     particleIndex++;
                 }
             }
@@ -188,17 +183,57 @@ public class TerrainFlowers : MonoBehaviour
 
     }
 
-    private void InitParticle(int particleIndex, Vector3 p1, Vector3 p2, Vector3 p3, Vector3 avgNormal)
+    public void Reposition()
     {
+        Mesh mesh = meshFilter.mesh;
+        baseVertices = mesh.vertices;
+        baseNormals = mesh.normals;
+        baseTriangles = mesh.triangles;
+
+        for (int i = 0; i < particles.Length; i++)
+        {
+            var particle = particles[i];
+
+            int vert1 = (int)particle.triIndex.x;
+            int vert2 = (int)particle.triIndex.y;
+            int vert3 = (int)particle.triIndex.z;
+
+            var p1 = baseVertices[vert1];
+            var p2 = baseVertices[vert2];
+            var p3 = baseVertices[vert3];
+            // random point on the surface of the triangle
+            var p1p2 = p2 - p1;
+            var p1p32 = p3 - p1;
+            var particlePos = p1 + (p1p2 * particle.seed) + (p1p32 * (1 - particle.seed));
+
+            var avgNormal = (baseNormals[vert1] + baseNormals[vert2] + baseNormals[vert3]) / 3;
+            var direction = avgNormal;
+            particle.position = transform.localToWorldMatrix.MultiplyPoint(particlePos + (direction * flowerElevation));
+
+            particles[i] = particle;
+        }
+        //particleBuffer.SetData(particles);
+    }
+
+    private void InitParticle(int particleIndex, int vert1, int vert2, int vert3)
+    {
+
+        // points for this triangle
+        var p1 = baseVertices[vert1];
+        var p2 = baseVertices[vert2];
+        var p3 = baseVertices[vert3];
+        var avgNormal = (baseNormals[vert1] + baseNormals[vert2] + baseNormals[vert3]) / 3;
+
         // random point on the surface of the triangle
         var p1p2 = p2 - p1;
         var p1p32 = p3 - p1;
-        var particlePos = p1 + (p1p2 * Random.Range(0, 1f)) + (p1p32 * Random.Range(0, 1f));
 
         var particle = particles[particleIndex];
         particle.enabled = (particleIndex < numParticlesDesired) ? 1 : 0;
         particle.size = flowerScale;
         particle.seed = Random.value;
+        particle.triIndex = new Vector3(vert1, vert2, vert3);
+        var particlePos = p1 + (p1p2 * particle.seed) + (p1p32 * (1 - particle.seed));
         particle.baseAngle = -Vector3.Cross(Vector3.up, avgNormal).z * 0.1f;
         // transform the position to take into account the mesh position and rotation
         // push the position out along the normal

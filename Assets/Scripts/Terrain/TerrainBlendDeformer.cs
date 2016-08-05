@@ -74,7 +74,7 @@ public class TerrainBlendDeformer : TerrainDeformer
                 break;
             case State.PreBlend:
                 noiseOutScaleTransition -= 0.05f;
-                flowers.flowerTerrainScale = noiseOutScaleTransition;
+                //flowers.flowerTerrainScale = noiseOutScaleTransition;
                 if (noiseOutScaleTransition <= 0)
                 {
                     noiseOutScaleTransition = 0;
@@ -85,10 +85,11 @@ public class TerrainBlendDeformer : TerrainDeformer
                 break;
             case State.Blend:
                 UpdateBlend();
+                flowers.Reposition();
                 break;
             case State.PostBlend:
                 noiseOutScaleTransition += 0.05f;
-                flowers.flowerTerrainScale = noiseOutScaleTransition;
+                //flowers.flowerTerrainScale = noiseOutScaleTransition;
                 if (noiseOutScaleTransition >= 1)
                 {
                     noiseOutScaleTransition = 1;
