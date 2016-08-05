@@ -147,6 +147,7 @@ public class TerrainDeformer : MonoBehaviour
                     {
                         int sampleI = (int)MathUtils.Map(noise, 0, posNoiseOutScale, 0, fft.spectrum.Length - 1, true);
                         noise *= fft.spectrum[sampleI];
+
                     }
                     else
                     {

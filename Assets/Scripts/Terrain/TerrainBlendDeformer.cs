@@ -148,4 +148,34 @@ public class TerrainBlendDeformer : TerrainDeformer
         }
         */
     }
+
+    public void OnPosOutScale(float _val)
+    {
+        posNoiseOutScale = _val * 100.0f;
+    }
+
+    public void OnPosInScale(float _val)
+    {
+        posNoiseInScale = _val;
+    }
+
+    public void OnThreshold(float _val)
+    {
+        deformThresholdY = _val;
+    }
+
+    public void OnScaleX(float _val)
+    {
+        noiseOutScale.x = _val;
+    }
+
+    public void OnScaleY(float _val)
+    {
+        noiseOutScale.y = _val;
+    }
+
+    public void OnScaleZ(float _val)
+    {
+        noiseOutScale.z = _val;
+    }
 }

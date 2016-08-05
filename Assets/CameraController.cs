@@ -44,7 +44,7 @@ public class CameraController : MonoBehaviour {
 
     public void onOffset(float _val)
     {
-        ZOffset = _val * 20;
+        ZOffset = _val * 100;
     }
 
     public void OnRotation(float _val)

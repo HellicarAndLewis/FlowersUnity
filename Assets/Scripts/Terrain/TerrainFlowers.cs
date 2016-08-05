@@ -292,4 +292,40 @@ public class TerrainFlowers : MonoBehaviour
         particleBuffer.Release();
         quadBuffer.Release();
     }
+
+    // ----------------------------------------------------------------------------------
+    //
+    public void OnNoiseMult(float _val)
+    {
+        flowerNoisePositionMult = _val;
+    }
+
+    // ----------------------------------------------------------------------------------
+    //
+    public void OnNoiseScale(float _val)
+    {
+        flowerNoisePositionScale = _val * 40;
+    }
+
+    // ----------------------------------------------------------------------------------
+    //
+    public void OnMaxAngle(float _val)
+    {
+        maxAngle = _val * Mathf.PI;
+    }
+
+    // ----------------------------------------------------------------------------------
+    //
+    public void OnMinBrightness(float _val)
+    {
+        minBrightness = _val;
+    }
+
+    // ----------------------------------------------------------------------------------
+    //
+    public void OnMinScale(float _val)
+    {
+        minScale = _val;
+    }
+
 }
