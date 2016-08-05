@@ -11662,7 +11662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   primaryCam: {fileID: 1827569487}
-  isPrimaryFullscreen: 1
+  isPrimaryFullscreen: 0
   primaryViewport: {x: 0, y: 0, z: 1872, w: 1584}
   secondaryCam: {fileID: 538694267}
   isSecondaryFullscreen: 0
