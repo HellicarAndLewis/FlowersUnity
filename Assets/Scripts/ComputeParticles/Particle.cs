@@ -11,6 +11,7 @@ public struct ComputeParticleData
 
     public Vector3 position;
     public Vector3 velocity;
+    public Vector3 triIndex;
 
     public Vector2 texOffset;
 
@@ -32,5 +33,5 @@ internal static class ComputeParticleConstants
     public const int SizeofVector2 = 2 * SizeofFloat;
     public const int SizeofVector3 = 3 * SizeofFloat;
     public const int SizeofVector4 = 4 * SizeofFloat;
-    public const int ParticleDataStride = (1 * SizeofVector4) + (2 * SizeofVector3) + (1 * SizeofVector2) + (6 * SizeofFloat);
+    public const int ParticleDataStride = (1 * SizeofVector4) + (3 * SizeofVector3) + (1 * SizeofVector2) + (6 * SizeofFloat);
 }
