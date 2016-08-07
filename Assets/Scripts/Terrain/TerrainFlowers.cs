@@ -24,10 +24,11 @@ public class TerrainFlowers : MonoBehaviour
     [Range(0, 1)]
     public float minScale = 0.8f;
     public float growAbove = 0.0f;
-
-
-
     public bool isAudioResponsive = true;
+
+    public Vector4 growFrom;
+    public Vector4 growTo;
+    public Bounds growBounds;
 
     // --------------------------------------------------------------------------------------------------------
     // Require particle system refresh
@@ -313,7 +314,7 @@ public class TerrainFlowers : MonoBehaviour
         particleComputeShader.SetFloat("minBrightness", minBrightness);
         particleComputeShader.SetFloat("growAbove", growAbove);
         particleComputeShader.SetFloat("minScale", minScale);
-        
+
         // dispatch, launch threads on GPUs
         // numParticles need to be divisible by group size, which corresponds to [numthreads] in the shader
         var numberOfGroups = Mathf.CeilToInt((float)numParticles / GroupSize);
@@ -341,6 +342,9 @@ public class TerrainFlowers : MonoBehaviour
             Matrix4x4 p = Camera.current.projectionMatrix;
             Matrix4x4 MVP = p * v * m;
 
+            growFrom = growBounds.min;
+            growTo = growBounds.max;
+
             var scale = flowerTerrainScale;
             particleMaterial.SetMatrix("ModelViewProjection", m);
             particleMaterial.SetBuffer("particles", particleBuffer);
@@ -351,6 +355,8 @@ public class TerrainFlowers : MonoBehaviour
             particleMaterial.SetFloat("scale", scale);
             particleMaterial.SetFloat("minBright", minLightBrightness);
             particleMaterial.SetInt("fogEnabled", 1);
+            particleMaterial.SetVector("growFrom", growBounds.min);
+            particleMaterial.SetVector("growTo", growBounds.max);
             particleMaterial.SetPass(0);
             Graphics.DrawProcedural(MeshTopology.Triangles, 6, numParticles);
         }
@@ -364,8 +370,18 @@ public class TerrainFlowers : MonoBehaviour
         if (!SystemInfo.supportsComputeShaders)
             return;
         // must deallocate here
-        particleBuffer.Release();
-        quadBuffer.Release();
+        if (particleBuffer != null)
+            particleBuffer.Release();
+        if (quadBuffer != null)
+            quadBuffer.Release();
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        //Vector3 size = new Vector3(growTo.x-growFrom.x, growTo.y - growFrom.y, growTo.z - growFrom.z);
+        //Vector3 center = new Vector3(growFrom.x, growFrom.y, growFrom.z) + size;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(growBounds.center, growBounds.size);
     }
 
     // ----------------------------------------------------------------------------------

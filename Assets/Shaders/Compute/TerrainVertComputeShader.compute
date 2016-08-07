@@ -1,0 +1,66 @@
+﻿
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+
+#include "Particle.cginc"
+#include "Noise.cginc"
+
+// this corresponds to groupsize in ParticleController
+// The number of particles needs to be divisible by this
+#define BLOCKSIZE	128
+
+// particle data buffer
+// corresponds to a ComputeBuffer in ParticleController
+RWStructuredBuffer<ParticleData> particles;
+
+float noisePositionScale = 0.01;
+float noisePositionMult = 10;
+float noiseTimeScale = 0.1;
+float time = 0;
+float alpha = 1;
+float maxAngle = 0.3;
+float minBrightness = 0.8;
+float fftVolume0 = 1;
+float fftVolume1 = 1;
+float fftVolume2 = 1;
+float growAbove = 0;
+float minScale = 0;
+
+// ----------------------------------------------------------------------------------
+//
+float GetNoise(float2 position, float time)
+{
+	float location = snoise(position * noisePositionScale) * noisePositionMult;
+	return (snoise(float2(location, time * noiseTimeScale)));
+}
+
+// ----------------------------------------------------------------------------------
+//
+[numthreads(128,1,1)]
+void CSMain(uint3 id : SV_DispatchThreadID)
+{
+	// Get the index of the current particle
+	// numthreads is setup to only use the x component
+	// so x == particle index
+	uint i = id.x;
+
+	// ----------------------------------------------------------------------------------
+	// read particle data in from the buffer
+	float3 position = particles[i].position;
+	float enabled = particles[i].enabled;
+	float seed = particles[i].seed;
+	float baseAngle = particles[i].baseAngle;
+	float angle = particles[i].angle;
+	float4 colour = particles[i].colour;
+
+	// ----------------------------------------------------------------------------------
+
+	// ----------------------------------------------------------------------------------
+	// write the updated values back to the buffer
+	particles[i].colour = colour;
+	particles[i].baseAngle = baseAngle;
+	particles[i].angle = angle;
+	particles[i].seed = seed;
+	particles[i].position = position;
+	particles[i].enabled = enabled;
+}

@@ -44,6 +44,8 @@ Shader "Custom/ParticleRender" {
 				float scale;
 				float minBright;
 				int fogEnabled;
+				float4 growFrom;
+				float4 growTo;
 
 				// ----------------------------------------------------------
 				struct v2f
@@ -103,14 +105,32 @@ Shader "Custom/ParticleRender" {
 					else if (revealType == 3)
 					{
 						float scaledSize = size * particles[inst].enabled * scale;
+
+						float4 growthPos = mul(ModelViewProjection, float4(worldPosition, 1.0f)) + float4(quadPoint, 0.0f);
+						/*
+						scaledDiff = (
+							(pos.x > growFrom.x && pos.x < growTo.x) &&
+							(pos.y > growFrom.y && pos.y < growTo.y) &&
+							(pos.z > growFrom.z && pos.z < growTo.z)
+							);
+							*/
+						//scaledSize *= map(growthPos.z, growFrom.z, growTo.z, 0, 1, true);
+						//scaledSize *= map(growthPos.y, growFrom.y, growTo.y, 0, 1, true);
+
 						quadPoint *= scaledSize;
 						quadPoint.y += (scaledSize * 0.5);
 					}
 
 					
 					// set vertex position using projection and view matrices and the quad point
-					float4 pos = mul(UNITY_MATRIX_P, mul(UNITY_MATRIX_V, mul(ModelViewProjection, float4(worldPosition, 1.0f)) + float4(quadPoint, 0.0f)));
+					float4 pos = mul(UNITY_MATRIX_P, mul(UNITY_MATRIX_V, float4(worldPosition, 1.0f)) + float4(quadPoint, 0.0f));
+					if (revealType == 3)
+					{
+						pos = mul(UNITY_MATRIX_P, mul(UNITY_MATRIX_V, mul(ModelViewProjection, float4(worldPosition, 1.0f)) + float4(quadPoint, 0.0f)));
+					}
+
 					o.pos = pos;
+
 
 					// Rotate the texture coordinates around the z axis
 					//float2 uvPoint = quadPoints[id];
