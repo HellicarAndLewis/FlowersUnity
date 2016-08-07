@@ -5,13 +5,5 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/NSDOS.unity
-  - enabled: 0
-    path: Assets/Scenes/Blank.unity
-  - enabled: 0
-    path: Assets/Scenes/Terrain.unity
-  - enabled: 0
-    path: Assets/Scenes/MultiScreenTest.unity
   - enabled: 1
-    path: Assets/Scenes/Chris Master.unity
+    path: Assets/Scenes/Master.unity

@@ -3,7 +3,7 @@ using System.Collections;
 
 public enum ShowMode
 {
-    Nsdos=0, Blank, Rock, Logo, World_1, Null
+    Nsdos=0, Blank, Rock, Logo, World_1, World_2, Null
 }
 
 public enum TerrainMode
@@ -51,6 +51,7 @@ public class ShowController : MonoBehaviour
         if (Input.GetKeyDown("e")) GoToMode(ShowMode.Rock);
         if (Input.GetKeyDown("r")) GoToMode(ShowMode.Logo);
         if (Input.GetKeyDown("t")) GoToMode(ShowMode.World_1);
+        if (Input.GetKeyDown("y")) GoToMode(ShowMode.World_2);
     }
     
     // --------------------------------------------------------------------------------------------------------
