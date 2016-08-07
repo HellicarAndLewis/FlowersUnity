@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Linq;
+using UnityEngine.Rendering;
 
 public class TerrainFlowers : MonoBehaviour
 {
@@ -238,7 +239,7 @@ public class TerrainFlowers : MonoBehaviour
         // transform the position to take into account the mesh position and rotation
         // push the position out along the normal
         var direction = avgNormal;
-        particle.position = transform.localToWorldMatrix.MultiplyPoint(particlePos + (direction * flowerElevation));
+        particle.position = particlePos + (direction * flowerElevation);// transform.localToWorldMatrix.MultiplyPoint(particlePos + (direction * flowerElevation));
         particle.velocity = Vector3.zero;
         particle.colour = Color.white;
         particle.texOffset = new Vector2(0, 0);
@@ -251,7 +252,12 @@ public class TerrainFlowers : MonoBehaviour
 
     private Vector2 GetTexOffset()
     {
-        if (showControl.terrainMode == TerrainMode.Dawn)
+        if (!showControl)
+        {
+            Vector2[] offsets = { GetTexOffset(1, 1), GetTexOffset(3, 2), GetTexOffset(2, 2), GetTexOffset(1, 2), GetTexOffset(2, 1) };
+            return offsets[Random.Range(0, offsets.Length)];
+        }
+        else if (showControl.terrainMode == TerrainMode.Dawn)
         {
             // 1,1 or 3,2
             if (Random.value > 0.5f)
@@ -367,7 +373,13 @@ public class TerrainFlowers : MonoBehaviour
         }
         if (particleMaterial)
         {
+            Matrix4x4 m = transform.localToWorldMatrix;
+            Matrix4x4 v = Camera.current.worldToCameraMatrix;
+            Matrix4x4 p = Camera.current.projectionMatrix;
+            Matrix4x4 MVP = p * v * m;
+
             var scale = flowerTerrainScale;
+            particleMaterial.SetMatrix("ModelViewProjection", m);
             particleMaterial.SetBuffer("particles", particleBuffer);
             particleMaterial.SetBuffer("quadPoints", quadBuffer);
             particleMaterial.SetVector("texBounds", new Vector4(1, 1, 0, 0));

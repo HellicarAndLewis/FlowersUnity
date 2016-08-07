@@ -39,7 +39,7 @@ public class MeshDeformer : MonoBehaviour
 
     // --------------------------------------------------------------------------------------------------------
     //
-    virtual protected void Start()
+    void Awake()
 	{
         if (!baseMesh) {
             baseMesh = gameObject.GetComponent<MeshFilter>();
@@ -65,7 +65,7 @@ public class MeshDeformer : MonoBehaviour
 
         meshRenderer = GetComponent<Renderer>();
 
-        Debug.Log(baseVertices.Length);
+        //Debug.Log(baseVertices.Length);
         fft = FindObjectOfType<fftAnalyzer>();
 
         cam = Camera.main;

@@ -34,6 +34,7 @@ Shader "Custom/ParticleRender" {
 				#include "Particle.cginc"
 				#include "Noise.cginc"
 
+				float4x4 ModelViewProjection;
 				StructuredBuffer<ParticleData> particles;
 				StructuredBuffer<float3> quadPoints;
 				sampler2D _MainTex;
@@ -108,7 +109,8 @@ Shader "Custom/ParticleRender" {
 
 					
 					// set vertex position using projection and view matrices and the quad point
-					o.pos = mul(UNITY_MATRIX_P, mul(UNITY_MATRIX_V, float4(worldPosition, 1.0f)) + float4(quadPoint, 0.0f));
+					float4 pos = mul(UNITY_MATRIX_P, mul(UNITY_MATRIX_V, mul(ModelViewProjection, float4(worldPosition, 1.0f)) + float4(quadPoint, 0.0f)));
+					o.pos = pos;
 
 					// Rotate the texture coordinates around the z axis
 					//float2 uvPoint = quadPoints[id];
