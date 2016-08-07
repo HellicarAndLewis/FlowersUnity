@@ -22269,6 +22269,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1557827842}
+  - 114: {fileID: 1557827843}
   m_Layer: 0
   m_Name: App
   m_TagString: Untagged
@@ -22291,6 +22292,28 @@ Transform:
   - {fileID: 18219784}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1557827843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1557827841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3411c1a7443527b40b03693a47e78719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flowerScale: 0.36
+  TerrainCamHeight: 35
+  TerrainCamFieldOfView: 50.6
+  TerrainCam: {fileID: 98517876}
+  SecondaryTerrainCam: {fileID: 1425093062}
+  Terrain: {fileID: 808234385}
+  TerrainRotation: {x: 0.1, y: 0, z: 0}
+  Skybox1: {fileID: 0}
+  Skybox1Rotation: {x: 0, y: 0, z: 0}
+  Skybox2: {fileID: 0}
+  Skybox2Rotation: {x: 0, y: 0, z: 0}
 --- !u!1 &1573446503
 GameObject:
   m_ObjectHideFlags: 0
