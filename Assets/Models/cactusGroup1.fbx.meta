@@ -1,0 +1,205 @@
+fileFormatVersion: 2
+guid: 50ee8481d6c05404cb9979b465dc6a5c
+timeCreated: 1470585504
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: CINEMA_4D_Editor
+    100004: Cloner_2
+    100006: Cloner_2_MeshPart0
+    100008: Cloner_2_MeshPart1
+    100010: Cloner_2_MeshPart10
+    100012: Cloner_2_MeshPart11
+    100014: Cloner_2_MeshPart12
+    100016: Cloner_2_MeshPart13
+    100018: Cloner_2_MeshPart14
+    100020: Cloner_2_MeshPart15
+    100022: Cloner_2_MeshPart16
+    100024: Cloner_2_MeshPart17
+    100026: Cloner_2_MeshPart18
+    100028: Cloner_2_MeshPart19
+    100030: Cloner_2_MeshPart2
+    100032: Cloner_2_MeshPart3
+    100034: Cloner_2_MeshPart4
+    100036: Cloner_2_MeshPart5
+    100038: Cloner_2_MeshPart6
+    100040: Cloner_2_MeshPart7
+    100042: Cloner_2_MeshPart8
+    100044: Cloner_2_MeshPart9
+    100046: Cloner_3
+    100048: Cloner_3_MeshPart0
+    100050: Cloner_3_MeshPart1
+    100052: Cloner_3_MeshPart2
+    100054: Cloner_3_MeshPart3
+    100056: Cloner_3_MeshPart4
+    400000: //RootNode
+    400002: CINEMA_4D_Editor
+    400004: Cloner_2
+    400006: Cloner_2_MeshPart0
+    400008: Cloner_2_MeshPart1
+    400010: Cloner_2_MeshPart10
+    400012: Cloner_2_MeshPart11
+    400014: Cloner_2_MeshPart12
+    400016: Cloner_2_MeshPart13
+    400018: Cloner_2_MeshPart14
+    400020: Cloner_2_MeshPart15
+    400022: Cloner_2_MeshPart16
+    400024: Cloner_2_MeshPart17
+    400026: Cloner_2_MeshPart18
+    400028: Cloner_2_MeshPart19
+    400030: Cloner_2_MeshPart2
+    400032: Cloner_2_MeshPart3
+    400034: Cloner_2_MeshPart4
+    400036: Cloner_2_MeshPart5
+    400038: Cloner_2_MeshPart6
+    400040: Cloner_2_MeshPart7
+    400042: Cloner_2_MeshPart8
+    400044: Cloner_2_MeshPart9
+    400046: Cloner_3
+    400048: Cloner_3_MeshPart0
+    400050: Cloner_3_MeshPart1
+    400052: Cloner_3_MeshPart2
+    400054: Cloner_3_MeshPart3
+    400056: Cloner_3_MeshPart4
+    2300000: Cloner_2_MeshPart0
+    2300002: Cloner_2_MeshPart1
+    2300004: Cloner_2_MeshPart10
+    2300006: Cloner_2_MeshPart11
+    2300008: Cloner_2_MeshPart12
+    2300010: Cloner_2_MeshPart13
+    2300012: Cloner_2_MeshPart14
+    2300014: Cloner_2_MeshPart15
+    2300016: Cloner_2_MeshPart16
+    2300018: Cloner_2_MeshPart17
+    2300020: Cloner_2_MeshPart18
+    2300022: Cloner_2_MeshPart19
+    2300024: Cloner_2_MeshPart2
+    2300026: Cloner_2_MeshPart3
+    2300028: Cloner_2_MeshPart4
+    2300030: Cloner_2_MeshPart5
+    2300032: Cloner_2_MeshPart6
+    2300034: Cloner_2_MeshPart7
+    2300036: Cloner_2_MeshPart8
+    2300038: Cloner_2_MeshPart9
+    2300040: Cloner_3_MeshPart0
+    2300042: Cloner_3_MeshPart1
+    2300044: Cloner_3_MeshPart2
+    2300046: Cloner_3_MeshPart3
+    2300048: Cloner_3_MeshPart4
+    3300000: Cloner_2_MeshPart0
+    3300002: Cloner_2_MeshPart1
+    3300004: Cloner_2_MeshPart10
+    3300006: Cloner_2_MeshPart11
+    3300008: Cloner_2_MeshPart12
+    3300010: Cloner_2_MeshPart13
+    3300012: Cloner_2_MeshPart14
+    3300014: Cloner_2_MeshPart15
+    3300016: Cloner_2_MeshPart16
+    3300018: Cloner_2_MeshPart17
+    3300020: Cloner_2_MeshPart18
+    3300022: Cloner_2_MeshPart19
+    3300024: Cloner_2_MeshPart2
+    3300026: Cloner_2_MeshPart3
+    3300028: Cloner_2_MeshPart4
+    3300030: Cloner_2_MeshPart5
+    3300032: Cloner_2_MeshPart6
+    3300034: Cloner_2_MeshPart7
+    3300036: Cloner_2_MeshPart8
+    3300038: Cloner_2_MeshPart9
+    3300040: Cloner_3_MeshPart0
+    3300042: Cloner_3_MeshPart1
+    3300044: Cloner_3_MeshPart2
+    3300046: Cloner_3_MeshPart3
+    3300048: Cloner_3_MeshPart4
+    4300000: Cloner_2_MeshPart0
+    4300002: Cloner_2_MeshPart1
+    4300004: Cloner_2_MeshPart2
+    4300006: Cloner_2_MeshPart3
+    4300008: Cloner_2_MeshPart4
+    4300010: Cloner_2_MeshPart5
+    4300012: Cloner_2_MeshPart6
+    4300014: Cloner_2_MeshPart7
+    4300016: Cloner_2_MeshPart8
+    4300018: Cloner_2_MeshPart9
+    4300020: Cloner_2_MeshPart10
+    4300022: Cloner_2_MeshPart11
+    4300024: Cloner_2_MeshPart12
+    4300026: Cloner_2_MeshPart13
+    4300028: Cloner_2_MeshPart14
+    4300030: Cloner_2_MeshPart15
+    4300032: Cloner_2_MeshPart16
+    4300034: Cloner_2_MeshPart17
+    4300036: Cloner_2_MeshPart18
+    4300038: Cloner_2_MeshPart19
+    4300040: Cloner_3_MeshPart0
+    4300042: Cloner_3_MeshPart1
+    4300044: Cloner_3_MeshPart2
+    4300046: Cloner_3_MeshPart3
+    4300048: Cloner_3_MeshPart4
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 100
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -205,7 +205,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 18219783}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c811289aa8c2354fad8da394352b50d, type: 3}
   m_Name: 
@@ -10650,7 +10650,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 788154829}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -10721,7 +10721,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 788154830}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -10792,7 +10792,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 788154831}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -10863,7 +10863,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 788154832}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -10934,7 +10934,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 788154833}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -11005,7 +11005,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 788154834}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -11076,7 +11076,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 788154835}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -11147,7 +11147,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 788154836}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -11218,7 +11218,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 788154837}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -11289,7 +11289,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 788154838}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -11360,7 +11360,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 788154839}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -11431,7 +11431,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 788154840}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -11748,7 +11748,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 808234373}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -11760,14 +11760,14 @@ MonoBehaviour:
   maxAngle: 0.2
   minBrightness: 0.8
   minLightBrightness: 1
-  minScale: 1
+  minScale: 0.291
   growAbove: -999
-  isAudioResponsive: 0
-  growFrom: {x: 80, y: 46, z: 0, w: 0}
-  growTo: {x: 70, y: -14, z: 0, w: 0}
+  isAudioResponsive: 1
+  growFrom: {x: 0, y: 0, z: 0, w: 0}
+  growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -14}
-    m_Extent: {x: 8, y: 4, z: 4}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
   forceRefresh: 0
   flowerScale: 0.6
   flowersPerTriangle: 0.2
@@ -11791,17 +11791,16 @@ MonoBehaviour:
   terrainScale: 1
   timeScale: 1
   posNoiseInScale: 0.157
-  posNoiseOutScale: 4.9
+  posNoiseOutScale: 10
   deformThresholdY: -999
-  noiseOutScale: {x: 0, y: 0, z: 0}
+  noiseOutScale: {x: 0.1, y: 0.1, z: 0.1}
   cam: {fileID: 98517876}
   growFrom: {x: 0, y: 0, z: 0, w: 0}
   growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -7}
-    m_Extent: {x: 8, y: 8, z: 4}
-  particleComputeShader: {fileID: 7200000, guid: 27100f4012a22b84e9954dfa1863ad50,
-    type: 3}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  particleComputeShader: {fileID: 0}
 --- !u!65 &808234388
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11820,7 +11819,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 808234374}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -11832,14 +11831,14 @@ MonoBehaviour:
   maxAngle: 0.2
   minBrightness: 0.8
   minLightBrightness: 1
-  minScale: 1
+  minScale: 0.291
   growAbove: -999
-  isAudioResponsive: 0
-  growFrom: {x: 80, y: 46, z: 0, w: 0}
-  growTo: {x: 70, y: -14, z: 0, w: 0}
+  isAudioResponsive: 1
+  growFrom: {x: 0, y: 0, z: 0, w: 0}
+  growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -14}
-    m_Extent: {x: 8, y: 4, z: 4}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
   forceRefresh: 0
   flowerScale: 0.6
   flowersPerTriangle: 0.2
@@ -11863,17 +11862,16 @@ MonoBehaviour:
   terrainScale: 1
   timeScale: 1
   posNoiseInScale: 0.157
-  posNoiseOutScale: 4.9
+  posNoiseOutScale: 10
   deformThresholdY: -999
-  noiseOutScale: {x: 0, y: 0, z: 0}
+  noiseOutScale: {x: 0.1, y: 0.1, z: 0.1}
   cam: {fileID: 98517876}
   growFrom: {x: 0, y: 0, z: 0, w: 0}
   growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -7}
-    m_Extent: {x: 8, y: 8, z: 4}
-  particleComputeShader: {fileID: 7200000, guid: 27100f4012a22b84e9954dfa1863ad50,
-    type: 3}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  particleComputeShader: {fileID: 0}
 --- !u!65 &808234391
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11892,7 +11890,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 808234375}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -11904,14 +11902,14 @@ MonoBehaviour:
   maxAngle: 0.2
   minBrightness: 0.8
   minLightBrightness: 1
-  minScale: 1
+  minScale: 0.291
   growAbove: -999
-  isAudioResponsive: 0
-  growFrom: {x: 80, y: 46, z: 0, w: 0}
-  growTo: {x: 70, y: -14, z: 0, w: 0}
+  isAudioResponsive: 1
+  growFrom: {x: 0, y: 0, z: 0, w: 0}
+  growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -14}
-    m_Extent: {x: 8, y: 4, z: 4}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
   forceRefresh: 0
   flowerScale: 0.6
   flowersPerTriangle: 0.2
@@ -11935,17 +11933,16 @@ MonoBehaviour:
   terrainScale: 1
   timeScale: 1
   posNoiseInScale: 0.157
-  posNoiseOutScale: 4.9
+  posNoiseOutScale: 10
   deformThresholdY: -999
-  noiseOutScale: {x: 0, y: 0, z: 0}
+  noiseOutScale: {x: 0.1, y: 0.1, z: 0.1}
   cam: {fileID: 98517876}
   growFrom: {x: 0, y: 0, z: 0, w: 0}
   growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -7}
-    m_Extent: {x: 8, y: 8, z: 4}
-  particleComputeShader: {fileID: 7200000, guid: 27100f4012a22b84e9954dfa1863ad50,
-    type: 3}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  particleComputeShader: {fileID: 0}
 --- !u!65 &808234394
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11964,7 +11961,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 808234376}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -11976,14 +11973,14 @@ MonoBehaviour:
   maxAngle: 0.2
   minBrightness: 0.8
   minLightBrightness: 1
-  minScale: 1
+  minScale: 0.291
   growAbove: -999
-  isAudioResponsive: 0
-  growFrom: {x: 80, y: 46, z: 0, w: 0}
-  growTo: {x: 70, y: -14, z: 0, w: 0}
+  isAudioResponsive: 1
+  growFrom: {x: 0, y: 0, z: 0, w: 0}
+  growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -14}
-    m_Extent: {x: 8, y: 4, z: 4}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
   forceRefresh: 0
   flowerScale: 0.6
   flowersPerTriangle: 0.2
@@ -12007,17 +12004,16 @@ MonoBehaviour:
   terrainScale: 1
   timeScale: 1
   posNoiseInScale: 0.157
-  posNoiseOutScale: 4.9
+  posNoiseOutScale: 10
   deformThresholdY: -999
-  noiseOutScale: {x: 0, y: 0, z: 0}
+  noiseOutScale: {x: 0.1, y: 0.1, z: 0.1}
   cam: {fileID: 98517876}
   growFrom: {x: 0, y: 0, z: 0, w: 0}
   growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -7}
-    m_Extent: {x: 8, y: 8, z: 4}
-  particleComputeShader: {fileID: 7200000, guid: 27100f4012a22b84e9954dfa1863ad50,
-    type: 3}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  particleComputeShader: {fileID: 0}
 --- !u!65 &808234397
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12036,7 +12032,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 808234377}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -12048,14 +12044,14 @@ MonoBehaviour:
   maxAngle: 0.2
   minBrightness: 0.8
   minLightBrightness: 1
-  minScale: 1
+  minScale: 0.291
   growAbove: -999
-  isAudioResponsive: 0
-  growFrom: {x: 80, y: 46, z: 0, w: 0}
-  growTo: {x: 70, y: -14, z: 0, w: 0}
+  isAudioResponsive: 1
+  growFrom: {x: 0, y: 0, z: 0, w: 0}
+  growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -14}
-    m_Extent: {x: 8, y: 4, z: 4}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
   forceRefresh: 0
   flowerScale: 0.6
   flowersPerTriangle: 0.2
@@ -12079,17 +12075,16 @@ MonoBehaviour:
   terrainScale: 1
   timeScale: 1
   posNoiseInScale: 0.157
-  posNoiseOutScale: 4.9
+  posNoiseOutScale: 10
   deformThresholdY: -999
-  noiseOutScale: {x: 0, y: 0, z: 0}
+  noiseOutScale: {x: 0.1, y: 0.1, z: 0.1}
   cam: {fileID: 98517876}
   growFrom: {x: 0, y: 0, z: 0, w: 0}
   growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -7}
-    m_Extent: {x: 8, y: 8, z: 4}
-  particleComputeShader: {fileID: 7200000, guid: 27100f4012a22b84e9954dfa1863ad50,
-    type: 3}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  particleComputeShader: {fileID: 0}
 --- !u!65 &808234400
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12108,7 +12103,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 808234378}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -12120,14 +12115,14 @@ MonoBehaviour:
   maxAngle: 0.2
   minBrightness: 0.8
   minLightBrightness: 1
-  minScale: 1
+  minScale: 0.291
   growAbove: -999
-  isAudioResponsive: 0
-  growFrom: {x: 80, y: 46, z: 0, w: 0}
-  growTo: {x: 70, y: -14, z: 0, w: 0}
+  isAudioResponsive: 1
+  growFrom: {x: 0, y: 0, z: 0, w: 0}
+  growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -14}
-    m_Extent: {x: 8, y: 4, z: 4}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
   forceRefresh: 0
   flowerScale: 0.6
   flowersPerTriangle: 0.2
@@ -12151,17 +12146,16 @@ MonoBehaviour:
   terrainScale: 1
   timeScale: 1
   posNoiseInScale: 0.157
-  posNoiseOutScale: 4.9
+  posNoiseOutScale: 10
   deformThresholdY: -999
-  noiseOutScale: {x: 0, y: 0, z: 0}
+  noiseOutScale: {x: 0.1, y: 0.1, z: 0.1}
   cam: {fileID: 98517876}
   growFrom: {x: 0, y: 0, z: 0, w: 0}
   growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -7}
-    m_Extent: {x: 8, y: 8, z: 4}
-  particleComputeShader: {fileID: 7200000, guid: 27100f4012a22b84e9954dfa1863ad50,
-    type: 3}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  particleComputeShader: {fileID: 0}
 --- !u!65 &808234403
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12180,7 +12174,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 808234379}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -12192,14 +12186,14 @@ MonoBehaviour:
   maxAngle: 0.2
   minBrightness: 0.8
   minLightBrightness: 1
-  minScale: 1
+  minScale: 0.291
   growAbove: -999
-  isAudioResponsive: 0
-  growFrom: {x: 80, y: 46, z: 0, w: 0}
-  growTo: {x: 70, y: -14, z: 0, w: 0}
+  isAudioResponsive: 1
+  growFrom: {x: 0, y: 0, z: 0, w: 0}
+  growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -14}
-    m_Extent: {x: 8, y: 4, z: 4}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
   forceRefresh: 0
   flowerScale: 0.6
   flowersPerTriangle: 0.2
@@ -12223,17 +12217,16 @@ MonoBehaviour:
   terrainScale: 1
   timeScale: 1
   posNoiseInScale: 0.157
-  posNoiseOutScale: 4.9
+  posNoiseOutScale: 10
   deformThresholdY: -999
-  noiseOutScale: {x: 0, y: 0, z: 0}
+  noiseOutScale: {x: 0.1, y: 0.1, z: 0.1}
   cam: {fileID: 98517876}
   growFrom: {x: 0, y: 0, z: 0, w: 0}
   growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -7}
-    m_Extent: {x: 8, y: 8, z: 4}
-  particleComputeShader: {fileID: 7200000, guid: 27100f4012a22b84e9954dfa1863ad50,
-    type: 3}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  particleComputeShader: {fileID: 0}
 --- !u!65 &808234406
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12252,7 +12245,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 808234380}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -12264,14 +12257,14 @@ MonoBehaviour:
   maxAngle: 0.2
   minBrightness: 0.8
   minLightBrightness: 1
-  minScale: 1
+  minScale: 0.291
   growAbove: -999
-  isAudioResponsive: 0
-  growFrom: {x: 80, y: 46, z: 0, w: 0}
-  growTo: {x: 70, y: -14, z: 0, w: 0}
+  isAudioResponsive: 1
+  growFrom: {x: 0, y: 0, z: 0, w: 0}
+  growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -14}
-    m_Extent: {x: 8, y: 4, z: 4}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
   forceRefresh: 0
   flowerScale: 0.6
   flowersPerTriangle: 0.2
@@ -12295,17 +12288,16 @@ MonoBehaviour:
   terrainScale: 1
   timeScale: 1
   posNoiseInScale: 0.157
-  posNoiseOutScale: 4.9
+  posNoiseOutScale: 10
   deformThresholdY: -999
-  noiseOutScale: {x: 0, y: 0, z: 0}
+  noiseOutScale: {x: 0.1, y: 0.1, z: 0.1}
   cam: {fileID: 98517876}
   growFrom: {x: 0, y: 0, z: 0, w: 0}
   growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -7}
-    m_Extent: {x: 8, y: 8, z: 4}
-  particleComputeShader: {fileID: 7200000, guid: 27100f4012a22b84e9954dfa1863ad50,
-    type: 3}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  particleComputeShader: {fileID: 0}
 --- !u!65 &808234409
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12324,7 +12316,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 808234381}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -12336,14 +12328,14 @@ MonoBehaviour:
   maxAngle: 0.2
   minBrightness: 0.8
   minLightBrightness: 1
-  minScale: 1
+  minScale: 0.291
   growAbove: -999
-  isAudioResponsive: 0
-  growFrom: {x: 80, y: 46, z: 0, w: 0}
-  growTo: {x: 70, y: -14, z: 0, w: 0}
+  isAudioResponsive: 1
+  growFrom: {x: 0, y: 0, z: 0, w: 0}
+  growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -14}
-    m_Extent: {x: 8, y: 4, z: 4}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
   forceRefresh: 0
   flowerScale: 0.6
   flowersPerTriangle: 0.2
@@ -12367,17 +12359,16 @@ MonoBehaviour:
   terrainScale: 1
   timeScale: 1
   posNoiseInScale: 0.157
-  posNoiseOutScale: 4.9
+  posNoiseOutScale: 10
   deformThresholdY: -999
-  noiseOutScale: {x: 0, y: 0, z: 0}
+  noiseOutScale: {x: 0.1, y: 0.1, z: 0.1}
   cam: {fileID: 98517876}
   growFrom: {x: 0, y: 0, z: 0, w: 0}
   growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -7}
-    m_Extent: {x: 8, y: 8, z: 4}
-  particleComputeShader: {fileID: 7200000, guid: 27100f4012a22b84e9954dfa1863ad50,
-    type: 3}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  particleComputeShader: {fileID: 0}
 --- !u!65 &808234412
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12396,7 +12387,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 808234382}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -12408,14 +12399,14 @@ MonoBehaviour:
   maxAngle: 0.2
   minBrightness: 0.8
   minLightBrightness: 1
-  minScale: 1
+  minScale: 0.291
   growAbove: -999
-  isAudioResponsive: 0
-  growFrom: {x: 80, y: 46, z: 0, w: 0}
-  growTo: {x: 70, y: -14, z: 0, w: 0}
+  isAudioResponsive: 1
+  growFrom: {x: 0, y: 0, z: 0, w: 0}
+  growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -14}
-    m_Extent: {x: 8, y: 4, z: 4}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
   forceRefresh: 0
   flowerScale: 0.6
   flowersPerTriangle: 0.2
@@ -12439,17 +12430,16 @@ MonoBehaviour:
   terrainScale: 1
   timeScale: 1
   posNoiseInScale: 0.157
-  posNoiseOutScale: 4.9
+  posNoiseOutScale: 10
   deformThresholdY: -999
-  noiseOutScale: {x: 0, y: 0, z: 0}
+  noiseOutScale: {x: 0.1, y: 0.1, z: 0.1}
   cam: {fileID: 98517876}
   growFrom: {x: 0, y: 0, z: 0, w: 0}
   growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -7}
-    m_Extent: {x: 8, y: 8, z: 4}
-  particleComputeShader: {fileID: 7200000, guid: 27100f4012a22b84e9954dfa1863ad50,
-    type: 3}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  particleComputeShader: {fileID: 0}
 --- !u!65 &808234415
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12468,7 +12458,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 808234383}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -12480,14 +12470,14 @@ MonoBehaviour:
   maxAngle: 0.2
   minBrightness: 0.8
   minLightBrightness: 1
-  minScale: 1
+  minScale: 0.291
   growAbove: -999
-  isAudioResponsive: 0
-  growFrom: {x: 80, y: 46, z: 0, w: 0}
-  growTo: {x: 70, y: -14, z: 0, w: 0}
+  isAudioResponsive: 1
+  growFrom: {x: 0, y: 0, z: 0, w: 0}
+  growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -14}
-    m_Extent: {x: 8, y: 4, z: 4}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
   forceRefresh: 0
   flowerScale: 0.6
   flowersPerTriangle: 0.2
@@ -12511,17 +12501,16 @@ MonoBehaviour:
   terrainScale: 1
   timeScale: 1
   posNoiseInScale: 0.157
-  posNoiseOutScale: 4.9
+  posNoiseOutScale: 10
   deformThresholdY: -999
-  noiseOutScale: {x: 0, y: 0, z: 0}
+  noiseOutScale: {x: 0.1, y: 0.1, z: 0.1}
   cam: {fileID: 98517876}
   growFrom: {x: 0, y: 0, z: 0, w: 0}
   growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -7}
-    m_Extent: {x: 8, y: 8, z: 4}
-  particleComputeShader: {fileID: 7200000, guid: 27100f4012a22b84e9954dfa1863ad50,
-    type: 3}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  particleComputeShader: {fileID: 0}
 --- !u!65 &808234418
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12540,7 +12529,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 808234384}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 080dec60ff5e27143845bce3c6699508, type: 3}
   m_Name: 
@@ -12552,14 +12541,14 @@ MonoBehaviour:
   maxAngle: 0.2
   minBrightness: 0.8
   minLightBrightness: 1
-  minScale: 1
+  minScale: 0.291
   growAbove: -999
-  isAudioResponsive: 0
-  growFrom: {x: 80, y: 46, z: 0, w: 0}
-  growTo: {x: 70, y: -14, z: 0, w: 0}
+  isAudioResponsive: 1
+  growFrom: {x: 0, y: 0, z: 0, w: 0}
+  growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -14}
-    m_Extent: {x: 8, y: 4, z: 4}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
   forceRefresh: 0
   flowerScale: 0.6
   flowersPerTriangle: 0.2
@@ -12583,17 +12572,16 @@ MonoBehaviour:
   terrainScale: 1
   timeScale: 1
   posNoiseInScale: 0.157
-  posNoiseOutScale: 4.9
+  posNoiseOutScale: 10
   deformThresholdY: -999
-  noiseOutScale: {x: 0, y: 0, z: 0}
+  noiseOutScale: {x: 0.1, y: 0.1, z: 0.1}
   cam: {fileID: 98517876}
   growFrom: {x: 0, y: 0, z: 0, w: 0}
   growTo: {x: 0, y: 0, z: 0, w: 0}
   growBounds:
-    m_Center: {x: 0, y: 40, z: -7}
-    m_Extent: {x: 8, y: 8, z: 4}
-  particleComputeShader: {fileID: 7200000, guid: 27100f4012a22b84e9954dfa1863ad50,
-    type: 3}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  particleComputeShader: {fileID: 0}
 --- !u!65 &808234421
 BoxCollider:
   m_ObjectHideFlags: 0

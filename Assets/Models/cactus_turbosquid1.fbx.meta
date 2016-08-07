@@ -1,0 +1,176 @@
+fileFormatVersion: 2
+guid: f39312a71d5a89a489a93b5b40808e48
+timeCreated: 1470592555
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: CINEMA_4D_Editor
+    100004: P3D_Agave2
+    100006: P3D_Agave_1
+    100008: P3D_Agave_3
+    100010: P3D_Cactus_1
+    100012: P3D_Cactus_2
+    100014: P3D_Fence_Post
+    100016: P3D_LadySlipper_1
+    100018: P3D_LadySlipper_2
+    100020: P3D_Ocotillo_1
+    100022: P3D_Ocotillo_2
+    100024: P3D_PaloVerde_1
+    100026: P3D_Saguaro_1
+    100028: P3D_Saguaro_2
+    100030: P3D_Toothless_Desert_Spoon
+    100032: P3D_TotemPole_1
+    100034: P3D_TotemPole_1_2
+    100036: P3D_Yucca_1
+    100038: P3D_Yucca_2
+    100040: P3D_Yucca_3
+    100042: PaloVerde_2
+    400000: //RootNode
+    400002: CINEMA_4D_Editor
+    400004: P3D_Agave2
+    400006: P3D_Agave_1
+    400008: P3D_Agave_3
+    400010: P3D_Cactus_1
+    400012: P3D_Cactus_2
+    400014: P3D_Fence_Post
+    400016: P3D_LadySlipper_1
+    400018: P3D_LadySlipper_2
+    400020: P3D_Ocotillo_1
+    400022: P3D_Ocotillo_2
+    400024: P3D_PaloVerde_1
+    400026: P3D_Saguaro_1
+    400028: P3D_Saguaro_2
+    400030: P3D_Toothless_Desert_Spoon
+    400032: P3D_TotemPole_1
+    400034: P3D_TotemPole_1_2
+    400036: P3D_Yucca_1
+    400038: P3D_Yucca_2
+    400040: P3D_Yucca_3
+    400042: PaloVerde_2
+    2300000: P3D_Agave2
+    2300002: P3D_Agave_1
+    2300004: P3D_Agave_3
+    2300006: P3D_Cactus_1
+    2300008: P3D_Cactus_2
+    2300010: P3D_Fence_Post
+    2300012: P3D_LadySlipper_1
+    2300014: P3D_LadySlipper_2
+    2300016: P3D_Ocotillo_1
+    2300018: P3D_Ocotillo_2
+    2300020: P3D_PaloVerde_1
+    2300022: P3D_Saguaro_1
+    2300024: P3D_Saguaro_2
+    2300026: P3D_Toothless_Desert_Spoon
+    2300028: P3D_TotemPole_1
+    2300030: P3D_TotemPole_1_2
+    2300032: P3D_Yucca_1
+    2300034: P3D_Yucca_2
+    2300036: P3D_Yucca_3
+    2300038: PaloVerde_2
+    3300000: P3D_Agave2
+    3300002: P3D_Agave_1
+    3300004: P3D_Agave_3
+    3300006: P3D_Cactus_1
+    3300008: P3D_Cactus_2
+    3300010: P3D_Fence_Post
+    3300012: P3D_LadySlipper_1
+    3300014: P3D_LadySlipper_2
+    3300016: P3D_Ocotillo_1
+    3300018: P3D_Ocotillo_2
+    3300020: P3D_PaloVerde_1
+    3300022: P3D_Saguaro_1
+    3300024: P3D_Saguaro_2
+    3300026: P3D_Toothless_Desert_Spoon
+    3300028: P3D_TotemPole_1
+    3300030: P3D_TotemPole_1_2
+    3300032: P3D_Yucca_1
+    3300034: P3D_Yucca_2
+    3300036: P3D_Yucca_3
+    3300038: PaloVerde_2
+    4300000: P3D_Yucca_3
+    4300002: P3D_Yucca_2
+    4300004: P3D_Yucca_1
+    4300006: P3D_TotemPole_1
+    4300008: P3D_TotemPole_1_2
+    4300010: P3D_Toothless_Desert_Spoon
+    4300012: P3D_Saguaro_2
+    4300014: P3D_Saguaro_1
+    4300016: PaloVerde_2
+    4300018: P3D_PaloVerde_1
+    4300020: P3D_Ocotillo_2
+    4300022: P3D_Ocotillo_1
+    4300024: P3D_LadySlipper_2
+    4300026: P3D_LadySlipper_1
+    4300028: P3D_Fence_Post
+    4300030: P3D_Cactus_2
+    4300032: P3D_Cactus_1
+    4300034: P3D_Agave_3
+    4300036: P3D_Agave2
+    4300038: P3D_Agave_1
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
