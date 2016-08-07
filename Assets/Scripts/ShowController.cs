@@ -14,6 +14,7 @@ public enum TerrainMode
 public class ShowController : MonoBehaviour
 {
     public SceneFadeInOut[] scenes;
+    public GameObject commonWorld;
 
     public ShowMode showMode = ShowMode.World_1;
     private ShowMode queuedShowMode = ShowMode.World_1;
@@ -85,6 +86,15 @@ public class ShowController : MonoBehaviour
             SetAllActive(false);
             scenes[sceneIndex].gameObject.SetActive(true);
             scenes[sceneIndex].FadeIn();
+        }
+
+        if (sceneIndex > 3)
+        {
+            commonWorld.SetActive(true);
+        }
+        else
+        {
+            commonWorld.SetActive(false);
         }
     }
 
