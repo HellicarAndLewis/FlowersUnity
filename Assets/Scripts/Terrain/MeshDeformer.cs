@@ -32,7 +32,7 @@ public class MeshDeformer : MonoBehaviour
     protected Vector3[] baseNormals;
     protected fftAnalyzer fft;
 
-    private Camera cam;
+    public Camera cam;
     private Plane[] planes;
     private BoxCollider collider;
 
@@ -67,8 +67,7 @@ public class MeshDeformer : MonoBehaviour
 
         //Debug.Log(baseVertices.Length);
         fft = FindObjectOfType<fftAnalyzer>();
-
-        cam = Camera.main;
+        
         planes = GeometryUtility.CalculateFrustumPlanes(cam);
         collider = GetComponent<BoxCollider>();
     }

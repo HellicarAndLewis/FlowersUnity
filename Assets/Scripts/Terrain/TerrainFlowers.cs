@@ -252,45 +252,8 @@ public class TerrainFlowers : MonoBehaviour
 
     private Vector2 GetTexOffset()
     {
-        if (!showControl)
-        {
-            Vector2[] offsets = { GetTexOffset(1, 1), GetTexOffset(3, 2), GetTexOffset(2, 2), GetTexOffset(1, 2), GetTexOffset(2, 1) };
-            return offsets[Random.Range(0, offsets.Length)];
-        }
-        else if (showControl.terrainMode == TerrainMode.Dawn)
-        {
-            // 1,1 or 3,2
-            if (Random.value > 0.5f)
-                return GetTexOffset(1, 1);
-            else
-                return GetTexOffset(3, 2);
-        }
-        else if (showControl.terrainMode == TerrainMode.Daytime)
-        {
-            // 1,3 2,3
-            if (Random.value > 0.5f)
-                return GetTexOffset(1, 3);
-            else
-                return GetTexOffset(2, 3);
-        }
-        else if (showControl.terrainMode == TerrainMode.Dusk)
-        {
-            // 2,2 or 1,2
-            if (Random.value > 0.5f)
-                return GetTexOffset(2, 2);
-            else
-                return GetTexOffset(1, 2);
-        }
-        else if (showControl.terrainMode == TerrainMode.Night)
-        {
-            // 1,2 2,1
-            if (Random.value > 0.5f)
-                return GetTexOffset(2, 1);
-            else
-                return GetTexOffset(1, 2);
-        }
-        else return Vector3.zero;
-        
+        Vector2[] offsets = { GetTexOffset(1, 1), GetTexOffset(3, 2), GetTexOffset(2, 2), GetTexOffset(1, 2), GetTexOffset(2, 1) };
+        return offsets[Random.Range(0, offsets.Length)];
     }
 
     private Vector2 GetTexOffset(float col, float row)
