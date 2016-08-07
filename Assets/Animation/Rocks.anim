@@ -24,71 +24,6 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 1.95
-        value: 0
-        inSlope: 0
-        outSlope: 20.00002
-        tangentMode: 21
-      - time: 2
-        value: 1
-        inSlope: 20.00002
-        outSlope: -0
-        tangentMode: 21
-      - time: 5
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 21
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: scale
-    path: scatteredRocks (1)
-    classID: 114
-    script: {fileID: 11500000, guid: ce4ecf8a491f5f84e9f69e92db0aa94c, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 2.9333334
-        value: 0
-        inSlope: 0
-        outSlope: 15.000014
-        tangentMode: 21
-      - time: 3
-        value: 1
-        inSlope: 15.000014
-        outSlope: -0
-        tangentMode: 21
-      - time: 5
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: scale
-    path: scatteredRocks
-    classID: 114
-    script: {fileID: 11500000, guid: ce4ecf8a491f5f84e9f69e92db0aa94c, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
       - time: 1.95
         value: 0
         inSlope: 0
@@ -124,18 +59,6 @@ AnimationClip:
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
     genericBindings:
-    - path: 2408657565
-      attribute: 3964020100
-      script: {fileID: 11500000, guid: ce4ecf8a491f5f84e9f69e92db0aa94c, type: 3}
-      classID: 114
-      customType: 0
-      isPPtrCurve: 0
-    - path: 1615502680
-      attribute: 3964020100
-      script: {fileID: 11500000, guid: ce4ecf8a491f5f84e9f69e92db0aa94c, type: 3}
-      classID: 114
-      customType: 0
-      isPPtrCurve: 0
     - path: 4007887719
       attribute: 3139455364
       script: {fileID: 11500000, guid: 40738722fd4e5469eb0419ef1a938350, type: 3}
@@ -164,71 +87,6 @@ AnimationClip:
     m_HeightFromFeet: 0
     m_Mirror: 0
   m_EditorCurves:
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 1.95
-        value: 0
-        inSlope: 0
-        outSlope: 20.00002
-        tangentMode: 21
-      - time: 2
-        value: 1
-        inSlope: 20.00002
-        outSlope: -0
-        tangentMode: 21
-      - time: 5
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 21
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: scale
-    path: scatteredRocks (1)
-    classID: 114
-    script: {fileID: 11500000, guid: ce4ecf8a491f5f84e9f69e92db0aa94c, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      - time: 2.9333334
-        value: 0
-        inSlope: 0
-        outSlope: 15.000014
-        tangentMode: 21
-      - time: 3
-        value: 1
-        inSlope: 15.000014
-        outSlope: -0
-        tangentMode: 21
-      - time: 5
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 10
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: scale
-    path: scatteredRocks
-    classID: 114
-    script: {fileID: 11500000, guid: ce4ecf8a491f5f84e9f69e92db0aa94c, type: 3}
   - curve:
       serializedVersion: 2
       m_Curve:

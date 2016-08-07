@@ -209,6 +209,6 @@ public class ComputeParticleController : MonoBehaviour
     //
     public void OnSpeed(float _val)
     {
-        speed.y = 0.0f - _val * 0.5f;
+        speed.y = 0.0f - _val * 0.1f;
     }
 }

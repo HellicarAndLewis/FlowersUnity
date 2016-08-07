@@ -74,7 +74,7 @@ public class TerrainBlendDeformer : TerrainDeformer
                 break;
             case State.PreBlend:
                 noiseOutScaleTransition -= 0.05f;
-                flowers.flowerTerrainScale = noiseOutScaleTransition;
+                //flowers.flowerTerrainScale = noiseOutScaleTransition;
                 if (noiseOutScaleTransition <= 0)
                 {
                     noiseOutScaleTransition = 0;
@@ -85,10 +85,11 @@ public class TerrainBlendDeformer : TerrainDeformer
                 break;
             case State.Blend:
                 UpdateBlend();
+                flowers.Reposition();
                 break;
             case State.PostBlend:
                 noiseOutScaleTransition += 0.05f;
-                flowers.flowerTerrainScale = noiseOutScaleTransition;
+                //flowers.flowerTerrainScale = noiseOutScaleTransition;
                 if (noiseOutScaleTransition >= 1)
                 {
                     noiseOutScaleTransition = 1;
@@ -147,5 +148,35 @@ public class TerrainBlendDeformer : TerrainDeformer
             Gizmos.DrawLine(p1, p1 + (mesh.normals[i] * 0.3f));
         }
         */
+    }
+
+    public void OnPosOutScale(float _val)
+    {
+        posNoiseOutScale = _val * 100.0f;
+    }
+
+    public void OnPosInScale(float _val)
+    {
+        posNoiseInScale = _val;
+    }
+
+    public void OnThreshold(float _val)
+    {
+        deformThresholdY = _val;
+    }
+
+    public void OnScaleX(float _val)
+    {
+        noiseOutScale.x = _val;
+    }
+
+    public void OnScaleY(float _val)
+    {
+        noiseOutScale.y = _val;
+    }
+
+    public void OnScaleZ(float _val)
+    {
+        noiseOutScale.z = _val;
     }
 }

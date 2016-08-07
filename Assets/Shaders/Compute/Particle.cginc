@@ -7,6 +7,7 @@ struct ParticleData
 
 	float3 position; 
 	float3 velocity;
+	float3 triIndex;
 
 	float2 texOffset;
 
